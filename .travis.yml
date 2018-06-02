@@ -2,6 +2,13 @@ language: node_js
 
 node_js: stable
 
+cache:
+  directories:
+    - node_modules 
+
+before_install:
+    - export TZ='Asia/Shanghai'
+
 install:
   - npm install 
   - npm install -g hexo-cli
@@ -11,6 +18,19 @@ script:
   - hexo generate
 
 after_script:
-  - git config --global user.name "royeo"
-  - git config --global user.email "ljn6176@163.com"
-  - hexo deploy
+  - cd ./public
+  - git init
+  - git config user.name "royeo" 
+  - git config user.email "ljn6176@163.com" 
+  - git add .
+  - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REPO}" master 
+
+
+branches:
+  only:
+    - source
+
+env:
+  global:
+    - GH_REPO: github.com/royeo/royeo.github.io.git
