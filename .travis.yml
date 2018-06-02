@@ -1,0 +1,16 @@
+language: node_js
+
+node_js: stable
+
+install:
+  - npm install 
+  - npm install -g hexo-cli
+
+script:
+  - hexo clean
+  - hexo generate
+
+after_script:
+  - git config --global user.name "royeo"
+  - git config --global user.email "ljn6176@163.com"
+  - hexo deploy
