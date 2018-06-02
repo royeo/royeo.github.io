@@ -16,13 +16,13 @@ script:
 
 after_script:
   - set -ev
+  - export TZ='Asia/Shanghai'
   - git clone https://${GH_REPO} .deploy_git
   - cd .deploy_git
   - git checkout master
   - cd ../
   - mv .deploy_git/.git/ ./public/
   - cd ./public
-  - export TZ='Asia/Shanghai'
   - git config user.name "royeo" 
   - git config user.email "ljn6176@163.com" 
   - git add .
