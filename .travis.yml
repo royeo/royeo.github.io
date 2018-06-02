@@ -15,6 +15,7 @@ script:
   - hexo generate
 
 after_script:
+  - set -ev
   - git clone https://${GH_REPO} .deploy_git
   - cd .deploy_git
   - git checkout master
