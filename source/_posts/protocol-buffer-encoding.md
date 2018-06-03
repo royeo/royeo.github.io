@@ -1,7 +1,8 @@
 ---
 title: Protocol Buffer Encoding
 date: 2018-06-03 06:02:17
-tags:
+tags: Protocol Buffer
+category: 码梦为生
 ---
 
 > 本文翻译自： https://developers.google.com/protocol-buffers/docs/encoding
