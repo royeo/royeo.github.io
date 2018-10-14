@@ -5,7 +5,7 @@ tags: URL
 category: 码梦为生
 ---
 
-今天用 postman 调试一个 GET 接口，请求时会在 query 中会传一个 color 参数，如：`http://example.com/?color=#ffffff`。请求之后发现失败了，然后就去看请求日志，看到后端收到的 URL 并不完整，# 号及其后面的所有字符都消失了，如：`http://example.com?color=`。因为对 URL 中的 # 没什么了解，然后就去查了下资料，下面把我了解到的 # 号相关的知识点分享给大家。
+今天用 postman 调试一个 GET 接口，接口 url 的 query 中有一个 color 参数，如：`http://example.com/?color=#ffffff`。请求一下失败了，查看日志发现后端接收到 URL 很奇怪，# 号及其后面的所有字符都消失了，如：`http://example.com?color=`。因为对 URL 中的 # 没什么了解，然后就去查了下资料，下面整理了一些 # 号相关的资料。
 
 ## 《HTTP权威指南》中的描述
 

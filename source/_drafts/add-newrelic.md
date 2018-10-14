@@ -24,16 +24,16 @@ https://newrelic.com/signup
 
 2. 在要监控的项目里安装 newrelic：
 
-```bash
-npm install newrelic --save
-```
+    ```bash
+    npm install newrelic --save
+    ```
 
 3. 把 `node_modules/newrelic` 目录下的 `newrelic.js` 拷贝到项目的根目录，并编辑 `newrelic.js`，设置 `license_key` 为自己的 `license key`，然后设置一个有意义的 `app_name`。
 
 4. 在程序入口文件的第一行加上：
 
-```js
-require('newrelic');
-```
+    ```js
+    require('newrelic');
+    ```
 
 5. 重启项目
