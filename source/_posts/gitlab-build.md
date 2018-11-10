@@ -50,7 +50,7 @@ GitLab 的所有配置都在 `/etc/gitlab/gitlab.rb` 文件中，你可以在 do
 docker exec -it gitlab /bin/bash
 ```
 
-在 GitLab 的配置中，你需要修改 `external_url` 配置项为一个有效的 url，这个 url 就是你的 GitLab 仓库的域名，也可以通过上面 docker-compose 文件中的 `environment` 来修改 `external_url` 配置项。
+在 GitLab 的配置中，你需要修改 `external_url` 配置项为一个有效的 url，这个 url 就是你的 GitLab 仓库的域名，也可以通过上面 docker-compose 文件中的 `environment` 来修改 `external_url` 配置项。没有域名的话可以先用 IP 地址。
 
 还有很多其他的配置，如邮箱、HTTPS 等的配置就不多介绍了。详细配置参考官方文档：[Configuration options](https://docs.gitlab.com/omnibus/settings/configuration.html)。
 
