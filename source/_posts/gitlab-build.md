@@ -118,4 +118,4 @@ docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner --name git
 
 ## .gitlab-ci.yml
 
-在搭建好 GitLab 和 Runner 后，就可以在 GitLab 上创建一个项目，然后写 CI 的配置文件 `.gitlab-ci.yml` 了，参考：[Configuring .gitlab-ci.yml](https://docs.gitlab.com/ee/ci/yaml/README.html)
+在搭建好 GitLab 和 Runner 后，就可以在 GitLab 上新建一个项目，然后写 CI 的配置文件 `.gitlab-ci.yml` 了，参考：[Configuring .gitlab-ci.yml](https://docs.gitlab.com/ee/ci/yaml/README.html)
