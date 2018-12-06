@@ -5,9 +5,11 @@ tags:
     - Markdown
 ---
 
-## Syntax Highlight
+用 markdown 写文档的话经常会用到代码的语法高亮，这里列出了常用的语法高亮标签，前面是标签，括号里是对应的文件扩展名。
 
 <!--more-->
+
+## Syntax Highlight
 
 - Cucumber (‘*.feature’)
 - abap (‘*.abap’)

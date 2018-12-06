@@ -7,7 +7,7 @@ tags:
     - Golang
 ---
 
-最近有一个独立开发的 Golang 微服务需要上线，项目托管在内部的 GitLab 上，所以需要写一个 `.gitlab-ci.yml` 文件来走 CI。由于之前一直是在比较成熟的团队中，没有自己写过 GitLab 的 CI 配置，所以索性尝试下自己搭建 GitLab，然后配置一套 CI 来熟悉下。
+最近有一个独立开发的 Golang 微服务需要上线，项目托管在内部的 GitLab 上，所以需要写一个 .gitlab-ci.yml 文件来走 CI。由于之前一直是在比较成熟的团队中，没有自己写过 GitLab 的 CI 配置，所以索性尝试下自己搭建 GitLab，然后配置一套 CI 来熟悉下。
 
 <!--more-->
 
@@ -36,21 +36,21 @@ tags:
      - '/srv/gitlab/data:/var/opt/gitlab'
 ```
 
-这里需要注意 SSH、HTTP、HTTPS 的端口是否被占用，以及卷的位置 docker 是否有权限访问。例如，在 macOS 上，docker 没有 `/srv` 的权限，所以可以使用 `/Users/Shared` 目录替代 `/srv`。
+这里需要注意 SSH、HTTP、HTTPS 的端口是否被占用，以及卷的位置 docker 是否有权限访问。例如，在 macOS 上，docker 没有 /srv 的权限，所以可以使用 /Users/Shared 目录替代 /srv。
 
 在容器启动后，等 GitLab 初始化完成（需等待一会），就可以通过  http://localhost/ 访问了。
 
 另外还有一些部署 GitLab 的方法，具体参考官方文档：[Omnibus GitLab documentation](https://docs.gitlab.com/omnibus/README.html)。
 
-## 配置 Gitlab
+## 配置 GitLab
 
-GitLab 的所有配置都在 `/etc/gitlab/gitlab.rb` 文件中，你可以在 docker 挂载的数据卷目录下去修改配置，也可以进入 docker 容器去修改：
+GitLab 的所有配置都在 /etc/gitlab/gitlab.rb 文件中，你可以在 docker 挂载的数据卷目录下去修改配置，也可以进入 docker 容器去修改：
 
 ```sh
 docker exec -it gitlab /bin/bash
 ```
 
-在 GitLab 的配置中，你需要修改 `external_url` 配置项为一个有效的 url，这个 url 就是你的 GitLab 仓库的域名，也可以通过上面 docker-compose 文件中的 `environment` 来修改 `external_url` 配置项。没有域名的话可以先用 IP 地址。
+在 GitLab 的配置中，你需要修改 external_url 配置项为一个有效的 url，这个 url 就是你的 GitLab 仓库的域名，也可以通过上面 docker-compose 文件中的 environment 来修改 external_url 配置项。没有域名的话可以先用 IP 地址。
 
 还有很多其他的配置，如邮箱、HTTPS 等的配置就不多介绍了。详细配置参考官方文档：[Configuration options](https://docs.gitlab.com/omnibus/settings/configuration.html)。
 
@@ -62,7 +62,7 @@ docker restart gitlab
 
 ## 搭建 GitLab Runner
 
-GitLab 的 CI 需要安装 Gitlab Runner，Runner 负责运行 `.gitlab-ci.yml` 中定义的 job，并且将结果发送回 GitLab。
+GitLab 的 CI 需要安装 Gitlab Runner，Runner 负责运行 .gitlab-ci.yml 中定义的 job，并且将结果发送回 GitLab。
 
 Runner 不建议和 GitLab 同时运行在一台机器上，因为 Runner 很消耗资源，一旦 CI 运行起来，就可以看到 Runner 的 CPU 使用率飙升，所以应该分开部署。如果只是想测试一下，也可以先在一台机器上试一下。
 
@@ -106,7 +106,7 @@ docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner --name git
 
 - --tag-list
 
-	Runner 的 tags，使用 tag 标记 Runner 后，在 `.gitlab-ci.yml` 中定义 job 时，就可以使用 tags 配置来指定运行这个 job 的 Runner。
+	Runner 的 tags，使用 tag 标记 Runner 后，在 .gitlab-ci.yml 中定义 job 时，就可以使用 tags 配置来指定运行这个 job 的 Runner。
 
 - --executor
 
@@ -114,8 +114,8 @@ docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner --name git
 
 - --docker-image
 
-	如果你使用 docker 作为 executor，需要提供一个默认镜像，在 `.gitlab-ci.yml` 中没有定义镜像时使用。
+	如果你使用 docker 作为 executor，需要提供一个默认镜像，在 .gitlab-ci.yml 中没有定义镜像时使用。
 
 ## .gitlab-ci.yml
 
-在搭建好 GitLab 和 Runner 后，就可以在 GitLab 上新建一个项目，然后写 CI 的配置文件 `.gitlab-ci.yml` 了，参考：[Configuring .gitlab-ci.yml](https://docs.gitlab.com/ee/ci/yaml/README.html)
+在搭建好 GitLab 和 Runner 后，就可以在 GitLab 上新建一个项目，然后写 CI 的配置文件 .gitlab-ci.yml 了，参考：[Configuring .gitlab-ci.yml](https://docs.gitlab.com/ee/ci/yaml/README.html)
