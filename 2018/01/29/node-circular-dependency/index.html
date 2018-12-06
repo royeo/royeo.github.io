@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="6BMKhk9bFLmGySSTiQZaXemUgc_7_j0SfMhXIlepphc">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Node,模块,源码,循环依赖,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Royeo's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="今天来讲一讲 Node 循环依赖的问题，以官网上的例子结合 Node 源码来分析为什么循环依赖不会导致死循环，以及循环依赖可能造成的问题。">
+<meta name="keywords" content="Node,模块,源码,循环依赖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node 循环依赖之源码解析">
+<meta property="og:url" content="http://lujianan.com/2018/01/29/node-circular-dependency/index.html">
+<meta property="og:site_name" content="Royeo&#39;s Blog">
+<meta property="og:description" content="今天来讲一讲 Node 循环依赖的问题，以官网上的例子结合 Node 源码来分析为什么循环依赖不会导致死循环，以及循环依赖可能造成的问题。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-28T14:06:17.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node 循环依赖之源码解析">
+<meta name="twitter:description" content="今天来讲一讲 Node 循环依赖的问题，以官网上的例子结合 Node 源码来分析为什么循环依赖不会导致死循环，以及循环依赖可能造成的问题。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lujianan.com/2018/01/29/node-circular-dependency/">
+
+
+
+
+
+  <title>Node 循环依赖之源码解析 | Royeo's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103082838-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e480994ffa59417120dea5442b93d26e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Royeo's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lujianan.com/2018/01/29/node-circular-dependency/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Royeo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Royeo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Node 循环依赖之源码解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-29T21:59:08+08:00">
+                2018-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/码梦为生/" itemprop="url" rel="index">
+                    <span itemprop="name">码梦为生</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/29/node-circular-dependency/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/29/node-circular-dependency/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/29/node-circular-dependency/" class="leancloud_visitors" data-flag-title="Node 循环依赖之源码解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天来讲一讲 Node 循环依赖的问题，以官网上的例子结合 Node 源码来分析为什么循环依赖不会导致死循环，以及循环依赖可能造成的问题。</p>
+<a id="more"></a>
+<h2 id="什么是循环依赖"><a href="#什么是循环依赖" class="headerlink" title="什么是循环依赖"></a>什么是循环依赖</h2><p>循环依赖是两个或多个模块之间的关系，它们直接或间接地相互依赖以正常运行。</p>
+<h2 id="循环依赖的案例"><a href="#循环依赖的案例" class="headerlink" title="循环依赖的案例"></a>循环依赖的案例</h2><p>官网上给出的例子是这样的：</p>
+<p><code>a.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'a starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in a, b.done = %j'</span>, b.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a done'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>b.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'b starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in b, a.done = %j'</span>, a.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b done'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>main.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);</span><br></pre></td></tr></table></figure>
+<p>官网的解释是： <code>main.js</code> 先加载 <code>a.js</code>，然后 <code>a.js</code> 中会加载 <code>b.js</code>，但是在 <code>b.js</code> 中又加载了 <code>a.js</code>。这个时候为了防止无限循环，会将<code>a.js</code> 未完成的 <code>exports</code> 对象返回给 <code>b.js</code> 模块，接着 <code>b.js</code> 完成加载，并且它的 <code>exports</code> 对象被提供给 <code>a.js</code> 模块。</p>
+<p>由此可以看出，之所以不会发生依赖的死循环，是因为模块能够导出未完成的 <code>exports</code> 对象。那么问题来了，为什么模块没有执行完，却能导出对象呢？</p>
+<p>下面通过分析模块源码 <a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">lib/module.js</a> 来解答这个问题。要注意的是，核心模块和文件模块（用户编写的模块）的加载是不同的，本文只讨论文件模块的加载。为了便于理解，会对源码进行简化。</p>
+<h2 id="Module-构造函数"><a href="#Module-构造函数" class="headerlink" title="Module 构造函数"></a>Module 构造函数</h2><p>在 Node 中，每个模块在被 <code>require</code> 导入的时候都会创建一个模块实例，即 <code>Module</code> 实例，并且 Node 会缓存每个模块的实例，以便在下次 <code>require</code> 该模块的时候可以直接从缓存中返回。</p>
+<p>模块实例有一个 <code>exports</code> 属性，初始化为空对象。当我们在文件模块中通过 <code>module.exports</code> 或 <code>exports</code> 来导出的时候，其实就是在给模块实例的 <code>exports</code> 添加属性或者直接重写它。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Module 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Module</span>(<span class="params">id, parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.id = id;</span><br><span class="line">  <span class="keyword">this</span>.exports = &#123;&#125;;</span><br><span class="line">  <span class="keyword">this</span>.parent = parent;</span><br><span class="line">  updateChildren(parent, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">this</span>.filename = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>.children = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="require-方法"><a href="#require-方法" class="headerlink" title="require 方法"></a>require 方法</h2><p><code>require</code> 方法定义在 <code>Module</code> 的原型链上，被每个模块实例共享。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.require = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module._load(id, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>require</code> 内部调用 <code>Module._load</code> 方法，下面是简化后的 <code>_load</code> 方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._load = <span class="function"><span class="keyword">function</span>(<span class="params">request, parent, isMain</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 获取模块文件的绝对路径</span></span><br><span class="line">  <span class="keyword">var</span> filename = Module._resolveFilename(request, parent, isMain);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果有缓存，直接返回缓存中的模块实例的 exports 属性</span></span><br><span class="line">  <span class="keyword">var</span> cachedModule = Module._cache[filename];</span><br><span class="line">  <span class="keyword">if</span> (cachedModule) &#123;</span><br><span class="line">    <span class="keyword">return</span> cachedModule.exports;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果是核心模块，使用 NativeModule.require 方法加载</span></span><br><span class="line">  <span class="keyword">if</span> (NativeModule.nonInternalExists(filename)) &#123;</span><br><span class="line">    <span class="keyword">return</span> NativeModule.require(filename);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建模块实例，并存入缓存</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = <span class="keyword">new</span> Module(filename, parent);</span><br><span class="line">  Module._cache[filename] = <span class="built_in">module</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载模块</span></span><br><span class="line">  <span class="built_in">module</span>.load(filename);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面的代码中，以模块的绝对路径作为模块id，优先从缓存中获取模块实例的 <code>exports</code> 属性。如果模块实例不在缓存中，则创建模块实例并存入缓存，最后根据模块id调用 <code>module.load</code> 加载该模块。</p>
+<h2 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h2><p>模块的加载通过 <code>module.load</code> 方法完成，该方法根据模块的绝对路径确定文件扩展名，不同的文件扩展名采用不同的加载方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.load = <span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.filename = filename;</span><br><span class="line">  <span class="keyword">this</span>.paths = Module._nodeModulePaths(path.dirname(filename));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> extension = path.extname(filename) || <span class="string">'.js'</span>;</span><br><span class="line">  <span class="keyword">if</span> (!Module._extensions[extension]) extension = <span class="string">'.js'</span>;</span><br><span class="line">  Module._extensions[extension](<span class="keyword">this</span>, filename);</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>以 <code>.js</code> 扩展名为例，处理方法如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._extensions[<span class="string">'.js'</span>] = <span class="function"><span class="keyword">function</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> content = fs.readFileSync(filename, <span class="string">'utf8'</span>);</span><br><span class="line">  <span class="built_in">module</span>._compile(internalModule.stripBOM(content), filename);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>module._compile</code> 方法对模块文件进行编译执行。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype._compile = <span class="function"><span class="keyword">function</span>(<span class="params">content, filename</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 将模块代码包装在一个函数中</span></span><br><span class="line">  <span class="keyword">var</span> wrapper = Module.wrap(content);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在当前全局上下文中编译包装好的模块代码，并返回一个可执行的函数</span></span><br><span class="line">  <span class="keyword">var</span> compiledWrapper = vm.runInThisContext(wrapper, &#123; ... &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取模块目录的路径</span></span><br><span class="line">  <span class="keyword">var</span> dirname = path.dirname(filename);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 扩展 require 方法，如添加 require.resolve、require.cache 等属性</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">require</span> = internalModule.makeRequireFunction(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 传入模块实例的 exports 属性、require 方法、模块实例自身、完整文件路径</span></span><br><span class="line">  <span class="comment">// 和文件目录来执行该函数。</span></span><br><span class="line">  <span class="keyword">var</span> result = compiledWrapper.call(<span class="keyword">this</span>.exports, <span class="keyword">this</span>.exports, <span class="built_in">require</span>, <span class="keyword">this</span>,</span><br><span class="line">                                  filename, dirname);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.wrap = <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module.wrapper[<span class="number">0</span>] + script + Module.wrapper[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Module.wrapper = [</span><br><span class="line">  <span class="string">'(function (exports, require, module, __filename, __dirname) &#123; '</span>,</span><br><span class="line">  <span class="string">'\n&#125;);'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p><code>vm.runInThisContext</code> 这个方法会在 V8 虚拟机环境中编译代码，并在当前全局的上下文中运行代码并返回结果。在全局上下文运行的好处是在模块中我们可以使用一些全局变量，如：<code>process</code>、<code>console</code> 等。具体参考：<a href="https://nodejs.org/dist/latest-v8.x/docs/api/vm.html" target="_blank" rel="noopener">vm 的官方文档</a>。</p>
+<p>上面的代码使用 <code>Module.wrap</code> 将模块代码包装在函数中，这样就避免了作用域被污染，接着通过执行 <code>vm.runInThisContext</code> 返回一个可执行的函数，最后传入当前模块实例的 <code>exports</code> 属性、模块实例的 <code>this</code>，以及<code>require</code> 方法、完整文件路径和文件目录来执行该函数。</p>
+<p>由此也可以看出，<code>module.exports</code> 和 <code>exports</code> 并不是全局的，而是在执行模块代码的包装函数时传入的参数（当前模块实例的 <code>exports</code>）。这也解释了为什么在文件模块中重写 <code>exports</code> 会无法导出，因为它只能改变函数形参的引用，而无法实际影响到当前模块实例的 <code>exports</code> 属性。</p>
+<h2 id="循环依赖"><a href="#循环依赖" class="headerlink" title="循环依赖"></a>循环依赖</h2><p>在分析完模块的整个加载过程后，回到上面那个问题：为什么模块没有执行完，却能导出对象呢？关键就在于，在加载模块时，如果模块没有缓存，会先创建模块实例，然后存入缓存，再编译执行模块代码。</p>
+<p>以官网的例子来说：</p>
+<ol>
+<li><p><code>a.js</code> 先加载，所以先缓存 <code>a.js</code> 的模块实例，然后编译执行 <code>a.js</code>。</p>
+</li>
+<li><p>在执行 <code>a.js</code> 的过程中，先导出 <code>exports.done = false</code>，此时 <code>a.js</code> 模块实例的 <code>exports</code> 属性值为 <code>{ done: false }</code>。接着加载 <code>b.js</code>。</p>
+</li>
+<li><p><code>b.js</code> 在执行过程中发现需要加载 <code>a.js</code>，此时由于 <code>a.js</code> 模块已经被缓存，所以直接获取到缓存中的 <code>a.js</code> 模块实例的 <code>exports</code> 属性，值为 <code>{ done: false }</code>，然后继续执行。</p>
+</li>
+<li><p><code>b.js</code> 执行完毕返回，<code>a.js</code> 继续执行。</p>
+</li>
+</ol>
+<p>这种循环依赖导致的问题很明显：</p>
+<ol>
+<li><p><code>b.js</code> 在执行过程中获取到的 <code>a.js</code> 的导出可能是不完整的。</p>
+</li>
+<li><p>如果 <code>a.js</code> 在加载 <code>b.js</code> 后重写了 <code>module.exports</code>，<code>b.js</code> 中获取到的 <code>a.js</code> 的导出还是维持着旧的引用。</p>
+</li>
+</ol>
+<p>具体的解决方案可以参考 Maples7 的博客：<a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决</a>。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://nodejs.org/docs/latest-v8.x/api/modules.html" target="_blank" rel="noopener">Modules | Node.js Documentation</a></li>
+<li><a href="https://nodejs.org/docs/latest-v8.x/api/vm.html" target="_blank" rel="noopener">VM | Node.js Documentation</a></li>
+<li><a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">node/lib/module.js - Github</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/05/require.html" target="_blank" rel="noopener">require() 源码解读 - 阮一峰</a></li>
+<li><a href="https://segmentfault.com/a/1190000004151411" target="_blank" rel="noopener">Node.js 中的循环依赖 - SegmentFault</a></li>
+<li><a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决 - Maples7</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Royeo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Royeo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node/" rel="tag"># Node</a>
+          
+            <a href="/tags/模块/" rel="tag"># 模块</a>
+          
+            <a href="/tags/源码/" rel="tag"># 源码</a>
+          
+            <a href="/tags/循环依赖/" rel="tag"># 循环依赖</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/10/node-v8/" rel="next" title="Nodejs V8 的内存管理与垃圾回收机制">
+                <i class="fa fa-chevron-left"></i> Nodejs V8 的内存管理与垃圾回收机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/27/weapp-store/" rel="prev" title="微信小程序 - 便利店在哪（已上线）">
+                微信小程序 - 便利店在哪（已上线） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Royeo">
+            
+              <p class="site-author-name" itemprop="name">Royeo</p>
+              <p class="site-description motion-element" itemprop="description">人生没有白走的路，每一步都算数</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/royeo" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是循环依赖"><span class="nav-number">1.</span> <span class="nav-text">什么是循环依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环依赖的案例"><span class="nav-number">2.</span> <span class="nav-text">循环依赖的案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module-构造函数"><span class="nav-number">3.</span> <span class="nav-text">Module 构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#require-方法"><span class="nav-number">4.</span> <span class="nav-text">require 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加载模块"><span class="nav-number">5.</span> <span class="nav-text">加载模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环依赖"><span class="nav-number">6.</span> <span class="nav-text">循环依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Royeo</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://coding.net/pages/">Coding Pages</a> & <a target="_blank" href="https://pages.github.com">GitHub Pages</a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://lujianan-com.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://lujianan.com/2018/01/29/node-circular-dependency/';
+          this.page.identifier = '2018/01/29/node-circular-dependency/';
+          this.page.title = 'Node 循环依赖之源码解析';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://lujianan-com.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz", "URgXzK71nIE0rxDlFR7aLzSR");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

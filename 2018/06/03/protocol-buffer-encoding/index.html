@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="6BMKhk9bFLmGySSTiQZaXemUgc_7_j0SfMhXIlepphc">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Protocol Buffer,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Royeo's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="本文翻译自： https://developers.google.com/protocol-buffers/docs/encoding  本文档介绍了 protocol buffer message 的二进制格式。你不需要知道这个就可以在你的应用程序中使用 protocol buffer，但如果你想了解 protocol buffer 格式对编码后的 message 大小的影响，该文档非常有用。">
+<meta name="keywords" content="Protocol Buffer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Protocol Buffer Encoding">
+<meta property="og:url" content="http://lujianan.com/2018/06/03/protocol-buffer-encoding/index.html">
+<meta property="og:site_name" content="Royeo&#39;s Blog">
+<meta property="og:description" content="本文翻译自： https://developers.google.com/protocol-buffers/docs/encoding  本文档介绍了 protocol buffer message 的二进制格式。你不需要知道这个就可以在你的应用程序中使用 protocol buffer，但如果你想了解 protocol buffer 格式对编码后的 message 大小的影响，该文档非常有用。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-29T15:23:50.552Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Protocol Buffer Encoding">
+<meta name="twitter:description" content="本文翻译自： https://developers.google.com/protocol-buffers/docs/encoding  本文档介绍了 protocol buffer message 的二进制格式。你不需要知道这个就可以在你的应用程序中使用 protocol buffer，但如果你想了解 protocol buffer 格式对编码后的 message 大小的影响，该文档非常有用。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lujianan.com/2018/06/03/protocol-buffer-encoding/">
+
+
+
+
+
+  <title>Protocol Buffer Encoding | Royeo's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103082838-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e480994ffa59417120dea5442b93d26e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Royeo's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lujianan.com/2018/06/03/protocol-buffer-encoding/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Royeo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Royeo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Protocol Buffer Encoding</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T06:02:17+08:00">
+                2018-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/码梦为生/" itemprop="url" rel="index">
+                    <span itemprop="name">码梦为生</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/03/protocol-buffer-encoding/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/03/protocol-buffer-encoding/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/06/03/protocol-buffer-encoding/" class="leancloud_visitors" data-flag-title="Protocol Buffer Encoding">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文翻译自： <a href="https://developers.google.com/protocol-buffers/docs/encoding" target="_blank" rel="noopener">https://developers.google.com/protocol-buffers/docs/encoding</a></p>
+</blockquote>
+<p>本文档介绍了 protocol buffer message 的二进制格式。你不需要知道这个就可以在你的应用程序中使用 protocol buffer，但如果你想了解 protocol buffer 格式对编码后的 message 大小的影响，该文档非常有用。</p>
+<a id="more"></a>
+<h2 id="一个简单的-Message"><a href="#一个简单的-Message" class="headerlink" title="一个简单的 Message"></a>一个简单的 Message</h2><p>假设你有如下这个非常简单的 message 定义：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">message Test1 &#123;</span><br><span class="line">  optional int32 a = 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在应用程序中，你创建了一个 <code>Test1</code> message 并将 <code>a</code> 设置为 150，然后将 message 序列化为输出流。如果你能够检查编码后的 message，则会看到三个字节：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">08 96 01</span><br></pre></td></tr></table></figure>
+<p>这些数字的含义是什么呢？我们将稍后展示。</p>
+<h2 id="Base-128-Varints"><a href="#Base-128-Varints" class="headerlink" title="Base 128 Varints"></a>Base 128 Varints</h2><p>要理解 protocol buffer 的编码，首先需要了解 varints。varints 是一种将整数序列化成一个或多个字节的方法。数字越小使用的字节数也越小。</p>
+<p>varint 中的每个字节（最后一个字节除外）都设置了最高有效位（most significant bit），简称 msb，表示还有后续字节，如果只有单个字节则不设置 msb。每个字节的低7位用于以7位一组的形式存储数字的二进制补码，<strong>最低有效组放在前面</strong>。</p>
+<p>例如，数字1，它是一个单字节，所以 msb 没有被设置：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">0000 0001</span><br></pre></td></tr></table></figure>
+<p>如果是300，就有点复杂：</p>
+<pre><code>1010 1100 0000 0010
+</code></pre><p>怎么知道这个是300的呢？首先从每个字节中删除 msb，因为 msb 只是告诉我们是否已达到数字的末尾。（如你所见，由于 varint 中有多个字节，所以 msb 被设置在第一个字节中）：</p>
+<pre><code>1010 1100 0000 0010
+→ 010 1100  000 0010
+</code></pre><p>因为 varints 的最低有效组放在前面，所以需要反转两个7位组。最后进行拼接来获得实际的值：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">000 0010  010 1100</span><br><span class="line">→  000 0010 + 010 1100</span><br><span class="line">→  100101100</span><br><span class="line">→  256 + 32 + 8 + 4 = 300</span><br></pre></td></tr></table></figure>
+<h2 id="Message-结构"><a href="#Message-结构" class="headerlink" title="Message 结构"></a>Message 结构</h2><p>protocol buffer 的 message 是一系列 key-value 对。message 的二进制形式只使用了字段的编号作为 key，每个字段的名称和声明类型则是在解码端通过引用 message 类型的定义（即 <code>.proto</code> 文件）来确定的。</p>
+<p>在对一个 message 进行编码时，key 和 value 被连接成一个字节流。当 message 被解码时，解析器需要跳过它无法识别的字段。这样，在 message 中添加新字段后也不会影响到旧程序。为此，每个 key 实际上由两个值组成：</p>
+<ol>
+<li><code>.proto</code> 文件中的字段编号。</li>
+<li>用来获取 value 长度信息的 wire 类型。</li>
+</ol>
+<p>可用的 wire 类型如下：</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Used For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Varint</td>
+<td>int32, int64, uint32, uint64, sint32, sint64, bool, enum</td>
+</tr>
+<tr>
+<td>1</td>
+<td>64-bit</td>
+<td>fixed64, sfixed64, double</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Length-delimited</td>
+<td>string, bytes, embedded messages, packed repeated fields</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Start group</td>
+<td>groups (deprecated)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>End group</td>
+<td>groups (deprecated)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>32-bit</td>
+<td>fixed32, sfixed32, float</td>
+</tr>
+</tbody>
+</table>
+<p>在流式 message 中的每个 key 都是一个值为 <code>(field_number &lt;&lt; 3) | wire_type</code> 的 varint。换句话说，数字的最后三位存储了 wire 类型。</p>
+<p>现在让我们回过来看看之前那个简单的例子。你现在已经知道流中的第一个数字总是一个值为 varint 的 key，例子中 key 为 08（删除 msb）：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">000 1000</span><br></pre></td></tr></table></figure>
+<p>取最后三位得到 wire 类型（0），然后右移三位得到字段编号（1）。所以字段编号是1，值是一个 varint。结合前面讲到的 varint 解码知识，可以看到接下来的两个字节存储的值为150。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">96 01 = 1001 0110  0000 0001</span><br><span class="line">       → 000 0001 + 001 0110 (drop the msb and reverse the groups of 7 bits)</span><br><span class="line">       → 10010110</span><br><span class="line">       → 128 + 16 + 4 + 2 = 150</span><br></pre></td></tr></table></figure>
+<h2 id="更多的-value-类型"><a href="#更多的-value-类型" class="headerlink" title="更多的 value 类型"></a>更多的 value 类型</h2><h4 id="有符号整型（Signed-Integers）"><a href="#有符号整型（Signed-Integers）" class="headerlink" title="有符号整型（Signed Integers）"></a>有符号整型（Signed Integers）</h4><p>正如你在前面的章节中看到的那样，与 wire 类型0相关的所有 protocol buffer 类型都被编码为 varints。但是，在编码负数时，有符号的 int 类型（<code>sint32</code> 和 <code>sint64</code>）与“标准” int 类型（<code>int32</code> 和 <code>int64</code>）之间存在很大差异。如果使用 <code>int32</code> 或 <code>int64</code> 作为负数的类型，则生成的 varint 长度总是为10个字节 - 实际上，它被视为非常大的无符号整数；如果使用 <code>sint32</code> 或 <code>sint64</code>，对应的 varint 则会使用 ZigZag 编码，所以效率更高。</p>
+<p>ZigZag 编码将有符号整数映射为无符号整数，因此绝对值小的数字（例如-1）就会有一个小的 varint 编码值。ZigZag 以一种在正整数和负整数之间来回“zig-zags”的方式来实现，所以-1被编码为1，1被编码为2，-2被编码为3，依此类推，如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>Signed Original</th>
+<th>Encoded As</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2147483647</td>
+<td>4294967294</td>
+</tr>
+<tr>
+<td>-2147483648</td>
+<td>4294967295</td>
+</tr>
+</tbody>
+</table>
+<p>换句话说，每个 <code>sint32</code> 类型的值 n 被编码为：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">(n &lt;&lt; 1) ^ (n &gt;&gt; 31)</span><br></pre></td></tr></table></figure>
+<p>每个 <code>sint64</code> 类型的值 n 被编码为：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">(n &lt;&lt; 1) ^ (n &gt;&gt; 63)</span><br></pre></td></tr></table></figure>
+<p>注意第二个移位操作 <code>n &gt;&gt; 31</code> 是一个算术移位。所以，这个移位操作的值要么所有位都是0（如果 n 是正数），要么所有位都为1（如果 n 是负数）。</p>
+<p>在解析 <code>sint32</code> 或 <code>sint64</code> 时，其值按上述过程的逆操作解码回原来的有符号数。</p>
+<h4 id="非-varint-数字（Non-varint-Numbers）"><a href="#非-varint-数字（Non-varint-Numbers）" class="headerlink" title="非 varint 数字（Non-varint Numbers）"></a>非 varint 数字（Non-varint Numbers）</h4><p>非 varint 数字类型很简单，<code>double</code> 和 <code>fixed64</code> 的 wire 类型为1，它告诉解析器提取一块64位的数据；类似的， <code>float</code> 和 <code>fixed32</code> 的 wire 类型为5，它告诉解析器提取一块32位的数据。在这两种情况下，值都以小端字节顺序存储。</p>
+<h4 id="字符串（Strings）"><a href="#字符串（Strings）" class="headerlink" title="字符串（Strings）"></a>字符串（Strings）</h4><p>wire 类型 2 （length-delimited）表示该值是 varint 编码的长度，后面跟着指定的数据字节数。</p>
+<p>例如有下面这样的 message 类型：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">message Test2 &#123;</span><br><span class="line">  optional string b = 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将 b 的值设置为“testing”，会得到：</p>
+<p>12 07 <span style="color:red">74 65 73 74 69 6e 67<span></span></span></p>
+<p>红色的字节部分是 UTF8 编码的“testing”。这里的 key 是 0x12，可以得到字段编号为2，wire 类型为2。07 表示 value 的长度为7，随后的7个字节就是我们的字符串。</p>
+<h4 id="嵌套的-Message（Embedded-Messages）"><a href="#嵌套的-Message（Embedded-Messages）" class="headerlink" title="嵌套的 Message（Embedded Messages）"></a>嵌套的 Message（Embedded Messages）</h4><p>下面是一个带有我们示例类型 Test1 的嵌入式 message 的定义：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">message Test3 &#123;</span><br><span class="line">  optional Test1 c = 3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是编码后的结果，Test1 的字段 <code>a</code> 设置为150：</p>
+<p>1a 03 <span style="color:red">08 96 01<span></span></span></p>
+<p>可以看到，最后三个字节与我们前面的第一个例子（<code>08 96 01</code>）完全相同，在它们前面是数字3。嵌入式 message 的处理方式与字符串完全相同（wire type = 2）。</p>
+<h4 id="可选和重复的元素（Optional-And-Repeated-Elements）"><a href="#可选和重复的元素（Optional-And-Repeated-Elements）" class="headerlink" title="可选和重复的元素（Optional And Repeated Elements）"></a>可选和重复的元素（Optional And Repeated Elements）</h4><p>如果在 proto2 的 message 定义中有 <code>repeated</code> 的元素（没有<code>[packed = true]</code>选项），编码后的 message 会有零个或多个具有相同字段编号的 key-value 对。这些 repeated 的值不需要连续的出现，它们可能与其他的字段交错出现。解析时，这些元素相互之间的顺序会保存下来，但是相对于其他字段的顺序将会丢失。而 proto3 会利用打包编码（packed encoding）的方式对 repeated 字段进行编码，之后会介绍。</p>
+<p>对于 proto3 中的任何非 <code>repeated</code> 字段或 proto2 中的 <code>optional</code> 字段，编码后的 message 可能有也可能没有该字段编号的 key-value 对。</p>
+<p>通常，编码后的 message 永远不会有非 <code>repeated</code> 字段的多个实例。但是，解析器被设计为可以处理这种情况。对于数字类型和字符串，如果同一个字段出现多次，解析器将接受它看到的最后一个值。对于嵌套的 message 字段，解析器合并相同字段的多个实例，就像使用 <code>Message::MergeFrom</code> 方法一样 - 那就是，后面的实例的单个字段会替换掉前面出现的，单个嵌套 message 被合并，重复字段被连接起来。这些规则的效果是，解析串联出现的两个编码的 message 产生的结果和单独解析两个 message 然后合并它们的结果是相同的。示例如下：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">MyMessage message;</span><br><span class="line">message.ParseFromString(str1 + str2);</span><br></pre></td></tr></table></figure>
+<p>等同于：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">MyMessage message, message2;</span><br><span class="line">message.ParseFromString(str1);</span><br><span class="line">message2.ParseFromString(str2);</span><br><span class="line">message.MergeFrom(message2);</span><br></pre></td></tr></table></figure>
+<p>这个特性有的时候挺有用的，我们可以在不知道两个 message 的具体类型的情况下合并它们。</p>
+<h4 id="打包重复字段（Packed-Repeated-Fields）"><a href="#打包重复字段（Packed-Repeated-Fields）" class="headerlink" title="打包重复字段（Packed Repeated Fields）"></a>打包重复字段（Packed Repeated Fields）</h4><p>protocol buffer 在 2.1.0 版本引入了 packed repeated 字段，这个字段在 proto2 中的声明需要在 repeated 字段后面添加 <code>[packed=true]</code>。在 proto3 中，repeated 字段默认为 packed repeated 字段。这个字段和普通的 repeated 字段的区别在于编码方式不同。一个包含0个元素的 packed repeated 字段不会出现在编码后的 message 中。否则，该字段的所有元素都将打包到一个 wire 类型为2（length-delimited）的 key-value 对中。除了前面没有 key 以外，每个元素的编码方式与通常情况下相同。</p>
+<p>假设你有如下的 message 类型：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">message Test4 &#123;</span><br><span class="line">  repeated int32 d = 4 [packed=<span class="literal">true</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在构造一个 <code>Test4</code>，repeated 字段 <code>d</code> 的值有3、270和86942。编码后的结果如下：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">22        // key (field number 4, wire <span class="built_in">type</span> 2)</span><br><span class="line">06        // payload size (6 bytes)</span><br><span class="line">03        // first element (varint 3)</span><br><span class="line">8E 02     // second element (varint 270)</span><br><span class="line">9E A7 05  // third element (varint 86942)</span><br></pre></td></tr></table></figure>
+<p>只有原始数字类型（varint，32-bit 或 64-bit）的 repeated 字段才可以声明为“packed”。</p>
+<p>请注意，虽然通常没有理由为 packed repeated 字段对多个 key-value 对进行编码，但编码器必须准备好接受多个 key-value 对。在这种情况下，payloads 应该被连接在一起。每一对都必须包含所有元素。</p>
+<p>protocol buffer 解析器必须能够解析被编译为 packed 的 repeated 字段，就像它们未被打包一样，反之亦然。这就保证了 <code>[packed=true]</code> 选项的前后向兼容性。</p>
+<h4 id="字段顺序（Field-Order）"><a href="#字段顺序（Field-Order）" class="headerlink" title="字段顺序（Field Order）"></a>字段顺序（Field Order）</h4><p>你可以在一个 .proto 文件中以任意顺序使用字段编号，当 message 被序列化时，已知的字段会按照字段编号顺序写入，可以参考提供的 C++，Java 和 Python 的序列化代码。这允许解析代码依赖于字段编号进行优化。但是，protocol buffer 解析器必须能够以任意顺序解析字段，因为并非所有 message 都是通过简单地序列化对象来创建的。例如，有时我们会通过一个简单的连接来合并两个 message。</p>
+<p>如果 message 具有未知字段，则当前的 Java 和 C++ 实现在按顺序排序的已知字段之后以任意顺序写入它们，当前的 Python 实现则不会跟踪未知字段。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Royeo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Royeo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Protocol-Buffer/" rel="tag"># Protocol Buffer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/02/protocol-buffer-introduction/" rel="next" title="Protocol Buffer 介绍">
+                <i class="fa fa-chevron-left"></i> Protocol Buffer 介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/15/docker-data-management/" rel="prev" title="Docker 数据管理">
+                Docker 数据管理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Royeo">
+            
+              <p class="site-author-name" itemprop="name">Royeo</p>
+              <p class="site-description motion-element" itemprop="description">人生没有白走的路，每一步都算数</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/royeo" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一个简单的-Message"><span class="nav-number">1.</span> <span class="nav-text">一个简单的 Message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Base-128-Varints"><span class="nav-number">2.</span> <span class="nav-text">Base 128 Varints</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Message-结构"><span class="nav-number">3.</span> <span class="nav-text">Message 结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多的-value-类型"><span class="nav-number">4.</span> <span class="nav-text">更多的 value 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有符号整型（Signed-Integers）"><span class="nav-number">4.0.1.</span> <span class="nav-text">有符号整型（Signed Integers）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非-varint-数字（Non-varint-Numbers）"><span class="nav-number">4.0.2.</span> <span class="nav-text">非 varint 数字（Non-varint Numbers）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串（Strings）"><span class="nav-number">4.0.3.</span> <span class="nav-text">字符串（Strings）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套的-Message（Embedded-Messages）"><span class="nav-number">4.0.4.</span> <span class="nav-text">嵌套的 Message（Embedded Messages）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可选和重复的元素（Optional-And-Repeated-Elements）"><span class="nav-number">4.0.5.</span> <span class="nav-text">可选和重复的元素（Optional And Repeated Elements）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打包重复字段（Packed-Repeated-Fields）"><span class="nav-number">4.0.6.</span> <span class="nav-text">打包重复字段（Packed Repeated Fields）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字段顺序（Field-Order）"><span class="nav-number">4.0.7.</span> <span class="nav-text">字段顺序（Field Order）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Royeo</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://coding.net/pages/">Coding Pages</a> & <a target="_blank" href="https://pages.github.com">GitHub Pages</a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://lujianan-com.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://lujianan.com/2018/06/03/protocol-buffer-encoding/';
+          this.page.identifier = '2018/06/03/protocol-buffer-encoding/';
+          this.page.title = 'Protocol Buffer Encoding';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://lujianan-com.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz", "URgXzK71nIE0rxDlFR7aLzSR");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

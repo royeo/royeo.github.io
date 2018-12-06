@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="6BMKhk9bFLmGySSTiQZaXemUgc_7_j0SfMhXIlepphc">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Markdown,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Royeo's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="本文转载自: https://github.com/ruanyf/document-style-guide  中文技术文档的写作规范。">
+<meta name="keywords" content="Markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown 中文技术文档的写作规范">
+<meta property="og:url" content="http://lujianan.com/2017/01/20/markdown-standard/index.html">
+<meta property="og:site_name" content="Royeo&#39;s Blog">
+<meta property="og:description" content="本文转载自: https://github.com/ruanyf/document-style-guide  中文技术文档的写作规范。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-02T05:26:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown 中文技术文档的写作规范">
+<meta name="twitter:description" content="本文转载自: https://github.com/ruanyf/document-style-guide  中文技术文档的写作规范。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lujianan.com/2017/01/20/markdown-standard/">
+
+
+
+
+
+  <title>Markdown 中文技术文档的写作规范 | Royeo's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103082838-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e480994ffa59417120dea5442b93d26e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Royeo's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lujianan.com/2017/01/20/markdown-standard/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Royeo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Royeo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Markdown 中文技术文档的写作规范</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-20T19:33:25+08:00">
+                2017-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/码梦为生/" itemprop="url" rel="index">
+                    <span itemprop="name">码梦为生</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/20/markdown-standard/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/20/markdown-standard/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/01/20/markdown-standard/" class="leancloud_visitors" data-flag-title="Markdown 中文技术文档的写作规范">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div class="note class_name"><p>本文转载自: <a href="https://github.com/ruanyf/document-style-guide" target="_blank" rel="noopener">https://github.com/ruanyf/document-style-guide</a> </p></div>
+<p>中文技术文档的写作规范。</p>
+<a id="more"></a>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><h3 id="层级"><a href="#层级" class="headerlink" title="层级"></a>层级</h3><p>标题分为四级。</p>
+<ul>
+<li>一级标题：文章的标题</li>
+<li>二级标题：文章主要部分的大标题</li>
+<li>三级标题：二级标题下面一级的小标题</li>
+<li>四级标题：三级标题下面某一方面的小标题</li>
+</ul>
+<h3 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h3><ul>
+<li>一级标题下，不能直接出现三级标题。</li>
+<li>标题要避免孤立编号（即同级标题只有一个）。</li>
+<li>下级标题不重复上一级标题的内容。</li>
+<li>谨慎使用四级标题，尽量避免出现，保持层级的简单和防止出现过于复杂的章节。如果三级标题下有并列性的内容，建议只使用项目列表（Item list）。</li>
+</ul>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="字间距"><a href="#字间距" class="headerlink" title="字间距"></a>字间距</h3><p>全角中文字符与半角英文字符之间，应有一个半角空格。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：本文介绍如何快速启动Windows系统。</span><br><span class="line"></span><br><span class="line">正确：本文介绍如何快速启动 Windows 系统。</span><br></pre></td></tr></table></figure>
+<p>全角中文字符与半角阿拉伯数字之间，有没有半角空格都可，但必须保证风格统一，不能两种风格混杂。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">正确：2011年5月15日，我订购了5台笔记本电脑与10台平板电脑。</span><br><span class="line"></span><br><span class="line">正确：2011 年 5 月 15 日，我订购了 5 台笔记本电脑与 10 台平板电脑。</span><br></pre></td></tr></table></figure>
+<p>半角的百分号，视同阿拉伯数字。</p>
+<p>英文单位若不翻译，单位前的阿拉伯数字与单位间不留空格。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：一部容量为 16 GB 的智能手机</span><br><span class="line"></span><br><span class="line">正确：一部容量为 16GB 的智能手机</span><br></pre></td></tr></table></figure>
+<p>半角英文字符和半角阿拉伯数字，与全角标点符号之间不留空格。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：他的电脑是 MacBook Air 。</span><br><span class="line"></span><br><span class="line">正确：他的电脑是 MacBook Air。</span><br></pre></td></tr></table></figure>
+<h3 id="句子"><a href="#句子" class="headerlink" title="句子"></a>句子</h3><ul>
+<li>避免使用长句。一个句子建议不超过 100 字或者正文的 3 行。</li>
+<li>尽量使用简单句和并列句，避免使用复合句。</li>
+</ul>
+<h3 id="写作风格"><a href="#写作风格" class="headerlink" title="写作风格"></a>写作风格</h3><p>尽量不使用被动语态，改为使用主动语态。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：假如此软件尚未被安装，</span><br><span class="line"></span><br><span class="line">正确：假如尚未安装这个软件，</span><br></pre></td></tr></table></figure>
+<p>不使用非正式的语言风格。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：Lady Gaga 的演唱会真是酷毙了，从没看过这么给力的表演！！！</span><br><span class="line"></span><br><span class="line">正确：无法参加本次活动，我深感遗憾。</span><br></pre></td></tr></table></figure>
+<p>用对“的”、“地”、“得”。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">她露出了开心的笑容。</span><br><span class="line">（形容词＋的＋名词）</span><br><span class="line"></span><br><span class="line">她开心地笑了。</span><br><span class="line">（副词＋地＋动词）</span><br><span class="line"></span><br><span class="line">她笑得很开心。</span><br><span class="line">（动词＋得＋副词）</span><br></pre></td></tr></table></figure>
+<p>使用代词时（比如“其”、“该”、“此”、“这”等词），必须明确指代的内容，保证只有一个含义。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：从管理系统可以监视中继系统和受其直接控制的分配系统。</span><br><span class="line"></span><br><span class="line">正确：从管理系统可以监视两个系统：中继系统和受中继系统直接控制的分配系统。</span><br></pre></td></tr></table></figure>
+<p>名词前不要使用过多的形容词。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：此设备的使用必须在接受过本公司举办的正式的设备培训的技师的指导下进行。</span><br><span class="line"></span><br><span class="line">正确：此设备必须在技师的指导下使用，且指导技师必须接受过由本公司举办的正式设备培训。</span><br></pre></td></tr></table></figure>
+<p>单个句子的长度尽量保持在 20 个字以内；20～29 个字的句子，可以接受；30～39 个字的句子，语义必须明确，才能接受；多于 40 个字的句子，在任何情况下都不能接受。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：本产品适用于从由一台服务器进行动作控制的单一节点结构到由多台服务器进行动作控制的并行处理程序结构等多种体系结构。</span><br><span class="line"></span><br><span class="line">正确：本产品适用于多种体系结构。无论是由一台服务器（单一节点结构），还是由多台服务器（并行处理结构）进行动作控制，均可以使用本产品。</span><br></pre></td></tr></table></figure>
+<p>同样一个意思，尽量使用肯定句表达，不使用否定句表达。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：请确认没有接通装置的电源。</span><br><span class="line"></span><br><span class="line">正确：请确认装置的电源已关闭。</span><br></pre></td></tr></table></figure>
+<p>避免使用双重否定句。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：没有删除权限的用户，不能删除此文件。</span><br><span class="line"></span><br><span class="line">正确：用户必须拥有删除权限，才能删除此文件。</span><br></pre></td></tr></table></figure>
+<h3 id="英文处理"><a href="#英文处理" class="headerlink" title="英文处理"></a>英文处理</h3><p>英文原文如果使用了复数形式，翻译成中文时，应该将其还原为单数形式。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">英文：...information stored in random access memory (RAMs)...</span><br><span class="line"></span><br><span class="line">中文：……存储在随机存取存储器（RAM）里的信息……</span><br></pre></td></tr></table></figure>
+<p>外文缩写可以使用半角圆点(<code>.</code>)表示缩写。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">U.S.A.</span><br><span class="line">Apple, Inc.</span><br></pre></td></tr></table></figure>
+<p>表示中文时，英文省略号（<code>...</code>）应改为中文省略号（<code>……</code>）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">英文：5 minutes later...</span><br><span class="line"></span><br><span class="line">中文：5 分钟过去了……</span><br></pre></td></tr></table></figure>
+<p>英文书名或电影名改用中文表达时，双引号应改为书名号。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">英文：He published an article entitled &quot;The Future of the Aviation&quot;.</span><br><span class="line"></span><br><span class="line">中文：他发表了一篇名为《航空业的未来》的文章。</span><br></pre></td></tr></table></figure>
+<p>第一次出现英文词汇时，在括号中给出中文标注。此后再次出现时，直接使用英文缩写即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IOC（International Olympic Committee，国际奥林匹克委员会）。这样定义后，便可以直接使用“IOC”了。</span><br></pre></td></tr></table></figure>
+<p>专有名词中每个词第一个字母均应大写，非专有名词则不需要大写。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">“American Association of Physicists in Medicine”（美国医学物理学家协会）是专有名词，需要大写。</span><br><span class="line"></span><br><span class="line">“online transaction processing”（在线事务处理）不是专有名词，不应大写。</span><br></pre></td></tr></table></figure>
+<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><h3 id="原则-1"><a href="#原则-1" class="headerlink" title="原则"></a>原则</h3><ul>
+<li>一个段落只能有一个主题，或一个中心句子。</li>
+<li>段落的中心句子放在段首，对全段内容进行概述。后面陈述的句子为核心句服务。</li>
+<li>一个段落的长度不能超过七行，最佳段落长度小于等于四行。</li>
+<li>段落的句子语气要使用陈述和肯定语气，避免使用感叹语气。</li>
+<li>段落之间使用一个空行隔开。</li>
+<li>段落开头不要留出空白字符。</li>
+</ul>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>引用第三方内容时，应注明出处。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">One man’s constant is another man’s variable. — Alan Perlis</span><br></pre></td></tr></table></figure>
+<p>如果是全篇转载，请在全文开头显著位置注明作者和出处，并链接至原文。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本文转载自 WikiQuote</span><br></pre></td></tr></table></figure>
+<p>使用外部图片时，必须在图片下方或文末标明来源。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本文部分图片来自 Wikipedia</span><br></pre></td></tr></table></figure>
+<h2 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h2><h3 id="半角数字"><a href="#半角数字" class="headerlink" title="半角数字"></a>半角数字</h3><p>数字一律使用半角形式，不得使用全角形式。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误： 这件商品的价格是１０００元。</span><br><span class="line"></span><br><span class="line">正确： 这件商品的价格是 1000 元。</span><br></pre></td></tr></table></figure>
+<h3 id="千分号"><a href="#千分号" class="headerlink" title="千分号"></a>千分号</h3><p>数值为千位以上，应添加千分号（半角逗号）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">XXX 公司的实收资本为 RMB1,258,000。</span><br></pre></td></tr></table></figure>
+<p>对于 4 ～ 6 位的数值，千分号是选用的，比如1000和1,000都可以接受。对于7位及以上的数值，千分号是必须的。</p>
+<p>多位小数要从小数点后从左向右添加千分号，比如4.234,345。</p>
+<h3 id="货币"><a href="#货币" class="headerlink" title="货币"></a>货币</h3><p>货币应为阿拉伯数字，并在数字前写出货币符号，或在数字后写出货币中文名称。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$1,000</span><br><span class="line">1,000 美元</span><br></pre></td></tr></table></figure>
+<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p>表示数值范围时，用<code>～</code>连接。参见《标点符号》一节的“连接号”部分。</p>
+<p>带有单位或百分号时，两个数字都要加上单位或百分号，不能只加后面一个。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：132～234kg</span><br><span class="line">正确：132kg～234kg</span><br><span class="line"></span><br><span class="line">错误：67～89%</span><br><span class="line">正确：67%～89%</span><br></pre></td></tr></table></figure>
+<h3 id="变化程度的表示法"><a href="#变化程度的表示法" class="headerlink" title="变化程度的表示法"></a>变化程度的表示法</h3><p>数字的增加要使用“增加了”、“增加到”。“了”表示增量，“到”表示定量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">增加到过去的两倍</span><br><span class="line">（过去为一，现在为二）</span><br><span class="line"></span><br><span class="line">增加了两倍</span><br><span class="line">（过去为一，现在为三）</span><br></pre></td></tr></table></figure>
+<p>数字的减少要使用“降低了”、“降低到”。“了”表示增量，“到”表示定量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">降低到百分之八十</span><br><span class="line">（定额是一百，现在是八十）</span><br><span class="line"></span><br><span class="line">降低了百分之八十</span><br><span class="line">（原来是一百，现在是二十）</span><br></pre></td></tr></table></figure>
+<p>不能用“降低N倍”或“减少N倍”的表示法，要用“降低百分之几”或“减少百分之几”。因为减少（或降低）一倍表示数值原来为一百，现在等于零。</p>
+<h2 id="标点符号"><a href="#标点符号" class="headerlink" title="标点符号"></a>标点符号</h2><h3 id="原则-2"><a href="#原则-2" class="headerlink" title="原则"></a>原则</h3><ul>
+<li>中文语句的标点符号，均应该采取全角符号，这样可以保证视觉的一致。</li>
+<li>如果整句为英文，则该句使用英文/半角标点。</li>
+<li>句号、问号、叹号、逗号、顿号、分号和冒号不得出现在一行之首。</li>
+</ul>
+<h3 id="句号"><a href="#句号" class="headerlink" title="句号"></a>句号</h3><p>中文语句中的结尾处应该用全角句号（<code>。</code>）。</p>
+<p>句子末尾用括号加注时，句号应在括号之外。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：关于文件的输出，请参照第 1.3 节（见第 26 页。）</span><br><span class="line"></span><br><span class="line">正确：关于文件的输出，请参照第 1.3 节（见第 26 页）。</span><br></pre></td></tr></table></figure>
+<h3 id="逗号"><a href="#逗号" class="headerlink" title="逗号"></a>逗号</h3><p>逗号<code>，</code>表示句子内部的一般性停顿。</p>
+<p>注意避免“一逗到底”，即整个段落除了结尾，全部停顿都使用逗号。</p>
+<h3 id="顿号"><a href="#顿号" class="headerlink" title="顿号"></a>顿号</h3><p>句子内部的并列词，应该用全角顿号(<code>、</code>) 分隔，而不用逗号，即使并列词是英语也是如此。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：我最欣赏的科技公司有 Google, Facebook, 腾讯, 阿里和百度等。</span><br><span class="line"></span><br><span class="line">正确：我最欣赏的科技公司有 Google、Facebook、腾讯、阿里和百度等。</span><br></pre></td></tr></table></figure>
+<p>英文句子中，并列词语之间使用半角逗号（<code>,</code>）分隔。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：Microsoft Office includes Word, Excel, PowerPoint, Outlook and other components.</span><br></pre></td></tr></table></figure>
+<h3 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h3><p>分号<code>；</code>表示复句内部并列分句之间的停顿。</p>
+<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>引用时，应该使用全角双引号（<code>“ ”</code>），注意前后双引号不同。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：许多人都认为客户服务的核心是“友好”和“专业”。</span><br></pre></td></tr></table></figure>
+<p>引号里面还要用引号时，外面一层用双引号，里面一层用单引号（<code>‘ ’</code>），注意前后单引号不同。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：鲍勃解释道：“我要放音乐，可萨利说，‘不行！’。”</span><br></pre></td></tr></table></figure>
+<h3 id="圆括号"><a href="#圆括号" class="headerlink" title="圆括号"></a>圆括号</h3><p>补充说明时，使用全角圆括号<code>（）</code>，括号前后不加空格。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：请确认所有的连接（电缆和接插件）均安装牢固。</span><br></pre></td></tr></table></figure>
+<h3 id="冒号"><a href="#冒号" class="headerlink" title="冒号"></a>冒号</h3><p>全角冒号（<code>：</code>）常用在需要解释的词语后边，引出解释和说明。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：请确认以下几项内容：时间、地点、活动名称，以及来宾数量。</span><br></pre></td></tr></table></figure>
+<p>表示时间时，应使用半角冒号（<code>:</code>）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：早上 8:00</span><br></pre></td></tr></table></figure>
+<h3 id="省略号"><a href="#省略号" class="headerlink" title="省略号"></a>省略号</h3><p>省略号<code>……</code>表示语句未完、或者语气的不连续。它占两个汉字空间、包含六个省略点，不要使用<code>。。。</code>或<code>...</code>等非标准形式。</p>
+<p>省略号不应与“等”这个词一起使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：我们为会餐准备了香蕉、苹果、梨…等各色水果。</span><br><span class="line"></span><br><span class="line">正确：我们为会餐准备了各色水果，有香蕉、苹果、梨……</span><br><span class="line"></span><br><span class="line">正确：我们为会餐准备了香蕉、苹果、梨等各色水果。</span><br></pre></td></tr></table></figure>
+<h3 id="感叹号"><a href="#感叹号" class="headerlink" title="感叹号"></a>感叹号</h3><p>应该使用平静的语气叙述，尽量避免使用感叹号<code>！</code>。</p>
+<p>不得多个感叹号连用，比如<code>！！</code>和<code>!!!</code>。</p>
+<h3 id="破折号"><a href="#破折号" class="headerlink" title="破折号"></a>破折号</h3><p>破折号<code>————</code>一般用于做进一步解释。破折号应占两个汉字的位置。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：直觉————尽管它并不总是可靠的————告诉我，这事可能出了些问题。</span><br></pre></td></tr></table></figure>
+<h3 id="连接号"><a href="#连接号" class="headerlink" title="连接号"></a>连接号</h3><p>连接号用于连接两个类似的词。</p>
+<p>以下场合应该使用直线连接号（<code>-</code>），占一个半角字符的位置。</p>
+<ul>
+<li>两个名词的复合</li>
+<li><p>图表编号</p>
+<p>  例句：氧化-还原反应</p>
+<p>  例句：图 1-1</p>
+</li>
+</ul>
+<p>以下场合应该使用波浪连接号（<code>～</code>），占一个全角字符的位置。</p>
+<ul>
+<li><p>数值范围（例如日期、时间或数字）</p>
+<p>  例句：2009 年～2011 年</p>
+</li>
+</ul>
+<p>注意，波浪连接号前后两个值都应该加上单位。</p>
+<p>波浪连接号也可以用汉字“至”代替。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：周围温度：-20°C 至 -10°C</span><br></pre></td></tr></table></figure>
+<h2 id="文档体系"><a href="#文档体系" class="headerlink" title="文档体系"></a>文档体系</h2><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>软件手册是一部完整的书，建议采用下面的结构。</p>
+<ul>
+<li>简介（Introduction）： [必备] [文件] 提供对产品和文档本身的总体的、扼要的说明</li>
+<li>快速上手（Getting Started）：[可选] [文件] 如何最快速地使用产品</li>
+<li>入门篇（Basics）： [必备] [目录] 又称”使用篇“，提供初级的使用教程<ul>
+<li>环境准备（Prerequisite）：[必备] [文件] 软件使用需要满足的前置条件</li>
+<li>安装（Installation）：[可选] [文件] 软件的安装方法</li>
+<li>设置（Configuration）：[必备] [文件] 软件的设置</li>
+</ul>
+</li>
+<li>进阶篇（Advanced)：[可选] [目录] 又称”开发篇“，提供中高级的开发教程</li>
+<li>API（Reference）：[可选] [目录|文件] 软件 API 的逐一介绍</li>
+<li>FAQ：[可选] [文件] 常见问题解答</li>
+<li>附录（Appendix）：[可选] [目录] 不属于教程本身、但对阅读教程有帮助的内容<ul>
+<li>Glossary：[可选] [文件] 名词解释</li>
+<li>Recipes：[可选] [文件] 最佳实践</li>
+<li>Troubleshooting：[可选] [文件] 故障处理</li>
+<li>ChangeLog：[可选] [文件] 版本说明</li>
+<li>Feedback：[可选] [文件] 反馈方式</li>
+</ul>
+</li>
+</ul>
+<p>下面是两个真实范例，可参考。</p>
+<ul>
+<li><a href="http://redux.js.org/index.html" target="_blank" rel="noopener">Redux 手册</a></li>
+<li><a href="http://flight-manual.atom.io/" target="_blank" rel="noopener">Atom 手册</a></li>
+</ul>
+<h3 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h3><p>文档的文件名不得含有空格。</p>
+<p>文件名必须使用半角字符，不得使用全角字符。这也意味着，中文不能用于文件名。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误： 名词解释.md</span><br><span class="line"></span><br><span class="line">正确： glossary.md</span><br></pre></td></tr></table></figure>
+<p>文件名建议只使用小写字母，不使用大写字母。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：TroubleShooting.md</span><br><span class="line"></span><br><span class="line">正确：troubleshooting.md</span><br></pre></td></tr></table></figure>
+<p>为了醒目，某些说明文件的文件名，可以使用大写字母，比如<code>README</code>、<code>LICENSE</code>。</p>
+<p>文件名包含多个单词时，单词之间建议使用半角的连词线（<code>-</code>）分隔。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">不佳：advanced_usage.md</span><br><span class="line"></span><br><span class="line">正确：advanced-usage.md</span><br></pre></td></tr></table></figure>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://wenku.baidu.com/view/23cc1a6527d3240c8447efbf.html" target="_blank" rel="noopener">产品手册中文写作规范</a>, by 华为</li>
+<li><a href="http://docs.daocloud.io/write-docs/format" target="_blank" rel="noopener">写作规范和格式规范</a>, by DaoCloud</li>
+<li><a href="http://www.hitachi-tc.co.jp/company/thesis/thesis.pdf" target="_blank" rel="noopener">技术写作技巧在日汉翻译中的应用</a>, by 刘方</li>
+<li><a href="https://www.lengoo.de/documents/styleguides/lengoo_styleguide_ZH.pdf" target="_blank" rel="noopener">简体中文规范指南</a>, by lengoo</li>
+<li><a href="https://open.leancloud.cn/copywriting-style-guide.html" target="_blank" rel="noopener">文档风格指南</a>, by LeanCloud</li>
+<li><a href="https://docs.google.com/document/d/1R8lMCPf6zCD5KEA8ekZ5knK77iw9J-vJ6vEopPemqZM/edit" target="_blank" rel="noopener">豌豆荚文案风格指南</a>, by 豌豆荚</li>
+<li><a href="https://github.com/sparanoid/chinese-copywriting-guidelines" target="_blank" rel="noopener">中文文案排版指北</a>, by sparanoid</li>
+<li><a href="http://w3c.github.io/clreq/" target="_blank" rel="noopener">中文排版需求</a>, by W3C</li>
+<li><a href="http://www.ruanyifeng.com/blog/2017/02/filename-should-be-lowercase.html" target="_blank" rel="noopener">为什么文件名要小写？</a>, by 阮一峰</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Royeo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Royeo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/15/mysql-index/" rel="next" title="MySQL 索引的创建、删除和查看">
+                <i class="fa fa-chevron-left"></i> MySQL 索引的创建、删除和查看
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/05/most-of-silence/" rel="prev" title="读后感：《 沉默的大多数 》 — 王小波">
+                读后感：《 沉默的大多数 》 — 王小波 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Royeo">
+            
+              <p class="site-author-name" itemprop="name">Royeo</p>
+              <p class="site-description motion-element" itemprop="description">人生没有白走的路，每一步都算数</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/royeo" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">1.</span> <span class="nav-text">标题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#层级"><span class="nav-number">1.1.</span> <span class="nav-text">层级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原则"><span class="nav-number">1.2.</span> <span class="nav-text">原则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本"><span class="nav-number">2.</span> <span class="nav-text">文本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字间距"><span class="nav-number">2.1.</span> <span class="nav-text">字间距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#句子"><span class="nav-number">2.2.</span> <span class="nav-text">句子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写作风格"><span class="nav-number">2.3.</span> <span class="nav-text">写作风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#英文处理"><span class="nav-number">2.4.</span> <span class="nav-text">英文处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#段落"><span class="nav-number">3.</span> <span class="nav-text">段落</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原则-1"><span class="nav-number">3.1.</span> <span class="nav-text">原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">3.2.</span> <span class="nav-text">引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值"><span class="nav-number">4.</span> <span class="nav-text">数值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#半角数字"><span class="nav-number">4.1.</span> <span class="nav-text">半角数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#千分号"><span class="nav-number">4.2.</span> <span class="nav-text">千分号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#货币"><span class="nav-number">4.3.</span> <span class="nav-text">货币</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数值范围"><span class="nav-number">4.4.</span> <span class="nav-text">数值范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变化程度的表示法"><span class="nav-number">4.5.</span> <span class="nav-text">变化程度的表示法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标点符号"><span class="nav-number">5.</span> <span class="nav-text">标点符号</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原则-2"><span class="nav-number">5.1.</span> <span class="nav-text">原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#句号"><span class="nav-number">5.2.</span> <span class="nav-text">句号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逗号"><span class="nav-number">5.3.</span> <span class="nav-text">逗号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顿号"><span class="nav-number">5.4.</span> <span class="nav-text">顿号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分号"><span class="nav-number">5.5.</span> <span class="nav-text">分号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引号"><span class="nav-number">5.6.</span> <span class="nav-text">引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆括号"><span class="nav-number">5.7.</span> <span class="nav-text">圆括号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒号"><span class="nav-number">5.8.</span> <span class="nav-text">冒号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#省略号"><span class="nav-number">5.9.</span> <span class="nav-text">省略号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感叹号"><span class="nav-number">5.10.</span> <span class="nav-text">感叹号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#破折号"><span class="nav-number">5.11.</span> <span class="nav-text">破折号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接号"><span class="nav-number">5.12.</span> <span class="nav-text">连接号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档体系"><span class="nav-number">6.</span> <span class="nav-text">文档体系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构"><span class="nav-number">6.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件名"><span class="nav-number">6.2.</span> <span class="nav-text">文件名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">7.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Royeo</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://coding.net/pages/">Coding Pages</a> & <a target="_blank" href="https://pages.github.com">GitHub Pages</a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://lujianan-com.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://lujianan.com/2017/01/20/markdown-standard/';
+          this.page.identifier = '2017/01/20/markdown-standard/';
+          this.page.title = 'Markdown 中文技术文档的写作规范';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://lujianan-com.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz", "URgXzK71nIE0rxDlFR7aLzSR");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
