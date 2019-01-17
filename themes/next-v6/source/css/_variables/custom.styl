@@ -2,9 +2,30 @@ $content-desktop         = 65%
 $content-desktop-large   = 65%
 $content-desktop-largest = 65%
 
+// Font size
 $font-size-base           = 12px
 $font-size-base           = unit(hexo-config('font.global.size'), px) if hexo-config('font.global.size') is a 'unit'
 $font-size-small          = $font-size-base - 2px
 $font-size-smaller        = $font-size-base - 4px
 $font-size-large          = $font-size-base + 2px
 $font-size-larger         = $font-size-base + 4px
+
+// Font families.
+$font-family-chinese      = "Microsoft YaHei", Verdana, sans-serif // 修改成你期望的字体族
+
+$font-family-base         = $font-family-chinese, sans-serif
+$font-family-base         = get_font_family('global'), $font-family-chinese, sans-serif if get_font_family('global')
+
+$font-family-logo         = $font-family-base
+$font-family-logo         = get_font_family('logo'), $font-family-base if get_font_family('logo')
+
+$font-family-headings     = $font-family-base
+$font-family-headings     = get_font_family('headings'), $font-family-base if get_font_family('headings')
+
+$font-family-posts        = $font-family-base
+$font-family-posts        = get_font_family('posts'), $font-family-base if get_font_family('posts')
+
+$font-family-monospace    = consolas, Menlo, $font-family-chinese, monospace
+$font-family-monospace    = get_font_family('codes'), consolas, Menlo, $font-family-chinese, monospace if get_font_family('codes')
+
+$font-family-icons        = 'FontAwesome'
