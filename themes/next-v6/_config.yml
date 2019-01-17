@@ -231,7 +231,7 @@ toc:
 
 sidebar:
   # Sidebar Position, available values: left | right (only for Pisces | Gemini).
-  position: left
+  position: right
   #position: right
 
   # Manual define the sidebar width.
