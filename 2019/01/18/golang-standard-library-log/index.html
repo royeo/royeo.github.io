@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="6BMKhk9bFLmGySSTiQZaXemUgc_7_j0SfMhXIlepphc">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，想造轮子的同学可以参考下。">
+<meta name="keywords" content="Golang,Log">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang 标准库 log 包">
+<meta property="og:url" content="http://lujianan.com/2019/01/18/golang-standard-library-log/index.html">
+<meta property="og:site_name" content="With An Orchid">
+<meta property="og:description" content="Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，想造轮子的同学可以参考下。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-19T05:29:52.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Golang 标准库 log 包">
+<meta name="twitter:description" content="Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，想造轮子的同学可以参考下。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://lujianan.com/2019/01/18/golang-standard-library-log/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Golang 标准库 log 包 | With An Orchid</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-103082838-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-103082838-1');
+  </script>
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e480994ffa59417120dea5442b93d26e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">With An Orchid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lujianan.com/2019/01/18/golang-standard-library-log/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Royeo">
+      <meta itemprop="description" content="人生没有白走的路，每一步都算数">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="With An Orchid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Golang 标准库 log 包
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-18 10:06:54" itemprop="dateCreated datePublished" datetime="2019-01-18T10:06:54+08:00">2019-01-18</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/01/18/golang-standard-library-log/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/18/golang-standard-library-log/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/01/18/golang-standard-library-log/" class="leancloud_visitors" data-flag-title="Golang 标准库 log 包">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，想造轮子的同学可以参考下。</p>
+<a id="more"></a>
+<h2 id="Log-design"><a href="#Log-design" class="headerlink" title="Log design"></a>Log design</h2><p>一个简单的日志包应该有哪些功能呢？很容易想到以下几个：</p>
+<ul>
+<li>可设置日志的输出目标</li>
+<li>可设置日志的固定输出项</li>
+<li>日志输出接收可变参数</li>
+<li>输出日志时并发安全</li>
+</ul>
+<p>所以标准库的 log 里设计了下面这样一个 <code>Logger</code> 结构体：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// log.go</span></span><br><span class="line"><span class="keyword">type</span> Logger <span class="keyword">struct</span> &#123;</span><br><span class="line">	mu     sync.Mutex <span class="comment">// ensures atomic writes; protects the following fields</span></span><br><span class="line">	prefix <span class="keyword">string</span>     <span class="comment">// prefix to write at beginning of each line</span></span><br><span class="line">	flag   <span class="keyword">int</span>        <span class="comment">// properties</span></span><br><span class="line">	out    io.Writer  <span class="comment">// destination for output</span></span><br><span class="line">	buf    []<span class="keyword">byte</span>     <span class="comment">// for accumulating text to write</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>out</code> 属性是日志的输出目标，在 golang 中，很自然的可以想到使用 <code>io.Writer</code> 接口类型，与具体实现分离开。之所以不把 <code>out</code> 属性暴露出来，是因为需要保证 <code>out</code> 的写入和修改都是原子操作，其他属性同理。这里使用 <code>sync.Mutex</code> 互斥锁来保证原子操作：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// log.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l *Logger)</span> <span class="title">SetOutput</span><span class="params">(w io.Writer)</span></span> &#123;</span><br><span class="line">	l.mu.Lock()</span><br><span class="line">	<span class="keyword">defer</span> l.mu.Unlock()</span><br><span class="line">	l.out = w</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>prefix</code> 会出现在每行日志的最开头，<code>flag</code> 则是紧随其后的一些日志记录属性，如日期、时间、文件名和行号等。当设置了 <code>prefix</code> 和 <code>flag</code> 之后，每一行输出的日志都会带上这些前缀。<code>flag</code> 通过按位或（<code>|</code>）的方式来设置多个属性，可设置的属性如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// log.go</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	Ldate         = <span class="number">1</span> &lt;&lt; <span class="literal">iota</span>     <span class="comment">// the date in the local time zone: 2009/01/23</span></span><br><span class="line">	Ltime                         <span class="comment">// the time in the local time zone: 01:23:23</span></span><br><span class="line">	Lmicroseconds                 <span class="comment">// microsecond resolution: 01:23:23.123123.  assumes Ltime.</span></span><br><span class="line">	Llongfile                     <span class="comment">// full file name and line number: /a/b/c/d.go:23</span></span><br><span class="line">	Lshortfile                    <span class="comment">// final file name element and line number: d.go:23. overrides Llongfile</span></span><br><span class="line">	LUTC                          <span class="comment">// if Ldate or Ltime is set, use UTC rather than the local time zone</span></span><br><span class="line">	LstdFlags     = Ldate | Ltime <span class="comment">// initial values for the standard logger</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><code>buf</code> 是日志写入内容的缓冲区，避免了每次写入都需要分配内存。</p>
+<h2 id="Log-operation"><a href="#Log-operation" class="headerlink" title="Log operation"></a>Log operation</h2><p>使用 log 包写日志的操作很简单，可以直接调用 <code>log.Println</code>，<code>log.Printf</code> 等函数，这些导出的函数会调用内部私有变量 <code>std</code> 的方法，<code>std</code> 是 <code>Logger</code> 结构体的一个实例，输出日志到 <code>stderr</code>。在包里定义一个私有的 <code>Logger</code> 实例，并进行一些通用的配置，可以提供一些开箱即用的函数，而不需要总是先 <code>New</code> 一个 <code>Logger</code> 实例。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// log.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">(out io.Writer, prefix <span class="keyword">string</span>, flag <span class="keyword">int</span>)</span> *<span class="title">Logger</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;Logger&#123;out: out, prefix: prefix, flag: flag&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> std = New(os.Stderr, <span class="string">""</span>, LstdFlags)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Println</span><span class="params">(v ...<span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">	std.Output(<span class="number">2</span>, fmt.Sprintln(v...))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到 <code>log.Println</code> 实际调用了 <code>std.Output</code> 方法，该方法接收两个参数，一个是函数调用深度，一个是日志内容。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// log.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l *Logger)</span> <span class="title">Output</span><span class="params">(calldepth <span class="keyword">int</span>, s <span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	now := time.Now() <span class="comment">// get this early.</span></span><br><span class="line">	<span class="keyword">var</span> file <span class="keyword">string</span></span><br><span class="line">	<span class="keyword">var</span> line <span class="keyword">int</span></span><br><span class="line">	l.mu.Lock()</span><br><span class="line">	<span class="keyword">defer</span> l.mu.Unlock()</span><br><span class="line">	<span class="keyword">if</span> l.flag&amp;(Lshortfile|Llongfile) != <span class="number">0</span> &#123;</span><br><span class="line">		<span class="comment">// Release lock while getting caller info - it's expensive.</span></span><br><span class="line">		l.mu.Unlock()</span><br><span class="line">		<span class="keyword">var</span> ok <span class="keyword">bool</span></span><br><span class="line">		_, file, line, ok = runtime.Caller(calldepth)</span><br><span class="line">		<span class="keyword">if</span> !ok &#123;</span><br><span class="line">			file = <span class="string">"???"</span></span><br><span class="line">			line = <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">		l.mu.Lock()</span><br><span class="line">	&#125;</span><br><span class="line">	l.buf = l.buf[:<span class="number">0</span>]</span><br><span class="line">	l.formatHeader(&amp;l.buf, now, file, line)</span><br><span class="line">	l.buf = <span class="built_in">append</span>(l.buf, s...)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(s) == <span class="number">0</span> || s[<span class="built_in">len</span>(s)<span class="number">-1</span>] != <span class="string">'\n'</span> &#123;</span><br><span class="line">		l.buf = <span class="built_in">append</span>(l.buf, <span class="string">'\n'</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	_, err := l.out.Write(l.buf)</span><br><span class="line">	<span class="keyword">return</span> err</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果 <code>flag</code> 设置了 <code>Lshortfile</code> 或 <code>Llongfile</code> 属性，<code>Output</code> 方法会调用 <code>runtime.Caller</code> 来获取打印日志操作所在的文件名和行号。<code>calldepth</code> 参数用来指定函数调用深度，调用链为：<code>log.Println</code> -&gt; <code>std.Output</code> -&gt; <code>runtime.Caller</code>，所以调用深度为2。注意这里在获取文件名和行号的时候，释放了互斥锁，原因是 <code>runtime.Caller</code> 可能会比较耗时，所以存在一个隐患：在这期间其他的 goroutine 是可以修改 <code>Logger</code> 实例的属性的。</p>
+<p>接下来就是清空 <code>buf</code>，先对 <code>prefix</code> 和 <code>flag</code> 进行处理（<code>l.formatHeader</code>）并存入 <code>buf</code>，然后将日志内容也追加到 <code>buf</code> 中，最后调用 <code>out</code> 属性的 <code>Write</code> 方法输出日志。</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>整个 log 包就 300 多行代码，功能非常简单，使用起来也很方便。对于标准库来说，考虑的更多的是简洁、通用，而对于后端服务来说，则需要考虑更多的东西，比如结构化日志、性能问题等。一般情况下，不建议在生产环境使用标准库的 log 包来输出日志。目前 Golang 有很多优秀的开源日志库，例如：<code>zap</code>、<code>gokit/log</code>、<code>logrus</code> 等，各有各的优势，我们可以针对不同场景选择不同的日志库来解决问题。另外，在使用日志库的时候，最好是能够使用一个日志的抽象（比如 interface），而不绑定具体的实现，这会方便我们后期更换其他日志库。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Golang/" rel="tag"># Golang</a>
+          
+            <a href="/tags/Log/" rel="tag"># Log</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/10/gitlab-build/" rel="next" title="Gitlab 搭建与 CI 配置">
+                <i class="fa fa-chevron-left"></i> Gitlab 搭建与 CI 配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Royeo</p>
+              <p class="site-description motion-element" itemprop="description">人生没有白走的路，每一步都算数</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/royeo" title="GitHub &rarr; https://github.com/royeo" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:ljn6176@gmail.com" title="E-Mail &rarr; mailto:ljn6176@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-design"><span class="nav-number">1.</span> <span class="nav-text">Log design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-operation"><span class="nav-number">2.</span> <span class="nav-text">Log operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">3.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Royeo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://coding.net/pages/">Coding Pages</a> & <a target="_blank" href="https://pages.github.com">GitHub Pages</a></div>
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+  
+  <script id="dsq-count-scr" src="https://lujianan-com.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://lujianan.com/2019/01/18/golang-standard-library-log/";
+    this.page.identifier = "2019/01/18/golang-standard-library-log/";
+    this.page.title = 'Golang 标准库 log 包';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://lujianan-com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log(`Failed to save Visitor num, with error message: ${responseJSON.error}`);
+              })
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz',
+                'X-LC-Key': 'URgXzK71nIE0rxDlFR7aLzSR',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
