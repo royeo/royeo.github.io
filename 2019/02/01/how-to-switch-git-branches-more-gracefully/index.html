@@ -96,27 +96,27 @@
 
 
 
-  <meta name="description" content="第一次看到这个书名《一只特立独行的猪》，我觉得很有意思，一只猪如何做到特立独行？带着这个问题我读了王小波的这本杂文。 猪给我的印象就是被圈养在又脏又臭的狭小环境中（此处自动忽略网易的味央猪…），吃了睡，睡了吃，直到它成为餐桌上的食物，被广罗大众花式烹饪。但其实很多人不知道，猪其实是很聪明的生物，甚至比狗和黑猩猩都聪明，而且它们很爱干净。但因为长期活在人类的“统治”之下，猪接受了这样的设置，过着“井">
-<meta name="keywords" content="王小波,一只特立独行的猪">
+  <meta name="description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，切换分支时分支名的 tab 自动补全会比较糟糕，我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
+<meta name="keywords" content="Golang,Git,Tool">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读后感：《 一只特立独行的猪 》 — 王小波">
-<meta property="og:url" content="http://lujianan.com/2017/12/16/a-maverick-pig/index.html">
+<meta property="og:title" content="如何更优雅地切换 Git 分支">
+<meta property="og:url" content="http://lujianan.com/2019/02/01/how-to-switch-git-branches-more-gracefully/index.html">
 <meta property="og:site_name" content="With An Orchid">
-<meta property="og:description" content="第一次看到这个书名《一只特立独行的猪》，我觉得很有意思，一只猪如何做到特立独行？带着这个问题我读了王小波的这本杂文。 猪给我的印象就是被圈养在又脏又臭的狭小环境中（此处自动忽略网易的味央猪…），吃了睡，睡了吃，直到它成为餐桌上的食物，被广罗大众花式烹饪。但其实很多人不知道，猪其实是很聪明的生物，甚至比狗和黑猩猩都聪明，而且它们很爱干净。但因为长期活在人类的“统治”之下，猪接受了这样的设置，过着“井">
+<meta property="og:description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，切换分支时分支名的 tab 自动补全会比较糟糕，我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovu6j7kst.bkt.clouddn.com/%E7%81%AB%E6%98%9F%E6%88%AA%E5%9B%BE_20171223_203016.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/royeo/static/master/gif/git-checkout-branch.gif">
 <meta property="og:updated_time" content="2019-02-13T08:56:26.843Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读后感：《 一只特立独行的猪 》 — 王小波">
-<meta name="twitter:description" content="第一次看到这个书名《一只特立独行的猪》，我觉得很有意思，一只猪如何做到特立独行？带着这个问题我读了王小波的这本杂文。 猪给我的印象就是被圈养在又脏又臭的狭小环境中（此处自动忽略网易的味央猪…），吃了睡，睡了吃，直到它成为餐桌上的食物，被广罗大众花式烹饪。但其实很多人不知道，猪其实是很聪明的生物，甚至比狗和黑猩猩都聪明，而且它们很爱干净。但因为长期活在人类的“统治”之下，猪接受了这样的设置，过着“井">
-<meta name="twitter:image" content="http://ovu6j7kst.bkt.clouddn.com/%E7%81%AB%E6%98%9F%E6%88%AA%E5%9B%BE_20171223_203016.png">
+<meta name="twitter:title" content="如何更优雅地切换 Git 分支">
+<meta name="twitter:description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，切换分支时分支名的 tab 自动补全会比较糟糕，我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/royeo/static/master/gif/git-checkout-branch.gif">
 
 
 
 
 
 
-  <link rel="canonical" href="http://lujianan.com/2017/12/16/a-maverick-pig/">
+  <link rel="canonical" href="http://lujianan.com/2019/02/01/how-to-switch-git-branches-more-gracefully/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>读后感：《 一只特立独行的猪 》 — 王小波 | With An Orchid</title>
+  <title>如何更优雅地切换 Git 分支 | With An Orchid</title>
   
 
 
@@ -360,7 +360,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lujianan.com/2017/12/16/a-maverick-pig/">
+    <link itemprop="mainEntityOfPage" href="http://lujianan.com/2019/02/01/how-to-switch-git-branches-more-gracefully/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royeo">
@@ -377,7 +377,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">读后感：《 一只特立独行的猪 》 — 王小波
+          <h1 class="post-title" itemprop="name headline">如何更优雅地切换 Git 分支
 
               
             
@@ -403,7 +403,7 @@
                 
               
 
-              <time title="Created: 2017-12-16 22:15:46" itemprop="dateCreated datePublished" datetime="2017-12-16T22:15:46+00:00">2017-12-16</time>
+              <time title="Created: 2019-02-01 14:04:41" itemprop="dateCreated datePublished" datetime="2019-02-01T14:04:41+00:00">2019-02-01</time>
             
 
             
@@ -421,7 +421,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/书海无涯/" itemprop="url" rel="index"><span itemprop="name">书海无涯</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
 
                 
                 
@@ -439,8 +439,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <a href="/2017/12/16/a-maverick-pig/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/12/16/a-maverick-pig/" itemprop="commentCount"></span>
+                <a href="/2019/02/01/how-to-switch-git-branches-more-gracefully/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/01/how-to-switch-git-branches-more-gracefully/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -448,7 +448,7 @@
 
           
           
-            <span id="/2017/12/16/a-maverick-pig/" class="leancloud_visitors" data-flag-title="读后感：《 一只特立独行的猪 》 — 王小波">
+            <span id="/2019/02/01/how-to-switch-git-branches-more-gracefully/" class="leancloud_visitors" data-flag-title="如何更优雅地切换 Git 分支">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -479,18 +479,25 @@
       
 
       
-        <p>第一次看到这个书名《一只特立独行的猪》，我觉得很有意思，一只猪如何做到特立独行？带着这个问题我读了王小波的这本杂文。</p>
-<p>猪给我的印象就是被圈养在又脏又臭的狭小环境中（此处自动忽略网易的味央猪…），吃了睡，睡了吃，直到它成为餐桌上的食物，被广罗大众花式烹饪。但其实很多人不知道，猪其实是很聪明的生物，甚至比狗和黑猩猩都聪明，而且它们很爱干净。但因为长期活在人类的“统治”之下，猪接受了这样的设置，过着“井井有条”的生活。</p>
+        <p>在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，切换分支时分支名的 tab 自动补全会比较糟糕，我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？</p>
 <a id="more"></a>
-<p>书中的一篇杂文讲述了作者与这只特立独行的猪的经历，那是一个趣味十足又耐人寻味的故事。故事中猪是一只非常有灵性的猪，有山羊般的敏捷，也有猫一样的灵活，活的竟然有些潇洒。它没有配合宿命的安排，而是选择了抗争，即使是在面对惨烈的杀猪现场也能镇定自若，机智逃脱，重新主宰了自己的命运。这里特别想引用一下《乔布斯传》里提到的一句广告语：</p>
-<blockquote><p>致疯狂的人。他们特立独行。他们桀骜不驯。他们惹是生非。他们格格不入。他们用与众不同的眼光看待事物。他们不喜欢墨守成规。他们也不愿安于现状。你可以认同他们，反对他们，颂扬或是诋毁他们。但唯独不能漠视他们。</p>
-</blockquote>
-<p>动物也好，人类也好，生存是亘古不变的话题，生存之下则有不同的活法。王小波写这只猪的故事仿佛也是在写他自己，他自己的特立独行，他的自由主义理念，与“猪兄”都不谋而合。恰逢那时候刚看完电影“猩球崛起”，感觉电影里的凯撒和这只猪有很多相似之处，它们都在打破常规，对设置好的生活勇敢的 say “no”，自己掌控着自己命运的方向盘，不怕风越大浪越高。反而是我们自己，可能还不如它们 。。。</p>
-<blockquote><p>我已经四十岁了，除了这只猪，还没见过谁敢于如此无视对生活的设置。相反，我倒见过很多想要设置别人生活的人，还有对被设置的生活安之若素的人。因为这个缘故，我一直怀念这只特立独行的猪。</p>
-<footer><strong>《 一只特立独行的猪 》</strong><cite>王小波</cite></footer></blockquote>
-<p><br></p>
-<p><img src="http://ovu6j7kst.bkt.clouddn.com/%E7%81%AB%E6%98%9F%E6%88%AA%E5%9B%BE_20171223_203016.png" alt="image"></p>
-
+<p>为了提高切换 Git 分支的效率，我用 Golang 写了 <code>git-checkout-branch</code> 这个小工具，可以交互式的切换分支，并自带搜索功能，帮助你更优雅的进行分支切换。</p>
+<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Github 地址：<a href="https://github.com/royeo/git-checkout-branch" target="_blank" rel="noopener">https://github.com/royeo/git-checkout-branch</a> ，欢迎 star。</p>
+<p><img src="https://raw.githubusercontent.com/royeo/static/master/gif/git-checkout-branch.gif" alt=""></p>
+<p>说明：</p>
+<ul>
+<li>使用箭头键  <code>↓</code> <code>↑</code> <code>→</code> <code>←</code> 进行移动</li>
+<li>使用 <code>j</code> 和 <code>k</code> 也可以上下移动</li>
+<li>使用 <code>/</code> 切换搜索</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用 <code>go get</code> 安装 <code>git checkout-branch</code> 命令，确保 <code>$GOPATH/bin</code> 路径在 <code>PATH</code> 中。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">go get -u github.com/royeo/git-checkout-branch</span><br></pre></td></tr></table></figure>
+<p>如果你正在使用 GO1.11 Module，使用以下命令进行安装：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">GO111MODULE=off go get -u github.com/royeo/git-checkout-branch</span><br></pre></td></tr></table></figure>
+<p>建议为 <code>checkout-branch</code> 设置别名，例如 <code>cb</code>，这样就可以直接使用 <code>git cb</code> 来进行分支切换。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git config --global alias.cb checkout-branch</span><br></pre></td></tr></table></figure>
+<h2 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h2><p>使用 <code>git checkout-branch help</code> 获取帮助信息。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Checkout git branches more efficiently.</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  git checkout-branch [flags]</span><br><span class="line"></span><br><span class="line">Flags:</span><br><span class="line">  -a, --all          List both remote-tracking branches and <span class="built_in">local</span> branches</span><br><span class="line">  -r, --remotes      List the remote-tracking branches</span><br><span class="line">  -n, --number       Set the number of branches displayed <span class="keyword">in</span> the list (default 10)</span><br><span class="line">      --hide-help    Hide the <span class="built_in">help</span> information</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -513,9 +520,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/王小波/" rel="tag"># 王小波</a>
+            <a href="/tags/Golang/" rel="tag"># Golang</a>
           
-            <a href="/tags/一只特立独行的猪/" rel="tag"># 一只特立独行的猪</a>
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
+            <a href="/tags/Tool/" rel="tag"># Tool</a>
           
         </div>
       
@@ -528,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/03/book-recommond/" rel="next" title="Node.js 相关技术书籍推荐">
-                <i class="fa fa-chevron-left"></i> Node.js 相关技术书籍推荐
+              <a href="/2019/01/18/golang-standard-library-log/" rel="next" title="Golang 标准库 log 包">
+                <i class="fa fa-chevron-left"></i> Golang 标准库 log 包
               </a>
             
           </div>
@@ -537,10 +546,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/10/node-v8/" rel="prev" title="Nodejs V8 的内存管理与垃圾回收机制">
-                Nodejs V8 的内存管理与垃圾回收机制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -592,8 +597,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -756,6 +770,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助"><span class="nav-number">3.</span> <span class="nav-text">帮助</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -906,9 +937,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://lujianan.com/2017/12/16/a-maverick-pig/";
-    this.page.identifier = "2017/12/16/a-maverick-pig/";
-    this.page.title = '读后感：《 一只特立独行的猪 》 — 王小波';
+    this.page.url = "http://lujianan.com/2019/02/01/how-to-switch-git-branches-more-gracefully/";
+    this.page.identifier = "2019/02/01/how-to-switch-git-branches-more-gracefully/";
+    this.page.title = '如何更优雅地切换 Git 分支';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
