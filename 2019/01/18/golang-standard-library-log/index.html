@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="With An Orchid">
 <meta property="og:description" content="Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，想造轮子的同学可以参考下。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-13T08:56:26.843Z">
+<meta property="og:updated_time" content="2019-02-13T09:04:29.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Golang 标准库 log 包">
 <meta name="twitter:description" content="Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，想造轮子的同学可以参考下。">
@@ -445,17 +445,6 @@
           
 
           
-          
-            <span id="/2019/01/18/golang-standard-library-log/" class="leancloud_visitors" data-flag-title="Golang 标准库 log 包">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -971,66 +960,6 @@
 
 
   
-  
-  <script>
-    
-    function addCount(Counter) {
-      var $visitors = $('.leancloud_visitors');
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
-            
-              .done(function() {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.time + 1);
-              })
-            
-              .fail(function ({ responseJSON }) {
-                console.log(`Failed to save Visitor num, with error message: ${responseJSON.error}`);
-              })
-          } else {
-            
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
-            
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz',
-                'X-LC-Key': 'URgXzK71nIE0rxDlFR7aLzSR',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            addCount(Counter);
-          
-        });
-    });
-  </script>
-
-
 
   
 

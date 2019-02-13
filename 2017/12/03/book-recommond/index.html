@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="With An Orchid">
 <meta property="og:description" content="接触 Node.js 也有段时间了，从一开始对 Node.js 一无所知，到现在能在项目中熟练使用，书籍、文档和实战缺一不可。在学习初期，书籍扮演着一个非常重要的角色，让我对 Node.js 有了一个系统的认识。从看《JavaScript高级程序设计》开始，陆陆续续看了不少 JavaScript、Node.js 以及后端技术的相关书籍。书看的越多，会越发觉得自己知识匮乏，然后就会去寻找更多的书来充">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-13T08:56:26.843Z">
+<meta property="og:updated_time" content="2019-02-13T09:04:29.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js 相关技术书籍推荐">
 <meta name="twitter:description" content="接触 Node.js 也有段时间了，从一开始对 Node.js 一无所知，到现在能在项目中熟练使用，书籍、文档和实战缺一不可。在学习初期，书籍扮演着一个非常重要的角色，让我对 Node.js 有了一个系统的认识。从看《JavaScript高级程序设计》开始，陆陆续续看了不少 JavaScript、Node.js 以及后端技术的相关书籍。书看的越多，会越发觉得自己知识匮乏，然后就会去寻找更多的书来充">
@@ -445,17 +445,6 @@
           
 
           
-          
-            <span id="/2017/12/03/book-recommond/" class="leancloud_visitors" data-flag-title="Node.js 相关技术书籍推荐">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -1020,66 +1009,6 @@
 
 
   
-  
-  <script>
-    
-    function addCount(Counter) {
-      var $visitors = $('.leancloud_visitors');
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
-            
-              .done(function() {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.time + 1);
-              })
-            
-              .fail(function ({ responseJSON }) {
-                console.log(`Failed to save Visitor num, with error message: ${responseJSON.error}`);
-              })
-          } else {
-            
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
-            
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz',
-                'X-LC-Key': 'URgXzK71nIE0rxDlFR7aLzSR',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            addCount(Counter);
-          
-        });
-    });
-  </script>
-
-
 
   
 

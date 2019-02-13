@@ -447,17 +447,6 @@
 
           
           
-            <span id="/2018/01/10/node-v8/" class="leancloud_visitors" data-flag-title="Nodejs V8 的内存管理与垃圾回收机制">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -632,17 +621,6 @@
           
 
           
-          
-            <span id="/2017/12/16/a-maverick-pig/" class="leancloud_visitors" data-flag-title="读后感：《 一只特立独行的猪 》 — 王小波">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -820,17 +798,6 @@
 
           
           
-            <span id="/2017/12/03/book-recommond/" class="leancloud_visitors" data-flag-title="Node.js 相关技术书籍推荐">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1006,17 +973,6 @@
 
           
           
-            <span id="/2017/05/05/most-of-silence/" class="leancloud_visitors" data-flag-title="读后感：《 沉默的大多数 》 — 王小波">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1191,17 +1147,6 @@
           
 
           
-          
-            <span id="/2017/01/20/markdown-standard/" class="leancloud_visitors" data-flag-title="Markdown 中文技术文档的写作规范">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -1381,17 +1326,6 @@
 
           
           
-            <span id="/2016/11/15/mysql-index/" class="leancloud_visitors" data-flag-title="MySQL 索引的创建、删除和查看">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1567,17 +1501,6 @@
 
           
           
-            <span id="/2016/09/02/mysql-optimization/" class="leancloud_visitors" data-flag-title="MySQL 性能优化">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1752,17 +1675,6 @@
           
 
           
-          
-            <span id="/2016/08/24/503-service-unavailable/" class="leancloud_visitors" data-flag-title="如何修复 503 Service Unavailable 错误">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -1942,17 +1854,6 @@
 
           
           
-            <span id="/2016/07/21/vscode-hot-key/" class="leancloud_visitors" data-flag-title="vscode 常用快捷键">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -2127,17 +2028,6 @@
           
 
           
-          
-            <span id="/2016/07/18/deep-shallow/" class="leancloud_visitors" data-flag-title="如何编写一个 json 对象的拷贝函数">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -2560,74 +2450,6 @@
 
 
   
-  
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $('.leancloud_visitors');
-
-      $visitors.each(function() {
-        entries.push( $(this).attr('id').trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
-        .done(function({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if (countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz',
-                'X-LC-Key': 'URgXzK71nIE0rxDlFR7aLzSR',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            if ($('.post-title-link').length >= 1) {
-              showTime(Counter);
-            }
-          
-        });
-    });
-  </script>
-
-
 
   
 

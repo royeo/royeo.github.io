@@ -447,17 +447,6 @@
 
           
           
-            <span id="/2019/02/01/how-to-switch-git-branches-more-gracefully/" class="leancloud_visitors" data-flag-title="如何更优雅地切换 Git 分支">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -632,17 +621,6 @@
           
 
           
-          
-            <span id="/2019/01/18/golang-standard-library-log/" class="leancloud_visitors" data-flag-title="Golang 标准库 log 包">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -819,17 +797,6 @@
 
           
           
-            <span id="/2018/11/10/gitlab-build/" class="leancloud_visitors" data-flag-title="Gitlab 搭建与 CI 配置">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -987,17 +954,6 @@
 
           
           
-            <span id="/2018/10/30/markdown-syntax-highlight/" class="leancloud_visitors" data-flag-title="Markdown 代码高亮的标记大全">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1154,17 +1110,6 @@
           
 
           
-          
-            <span id="/2018/10/14/modern-operating-systems-c1-exercise/" class="leancloud_visitors" data-flag-title="《现代操作系统》第1章 习题">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -1341,17 +1286,6 @@
           
 
           
-          
-            <span id="/2018/09/15/docker-data-management/" class="leancloud_visitors" data-flag-title="Docker 数据管理">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -1534,17 +1468,6 @@
 
           
           
-            <span id="/2018/06/03/protocol-buffer-encoding/" class="leancloud_visitors" data-flag-title="Protocol Buffer Encoding">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1723,17 +1646,6 @@
 
           
           
-            <span id="/2018/06/02/protocol-buffer-introduction/" class="leancloud_visitors" data-flag-title="Protocol Buffer 介绍">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1909,17 +1821,6 @@
 
           
           
-            <span id="/2018/02/27/weapp-store/" class="leancloud_visitors" data-flag-title="微信小程序 - 便利店在哪（已上线）">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -2094,17 +1995,6 @@
           
 
           
-          
-            <span id="/2018/01/29/node-circular-dependency/" class="leancloud_visitors" data-flag-title="Node 循环依赖之源码解析">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -2527,74 +2417,6 @@
 
 
   
-  
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $('.leancloud_visitors');
-
-      $visitors.each(function() {
-        entries.push( $(this).attr('id').trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
-        .done(function({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if (countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz',
-                'X-LC-Key': 'URgXzK71nIE0rxDlFR7aLzSR',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            if ($('.post-title-link').length >= 1) {
-              showTime(Counter);
-            }
-          
-        });
-    });
-  </script>
-
-
 
   
 

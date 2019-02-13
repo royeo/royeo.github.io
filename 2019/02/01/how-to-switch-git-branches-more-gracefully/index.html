@@ -105,7 +105,7 @@
 <meta property="og:description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，切换分支时分支名的 tab 自动补全会比较糟糕，我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/royeo/static/master/gif/git-checkout-branch.gif">
-<meta property="og:updated_time" content="2019-02-13T08:56:26.843Z">
+<meta property="og:updated_time" content="2019-02-13T09:04:29.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何更优雅地切换 Git 分支">
 <meta name="twitter:description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，切换分支时分支名的 tab 自动补全会比较糟糕，我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
@@ -447,17 +447,6 @@
           
 
           
-          
-            <span id="/2019/02/01/how-to-switch-git-branches-more-gracefully/" class="leancloud_visitors" data-flag-title="如何更优雅地切换 Git 分支">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -966,66 +955,6 @@
 
 
   
-  
-  <script>
-    
-    function addCount(Counter) {
-      var $visitors = $('.leancloud_visitors');
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
-            
-              .done(function() {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.time + 1);
-              })
-            
-              .fail(function ({ responseJSON }) {
-                console.log(`Failed to save Visitor num, with error message: ${responseJSON.error}`);
-              })
-          } else {
-            
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
-            
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'Q6YMEAx8ptgrNimzKLkdFaeT-gzGzoHsz',
-                'X-LC-Key': 'URgXzK71nIE0rxDlFR7aLzSR',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            addCount(Counter);
-          
-        });
-    });
-  </script>
-
-
 
   
 
