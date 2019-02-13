@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，切换分支时分支名的 tab 自动补全会比较糟糕，我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
+  <meta name="description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，分支名的 tab 自动补全会比较糟糕，切换时我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
 <meta name="keywords" content="Golang,Git,Tool">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何更优雅地切换 Git 分支">
 <meta property="og:url" content="http://lujianan.com/2019/02/01/how-to-switch-git-branches-more-gracefully/index.html">
 <meta property="og:site_name" content="With An Orchid">
-<meta property="og:description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，切换分支时分支名的 tab 自动补全会比较糟糕，我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
+<meta property="og:description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，分支名的 tab 自动补全会比较糟糕，切换时我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/royeo/static/master/gif/git-checkout-branch.gif">
-<meta property="og:updated_time" content="2019-02-13T09:04:29.091Z">
+<meta property="og:updated_time" content="2019-02-13T09:51:23.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何更优雅地切换 Git 分支">
-<meta name="twitter:description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，切换分支时分支名的 tab 自动补全会比较糟糕，我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
+<meta name="twitter:description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，分支名的 tab 自动补全会比较糟糕，切换时我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/royeo/static/master/gif/git-checkout-branch.gif">
 
 
@@ -468,15 +468,14 @@
       
 
       
-        <p>在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，切换分支时分支名的 tab 自动补全会比较糟糕，我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？</p>
+        <p>在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，分支名的 tab 自动补全会比较糟糕，切换时我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？</p>
 <a id="more"></a>
 <p>为了提高切换 Git 分支的效率，我用 Golang 写了 <code>git-checkout-branch</code> 这个小工具，可以交互式的切换分支，并自带搜索功能，帮助你更优雅的进行分支切换。</p>
 <h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Github 地址：<a href="https://github.com/royeo/git-checkout-branch" target="_blank" rel="noopener">https://github.com/royeo/git-checkout-branch</a> ，欢迎 star。</p>
 <p><img src="https://raw.githubusercontent.com/royeo/static/master/gif/git-checkout-branch.gif" alt=""></p>
 <p>说明：</p>
 <ul>
-<li>使用箭头键  <code>↓</code> <code>↑</code> <code>→</code> <code>←</code> 进行移动</li>
-<li>使用 <code>j</code> 和 <code>k</code> 也可以上下移动</li>
+<li>使用箭头键  <code>↓</code> <code>↑</code> <code>→</code> <code>←</code> 进行移动，也支持 <code>j</code> 和 <code>k</code> 的上下移动</li>
 <li>使用 <code>/</code> 切换搜索</li>
 </ul>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用 <code>go get</code> 安装 <code>git checkout-branch</code> 命令，确保 <code>$GOPATH/bin</code> 路径在 <code>PATH</code> 中。</p>
