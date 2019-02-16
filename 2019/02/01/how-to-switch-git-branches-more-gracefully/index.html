@@ -105,7 +105,7 @@
 <meta property="og:description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，分支名的 tab 自动补全会比较糟糕，切换时我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/royeo/static/master/gif/git-checkout-branch.gif">
-<meta property="og:updated_time" content="2019-02-13T09:51:23.447Z">
+<meta property="og:updated_time" content="2019-02-16T18:16:25.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何更优雅地切换 Git 分支">
 <meta name="twitter:description" content="在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，分支名的 tab 自动补全会比较糟糕，切换时我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？">
@@ -477,11 +477,12 @@
 <ul>
 <li>使用箭头键  <code>↓</code> <code>↑</code> <code>→</code> <code>←</code> 进行移动，也支持 <code>j</code> 和 <code>k</code> 的上下移动</li>
 <li>使用 <code>/</code> 切换搜索</li>
+<li>按 <code>ctrl + c</code> 退出</li>
 </ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用 <code>go get</code> 安装 <code>git checkout-branch</code> 命令，确保 <code>$GOPATH/bin</code> 路径在 <code>PATH</code> 中。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>可以直接下载安装：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl -sSL https://github.com/royeo/git-checkout-branch/releases/download/v0.2.0/git-checkout-branch-`uname -s`-`uname -m` -o /usr/<span class="built_in">local</span>/bin/git-checkout-branch &amp;&amp; chmod +x /usr/<span class="built_in">local</span>/bin/git-checkout-branch</span><br></pre></td></tr></table></figure>
+<p>也可以使用 <code>go get</code> 安装，确保 <code>$GOPATH/bin</code> 路径在 <code>PATH</code> 中。</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">go get -u github.com/royeo/git-checkout-branch</span><br></pre></td></tr></table></figure>
-<p>如果你正在使用 GO1.11 Module，使用以下命令进行安装：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">GO111MODULE=off go get -u github.com/royeo/git-checkout-branch</span><br></pre></td></tr></table></figure>
 <p>建议为 <code>checkout-branch</code> 设置别名，例如 <code>cb</code>，这样就可以直接使用 <code>git cb</code> 来进行分支切换。</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git config --global alias.cb checkout-branch</span><br></pre></td></tr></table></figure>
 <h2 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h2><p>使用 <code>git checkout-branch help</code> 获取帮助信息。</p>
