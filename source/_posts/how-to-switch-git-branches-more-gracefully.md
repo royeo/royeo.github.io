@@ -23,19 +23,20 @@ Github 地址：https://github.com/royeo/git-checkout-branch ，欢迎 star。
 说明：
 - 使用箭头键  `↓` `↑` `→` `←` 进行移动，也支持 `j` 和 `k` 的上下移动
 - 使用 `/` 切换搜索
+- 按 `ctrl + c` 退出
 
 ## 安装
 
-使用 `go get` 安装 `git checkout-branch` 命令，确保 `$GOPATH/bin` 路径在 `PATH` 中。
+可以直接下载安装：
+
+```sh
+curl -sSL https://github.com/royeo/git-checkout-branch/releases/download/v0.2.0/git-checkout-branch-`uname -s`-`uname -m` -o /usr/local/bin/git-checkout-branch && chmod +x /usr/local/bin/git-checkout-branch
+```
+
+也可以使用 `go get` 安装，确保 `$GOPATH/bin` 路径在 `PATH` 中。
 
 ```sh
 go get -u github.com/royeo/git-checkout-branch
-```
-
-如果你正在使用 GO1.11 Module，使用以下命令进行安装：
-
-```sh
-GO111MODULE=off go get -u github.com/royeo/git-checkout-branch
 ```
 
 建议为 `checkout-branch` 设置别名，例如 `cb`，这样就可以直接使用 `git cb` 来进行分支切换。
