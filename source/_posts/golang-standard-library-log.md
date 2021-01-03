@@ -111,7 +111,7 @@ func (l *Logger) Output(calldepth int, s string) error {
 
 可以看到 `Output` 方法会进行加锁操作，因为日志的 buf 是共享的，不是每条日志一个 buf，所以需要用锁来保护好 buf，实现串行写入。所以如果你的日志疯狂输出，大量的加锁操作 syscall 对性能就会有很大影响。另外思考一个问题，写日志的时候是不是一定要加锁呢？正常情况下，单纯的写日志是不需要加锁的，因为写日志可以采用文件的 `O_APPEND` 模式，原子方式一直追加。
 
-在 `Output` 方法里，如果 `flag` 设置了 `Lshortfile` 或 `Llongfile` 属性，`Output` 方法会调用 `runtime.Caller` 来获取打印日志操作所在的文件名和行号。`calldepth` 参数用来指定函数调用深度，调用链为：`log.Println` -> `std.Output` -> `runtime.Caller`，所以调用深度为2。注意这里在获取文件名和行号的时候，释放了互斥锁，原因是 `runtime.Caller` 可能会比较耗时。
+在 `Output` 方法里，如果 `flag` 设置了 `Lshortfile` 或 `Llongfile` 属性，`Output` 方法会调用 `runtime.Caller` 来获取打印日志操作所在的文件名和行号。`calldepth` 参数用来指定函数调用深度，调用链为：`log.Println` -> `std.Output` -> `runtime.Caller`，所以调用深度为2。注意这里在获取文件名和行号的时候，释放了互斥锁，原因是 `runtime.Caller` 可能会比较耗时。因为 `runtime.Caller` 会不停地迭代，而这个迭代过程虽然单次消耗的时间可以忽略不计，但是对于日志量巨大的服务而言影响还是很大的。
 
 写入的时候，就是先清空 `buf`，接着对 `prefix` 和 `flag` 进行处理（`l.formatHeader`）并存入 `buf`，然后将日志内容也追加到 `buf` 中，最后调用 `out` 属性的 `Write` 方法输出日志。
 
