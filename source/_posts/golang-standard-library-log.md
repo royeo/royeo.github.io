@@ -7,11 +7,11 @@ tags:
 category: 码梦为生
 ---
 
-Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，想造轮子的同学可以参考下。
+Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，造轮子之前可以参考下。
 
 <!--more-->
 
-## Log design
+## 日志设计
 
 一个简单的日志包应该有哪些功能呢？很容易想到以下几个：
 - 可设置日志的输出目标
@@ -54,13 +54,14 @@ const (
 	Llongfile                     // full file name and line number: /a/b/c/d.go:23
 	Lshortfile                    // final file name element and line number: d.go:23. overrides Llongfile
 	LUTC                          // if Ldate or Ltime is set, use UTC rather than the local time zone
+	Lmsgprefix                    // move the "prefix" from the beginning of the line to before the message
 	LstdFlags     = Ldate | Ltime // initial values for the standard logger
 )
 ```
 
 `buf` 是日志写入内容的缓冲区，避免了每次写入都需要分配内存。
 
-## Log operation
+## 日志操作
 
 使用 log 包写日志的操作很简单，可以直接调用 `log.Println`，`log.Printf` 等函数，这些导出的函数会调用内部私有变量 `std` 的方法，`std` 是 `Logger` 结构体的一个实例，输出日志到 `stderr`。在包里定义一个私有的 `Logger` 实例，并进行一些通用的配置，可以提供一些开箱即用的函数，而不需要总是先 `New` 一个 `Logger` 实例。
 
@@ -113,6 +114,6 @@ func (l *Logger) Output(calldepth int, s string) error {
 
 接下来就是清空 `buf`，先对 `prefix` 和 `flag` 进行处理（`l.formatHeader`）并存入 `buf`，然后将日志内容也追加到 `buf` 中，最后调用 `out` 属性的 `Write` 方法输出日志。
 
-## Conclusion
+## 结论
 
-整个 log 包就 300 多行代码，功能非常简单，使用起来也很方便。对于标准库来说，考虑的更多的是简洁、通用，而对于后端服务来说，则需要考虑更多的东西，比如结构化日志、性能问题等。一般情况下，不建议在生产环境使用标准库的 log 包来输出日志。目前 Golang 有很多优秀的开源日志库，例如：`zap`、`gokit/log`、`logrus` 等，各有各的优势，我们可以针对不同场景选择不同的日志库来解决问题。另外，在使用日志库的时候，最好是能够使用一个日志的抽象（比如 interface），而不绑定具体的实现，这会方便我们后期更换其他日志库。
+整个 log 包就 300 多行代码，功能非常简单，使用起来也很方便。对于标准库来说，考虑的更多的是简洁、通用，而对于后端服务来说，则需要考虑更多的东西，比如结构化日志、性能问题等。一般情况下，不建议在生产环境使用标准库的 log 包来输出日志。目前 Golang 有很多优秀的开源日志库，例如：`zap`、`gokit/log`、`logrus` 等，各有各的优势，我们可以针对不同场景选择不同的日志库来解决问题，或者自行造轮子。另外，在使用日志库的时候，最好是能够使用一个日志的抽象（比如 interface），而不绑定具体的实现，这会方便我们后期更换其他日志库。
