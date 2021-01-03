@@ -113,7 +113,7 @@ func (l *Logger) Output(calldepth int, s string) error {
 
 在 `Output` 方法里，如果 `flag` 设置了 `Lshortfile` 或 `Llongfile` 属性，`Output` 方法会调用 `runtime.Caller` 来获取打印日志操作所在的文件名和行号。`calldepth` 参数用来指定函数调用深度，调用链为：`log.Println` -> `std.Output` -> `runtime.Caller`，所以调用深度为2。注意这里在获取文件名和行号的时候，释放了互斥锁，原因是 `runtime.Caller` 可能会比较耗时。因 `runtime.Caller` 会不停地迭代，而这个迭代过程虽然单次消耗的时间可以忽略不计，但是对于日志量巨大的服务而言影响还是很大的。
 
-接下来就是清空 `buf`，先对 `prefix` 和 `flag` 进行处理（`l.formatHeader`）并存入 `buf`，然后将日志内容也追加到 `buf` 中，最后调用 `out` 属性的 `Write` 方法输出日志。
+写入的时候，就是先清空 `buf`，接着对 `prefix` 和 `flag` 进行处理（`l.formatHeader`）并存入 `buf`，然后将日志内容也追加到 `buf` 中，最后调用 `out` 属性的 `Write` 方法输出日志。
 
 ## 结论
 
