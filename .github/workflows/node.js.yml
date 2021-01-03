@@ -1,0 +1,44 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ source ]
+  pull_request:
+    branches: [ source ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install 
+    - run: npm install -g hexo-cli
+    - run: hexo clean
+    - run: hexo generate
+    - run: set -ev
+    - run: export TZ='Asia/Shanghai'
+    - run: git clone https://github.com/royeo/royeo.github.io.git .deploy_git
+    - run: cd .deploy_git
+    - run: git checkout master
+    - run: cd ../
+    - run: mv .deploy_git/.git/ ./public/
+    - run: cd ./public
+    - run: git config user.name "royeo" 
+    - run: git config user.email "ljn6176@163.com" 
+    - run: git add .
+    - run: git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"
+    - run: git push --force --quiet "https://${GH_TOKEN}@${GH_REPO}" master:master
+
