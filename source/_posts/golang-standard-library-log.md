@@ -25,14 +25,14 @@ Golang 标准库提供了一个简单的 log 包，方便我们记录日志。�
 // log.go
 type Logger struct {
 	mu     sync.Mutex // ensures atomic writes; protects the following fields
-	prefix string     // prefix to write at beginning of each line
+	prefix string     // prefix on each line to identify the logger (but see Lmsgprefix)
 	flag   int        // properties
 	out    io.Writer  // destination for output
 	buf    []byte     // for accumulating text to write
 }
 ```
 
-`out` 属性是日志的输出目标，在 golang 中，很自然的可以想到使用 `io.Writer` 接口类型，与具体实现分离开。之所以不把 `out` 属性暴露出来，是因为需要保证 `out` 的写入和修改都是原子操作，其他属性同理。这里使用 `sync.Mutex` 互斥锁来保证原子操作：
+`out` 属性是日志的输出目标，在 golang 中，很自然的可以想到使用 `io.Writer` 接口，与具体实现分离开。之所以不把 `out` 属性暴露出来，是因为需要保证 `out` 的写入和修改都是原子操作，其他属性同理。这里使用 `sync.Mutex` 互斥锁来保证原子操作：
 
 ```go
 // log.go
