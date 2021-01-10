@@ -1,5 +1,5 @@
 ---
-title: k8s 命名空间
+title: 关于 k8s 命名空间的一些思考
 date: 2021-01-10 18:08:30
 tags:
     - Kubernetes
