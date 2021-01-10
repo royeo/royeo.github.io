@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>读后感：《 一只特立独行的猪 》 — 王小波</title>
+    <url>/2017/12/16/a-maverick-pig/</url>
+    <content><![CDATA[<p>第一次看到这个书名《一只特立独行的猪》，我觉得很有意思，一只猪如何做到特立独行？带着这个问题我读了王小波的这本杂文。</p>
+<p>猪给我的印象就是被圈养在又脏又臭的狭小环境中（此处自动忽略网易的味央猪…），吃了睡，睡了吃，直到它成为餐桌上的食物，被广罗大众花式烹饪。但其实很多人不知道，猪其实是很聪明的生物，甚至比狗和黑猩猩都聪明，而且它们很爱干净。但因为长期活在人类的“统治”之下，猪接受了这样的设置，过着“井井有条”的生活。</p>
+<a id="more"></a>
+<p>书中的一篇杂文讲述了作者与这只特立独行的猪的经历，那是一个趣味十足又耐人寻味的故事。故事中猪是一只非常有灵性的猪，有山羊般的敏捷，也有猫一样的灵活，活的竟然有些潇洒。它没有配合宿命的安排，而是选择了抗争，即使是在面对惨烈的杀猪现场也能镇定自若，机智逃脱，重新主宰了自己的命运。这里特别想引用一下《乔布斯传》里提到的一句广告语：</p>
+<blockquote><p>致疯狂的人。他们特立独行。他们桀骜不驯。他们惹是生非。他们格格不入。他们用与众不同的眼光看待事物。他们不喜欢墨守成规。他们也不愿安于现状。你可以认同他们，反对他们，颂扬或是诋毁他们。但唯独不能漠视他们。</p>
+</blockquote>
+<p>动物也好，人类也好，生存是亘古不变的话题，生存之下则有不同的活法。王小波写这只猪的故事仿佛也是在写他自己，他自己的特立独行，他的自由主义理念，与“猪兄”都不谋而合。恰逢那时候刚看完电影“猩球崛起”，感觉电影里的凯撒和这只猪有很多相似之处，它们都在打破常规，对设置好的生活勇敢的 say “no”，自己掌控着自己命运的方向盘，不怕风越大浪越高。反而是我们自己，可能还不如它们 。。。</p>
+<blockquote><p>我已经四十岁了，除了这只猪，还没见过谁敢于如此无视对生活的设置。相反，我倒见过很多想要设置别人生活的人，还有对被设置的生活安之若素的人。因为这个缘故，我一直怀念这只特立独行的猪。</p>
+<footer><strong>《 一只特立独行的猪 》</strong><cite>王小波</cite></footer></blockquote>
+<p><br></p>
+<p><img src="http://ovu6j7kst.bkt.clouddn.com/%E7%81%AB%E6%98%9F%E6%88%AA%E5%9B%BE_20171223_203016.png" alt="image"></p>
+]]></content>
+      <categories>
+        <category>书海无涯</category>
+      </categories>
+      <tags>
+        <tag>王小波</tag>
+        <tag>一只特立独行的猪</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何修复 503 Service Unavailable 错误</title>
+    <url>/2016/08/24/503-service-unavailable/</url>
+    <content><![CDATA[<div class="note class_name">
+            <p>本文翻译自: <a href="https://www.lifewire.com/503-service-unavailable-explained-2622940" target="_blank" rel="noopener">How to Fix a 503 Service Unavailable Error</a> </p>
+          </div>
+<p>503 Service Unavailable 是一个 HTTP 状态码，表示 Web 服务器目前不可用。</p>
+<a id="more"></a>
+<h2 id="你可能看到的-503-错误信息"><a href="#你可能看到的-503-错误信息" class="headerlink" title="你可能看到的 503 错误信息"></a>你可能看到的 503 错误信息</h2><p>网站和服务器软件可以定制 503 错误信息，所以你可能看到不一样的错误信息。</p>
+<p>以下是常见的 503 错误信息：</p>
+<ul>
+<li>503 Service Unavailable</li>
+<li>503 Service Temporarily Unavailable</li>
+<li>Http/1.1 Service Unavailable</li>
+<li>HTTP Server Error 503</li>
+<li>Service Unavailable - DNS Failure</li>
+<li>503 Error</li>
+<li>HTTP 503</li>
+<li>HTTP Error 503</li>
+<li>Error 503 Service Unavailable </li>
+</ul>
+<p>503 Service Unavailable 错误可能会出现在所有浏览器和所有操作系统上，包括 Window 10 / Window XP，MacOS，Linux等，甚至是你的手机和其他非主流操作系统。只要接入了互联网，那么你就有可能在某些情况下看到 503 错误。浏览器窗口会像显示网页一样显示 503 Service Unavailable 错误。</p>
+<h2 id="503-Service-Unavailable-的错误原因"><a href="#503-Service-Unavailable-的错误原因" class="headerlink" title="503 Service Unavailable 的错误原因"></a>503 Service Unavailable 的错误原因</h2><p>大多数情况下，导致 503 错误的原因是服务器达到负载或正在进行维护。</p>
+<p><strong>Note：</strong>使用 Microsoft IIS 的站点可以通过在 503 后面加一个后缀数字来提供有关 503 Service Unavailable 错误原因的更多具体信息，如 HTTP 错误 503.2 - 服务不可用，这意味着超出并发请求限制。</p>
+<h2 id="如何修复-503-Service-Unavailable"><a href="#如何修复-503-Service-Unavailable" class="headerlink" title="如何修复 503 Service Unavailable"></a>如何修复 503 Service Unavailable</h2><p>503 Service Unavailable 是一个服务端的错误，意味着问题经常出在网站的服务器上，不太可能因为你的电脑的某种问题导致 503 错误。</p>
+<p>无论如何，您可以尝试下面几件事情：</p>
+<ol>
+<li><p>通过点击重新加载/刷新按钮或按 F5 再次访问地址栏的 url。</p>
+<p> 尽管 503 Service Unavailable 错误意味着服务器出现错误，但是这个问题可能只是暂时的，有时只要重新访问该页面就会起作用。</p>
+<p> <strong>重要提示：</strong>如果在支付在线购买时出现 503 Service Unavailable 错误消息，请注意，多次尝试结帐可能会导致创建多个订单，并收取多笔费用！大多数支付系统和一些信用卡公司都有这种情况的保护措施，但仍然需要注意。</p>
+</li>
+<li><p>重启你的路由器和调制解调器，然后重启你的计算机或设备，尤其是当你看到 “Service Unavailable - DNS Failure” 的时候。</p>
+<p> 虽然 503 错误最可能是你访问的网站导致的，但也有可能是你的路由器或计算机上的 DNS 服务器配置有问题，这两个简单的重启可能会修复这个问题。</p>
+<p> <strong>提示：</strong>如果重启设备没有修复 503 DNS Failure 错误，那么可能是 DNS 服务器本身出现了临时问题。在这种情况下，从 <a href="https://www.lifewire.com/free-and-public-dns-servers-2626062" target="_blank" rel="noopener">免费和公共DNS服务器列表</a> 中选择新的 DNS 服务器，并在计算机或路由器上进行修改。如果需要帮助，请参阅 <a href="https://www.lifewire.com/how-to-change-dns-server-settings-2617979" target="_blank" rel="noopener">如何更改DNS服务器</a> 。</p>
+</li>
+<li><p>另一个选择是直接联系网站寻求帮助。网站的管理员很有可能已经知道 503 错误，但告知他们检查问题的状态，这不是一个坏主意。</p>
+<p> 有关热门网站的联系信息，请参阅 <a href="https://www.lifewire.com/website-contact-information-2625174" target="_blank" rel="noopener">网站联系信息列表</a> 。大多数网站都有基于支持的社交网络帐户，有些甚至有电话号码和电子邮件地址。</p>
+</li>
+<li><p>稍后再访问。当访问者流量大幅增加导致服务器负载的时候，经常会出现 503 Service Unavailable 错误，这时候只需要等待一段时间再访问。随着越来越多的访问者离开网站，您的页面加载成功的可能性将会增加。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Node.js 相关技术书籍推荐</title>
     <url>/2017/12/03/book-recommond/</url>
     <content><![CDATA[<p>接触 Node.js 也有段时间了，从一开始对 Node.js 一无所知，到现在能在项目中熟练使用，书籍、文档和实战缺一不可。在学习初期，书籍扮演着一个非常重要的角色，让我对 Node.js 有了一个系统的认识。从看《JavaScript高级程序设计》开始，陆陆续续看了不少 JavaScript、Node.js 以及后端技术的相关书籍。书看的越多，会越发觉得自己知识匮乏，然后就会去寻找更多的书来充实自己。下面就是我整理的 Node.js 后端开发相关的经典技术书籍，排名不分先后，括号内是豆瓣评分，仅作参考。部分书籍的 pdf 文件可以到我的 <a href="https://github.com/LemonSprite/free-programming-books.pdf" target="_blank" rel="noopener">Github</a> 上去下载。</p>
@@ -82,78 +154,6 @@
       <tags>
         <tag>Node.js</tag>
         <tag>技术书籍</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何修复 503 Service Unavailable 错误</title>
-    <url>/2016/08/24/503-service-unavailable/</url>
-    <content><![CDATA[<div class="note class_name">
-            <p>本文翻译自: <a href="https://www.lifewire.com/503-service-unavailable-explained-2622940" target="_blank" rel="noopener">How to Fix a 503 Service Unavailable Error</a> </p>
-          </div>
-<p>503 Service Unavailable 是一个 HTTP 状态码，表示 Web 服务器目前不可用。</p>
-<a id="more"></a>
-<h2 id="你可能看到的-503-错误信息"><a href="#你可能看到的-503-错误信息" class="headerlink" title="你可能看到的 503 错误信息"></a>你可能看到的 503 错误信息</h2><p>网站和服务器软件可以定制 503 错误信息，所以你可能看到不一样的错误信息。</p>
-<p>以下是常见的 503 错误信息：</p>
-<ul>
-<li>503 Service Unavailable</li>
-<li>503 Service Temporarily Unavailable</li>
-<li>Http/1.1 Service Unavailable</li>
-<li>HTTP Server Error 503</li>
-<li>Service Unavailable - DNS Failure</li>
-<li>503 Error</li>
-<li>HTTP 503</li>
-<li>HTTP Error 503</li>
-<li>Error 503 Service Unavailable </li>
-</ul>
-<p>503 Service Unavailable 错误可能会出现在所有浏览器和所有操作系统上，包括 Window 10 / Window XP，MacOS，Linux等，甚至是你的手机和其他非主流操作系统。只要接入了互联网，那么你就有可能在某些情况下看到 503 错误。浏览器窗口会像显示网页一样显示 503 Service Unavailable 错误。</p>
-<h2 id="503-Service-Unavailable-的错误原因"><a href="#503-Service-Unavailable-的错误原因" class="headerlink" title="503 Service Unavailable 的错误原因"></a>503 Service Unavailable 的错误原因</h2><p>大多数情况下，导致 503 错误的原因是服务器达到负载或正在进行维护。</p>
-<p><strong>Note：</strong>使用 Microsoft IIS 的站点可以通过在 503 后面加一个后缀数字来提供有关 503 Service Unavailable 错误原因的更多具体信息，如 HTTP 错误 503.2 - 服务不可用，这意味着超出并发请求限制。</p>
-<h2 id="如何修复-503-Service-Unavailable"><a href="#如何修复-503-Service-Unavailable" class="headerlink" title="如何修复 503 Service Unavailable"></a>如何修复 503 Service Unavailable</h2><p>503 Service Unavailable 是一个服务端的错误，意味着问题经常出在网站的服务器上，不太可能因为你的电脑的某种问题导致 503 错误。</p>
-<p>无论如何，您可以尝试下面几件事情：</p>
-<ol>
-<li><p>通过点击重新加载/刷新按钮或按 F5 再次访问地址栏的 url。</p>
-<p> 尽管 503 Service Unavailable 错误意味着服务器出现错误，但是这个问题可能只是暂时的，有时只要重新访问该页面就会起作用。</p>
-<p> <strong>重要提示：</strong>如果在支付在线购买时出现 503 Service Unavailable 错误消息，请注意，多次尝试结帐可能会导致创建多个订单，并收取多笔费用！大多数支付系统和一些信用卡公司都有这种情况的保护措施，但仍然需要注意。</p>
-</li>
-<li><p>重启你的路由器和调制解调器，然后重启你的计算机或设备，尤其是当你看到 “Service Unavailable - DNS Failure” 的时候。</p>
-<p> 虽然 503 错误最可能是你访问的网站导致的，但也有可能是你的路由器或计算机上的 DNS 服务器配置有问题，这两个简单的重启可能会修复这个问题。</p>
-<p> <strong>提示：</strong>如果重启设备没有修复 503 DNS Failure 错误，那么可能是 DNS 服务器本身出现了临时问题。在这种情况下，从 <a href="https://www.lifewire.com/free-and-public-dns-servers-2626062" target="_blank" rel="noopener">免费和公共DNS服务器列表</a> 中选择新的 DNS 服务器，并在计算机或路由器上进行修改。如果需要帮助，请参阅 <a href="https://www.lifewire.com/how-to-change-dns-server-settings-2617979" target="_blank" rel="noopener">如何更改DNS服务器</a> 。</p>
-</li>
-<li><p>另一个选择是直接联系网站寻求帮助。网站的管理员很有可能已经知道 503 错误，但告知他们检查问题的状态，这不是一个坏主意。</p>
-<p> 有关热门网站的联系信息，请参阅 <a href="https://www.lifewire.com/website-contact-information-2625174" target="_blank" rel="noopener">网站联系信息列表</a> 。大多数网站都有基于支持的社交网络帐户，有些甚至有电话号码和电子邮件地址。</p>
-</li>
-<li><p>稍后再访问。当访问者流量大幅增加导致服务器负载的时候，经常会出现 503 Service Unavailable 错误，这时候只需要等待一段时间再访问。随着越来越多的访问者离开网站，您的页面加载成功的可能性将会增加。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>码梦为生</category>
-      </categories>
-      <tags>
-        <tag>HTTP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>读后感：《 一只特立独行的猪 》 — 王小波</title>
-    <url>/2017/12/16/a-maverick-pig/</url>
-    <content><![CDATA[<p>第一次看到这个书名《一只特立独行的猪》，我觉得很有意思，一只猪如何做到特立独行？带着这个问题我读了王小波的这本杂文。</p>
-<p>猪给我的印象就是被圈养在又脏又臭的狭小环境中（此处自动忽略网易的味央猪…），吃了睡，睡了吃，直到它成为餐桌上的食物，被广罗大众花式烹饪。但其实很多人不知道，猪其实是很聪明的生物，甚至比狗和黑猩猩都聪明，而且它们很爱干净。但因为长期活在人类的“统治”之下，猪接受了这样的设置，过着“井井有条”的生活。</p>
-<a id="more"></a>
-<p>书中的一篇杂文讲述了作者与这只特立独行的猪的经历，那是一个趣味十足又耐人寻味的故事。故事中猪是一只非常有灵性的猪，有山羊般的敏捷，也有猫一样的灵活，活的竟然有些潇洒。它没有配合宿命的安排，而是选择了抗争，即使是在面对惨烈的杀猪现场也能镇定自若，机智逃脱，重新主宰了自己的命运。这里特别想引用一下《乔布斯传》里提到的一句广告语：</p>
-<blockquote><p>致疯狂的人。他们特立独行。他们桀骜不驯。他们惹是生非。他们格格不入。他们用与众不同的眼光看待事物。他们不喜欢墨守成规。他们也不愿安于现状。你可以认同他们，反对他们，颂扬或是诋毁他们。但唯独不能漠视他们。</p>
-</blockquote>
-<p>动物也好，人类也好，生存是亘古不变的话题，生存之下则有不同的活法。王小波写这只猪的故事仿佛也是在写他自己，他自己的特立独行，他的自由主义理念，与“猪兄”都不谋而合。恰逢那时候刚看完电影“猩球崛起”，感觉电影里的凯撒和这只猪有很多相似之处，它们都在打破常规，对设置好的生活勇敢的 say “no”，自己掌控着自己命运的方向盘，不怕风越大浪越高。反而是我们自己，可能还不如它们 。。。</p>
-<blockquote><p>我已经四十岁了，除了这只猪，还没见过谁敢于如此无视对生活的设置。相反，我倒见过很多想要设置别人生活的人，还有对被设置的生活安之若素的人。因为这个缘故，我一直怀念这只特立独行的猪。</p>
-<footer><strong>《 一只特立独行的猪 》</strong><cite>王小波</cite></footer></blockquote>
-<p><br></p>
-<p><img src="http://ovu6j7kst.bkt.clouddn.com/%E7%81%AB%E6%98%9F%E6%88%AA%E5%9B%BE_20171223_203016.png" alt="image"></p>
-]]></content>
-      <categories>
-        <category>书海无涯</category>
-      </categories>
-      <tags>
-        <tag>王小波</tag>
-        <tag>一只特立独行的猪</tag>
       </tags>
   </entry>
   <entry>
@@ -532,6 +532,51 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo 博客搭建</title>
+    <url>/2016/06/19/hexo-blog/</url>
+    <content><![CDATA[<p>作为一名开发人员，一直以来都很想拥有一个个人博客，来和世界分享自己的所见所得。在了解 hexo 后，惊叹于 hexo 搭建个人博客的快速、高效，以及各类丰富的博客主题。千挑万选之下选择了十分简洁大气的 maupassant-hexo 主题，下面是我搭建 maupassant-hexo 主题博客的全过程。</p>
+<a id="more"></a>
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>安装前提：</p>
+<ul>
+<li>Node.js</li>
+<li>Git</li>
+</ul>
+<p>使用 npm 进行 hexo 的全局安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>创建 Hexo 根目录，<code>&lt;folder&gt;</code>为目录名：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br></pre></td></tr></table></figure>
+<p>进入 Hexo 根目录，通过<code>hexo server</code>命令启动服务器，默认的访问地址是：<code>http://localhost:4000</code>，然后就可以看到 hexo 默认主题的页面。</p>
+<h2 id="安装-maupassant-hexo-主题"><a href="#安装-maupassant-hexo-主题" class="headerlink" title="安装 maupassant-hexo 主题"></a>安装 maupassant-hexo 主题</h2><p>在 Hexo 根目录下执行下面的命令，安装主题和渲染器：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/tufu9441/maupassant-hexo.git themes/maupassant</span><br><span class="line">npm install hexo-renderer-jade@0.3.0 --save</span><br><span class="line">npm install hexo-renderer-sass --save</span><br></pre></td></tr></table></figure>
+<p>编辑 Hexo 根目录下的<code>_config.yml</code>，将<code>theme</code>的值改为<code>maupassant</code>，然后就可以删除<code>themes</code>目录下的默认主题<code>landscape</code>了。 </p>
+<blockquote>
+<p>注：如果 <code>npm install hexo-renderer-sass</code> 安装时报错，可能是国内网络问题，请尝试使用代理或者切换至淘宝NPM镜像安装。</p>
+</blockquote>
+<p>然后在 Hexo 根目录下执行<code>hexo server</code>命令，就可以访问到<code>maupassant-hexo</code>主题的页面了。到此本地的博客就算搭建完成了，进一步的配置参考官方文档：</p>
+<ul>
+<li><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">Hexo 配置</a></li>
+<li><a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="noopener">maupassant-hexo 中文文档</a></li>
+</ul>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="添加文章"><a href="#添加文章" class="headerlink" title="# 添加文章"></a># 添加文章</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+<p>如果没有设置 layout 的话，默认使用<code>_config.yml</code>中的<code>default_layout</code>参数代替。如果标题包含空格的话，请使用引号括起来。新建的文章存放在 Hexo 根目录的<code>source/_posts</code>下，也可以手动在<code>source/_posts</code>目录下添加文章。</p>
+<h3 id="添加分类-标签"><a href="#添加分类-标签" class="headerlink" title="# 添加分类 / 标签"></a># 添加分类 / 标签</h3><p>在 <a href="https://hexo.io/zh-cn/docs/front-matter.html" target="_blank" rel="noopener">Front-matter</a> 中添加<code>categories</code>或<code>tags</code>的配置，在右边的侧边栏就会添加对应的分类或标签。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 博客搭建 </span><br><span class="line">date: 2017-07-19 23:11:39</span><br><span class="line">tags: 博客搭建</span><br><span class="line">category: 技术</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h3 id="添加-RSS-订阅功能"><a href="#添加-RSS-订阅功能" class="headerlink" title="# 添加 RSS 订阅功能"></a># 添加 RSS 订阅功能</h3><p>在 Hexo 根目录下执行下面命令，安装<code>hexo-generator-feed</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+<p>在 Hexo 根目录下的<code>_config.yml</code>中添加 RSS 订阅的配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">feed:</span><br><span class="line">  <span class="built_in">type</span>: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  <span class="built_in">limit</span>: 20</span><br></pre></td></tr></table></figure>
+<h3 id="删除友情链接"><a href="#删除友情链接" class="headerlink" title="# 删除友情链接"></a># 删除友情链接</h3><p>注释主题目录下<code>_config.yml</code>中友情链接的配置，如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># links:</span></span><br><span class="line"><span class="comment">#   - title: site-name1</span></span><br><span class="line"><span class="comment">#     url: http://www.example1.com/</span></span><br><span class="line"><span class="comment">#   - title: site-name2</span></span><br><span class="line"><span class="comment">#     url: http://www.example2.com/</span></span><br><span class="line"><span class="comment">#   - title: site-name3</span></span><br><span class="line"><span class="comment">#     url: http://www.example3.com/</span></span><br></pre></td></tr></table></figure>
+<h3 id="更换中文"><a href="#更换中文" class="headerlink" title="# 更换中文"></a># 更换中文</h3><p>编辑 Hexo 根目录下的<code>_config.yml</code>，将<code>language</code>设置为<code>zh-CN</code>。</p>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Gitlab 搭建与 CI 配置</title>
     <url>/2018/11/10/gitlab-build/</url>
     <content><![CDATA[<p>最近有一个独立开发的 Golang 微服务需要上线，项目托管在内部的 GitLab 上，所以需要写一个 .gitlab-ci.yml 文件来走 CI。由于之前一直是在比较成熟的团队中，没有自己写过 GitLab 的 CI 配置，所以索性尝试下自己搭建 GitLab，然后配置一套 CI 来熟悉下。</p>
@@ -583,51 +628,6 @@
       <tags>
         <tag>Golang</tag>
         <tag>Gitlab</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 博客搭建</title>
-    <url>/2016/06/19/hexo-blog/</url>
-    <content><![CDATA[<p>作为一名开发人员，一直以来都很想拥有一个个人博客，来和世界分享自己的所见所得。在了解 hexo 后，惊叹于 hexo 搭建个人博客的快速、高效，以及各类丰富的博客主题。千挑万选之下选择了十分简洁大气的 maupassant-hexo 主题，下面是我搭建 maupassant-hexo 主题博客的全过程。</p>
-<a id="more"></a>
-<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>安装前提：</p>
-<ul>
-<li>Node.js</li>
-<li>Git</li>
-</ul>
-<p>使用 npm 进行 hexo 的全局安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>创建 Hexo 根目录，<code>&lt;folder&gt;</code>为目录名：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br></pre></td></tr></table></figure>
-<p>进入 Hexo 根目录，通过<code>hexo server</code>命令启动服务器，默认的访问地址是：<code>http://localhost:4000</code>，然后就可以看到 hexo 默认主题的页面。</p>
-<h2 id="安装-maupassant-hexo-主题"><a href="#安装-maupassant-hexo-主题" class="headerlink" title="安装 maupassant-hexo 主题"></a>安装 maupassant-hexo 主题</h2><p>在 Hexo 根目录下执行下面的命令，安装主题和渲染器：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/tufu9441/maupassant-hexo.git themes/maupassant</span><br><span class="line">npm install hexo-renderer-jade@0.3.0 --save</span><br><span class="line">npm install hexo-renderer-sass --save</span><br></pre></td></tr></table></figure>
-<p>编辑 Hexo 根目录下的<code>_config.yml</code>，将<code>theme</code>的值改为<code>maupassant</code>，然后就可以删除<code>themes</code>目录下的默认主题<code>landscape</code>了。 </p>
-<blockquote>
-<p>注：如果 <code>npm install hexo-renderer-sass</code> 安装时报错，可能是国内网络问题，请尝试使用代理或者切换至淘宝NPM镜像安装。</p>
-</blockquote>
-<p>然后在 Hexo 根目录下执行<code>hexo server</code>命令，就可以访问到<code>maupassant-hexo</code>主题的页面了。到此本地的博客就算搭建完成了，进一步的配置参考官方文档：</p>
-<ul>
-<li><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">Hexo 配置</a></li>
-<li><a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="noopener">maupassant-hexo 中文文档</a></li>
-</ul>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="添加文章"><a href="#添加文章" class="headerlink" title="# 添加文章"></a># 添加文章</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-<p>如果没有设置 layout 的话，默认使用<code>_config.yml</code>中的<code>default_layout</code>参数代替。如果标题包含空格的话，请使用引号括起来。新建的文章存放在 Hexo 根目录的<code>source/_posts</code>下，也可以手动在<code>source/_posts</code>目录下添加文章。</p>
-<h3 id="添加分类-标签"><a href="#添加分类-标签" class="headerlink" title="# 添加分类 / 标签"></a># 添加分类 / 标签</h3><p>在 <a href="https://hexo.io/zh-cn/docs/front-matter.html" target="_blank" rel="noopener">Front-matter</a> 中添加<code>categories</code>或<code>tags</code>的配置，在右边的侧边栏就会添加对应的分类或标签。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 博客搭建 </span><br><span class="line">date: 2017-07-19 23:11:39</span><br><span class="line">tags: 博客搭建</span><br><span class="line">category: 技术</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h3 id="添加-RSS-订阅功能"><a href="#添加-RSS-订阅功能" class="headerlink" title="# 添加 RSS 订阅功能"></a># 添加 RSS 订阅功能</h3><p>在 Hexo 根目录下执行下面命令，安装<code>hexo-generator-feed</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
-<p>在 Hexo 根目录下的<code>_config.yml</code>中添加 RSS 订阅的配置：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">feed:</span><br><span class="line">  <span class="built_in">type</span>: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  <span class="built_in">limit</span>: 20</span><br></pre></td></tr></table></figure>
-<h3 id="删除友情链接"><a href="#删除友情链接" class="headerlink" title="# 删除友情链接"></a># 删除友情链接</h3><p>注释主题目录下<code>_config.yml</code>中友情链接的配置，如下：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># links:</span></span><br><span class="line"><span class="comment">#   - title: site-name1</span></span><br><span class="line"><span class="comment">#     url: http://www.example1.com/</span></span><br><span class="line"><span class="comment">#   - title: site-name2</span></span><br><span class="line"><span class="comment">#     url: http://www.example2.com/</span></span><br><span class="line"><span class="comment">#   - title: site-name3</span></span><br><span class="line"><span class="comment">#     url: http://www.example3.com/</span></span><br></pre></td></tr></table></figure>
-<h3 id="更换中文"><a href="#更换中文" class="headerlink" title="# 更换中文"></a># 更换中文</h3><p>编辑 Hexo 根目录下的<code>_config.yml</code>，将<code>language</code>设置为<code>zh-CN</code>。</p>
-]]></content>
-      <categories>
-        <category>码梦为生</category>
-      </categories>
-      <tags>
-        <tag>博客搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -705,6 +705,30 @@
       <tags>
         <tag>Golang</tag>
         <tag>Log</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>读后感：《 沉默的大多数 》 — 王小波</title>
+    <url>/2017/05/05/most-of-silence/</url>
+    <content><![CDATA[<p>初读王小波的书，觉得书中的故事大抵离当代社会有点距离。细细品来，方知个中思想在那个年代实属超前，妙言要道。书中很多文章读一遍，尚不能完全领会作者之深意，多次回顾与思辨，才感悟到其中的真知灼见，大有裨益，对于王小波的幽默与锐气也产生了由衷的赞赏。</p>
+<a id="more"></a>
+<h2 id="语录"><a href="#语录" class="headerlink" title="语录"></a>语录</h2><p>话语教会我们很多，但善恶还是可以自明。话语想要教会我们，人与人生来就不平等。在人间，尊卑有序是永恒的真理，但你也可以不听。</p>
+<p>一个人倘若需要从思想中得到快乐，那么他的第一个欲望就是学习。</p>
+<p>知识虽然可以带来幸福，但假如把它压缩成药丸子灌下去，就丧失了乐趣。</p>
+<p>正如上坡和下坡是一条路。</p>
+<p>在科学上，有错误的学说，没有卑鄙的学说。</p>
+<p>有些人受穷，是因为他不想富裕。</p>
+<p>贫困是一种生活方式，富裕是另一种生活方式；追求聪明是一种人生的态度，追求愚蠢则是另一种生活态度。</p>
+<p>吃苦必须有收益，牺牲必须有代价。</p>
+<p>痛苦是艺术的源泉。</p>
+<p>对残疾人的最大尊重，就是不把他当残疾人。</p>
+<p>人生唯一的不幸就是自己的无能。</p>
+]]></content>
+      <categories>
+        <category>书海无涯</category>
+      </categories>
+      <tags>
+        <tag>王小波</tag>
       </tags>
   </entry>
   <entry>
@@ -845,30 +869,6 @@
       </tags>
   </entry>
   <entry>
-    <title>读后感：《 沉默的大多数 》 — 王小波</title>
-    <url>/2017/05/05/most-of-silence/</url>
-    <content><![CDATA[<p>初读王小波的书，觉得书中的故事大抵离当代社会有点距离。细细品来，方知个中思想在那个年代实属超前，妙言要道。书中很多文章读一遍，尚不能完全领会作者之深意，多次回顾与思辨，才感悟到其中的真知灼见，大有裨益，对于王小波的幽默与锐气也产生了由衷的赞赏。</p>
-<a id="more"></a>
-<h2 id="语录"><a href="#语录" class="headerlink" title="语录"></a>语录</h2><p>话语教会我们很多，但善恶还是可以自明。话语想要教会我们，人与人生来就不平等。在人间，尊卑有序是永恒的真理，但你也可以不听。</p>
-<p>一个人倘若需要从思想中得到快乐，那么他的第一个欲望就是学习。</p>
-<p>知识虽然可以带来幸福，但假如把它压缩成药丸子灌下去，就丧失了乐趣。</p>
-<p>正如上坡和下坡是一条路。</p>
-<p>在科学上，有错误的学说，没有卑鄙的学说。</p>
-<p>有些人受穷，是因为他不想富裕。</p>
-<p>贫困是一种生活方式，富裕是另一种生活方式；追求聪明是一种人生的态度，追求愚蠢则是另一种生活态度。</p>
-<p>吃苦必须有收益，牺牲必须有代价。</p>
-<p>痛苦是艺术的源泉。</p>
-<p>对残疾人的最大尊重，就是不把他当残疾人。</p>
-<p>人生唯一的不幸就是自己的无能。</p>
-]]></content>
-      <categories>
-        <category>书海无涯</category>
-      </categories>
-      <tags>
-        <tag>王小波</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL 索引的创建、删除和查看</title>
     <url>/2016/11/15/mysql-index/</url>
     <content><![CDATA[<p>在索引列上，除了有序查找之外，数据库利用各种各样的快速定位技术，能够大大提高查询效率。特别是当数据量非常大，查询涉及多个表时，使用索引往往能使查询速度加快成千上万倍。</p>
@@ -945,6 +945,391 @@
       </tags>
   </entry>
   <entry>
+    <title>k8s 命名空间</title>
+    <url>/2021/01/10/kubernetes-namespace/</url>
+    <content><![CDATA[<h2 id="什么是命名空间"><a href="#什么是命名空间" class="headerlink" title="什么是命名空间"></a>什么是命名空间</h2><p>在单个 k8s 集群中可以创建多个命名空间（namespace），它们在逻辑上彼此隔离，相当于在一个集群中创建了多个虚拟集群。</p>
+<p>命名空间用于分组管理 k8s 集群中的资源对象，每一个添加到 k8s 集群的工作负载（workload）都必须放在一个命名空间中。</p>
+<p>单个命名空间中的同类资源的名称必须唯一，但是相同的名称可以在不同的命名空间中使用。另外你还可以通过定义 ResourceQuota 对象来限制指定命名空间下资源的使用，利用 RBAC 来控制命名空间下的访问权限。</p>
+<a id="more"></a>
+<h2 id="为什么需要命名空间"><a href="#为什么需要命名空间" class="headerlink" title="为什么需要命名空间"></a>为什么需要命名空间</h2><p>使用单个命名空间对于小团队来说会很方便，但是对于大型团队或大型组织来说，拥有多个名称空间有很多好处，包括：</p>
+<ul>
+<li><p><code>隔离</code>：使用命名空间可以把多个团队或多个项目隔离到不同的环境中，不同的团队可以在不同的命名空间中使用相同的资源名称，对一个命名空间执行的操作也不会影响到其他命名空间。</p>
+</li>
+<li><p><code>资源控制</code>：可以通过资源配额来限制单个命名空间可使用的 CPU 和内存资源，这样可以确保每个团队或项目都具有运行所需的资源，并且不会占用所有的可用资源。</p>
+</li>
+<li><p><code>权限控制</code>：可以通过 RBAC 来定义角色和权限，这样可以确保只有授权用户才能访问给定命名空间中的资源。 </p>
+</li>
+<li><p><code>性能</code>：使用命名空间可以提高集群的性能，划分多个命名空间后，每个命名空间下的资源相比使用单个命名空间就会少很多，那么 k8s api 操作的对象集合就会少很多，从而减少 k8s api 的延迟。</p>
+</li>
+</ul>
+<h2 id="初始命名空间"><a href="#初始命名空间" class="headerlink" title="初始命名空间"></a>初始命名空间</h2><p>k8s 初始会创建四个命名空间：</p>
+<ul>
+<li><p><code>default</code>：默认命名空间，如果你创建的资源没有指定命名空间，就会放在这个命名空间下。一般在正式环境不建议把服务部署到这个命名空间，因为这个命名空间下的资源会很混乱而且很难清理。</p>
+</li>
+<li><p><code>kube-system</code>：k8s 系统组件使用的命名空间，例如 <code>apiserver</code>、<code>scheduler</code>、<code>controller-manager</code> 等组件就在这个命名空间。一般情况下，我们应该避免使用这个命名空间，任何对这个命名空间的部署都可能是危险的操作。</p>
+</li>
+<li><p><code>kube-public</code>：用来存放公共资源的命名空间，主要是由 k8s 自己管理。</p>
+</li>
+<li><p><code>kube-node-lease</code>：用来存放与节点相关的租期（Lease）对象，该对象用来提升大规模集群下节点心跳检测的性能。</p>
+</li>
+</ul>
+<p>虽然你可以把服务部署到这些初始创建的命名空间，但还是推荐单独创建你自己的命名空间来管理你的服务和资源，避免对这些初始命名空间的操作影响到整个集群。另外也不推荐将服务部署到 <code>default</code> 命名空间，因为你一不小心可能就把资源创建到了这个命名空间，导致这个命名空间下遗留了大量无用的资源，并且不好清理，在平时测试 k8s 功能或者 demo 的时候倒是可以使用 <code>default</code> 命名空间。</p>
+<h2 id="命名空间的操作"><a href="#命名空间的操作" class="headerlink" title="命名空间的操作"></a>命名空间的操作</h2><h3 id="查看命名空间"><a href="#查看命名空间" class="headerlink" title="查看命名空间"></a>查看命名空间</h3><p>显示集群中所有的命名空间：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubectl get namespace</span><br><span class="line">NAME              STATUS   AGE</span><br><span class="line">default           Active   27d</span><br><span class="line">kube-node-lease   Active   27d</span><br><span class="line">kube-public       Active   27d</span><br><span class="line">kube-system       Active   27d</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>kubectl 命令中的 <code>namespace</code> 可以缩写成 <code>ns</code>，所以可以使用 <code>kubectl get ns</code> 少打几个字符，这里为了展示就不用缩写了。</p>
+</blockquote>
+<p>命名空间包含 <code>Active</code> 和 <code>Terminating</code> 两种状态。<code>Active</code> 表示命名空间正在被使用中，<code>Terminating</code> 表示命名空间正在被删除。</p>
+<p>查询指定命令空间下的 pod（<code>--namespace</code> 可以缩写成 <code>-n</code>）：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubectl get pod --namespace default</span><br><span class="line">NAME                            READY   STATUS    RESTARTS   AGE</span><br><span class="line">nginx-7b9c8ddb75-pctld          1/1     Running   0          2d22h</span><br></pre></td></tr></table></figure>
+<h3 id="创建命名空间"><a href="#创建命名空间" class="headerlink" title="创建命名空间"></a>创建命名空间</h3><p>使用命令创建命名空间：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubectl create namespace demo</span><br></pre></td></tr></table></figure>
+<p>也可以使用 yaml 来创建：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># demo-namespace.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Namespace</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">demo</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubectl apply -f demo-namespace.yaml</span><br></pre></td></tr></table></figure>
+<h3 id="删除命名空间"><a href="#删除命名空间" class="headerlink" title="删除命名空间"></a>删除命名空间</h3><p>删除一个命名空间：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubectl delete namespace demo</span><br></pre></td></tr></table></figure>
+<p>要注意的是，删除一个命名空间后，会自动删除该命名空间的下的所有资源，所以一定要小心使用。在删除命名空间之前，最好先使用 <code>kubectl get all -n &lt;namespace&gt;</code> 列出命名空间下的相关资源，确定资源都是可删除的，再进行删除操作。</p>
+<p>初始创建的 <code>default</code>、<code>kube-system</code>、<code>kube-public</code> 命名空间是不可删除的。</p>
+<h2 id="跨命名空间通信"><a href="#跨命名空间通信" class="headerlink" title="跨命名空间通信"></a>跨命名空间通信</h2><p>k8s 命名空间虽然资源隔离，但是一个命名空间中的服务还是可以与另一个命名空间中的服务进行通信的。这是很常见的需求，例如 A 团队（A 命名空间）的服务要访问 B 团队（B 命名空间）的服务。</p>
+<p>如果你创建了一个 k8s service，k8s 就会创建一个对应的 dns 条目：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&lt;service-name&gt;.&lt;namespace-name&gt;.svc.cluster.local</span><br></pre></td></tr></table></figure>
+<p>比如我在 <code>team-a</code> 命名空间下创建了名为 <code>user</code> 的 k8s service，那么对应 dns 名称就是：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">user.team-a.svc.cluster.local</span><br></pre></td></tr></table></figure>
+<p>在同一个命名空间下，可以通过 k8s service 的名称直接访问到对应服务，比如在 <code>team-a</code> 命名空间下的其他服务要访问 <code>user</code> 服务，<code>user</code> 服务暴露的端口是 8080，那么通过 <code>user:8080</code> 就能找到 <code>user</code> 服务，dns 会自动解析为完整地址 <code>user.team-a.svc.cluster.local</code>。</p>
+<p>但是，如果是不同命名空间下的服务要相互访问，则需使用 k8 service 名称加上命名空间名称。比如在 <code>team-b</code> 命名空间访问 <code>team-a</code> 命名空间的 <code>user</code> 服务，就要使用 <code>user.team-a:8080</code> 地址来访问。</p>
+<h2 id="命名空间划分策略"><a href="#命名空间划分策略" class="headerlink" title="命名空间划分策略"></a>命名空间划分策略</h2><p>不同的团队和组织可以采用不同的命名空间策略，具体取决于团队规模，组织结构，以及项目的复杂性等因素。一般有下面几种划分策略：</p>
+<ul>
+<li><p>根据团队或项目划分</p>
+<p>对于服务较少的小团队来说，使用单个命名空间就足够了。对于大型团队或大型项目来说，为每个单独的团队或项目创建一个命名空间，可以很好进行管理，并利用前面我们提到的命名空间的优点。</p>
+<p>例如：<code>team-a</code>、<code>team-b</code></p>
+</li>
+<li><p>根据开发环境划分</p>
+<p>对于较小的团队或项目来说，命名空间很适合用来在集群中划分测试、预发布以及生成环境。但是通常情况下，建议用完全独立的集群区分不同的开发环境，以确保最大程度的隔离。</p>
+<p>例如：<code>dev</code>、<code>stage</code>、<code>prod</code></p>
+</li>
+<li><p>根据服务层级划分</p>
+<p>后台服务可能分为多个层级，比如有聚合服务、业务逻辑服务、通用组件或中台服务等，不同层级的服务可能使用不同的协议，有不同的访问策略，并且可能重名，那么根据命名空间来划分就可以很方便地做一些区分管理。</p>
+<p>例如：<code>interface</code>、<code>service</code>、<code>infra</code></p>
+</li>
+</ul>
+<!-- ## 命名空间实践
+
+我们团队在使用 k8s 时，结合当前的项目、团队、服务层级，创建了多个命名空间：
+- `wesing-wns`：wns 团队使用
+- `wesing-web`：web 团队使用
+- `wesing-interface`：后台聚合服务层
+- `wesing-service`：后台业务服务
+- `wesing-infra`：后台中台服务或通用组件
+
+由于我们的 k8s 集群已经区分了测试集群和正式集群，所以不需要用命名空间来区分环境。加项目前缀（`wesing-`）一方面是参考了 k8s 里命名空间的命名规范（`kube-public`、`kube-system`），另一方面是考虑到多个项目可能会部署在同一集群，加上项目前缀能做一定的区分。
+
+整体上符合我们当前的服务架构：
+
+![](image/2021-01-10-18-38-43.png) -->
+<h2 id="命名空间使用技巧"><a href="#命名空间使用技巧" class="headerlink" title="命名空间使用技巧"></a>命名空间使用技巧</h2><p>使用 <code>kubectl config</code> 可以设置当前的命名空间的上下文，后续操作就不需要指定命名空间了。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kubectl config <span class="built_in">set</span>-context --current --namespace=&lt;命名空间名称&gt;</span><br></pre></td></tr></table></figure>
+<p>也可以使用开源的 <a href="https://github.com/ahmetb/kubectx" target="_blank" rel="noopener">kubectx</a> 里的 <code>kubens</code> 工具，可以更方便地切换命名空间：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubens kube-system</span><br><span class="line">Context <span class="string">"test"</span> <span class="built_in">set</span>.</span><br><span class="line">Active namespace is <span class="string">"kube-system"</span>.</span><br><span class="line"></span><br><span class="line">$ kubens -</span><br><span class="line">Context <span class="string">"test"</span> <span class="built_in">set</span>.</span><br><span class="line">Active namespace is <span class="string">"default"</span>.</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本文介绍了 k8s 命名空间的概念以及使用方法，命名空间是一个非常简单又重要的概念，可以帮助团队更好的管理集群资源，熟悉命名空间的优点和特性可以帮助你更有效地配置集群，以避免后续带来的麻烦。</p>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>Kubernetes</tag>
+        <tag>Namespace</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown 中文技术文档的写作规范</title>
+    <url>/2017/01/20/markdown-standard/</url>
+    <content><![CDATA[<div class="note class_name">
+            <p>本文转载自: <a href="https://github.com/ruanyf/document-style-guide" target="_blank" rel="noopener">https://github.com/ruanyf/document-style-guide</a> </p>
+          </div>
+<p>中文技术文档的写作规范。</p>
+<a id="more"></a>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><h3 id="层级"><a href="#层级" class="headerlink" title="层级"></a>层级</h3><p>标题分为四级。</p>
+<ul>
+<li>一级标题：文章的标题</li>
+<li>二级标题：文章主要部分的大标题</li>
+<li>三级标题：二级标题下面一级的小标题</li>
+<li>四级标题：三级标题下面某一方面的小标题</li>
+</ul>
+<h3 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h3><ul>
+<li>一级标题下，不能直接出现三级标题。</li>
+<li>标题要避免孤立编号（即同级标题只有一个）。</li>
+<li>下级标题不重复上一级标题的内容。</li>
+<li>谨慎使用四级标题，尽量避免出现，保持层级的简单和防止出现过于复杂的章节。如果三级标题下有并列性的内容，建议只使用项目列表（Item list）。</li>
+</ul>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="字间距"><a href="#字间距" class="headerlink" title="字间距"></a>字间距</h3><p>全角中文字符与半角英文字符之间，应有一个半角空格。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：本文介绍如何快速启动Windows系统。</span><br><span class="line"></span><br><span class="line">正确：本文介绍如何快速启动 Windows 系统。</span><br></pre></td></tr></table></figure>
+<p>全角中文字符与半角阿拉伯数字之间，有没有半角空格都可，但必须保证风格统一，不能两种风格混杂。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">正确：2011年5月15日，我订购了5台笔记本电脑与10台平板电脑。</span><br><span class="line"></span><br><span class="line">正确：2011 年 5 月 15 日，我订购了 5 台笔记本电脑与 10 台平板电脑。</span><br></pre></td></tr></table></figure>
+<p>半角的百分号，视同阿拉伯数字。</p>
+<p>英文单位若不翻译，单位前的阿拉伯数字与单位间不留空格。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：一部容量为 16 GB 的智能手机</span><br><span class="line"></span><br><span class="line">正确：一部容量为 16GB 的智能手机</span><br></pre></td></tr></table></figure>
+<p>半角英文字符和半角阿拉伯数字，与全角标点符号之间不留空格。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：他的电脑是 MacBook Air 。</span><br><span class="line"></span><br><span class="line">正确：他的电脑是 MacBook Air。</span><br></pre></td></tr></table></figure>
+<h3 id="句子"><a href="#句子" class="headerlink" title="句子"></a>句子</h3><ul>
+<li>避免使用长句。一个句子建议不超过 100 字或者正文的 3 行。</li>
+<li>尽量使用简单句和并列句，避免使用复合句。</li>
+</ul>
+<h3 id="写作风格"><a href="#写作风格" class="headerlink" title="写作风格"></a>写作风格</h3><p>尽量不使用被动语态，改为使用主动语态。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：假如此软件尚未被安装，</span><br><span class="line"></span><br><span class="line">正确：假如尚未安装这个软件，</span><br></pre></td></tr></table></figure>
+<p>不使用非正式的语言风格。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：Lady Gaga 的演唱会真是酷毙了，从没看过这么给力的表演！！！</span><br><span class="line"></span><br><span class="line">正确：无法参加本次活动，我深感遗憾。</span><br></pre></td></tr></table></figure>
+<p>用对“的”、“地”、“得”。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">她露出了开心的笑容。</span><br><span class="line">（形容词＋的＋名词）</span><br><span class="line"></span><br><span class="line">她开心地笑了。</span><br><span class="line">（副词＋地＋动词）</span><br><span class="line"></span><br><span class="line">她笑得很开心。</span><br><span class="line">（动词＋得＋副词）</span><br></pre></td></tr></table></figure>
+<p>使用代词时（比如“其”、“该”、“此”、“这”等词），必须明确指代的内容，保证只有一个含义。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：从管理系统可以监视中继系统和受其直接控制的分配系统。</span><br><span class="line"></span><br><span class="line">正确：从管理系统可以监视两个系统：中继系统和受中继系统直接控制的分配系统。</span><br></pre></td></tr></table></figure>
+<p>名词前不要使用过多的形容词。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：此设备的使用必须在接受过本公司举办的正式的设备培训的技师的指导下进行。</span><br><span class="line"></span><br><span class="line">正确：此设备必须在技师的指导下使用，且指导技师必须接受过由本公司举办的正式设备培训。</span><br></pre></td></tr></table></figure>
+<p>单个句子的长度尽量保持在 20 个字以内；20～29 个字的句子，可以接受；30～39 个字的句子，语义必须明确，才能接受；多于 40 个字的句子，在任何情况下都不能接受。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：本产品适用于从由一台服务器进行动作控制的单一节点结构到由多台服务器进行动作控制的并行处理程序结构等多种体系结构。</span><br><span class="line"></span><br><span class="line">正确：本产品适用于多种体系结构。无论是由一台服务器（单一节点结构），还是由多台服务器（并行处理结构）进行动作控制，均可以使用本产品。</span><br></pre></td></tr></table></figure>
+<p>同样一个意思，尽量使用肯定句表达，不使用否定句表达。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：请确认没有接通装置的电源。</span><br><span class="line"></span><br><span class="line">正确：请确认装置的电源已关闭。</span><br></pre></td></tr></table></figure>
+<p>避免使用双重否定句。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：没有删除权限的用户，不能删除此文件。</span><br><span class="line"></span><br><span class="line">正确：用户必须拥有删除权限，才能删除此文件。</span><br></pre></td></tr></table></figure>
+<h3 id="英文处理"><a href="#英文处理" class="headerlink" title="英文处理"></a>英文处理</h3><p>英文原文如果使用了复数形式，翻译成中文时，应该将其还原为单数形式。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">英文：...information stored in random access memory (RAMs)...</span><br><span class="line"></span><br><span class="line">中文：……存储在随机存取存储器（RAM）里的信息……</span><br></pre></td></tr></table></figure>
+<p>外文缩写可以使用半角圆点(<code>.</code>)表示缩写。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">U.S.A.</span><br><span class="line">Apple, Inc.</span><br></pre></td></tr></table></figure>
+<p>表示中文时，英文省略号（<code>...</code>）应改为中文省略号（<code>……</code>）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">英文：5 minutes later...</span><br><span class="line"></span><br><span class="line">中文：5 分钟过去了……</span><br></pre></td></tr></table></figure>
+<p>英文书名或电影名改用中文表达时，双引号应改为书名号。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">英文：He published an article entitled &quot;The Future of the Aviation&quot;.</span><br><span class="line"></span><br><span class="line">中文：他发表了一篇名为《航空业的未来》的文章。</span><br></pre></td></tr></table></figure>
+<p>第一次出现英文词汇时，在括号中给出中文标注。此后再次出现时，直接使用英文缩写即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IOC（International Olympic Committee，国际奥林匹克委员会）。这样定义后，便可以直接使用“IOC”了。</span><br></pre></td></tr></table></figure>
+<p>专有名词中每个词第一个字母均应大写，非专有名词则不需要大写。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">“American Association of Physicists in Medicine”（美国医学物理学家协会）是专有名词，需要大写。</span><br><span class="line"></span><br><span class="line">“online transaction processing”（在线事务处理）不是专有名词，不应大写。</span><br></pre></td></tr></table></figure>
+<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><h3 id="原则-1"><a href="#原则-1" class="headerlink" title="原则"></a>原则</h3><ul>
+<li>一个段落只能有一个主题，或一个中心句子。</li>
+<li>段落的中心句子放在段首，对全段内容进行概述。后面陈述的句子为核心句服务。</li>
+<li>一个段落的长度不能超过七行，最佳段落长度小于等于四行。</li>
+<li>段落的句子语气要使用陈述和肯定语气，避免使用感叹语气。</li>
+<li>段落之间使用一个空行隔开。</li>
+<li>段落开头不要留出空白字符。</li>
+</ul>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>引用第三方内容时，应注明出处。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">One man’s constant is another man’s variable. — Alan Perlis</span><br></pre></td></tr></table></figure>
+<p>如果是全篇转载，请在全文开头显著位置注明作者和出处，并链接至原文。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本文转载自 WikiQuote</span><br></pre></td></tr></table></figure>
+<p>使用外部图片时，必须在图片下方或文末标明来源。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本文部分图片来自 Wikipedia</span><br></pre></td></tr></table></figure>
+<h2 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h2><h3 id="半角数字"><a href="#半角数字" class="headerlink" title="半角数字"></a>半角数字</h3><p>数字一律使用半角形式，不得使用全角形式。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误： 这件商品的价格是１０００元。</span><br><span class="line"></span><br><span class="line">正确： 这件商品的价格是 1000 元。</span><br></pre></td></tr></table></figure>
+<h3 id="千分号"><a href="#千分号" class="headerlink" title="千分号"></a>千分号</h3><p>数值为千位以上，应添加千分号（半角逗号）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">XXX 公司的实收资本为 RMB1,258,000。</span><br></pre></td></tr></table></figure>
+<p>对于 4 ～ 6 位的数值，千分号是选用的，比如1000和1,000都可以接受。对于7位及以上的数值，千分号是必须的。</p>
+<p>多位小数要从小数点后从左向右添加千分号，比如4.234,345。</p>
+<h3 id="货币"><a href="#货币" class="headerlink" title="货币"></a>货币</h3><p>货币应为阿拉伯数字，并在数字前写出货币符号，或在数字后写出货币中文名称。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$1,000</span><br><span class="line">1,000 美元</span><br></pre></td></tr></table></figure>
+<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p>表示数值范围时，用<code>～</code>连接。参见《标点符号》一节的“连接号”部分。</p>
+<p>带有单位或百分号时，两个数字都要加上单位或百分号，不能只加后面一个。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：132～234kg</span><br><span class="line">正确：132kg～234kg</span><br><span class="line"></span><br><span class="line">错误：67～89%</span><br><span class="line">正确：67%～89%</span><br></pre></td></tr></table></figure>
+<h3 id="变化程度的表示法"><a href="#变化程度的表示法" class="headerlink" title="变化程度的表示法"></a>变化程度的表示法</h3><p>数字的增加要使用“增加了”、“增加到”。“了”表示增量，“到”表示定量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">增加到过去的两倍</span><br><span class="line">（过去为一，现在为二）</span><br><span class="line"></span><br><span class="line">增加了两倍</span><br><span class="line">（过去为一，现在为三）</span><br></pre></td></tr></table></figure>
+<p>数字的减少要使用“降低了”、“降低到”。“了”表示增量，“到”表示定量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">降低到百分之八十</span><br><span class="line">（定额是一百，现在是八十）</span><br><span class="line"></span><br><span class="line">降低了百分之八十</span><br><span class="line">（原来是一百，现在是二十）</span><br></pre></td></tr></table></figure>
+<p>不能用“降低N倍”或“减少N倍”的表示法，要用“降低百分之几”或“减少百分之几”。因为减少（或降低）一倍表示数值原来为一百，现在等于零。</p>
+<h2 id="标点符号"><a href="#标点符号" class="headerlink" title="标点符号"></a>标点符号</h2><h3 id="原则-2"><a href="#原则-2" class="headerlink" title="原则"></a>原则</h3><ul>
+<li>中文语句的标点符号，均应该采取全角符号，这样可以保证视觉的一致。</li>
+<li>如果整句为英文，则该句使用英文/半角标点。</li>
+<li>句号、问号、叹号、逗号、顿号、分号和冒号不得出现在一行之首。</li>
+</ul>
+<h3 id="句号"><a href="#句号" class="headerlink" title="句号"></a>句号</h3><p>中文语句中的结尾处应该用全角句号（<code>。</code>）。</p>
+<p>句子末尾用括号加注时，句号应在括号之外。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：关于文件的输出，请参照第 1.3 节（见第 26 页。）</span><br><span class="line"></span><br><span class="line">正确：关于文件的输出，请参照第 1.3 节（见第 26 页）。</span><br></pre></td></tr></table></figure>
+<h3 id="逗号"><a href="#逗号" class="headerlink" title="逗号"></a>逗号</h3><p>逗号<code>，</code>表示句子内部的一般性停顿。</p>
+<p>注意避免“一逗到底”，即整个段落除了结尾，全部停顿都使用逗号。</p>
+<h3 id="顿号"><a href="#顿号" class="headerlink" title="顿号"></a>顿号</h3><p>句子内部的并列词，应该用全角顿号(<code>、</code>) 分隔，而不用逗号，即使并列词是英语也是如此。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：我最欣赏的科技公司有 Google, Facebook, 腾讯, 阿里和百度等。</span><br><span class="line"></span><br><span class="line">正确：我最欣赏的科技公司有 Google、Facebook、腾讯、阿里和百度等。</span><br></pre></td></tr></table></figure>
+<p>英文句子中，并列词语之间使用半角逗号（<code>,</code>）分隔。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：Microsoft Office includes Word, Excel, PowerPoint, Outlook and other components.</span><br></pre></td></tr></table></figure>
+<h3 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h3><p>分号<code>；</code>表示复句内部并列分句之间的停顿。</p>
+<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>引用时，应该使用全角双引号（<code>“ ”</code>），注意前后双引号不同。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：许多人都认为客户服务的核心是“友好”和“专业”。</span><br></pre></td></tr></table></figure>
+<p>引号里面还要用引号时，外面一层用双引号，里面一层用单引号（<code>‘ ’</code>），注意前后单引号不同。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：鲍勃解释道：“我要放音乐，可萨利说，‘不行！’。”</span><br></pre></td></tr></table></figure>
+<h3 id="圆括号"><a href="#圆括号" class="headerlink" title="圆括号"></a>圆括号</h3><p>补充说明时，使用全角圆括号<code>（）</code>，括号前后不加空格。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：请确认所有的连接（电缆和接插件）均安装牢固。</span><br></pre></td></tr></table></figure>
+<h3 id="冒号"><a href="#冒号" class="headerlink" title="冒号"></a>冒号</h3><p>全角冒号（<code>：</code>）常用在需要解释的词语后边，引出解释和说明。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：请确认以下几项内容：时间、地点、活动名称，以及来宾数量。</span><br></pre></td></tr></table></figure>
+<p>表示时间时，应使用半角冒号（<code>:</code>）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：早上 8:00</span><br></pre></td></tr></table></figure>
+<h3 id="省略号"><a href="#省略号" class="headerlink" title="省略号"></a>省略号</h3><p>省略号<code>……</code>表示语句未完、或者语气的不连续。它占两个汉字空间、包含六个省略点，不要使用<code>。。。</code>或<code>...</code>等非标准形式。</p>
+<p>省略号不应与“等”这个词一起使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：我们为会餐准备了香蕉、苹果、梨…等各色水果。</span><br><span class="line"></span><br><span class="line">正确：我们为会餐准备了各色水果，有香蕉、苹果、梨……</span><br><span class="line"></span><br><span class="line">正确：我们为会餐准备了香蕉、苹果、梨等各色水果。</span><br></pre></td></tr></table></figure>
+<h3 id="感叹号"><a href="#感叹号" class="headerlink" title="感叹号"></a>感叹号</h3><p>应该使用平静的语气叙述，尽量避免使用感叹号<code>！</code>。</p>
+<p>不得多个感叹号连用，比如<code>！！</code>和<code>!!!</code>。</p>
+<h3 id="破折号"><a href="#破折号" class="headerlink" title="破折号"></a>破折号</h3><p>破折号<code>————</code>一般用于做进一步解释。破折号应占两个汉字的位置。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：直觉————尽管它并不总是可靠的————告诉我，这事可能出了些问题。</span><br></pre></td></tr></table></figure>
+<h3 id="连接号"><a href="#连接号" class="headerlink" title="连接号"></a>连接号</h3><p>连接号用于连接两个类似的词。</p>
+<p>以下场合应该使用直线连接号（<code>-</code>），占一个半角字符的位置。</p>
+<ul>
+<li>两个名词的复合</li>
+<li><p>图表编号</p>
+<p>  例句：氧化-还原反应</p>
+<p>  例句：图 1-1</p>
+</li>
+</ul>
+<p>以下场合应该使用波浪连接号（<code>～</code>），占一个全角字符的位置。</p>
+<ul>
+<li><p>数值范围（例如日期、时间或数字）</p>
+<p>  例句：2009 年～2011 年</p>
+</li>
+</ul>
+<p>注意，波浪连接号前后两个值都应该加上单位。</p>
+<p>波浪连接号也可以用汉字“至”代替。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：周围温度：-20°C 至 -10°C</span><br></pre></td></tr></table></figure>
+<h2 id="文档体系"><a href="#文档体系" class="headerlink" title="文档体系"></a>文档体系</h2><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>软件手册是一部完整的书，建议采用下面的结构。</p>
+<ul>
+<li>简介（Introduction）： [必备] [文件] 提供对产品和文档本身的总体的、扼要的说明</li>
+<li>快速上手（Getting Started）：[可选] [文件] 如何最快速地使用产品</li>
+<li>入门篇（Basics）： [必备] [目录] 又称”使用篇“，提供初级的使用教程<ul>
+<li>环境准备（Prerequisite）：[必备] [文件] 软件使用需要满足的前置条件</li>
+<li>安装（Installation）：[可选] [文件] 软件的安装方法</li>
+<li>设置（Configuration）：[必备] [文件] 软件的设置</li>
+</ul>
+</li>
+<li>进阶篇（Advanced)：[可选] [目录] 又称”开发篇“，提供中高级的开发教程</li>
+<li>API（Reference）：[可选] [目录|文件] 软件 API 的逐一介绍</li>
+<li>FAQ：[可选] [文件] 常见问题解答</li>
+<li>附录（Appendix）：[可选] [目录] 不属于教程本身、但对阅读教程有帮助的内容<ul>
+<li>Glossary：[可选] [文件] 名词解释</li>
+<li>Recipes：[可选] [文件] 最佳实践</li>
+<li>Troubleshooting：[可选] [文件] 故障处理</li>
+<li>ChangeLog：[可选] [文件] 版本说明</li>
+<li>Feedback：[可选] [文件] 反馈方式</li>
+</ul>
+</li>
+</ul>
+<p>下面是两个真实范例，可参考。</p>
+<ul>
+<li><a href="http://redux.js.org/index.html" target="_blank" rel="noopener">Redux 手册</a></li>
+<li><a href="http://flight-manual.atom.io/" target="_blank" rel="noopener">Atom 手册</a></li>
+</ul>
+<h3 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h3><p>文档的文件名不得含有空格。</p>
+<p>文件名必须使用半角字符，不得使用全角字符。这也意味着，中文不能用于文件名。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误： 名词解释.md</span><br><span class="line"></span><br><span class="line">正确： glossary.md</span><br></pre></td></tr></table></figure>
+<p>文件名建议只使用小写字母，不使用大写字母。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：TroubleShooting.md</span><br><span class="line"></span><br><span class="line">正确：troubleshooting.md</span><br></pre></td></tr></table></figure>
+<p>为了醒目，某些说明文件的文件名，可以使用大写字母，比如<code>README</code>、<code>LICENSE</code>。</p>
+<p>文件名包含多个单词时，单词之间建议使用半角的连词线（<code>-</code>）分隔。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">不佳：advanced_usage.md</span><br><span class="line"></span><br><span class="line">正确：advanced-usage.md</span><br></pre></td></tr></table></figure>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://wenku.baidu.com/view/23cc1a6527d3240c8447efbf.html" target="_blank" rel="noopener">产品手册中文写作规范</a>, by 华为</li>
+<li><a href="http://docs.daocloud.io/write-docs/format" target="_blank" rel="noopener">写作规范和格式规范</a>, by DaoCloud</li>
+<li><a href="http://www.hitachi-tc.co.jp/company/thesis/thesis.pdf" target="_blank" rel="noopener">技术写作技巧在日汉翻译中的应用</a>, by 刘方</li>
+<li><a href="https://www.lengoo.de/documents/styleguides/lengoo_styleguide_ZH.pdf" target="_blank" rel="noopener">简体中文规范指南</a>, by lengoo</li>
+<li><a href="https://open.leancloud.cn/copywriting-style-guide.html" target="_blank" rel="noopener">文档风格指南</a>, by LeanCloud</li>
+<li><a href="https://docs.google.com/document/d/1R8lMCPf6zCD5KEA8ekZ5knK77iw9J-vJ6vEopPemqZM/edit" target="_blank" rel="noopener">豌豆荚文案风格指南</a>, by 豌豆荚</li>
+<li><a href="https://github.com/sparanoid/chinese-copywriting-guidelines" target="_blank" rel="noopener">中文文案排版指北</a>, by sparanoid</li>
+<li><a href="http://w3c.github.io/clreq/" target="_blank" rel="noopener">中文排版需求</a>, by W3C</li>
+<li><a href="http://www.ruanyifeng.com/blog/2017/02/filename-should-be-lowercase.html" target="_blank" rel="noopener">为什么文件名要小写？</a>, by 阮一峰</li>
+</ul>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《现代操作系统》第1章 习题</title>
+    <url>/2018/10/14/modern-operating-systems-c1-exercise/</url>
+    <content><![CDATA[<p>1.什么是多道程序设计？</p>
+<p>Multiprogramming is the rapid switching of the CPU between multiple processes in memory. It is commonly used to keep the CPU busy while one or more processes are doing I/O.</p>
+<a id="more"></a>
+<p>2.什么是SPOOLing？读者是否认为将来的高级个人计算机会把SPOOLing作为标准功能？</p>
+<p>Input spooling is the technique of reading in jobs, for example, from cards, onto the disk, so that when the currently executing processes are finished, there will be work waiting for the CPU. Output spooling consists of first copying printable files to disk before printing them, rather than printing directly as the output is generated. Input spooling on a personal computer is not very likely, but output spooling is.</p>
+<p>3.在早期计算机中，每个字节的读写直接由CPU处理（即没有DMA）。对于多道程序设计而言这种组织方式有什么含义？</p>
+<p>The prime reason for multiprogramming is to give the CPU something to do while waiting for I/O to complete. If there is no DMA, the CPU is fully occupied doing I/O, so there is nothing to be gained (at least in terms of CPU utilization) by multiprogramming. No matter how much I/O a program does, the CPU will be 100% busy. This is of course assume the major delay is the wait while data are copied. A CPU could do other work if the I/O were slow for other reasons (arriving on serial line, for instance).</p>
+<p>4.系列计算机的思想在20世纪60年代由IBM引入进System/360大型机。现在这种思想已经消亡还是继续活跃着？</p>
+<p>It is still alive. For example, Intel makes Pentium I, II, and III, and 4 CPUs with a variety of different properites including spped and power consumption. All of these machines ar architecturally compatible. They differ only in price and perfermance, which is the essence of the family idea.</p>
+<p>5.缓慢采用GUI的一个原因是支持它的硬件的成本（高昂）。为了支持25行80列字符的单色文本屏幕应该需要多少视频RAM？对于1024x768像素24位色彩位图需要多少视频RAM？在1989年（$5/KB）这些RAM的成本是多少？现在它的成本是多少？</p>
+<p>A 25x80 character monochrome text screen requires a 2000-byte buffer. 2580=2000 The 1024x768 pixel 24-bit color bitmap requires 2359296 bytes. 102476824/8=2359296 In 1980 these two options would have cost $10 and $11520, respectively. 20005/1024=9.77 2359296*5/1024=11520 For current prices, check on how much RAM currently costs, probably less than $1/MB.</p>
+<p>6.在建立一个操作系统时有几个设计目的，例如资源利用、及时性，健壮性等。请列举两个可能互相矛盾的设计目的。</p>
+<p>Consider fairness and real time. Fairness requires that each process be allocated it resources in a fair way, with no process getting more than its fair share. On the other hand, real time requires that resources be allocated based on the times when different processes must complete their execution. A real time process may get a disproportionate share of the resources.</p>
+<p>7.下面哪一条指令只能在内核态中使用？</p>
+<p>a)禁止所有的中断。 b)读日期-时间时钟。 c)设置日期-时间时钟。 d)改变存储器映像。</p>
+<p>acd</p>
+<p>8.考虑一个有两个CPU的系统，并且每一个CPU有两个线程（超线程）。假设有三个程序P0,P1,P2，分别以运行时间5ms,10ms,20ms开始。运行这些程序需要多少时间？假设这三个程序都是100%限于CPU，在运行时无阻塞，并且一旦设定就不改变CPU。</p>
+<p>It may take 20, 25, 30 or 35 msec to complete the execution of these programs depending on how the operating system schedules them. If P0 and P1 are scheduled on the same CPU and P2 is scheduled on the other CPU, it will take 20 mses. If P0 and P2 are scheduled on the same CPU and P1 is scheduled on the other CPU, it will take 25 msec. If P1 and P2 are scheduled on the same CPU and P0 is scheduled on the other CPU, it will take 30 msec. If all three are on the same CPU, it will take 35 msec.</p>
+<p>9.一台计算机有一个四级流水线，每一级都花费相同的时间执行其工作，即1ns。这台机器每秒可执行多少条指令？</p>
+<p>Every nanosecond one instruction emerges from the pipeline. This means the machine is executing 1 billion instructions per second. It does not matter at all how many stages the pipeline has. A 10-stage pipeline with 1 nsec per stage would also execute 1 billion instructions per second. All that matters is how often a finished instruction pops out the end of the pipeline.</p>
+<p>10.假设一个计算机系统有高速缓存、内存（RAM）以及磁盘，操作系统用虚拟内存。读取缓存中的一个词需要2ns，RAM需要10ns，磁盘需要10ms。如果缓存的命中率是95%，内存的是（缓存失效）99%，读取一个词的平均时间是多少？</p>
+<p>Average access time = 0.95 × 2 nsec (word is cache)</p>
+<ul>
+<li>0.05 × 0.99 × 10 nsec (word is in RAM, but not in cache)</li>
+<li>0.05 × 0.01 × 10,000,000 nsec (word on disk only) = 5002.395 nsec = 5.002395 μsec</li>
+</ul>
+<p>11.一位校对人员注意到在一部将要出版的操作系统教科书手稿中有一个多次出现的拼写错误。这本书大致有700页。每页50行，一行80个字符。若把文稿用电子扫描，那么，主副本进入图1-9中的每个存储系统的层次要花费多少时间？对于内存储方式，考虑所给定的存取时间是每次一个1024字符的盘块，而对于磁带，假设给定开始时间后的存取时间和和磁盘存储时间相同。</p>
+<p>The manuscript contains 80 X 50 X 700 = 2.8 million characters. This is, of course, impossible to fit into the registers of any currently available CPU and is too big for a 1-MB cache, but if such hardware were available, the manuscript could be scanned in 2.8 msec ( 2.8 X 10^6 X 10^-9 s) from the registers or 5.8 msec (2.8 X 10^6 X 2 X 10^-9 s) from the cache. There are approximately 2700 ( 2.8 X 10^6 % 1024 = 2735 ) 1024-byte blocks of data, so scanning from the disk would require about 27 seconds (2700 X 10 X 10^-3= 27s ), and from tape 2 minutes 7 senconds ( 100 + 27 = 127s tape不考虑读入时的文件大小？ ).</p>
+<p>12.**在用户程序进行一个系统调用，以读写磁盘文件时，该程序提供指示说明了所需要的文件，一个指向数据缓冲区的指针以及计数。然后，控制权转给操作系统，它调用相关的驱动程序。假设驱动程序启动磁盘并且直到中断发生才终止。在从磁盘读的情况下，很明显，调用者会被阻塞（因为文件中没有数据）。在向磁盘写时会发生什么情况？需要把调用者阻塞一直等到磁盘传送完成为止吗？</p>
+<p>Maybe. If the caller get control back and immediately overwrites the data, when the write finally occurs, the wrong data will be written. However, if the driver first copied the data to a private buffer before returning, then the caller can be allowed to continue immediately. Another possiblity is to allow the caller to continue and give it a singal when the buffer may be used, but this is tricky and error prone.</p>
+<p>13.什么是陷阱指令？在操作系统中解释它的用途。</p>
+<p>A trap instruction switches the execution mode of a CPU from the user mode to the kernel mode. This instruction allow a user program to invoke functions in the operation system kernel.</p>
+<p>14.陷阱和中断的主要差别是什么？</p>
+<p>A trap is caused by the program and is synchronous with it. If the program is run again and again, the trap will always occur exactly the same position in the instruction stream. An interrupt is caused by an external event and its timing is not reproducible.</p>
+<p>15.在分时系统中为什么需要进程表？在只有一个进程存在的个人计算机系统中，该进程控制整个机器直到进程结束，这种机器也需要进程表吗？</p>
+<p>The process table is needed to store the state of a process that is currently suspended, either ready or blocked. It is not needed in a single process system because the single process is never suspended.</p>
+<p>16.说明有没有理由要在一个非空的目录中安装一个文件系统？如果要这样做，如何做？</p>
+<p>Mounting a file system makes any files already in the mount point directory inaccessible, so mount points are normally empty. However, a system administrator might want to copy some of the most important files normally located in the mounted directory to the mount point so they could be found in their noraml path in an emergency when the mounted device was being repaired.</p>
+<p>17.在一个操作系统中系统调用的目的是什么？</p>
+<p>A system call allows a user process to access and execute operating system functions indside the kernel. User programs use system calls to invoke operating system services.</p>
+<p>18.对于下列系统调用，给出引起失败的条件：fork、exec以及unlink。</p>
+<p>Fork can fail if there are no free slot left in the process table (and possibley if there is no memory or swap space left). Exec can fail if the file name given does not exist or is not a valid executable file. Unlink can fail if the file to be unlinked does not exist or the calling process does not have authority to unlink it.</p>
+<p>19.在count = write(fd, buffer, nbytes);调用中，能在count中而不是nbytes中返回值吗？如果能，为什么？</p>
+<p>If the call fails, for example because fd is incorrect, it can return -1. It can also fail because the disk is full and it is not possible to write the number of bytes requested. On a correct termination, it always return nbytes.</p>
+<p>20.有一个文件，其文件描述符是fd，内含字节序列：3,1,4,1,5,9,2,6,5,3,5。有如下系统调用：lseek(fd,3,SEEK_SET); read(fd,&amp;buffter,4); 其中lseek调用寻找文件中的字节3。在读操作完成后，buffer中的内容是什么？</p>
+<p>It contains the bytes: 1, 5, 9, 2.</p>
+<p>21.假设一个10MB的文件存在磁盘连续扇区的同一个轨道上（轨道号：50）。磁盘的磁头臂此时位于第100号轨道。要想从磁盘上找回这个文件，需要多长时间？假设碰头臂从一个柱面移动到下一个柱面需要1ms，当文件的开始部分存储在的扇区旋转到磁头下需要5ms，并且读的速率是100MB/s。</p>
+<p>(100-50)*1ms+5ms+10MB/100MB/s=55ms+0.1X10^3ms=155ms</p>
+<p>Time to retrieve the file = 1 * 50 ms (Time to move the arm over track # 50)</p>
+<ul>
+<li>5 ms (Time for the first sector to rotate under the head)</li>
+<li>10/100 * 1000 ms (Read 10 MB) = 155 ms</li>
+</ul>
+<p>22.块特殊文件和字符特殊文件的基本差别是什么？</p>
+<p>Block special files consist of numbered blocks, each of which can be read or written independently of all the other ones. It is possible to seek to any block and start reading and writing. This is not possible with character specical files.</p>
+<p>23.在图1-17的例子中库调用称为read，而系统调用自身称为read。这两者都有相同的名字是正常的吗？如果不是，哪一个更重要？</p>
+<p>System calls do not really have names, other than in a documentation sence. When the libray procedure read traps to the kernel, it puts the number of the system call in a register ro on the stack. This number is used to index into a table. There is really no name used anywhere. On the other hand, the name of the library procedure is very import, since this is what appears in the program.</p>
+<p>24.在分布式系统中，客户机-服务器模式很普遍。这种模式能用在单个计算机的系统中吗？</p>
+<p>Yes it can, especially if the kernel is message-passing system.</p>
+<p>25.对于程序员而言，系统调用就像对其他库过程的调用一样。有无必要让程序员了解哪一个库过程导致了系统调用？在什么情形下，为什么？</p>
+<p>As far as program logic is concerned it does not matter whether a call to a library procedure results in a system call. But if perfermance is an issue, if a task can be accomplished without a system call the program will run faster. Every system call involves overhead time in switching from the user context to the kernel context. Furthermore, on a multiuser system the operatiing system may schedule another process o run when a system call completes, further slowing the progress in real time of a calling process.</p>
+<p>26.图1-23说明有一批UNIX的系统调用没有与之相等价的Win32 API。对于所列出的每一个没有Win32等价的调用，若程序员要把一个UNIX程序转换到Windows下运行，会有什么后果？</p>
+<p>Serval UNIX calls have no counterpart in the Win32 API: Link: a Win32 program cannot refer to a file by an alternative name or see it in more than one directory. Also, attempting to create a link is a convenient way to test fro and create a lock on a file. Mount and umount: a Windows program cannot make assumptions about standard path names because on systems with multiple disk drives the drive name part of the path may be different. Chmod: Windows uses access control lists Kill: Windows programmers cannot kill a misbehaving program that is not cooperating.</p>
+<p>27.可移植的操作系统是能从一个系统体系结构到另一个体系结构的移动不需要任何修改的操作系统。请解释为什么建立一个完全可移植性的操作系统是不可行的。描述一下在设计一个高度可移植的操作系统时你设计的高级的两层是什么样的。</p>
+<p>Every system architecture has its own set of instructions that it can execute. Thus a Pentumn cannot excute SPARC programs and SPARC cannot execute Pentium programs. Also, different architectures differ in bus architecture used (such as VME, ISA, PCI, MCA, SBus, ..) as well as the word size of the CPU (usually 32 or 64 bit). Because of these differences in hardware, it is not feasible to build an operating system that is completely portable. A highly portable operating system will consist of two high-level layers—a machine-dependent layer and a machine independent layer. The machine-dependent layer addresses the specifics of the hardware, and must be implemented separately for every architecture. This layer provides a uniform interface on which the machine-independent layer is built. The machine-independent layer has to be implemented only onece. To be highly protable, the size of the machine-dependent layer must be kept as small as possible.</p>
+<p>28.请解释在建立基于微内核的操作系统时策略与机制的分离带来的好处。</p>
+<p>Separation of policy and mechanism allows OS designers to implement a small number of basic primitives in the kernel. These primitives are simpified, because they are not dependent of any specific policy. They can then be used to implement more complex mechanisms and policies at the user level.</p>
+<p>29.下面是单位转换的练习：</p>
+<ul>
+<li>a)一微年是多少秒？</li>
+<li>b)微米常称为micron。那么gigamicron是多长？</li>
+<li>c)1TB存储器有多少字节？</li>
+<li>d)地球的质量是6000yottagram，换算成kilogram是多少？</li>
+</ul>
+<p>answers:</p>
+<ul>
+<li>a) A micro year is 10^-6 X 365 X 24 X 3600 = 31.536 sec.</li>
+<li>b) 10^9*10^-6=1000m</li>
+<li>c) 2^10 X 2^10 X 2^10 X 2^10 = 2^40 Bytes</li>
+<li>d) 6000 X 10^24 X 10^-3 = 6 X 10^24 kilogram</li>
+</ul>
+<p>30.写一个各图1-19类似的shell，但是包含足够的实际可工作的代码，这样读者可以测试它。读者还可以添加某些功能，如输入输出重定向、管道以及后台作业等。</p>
+<p>31.如果读者拥有一个个人UNIX类操作系统（Linux/MINIX/FreeBSD等），可以安全地崩溃和再启动，请写一个可以试图创建一个无限制数量子进程的shell脚本并观察所发生的事。在运行实验之前 ，通过shell键入sync，在磁盘上备份好文件缓冲区以避免毁坏文件系统。（注意：在没有得到系统管理呐的允许之前，不要在分时系统上进行这一尝试。其后果将会立即发生，尝试者可能会被抓住并受到惩罚。）</p>
+<p>32.用一个类似于UNIX od或MS-DOS DEBUG的程序考察并尝试解释UNIX类系统或Windows的目录。提示：如何进行取决于OS允许做什么。一个有益的技巧是在一个有某个操作系统的软盘上创建一个目录，然后使用一个允许进行此类的访问的不同的操作系统读盘上的原始数据。</p>
+]]></content>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL 性能优化</title>
     <url>/2016/09/02/mysql-optimization/</url>
     <content><![CDATA[<p>MySQL性能优化的一些建议。</p>
@@ -972,55 +1357,6 @@
       </categories>
       <tags>
         <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Protocol Buffer 介绍</title>
-    <url>/2018/06/02/protocol-buffer-introduction/</url>
-    <content><![CDATA[<p><code>protocol buffer</code> 是一种语言无关，平台无关，可扩展的序列化结构化数据的方式，用于通信协议，数据存储等。</p>
-<a id="more"></a>
-<p><code>protocol buffer</code> 目前支持Java，Python，Objective-C 和 C++ 中的生成代码。使用新的 <code>proto3</code> 语言版本，您还可以使用 Go，Ruby 和 C＃ 等更多语言。</p>
-<h2 id="为什么选择-Protocol-Buffer-？"><a href="#为什么选择-Protocol-Buffer-？" class="headerlink" title="为什么选择 Protocol Buffer ？"></a>为什么选择 Protocol Buffer ？</h2><p>通常我们定义好的请求和响应在客户端和服务端都需要手动编码/解码，但是随着接口的版本变化，可能需要对版本号进行判断才能做相应的处理。这样使得新的协议变得复杂，因为开发者必须确保请求发起者与处理请求的实际服务器之间的所有服务器都能理解新协议，然后才能开始使用新协议。</p>
-<p><code>protocol buffer</code> 旨在解决这些问题：</p>
-<ul>
-<li><p>可以很容易地引入新的字段，中间服务器可以简单地解析并传递数据，而无需了解所有字段。</p>
-</li>
-<li><p>协议格式的描述性更强，可以用各种语言来处理（C ++，Java等），并且速度更快，空间更小。</p>
-</li>
-</ul>
-<h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><p>开始使用 <code>protocol buffer</code> 的第一步，就是创建一个 <code>.proto</code> 文件来定义 <code>protocol buffer</code> 消息类型，指定你想要序列化的信息结构。</p>
-<p>每个 <code>protocol buffer</code> 消息是一个小的逻辑信息记录，包含一系列 <code>name-value</code> 对。下面是 <code>.proto</code> 文件的一个例子，定义了一条包含人员信息的消息：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">message Person &#123;</span><br><span class="line">  required string name = 1;</span><br><span class="line">  required int32 id = 2;</span><br><span class="line">  optional string email = 3;</span><br><span class="line"></span><br><span class="line">  enum PhoneType &#123;</span><br><span class="line">    MOBILE = 0;</span><br><span class="line">    HOME = 1;</span><br><span class="line">    WORK = 2;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  message PhoneNumber &#123;</span><br><span class="line">    required string number = 1;</span><br><span class="line">    optional PhoneType type = 2 [default = HOME];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  repeated PhoneNumber phone = 4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>正如你所看到的，消息格式很简单。每种消息类型（如 <code>message Person</code>）都有一个或多个带有唯一编号的字段，每个字段都有一个名称和一个值类型。其中值类型可以是数字（整数或浮点数），布尔值，字符串，原始字节，甚至可以是其他 <code>protocol buffer</code> 的消息类型。在消息类型中，你可以指定可选字段，必填字段和重复字段。访问 <a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="noopener">Protocol Buffer Language Guide</a> 以获取更多有关 <code>.proto</code> 文件的信息。</p>
-<p>当在 <code>.proto</code> 文件中定义完消息后，你需要运行 <code>protocol buffer</code> 编译器为你使用的编程语言生成数据访问类。这为每个字段提供了简单的访问器（如 <code>name()</code> 和 <code>set_name()</code>），以及对整个结构的进行序列化/解析的方法。例如，如果您选择的语言是 <code>C++</code>，那么在上面的示例中运行编译器将生成一个名为 <code>Person</code> 的类。然后，就可以在应用程序中使用此类来填充，序列化并检索 <code>Person</code> <code>protocol buffer</code> 消息。你可能会写下如下代码：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Person person;</span><br><span class="line">person.set_name(<span class="string">"John Doe"</span>);</span><br><span class="line">person.set_id(<span class="number">1234</span>);</span><br><span class="line">person.set_email(<span class="string">"jdoe@example.com"</span>);</span><br><span class="line"><span class="function">fstream <span class="title">output</span><span class="params">(<span class="string">"myfile"</span>, ios::out | ios::binary)</span></span>;</span><br><span class="line">person.SerializeToOstream(&amp;output);</span><br></pre></td></tr></table></figure>
-<p>然后，可以通过以下方式读取消息：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">fstream <span class="title">input</span><span class="params">(<span class="string">"myfile"</span>, ios::in | ios::binary)</span></span>;</span><br><span class="line">Person person;</span><br><span class="line">person.ParseFromIstream(&amp;input);</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"Name: "</span> &lt;&lt; person.name() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"E-mail: "</span> &lt;&lt; person.email() &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
-<p>你可以将新字段添加到消息格式中，而不会破坏向后兼容性; 解析时旧的二进制文件会简单地忽略新字段。所以如果你有一个使用 <code>protocol buffer</code> 作为数据格式的通信协议，你可以扩展你的协议，而不用担心破坏现有的代码。</p>
-<p>详细的 <code>protocol buffer</code> 介绍以及使用请参考 <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">官方文档</a>。</p>
-]]></content>
-      <categories>
-        <category>码梦为生</category>
-      </categories>
-      <tags>
-        <tag>Protocol Buffer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微信小程序 - 便利店在哪（已上线）</title>
-    <url>/2018/02/27/weapp-store/</url>
-    <content><![CDATA[<p>业余时间做了一个小程序  “便利店在哪”，功能很简单，就是找出你附近的便利店。</p>
-<a id="more"></a>
-<p>灵感来源于经常找不到地方买烟。。。</p>
-<p>代码已经开源在 Github 上了，地址：<a href="https://github.com/royeo/weapp-store" target="_blank" rel="noopener">royeo/weapp-store</a> ，欢迎 star。</p>
-<p><img src="http://ovu6j7kst.bkt.clouddn.com/demo.png" style="margin-left: 0; border: 0"></p>
-<p><img src="http://ovu6j7kst.bkt.clouddn.com/weapp.jpg" style="margin-left: 0; border: 0"></p>
-]]></content>
-      <categories>
-        <category>与日俱新</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>
@@ -1473,388 +1809,52 @@
       </tags>
   </entry>
   <entry>
-    <title>k8s 命名空间</title>
-    <url>/2021/01/10/kubernetes-namespace/</url>
-    <content><![CDATA[<a id="more"></a>
-<h2 id="什么是命名空间"><a href="#什么是命名空间" class="headerlink" title="什么是命名空间"></a>什么是命名空间</h2><p>在单个 k8s 集群中可以创建多个命名空间（namespace），它们在逻辑上彼此隔离，相当于在一个集群中创建了多个虚拟集群。</p>
-<p>命名空间用于分组管理 k8s 集群中的资源对象，每一个添加到 k8s 集群的工作负载（workload）都必须放在一个命名空间中。</p>
-<p>单个命名空间中的同类资源的名称必须唯一，但是相同的名称可以在不同的命名空间中使用。另外你还可以通过定义 ResourceQuota 对象来限制指定命名空间下资源的使用，利用 RBAC 来控制命名空间下的访问权限。</p>
-<h2 id="为什么需要命名空间"><a href="#为什么需要命名空间" class="headerlink" title="为什么需要命名空间"></a>为什么需要命名空间</h2><p>使用单个命名空间对于小团队来说会很方便，但是对于大型团队或大型组织来说，拥有多个名称空间有很多好处，包括：</p>
+    <title>Protocol Buffer 介绍</title>
+    <url>/2018/06/02/protocol-buffer-introduction/</url>
+    <content><![CDATA[<p><code>protocol buffer</code> 是一种语言无关，平台无关，可扩展的序列化结构化数据的方式，用于通信协议，数据存储等。</p>
+<a id="more"></a>
+<p><code>protocol buffer</code> 目前支持Java，Python，Objective-C 和 C++ 中的生成代码。使用新的 <code>proto3</code> 语言版本，您还可以使用 Go，Ruby 和 C＃ 等更多语言。</p>
+<h2 id="为什么选择-Protocol-Buffer-？"><a href="#为什么选择-Protocol-Buffer-？" class="headerlink" title="为什么选择 Protocol Buffer ？"></a>为什么选择 Protocol Buffer ？</h2><p>通常我们定义好的请求和响应在客户端和服务端都需要手动编码/解码，但是随着接口的版本变化，可能需要对版本号进行判断才能做相应的处理。这样使得新的协议变得复杂，因为开发者必须确保请求发起者与处理请求的实际服务器之间的所有服务器都能理解新协议，然后才能开始使用新协议。</p>
+<p><code>protocol buffer</code> 旨在解决这些问题：</p>
 <ul>
-<li><p><code>隔离</code>：使用命名空间可以把多个团队或多个项目隔离到不同的环境中，不同的团队可以在不同的命名空间中使用相同的资源名称，对一个命名空间执行的操作也不会影响到其他命名空间。</p>
+<li><p>可以很容易地引入新的字段，中间服务器可以简单地解析并传递数据，而无需了解所有字段。</p>
 </li>
-<li><p><code>资源控制</code>：可以通过资源配额来限制单个命名空间可使用的 CPU 和内存资源，这样可以确保每个团队或项目都具有运行所需的资源，并且不会占用所有的可用资源。</p>
-</li>
-<li><p><code>权限控制</code>：可以通过 RBAC 来定义角色和权限，这样可以确保只有授权用户才能访问给定命名空间中的资源。 </p>
-</li>
-<li><p><code>性能</code>：使用命名空间可以提高集群的性能，划分多个命名空间后，每个命名空间下的资源相比使用单个命名空间就会少很多，那么 k8s api 操作的对象集合就会少很多，从而减少 k8s api 的延迟。</p>
+<li><p>协议格式的描述性更强，可以用各种语言来处理（C ++，Java等），并且速度更快，空间更小。</p>
 </li>
 </ul>
-<h2 id="初始命名空间"><a href="#初始命名空间" class="headerlink" title="初始命名空间"></a>初始命名空间</h2><p>k8s 初始会创建四个命名空间：</p>
-<ul>
-<li><p><code>default</code>：默认命名空间，如果你创建的资源没有指定命名空间，就会放在这个命名空间下。一般在正式环境不建议把服务部署到这个命名空间，因为这个命名空间下的资源会很混乱而且很难清理。</p>
-</li>
-<li><p><code>kube-system</code>：k8s 系统组件使用的命名空间，例如 <code>apiserver</code>、<code>scheduler</code>、<code>controller-manager</code> 等组件就在这个命名空间。一般情况下，我们应该避免使用这个命名空间，任何对这个命名空间的部署都可能是危险的操作。</p>
-</li>
-<li><p><code>kube-public</code>：用来存放公共资源的命名空间，主要是由 k8s 自己管理。</p>
-</li>
-<li><p><code>kube-node-lease</code>：用来存放与节点相关的租期（Lease）对象，该对象用来提升大规模集群下节点心跳检测的性能。</p>
-</li>
-</ul>
-<p>虽然你可以把服务部署到这些初始创建的命名空间，但还是推荐单独创建你自己的命名空间来管理你的服务和资源，避免对这些初始命名空间的操作影响到整个集群。另外也不推荐将服务部署到 <code>default</code> 命名空间，因为你一不小心可能就把资源创建到了这个命名空间，导致这个命名空间下遗留了大量无用的资源，并且不好清理，在平时测试 k8s 功能或者 demo 的时候倒是可以使用 <code>default</code> 命名空间。</p>
-<h2 id="命名空间的操作"><a href="#命名空间的操作" class="headerlink" title="命名空间的操作"></a>命名空间的操作</h2><h3 id="查看命名空间"><a href="#查看命名空间" class="headerlink" title="查看命名空间"></a>查看命名空间</h3><p>显示集群中所有的命名空间：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubectl get namespace</span><br><span class="line">NAME              STATUS   AGE</span><br><span class="line">default           Active   27d</span><br><span class="line">kube-node-lease   Active   27d</span><br><span class="line">kube-public       Active   27d</span><br><span class="line">kube-system       Active   27d</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>kubectl 命令中的 <code>namespace</code> 可以缩写成 <code>ns</code>，所以可以使用 <code>kubectl get ns</code> 少打几个字符，这里为了展示就不用缩写了。</p>
-</blockquote>
-<p>命名空间包含 <code>Active</code> 和 <code>Terminating</code> 两种状态。<code>Active</code> 表示命名空间正在被使用中，<code>Terminating</code> 表示命名空间正在被删除。</p>
-<p>查询指定命令空间下的 pod（<code>--namespace</code> 可以缩写成 <code>-n</code>）：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubectl get pod --namespace default</span><br><span class="line">NAME                            READY   STATUS    RESTARTS   AGE</span><br><span class="line">nginx-7b9c8ddb75-pctld          1/1     Running   0          2d22h</span><br></pre></td></tr></table></figure>
-<h3 id="创建命名空间"><a href="#创建命名空间" class="headerlink" title="创建命名空间"></a>创建命名空间</h3><p>使用命令创建命名空间：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubectl create namespace demo</span><br></pre></td></tr></table></figure>
-<p>也可以使用 yaml 来创建：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># demo-namespace.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Namespace</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">demo</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubectl apply -f demo-namespace.yaml</span><br></pre></td></tr></table></figure>
-<h3 id="删除命名空间"><a href="#删除命名空间" class="headerlink" title="删除命名空间"></a>删除命名空间</h3><p>删除一个命名空间：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubectl delete namespace demo</span><br></pre></td></tr></table></figure>
-<p>要注意的是，删除一个命名空间后，会自动删除该命名空间的下的所有资源，所以一定要小心使用。在删除命名空间之前，最好先使用 <code>kubectl get all -n &lt;namespace&gt;</code> 列出命名空间下的相关资源，确定资源都是可删除的，再进行删除操作。</p>
-<p>初始创建的 <code>default</code>、<code>kube-system</code>、<code>kube-public</code> 命名空间是不可删除的。</p>
-<h2 id="跨命名空间通信"><a href="#跨命名空间通信" class="headerlink" title="跨命名空间通信"></a>跨命名空间通信</h2><p>k8s 命名空间虽然资源隔离，但是一个命名空间中的服务还是可以与另一个命名空间中的服务进行通信的。这是很常见的需求，例如 A 团队（A 命名空间）的服务要访问 B 团队（B 命名空间）的服务。</p>
-<p>如果你创建了一个 k8s service，k8s 就会创建一个对应的 dns 条目：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&lt;service-name&gt;.&lt;namespace-name&gt;.svc.cluster.local</span><br></pre></td></tr></table></figure>
-<p>比如我在 <code>team-a</code> 命名空间下创建了名为 <code>user</code> 的 k8s service，那么对应 dns 名称就是：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">user.team-a.svc.cluster.local</span><br></pre></td></tr></table></figure>
-<p>在同一个命名空间下，可以通过 k8s service 的名称直接访问到对应服务，比如在 <code>team-a</code> 命名空间下的其他服务要访问 <code>user</code> 服务，<code>user</code> 服务暴露的端口是 8080，那么通过 <code>user:8080</code> 就能找到 <code>user</code> 服务，dns 会自动解析为完整地址 <code>user.team-a.svc.cluster.local</code>。</p>
-<p>但是，如果是不同命名空间下的服务要相互访问，则需使用 k8 service 名称加上命名空间名称。比如在 <code>team-b</code> 命名空间访问 <code>team-a</code> 命名空间的 <code>user</code> 服务，就要使用 <code>user.team-a:8080</code> 地址来访问。</p>
-<h2 id="命名空间划分策略"><a href="#命名空间划分策略" class="headerlink" title="命名空间划分策略"></a>命名空间划分策略</h2><p>不同的团队和组织可以采用不同的命名空间策略，具体取决于团队规模，组织结构，以及项目的复杂性等因素。一般有下面几种划分策略：</p>
-<ul>
-<li><p>根据团队或项目划分</p>
-<p>对于服务较少的小团队来说，使用单个命名空间就足够了。对于大型团队或大型项目来说，为每个单独的团队或项目创建一个命名空间，可以很好进行管理，并利用前面我们提到的命名空间的优点。</p>
-<p>例如：<code>team-a</code>、<code>team-b</code></p>
-</li>
-<li><p>根据开发环境划分</p>
-<p>对于较小的团队或项目来说，命名空间很适合用来在集群中划分测试、预发布以及生成环境。但是通常情况下，建议用完全独立的集群区分不同的开发环境，以确保最大程度的隔离。</p>
-<p>例如：<code>dev</code>、<code>stage</code>、<code>prod</code></p>
-</li>
-<li><p>根据服务层级划分</p>
-<p>后台服务可能分为多个层级，比如有聚合服务、业务逻辑服务、通用组件或中台服务等，不同层级的服务可能使用不同的协议，有不同的访问策略，并且可能重名，那么根据命名空间来划分就可以很方便地做一些区分管理。</p>
-<p>例如：<code>interface</code>、<code>service</code>、<code>infra</code></p>
-</li>
-</ul>
-<!-- ## 命名空间实践
-
-我们团队在使用 k8s 时，结合当前的项目、团队、服务层级，创建了多个命名空间：
-- `wesing-wns`：wns 团队使用
-- `wesing-web`：web 团队使用
-- `wesing-interface`：后台聚合服务层
-- `wesing-service`：后台业务服务
-- `wesing-infra`：后台中台服务或通用组件
-
-由于我们的 k8s 集群已经区分了测试集群和正式集群，所以不需要用命名空间来区分环境。加项目前缀（`wesing-`）一方面是参考了 k8s 里命名空间的命名规范（`kube-public`、`kube-system`），另一方面是考虑到多个项目可能会部署在同一集群，加上项目前缀能做一定的区分。
-
-整体上符合我们当前的服务架构：
-
-![](image/2021-01-10-18-38-43.png) -->
-<h2 id="命名空间使用技巧"><a href="#命名空间使用技巧" class="headerlink" title="命名空间使用技巧"></a>命名空间使用技巧</h2><p>使用 <code>kubectl config</code> 可以设置当前的命名空间的上下文，后续操作就不需要指定命名空间了。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kubectl config <span class="built_in">set</span>-context --current --namespace=&lt;命名空间名称&gt;</span><br></pre></td></tr></table></figure>
-<p>也可以使用开源的 <a href="https://github.com/ahmetb/kubectx" target="_blank" rel="noopener">kubectx</a> 里的 <code>kubens</code> 工具，可以更方便地切换命名空间：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubens kube-system</span><br><span class="line">Context <span class="string">"test"</span> <span class="built_in">set</span>.</span><br><span class="line">Active namespace is <span class="string">"kube-system"</span>.</span><br><span class="line"></span><br><span class="line">$ kubens -</span><br><span class="line">Context <span class="string">"test"</span> <span class="built_in">set</span>.</span><br><span class="line">Active namespace is <span class="string">"default"</span>.</span><br></pre></td></tr></table></figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本文介绍了 k8s 命名空间的概念以及使用方法，命名空间是一个非常简单又重要的概念，可以帮助团队更好的管理集群资源，熟悉命名空间的优点和特性可以帮助你更有效地配置集群，以避免后续带来的麻烦。</p>
+<h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><p>开始使用 <code>protocol buffer</code> 的第一步，就是创建一个 <code>.proto</code> 文件来定义 <code>protocol buffer</code> 消息类型，指定你想要序列化的信息结构。</p>
+<p>每个 <code>protocol buffer</code> 消息是一个小的逻辑信息记录，包含一系列 <code>name-value</code> 对。下面是 <code>.proto</code> 文件的一个例子，定义了一条包含人员信息的消息：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">message Person &#123;</span><br><span class="line">  required string name = 1;</span><br><span class="line">  required int32 id = 2;</span><br><span class="line">  optional string email = 3;</span><br><span class="line"></span><br><span class="line">  enum PhoneType &#123;</span><br><span class="line">    MOBILE = 0;</span><br><span class="line">    HOME = 1;</span><br><span class="line">    WORK = 2;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  message PhoneNumber &#123;</span><br><span class="line">    required string number = 1;</span><br><span class="line">    optional PhoneType type = 2 [default = HOME];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  repeated PhoneNumber phone = 4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>正如你所看到的，消息格式很简单。每种消息类型（如 <code>message Person</code>）都有一个或多个带有唯一编号的字段，每个字段都有一个名称和一个值类型。其中值类型可以是数字（整数或浮点数），布尔值，字符串，原始字节，甚至可以是其他 <code>protocol buffer</code> 的消息类型。在消息类型中，你可以指定可选字段，必填字段和重复字段。访问 <a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="noopener">Protocol Buffer Language Guide</a> 以获取更多有关 <code>.proto</code> 文件的信息。</p>
+<p>当在 <code>.proto</code> 文件中定义完消息后，你需要运行 <code>protocol buffer</code> 编译器为你使用的编程语言生成数据访问类。这为每个字段提供了简单的访问器（如 <code>name()</code> 和 <code>set_name()</code>），以及对整个结构的进行序列化/解析的方法。例如，如果您选择的语言是 <code>C++</code>，那么在上面的示例中运行编译器将生成一个名为 <code>Person</code> 的类。然后，就可以在应用程序中使用此类来填充，序列化并检索 <code>Person</code> <code>protocol buffer</code> 消息。你可能会写下如下代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Person person;</span><br><span class="line">person.set_name(<span class="string">"John Doe"</span>);</span><br><span class="line">person.set_id(<span class="number">1234</span>);</span><br><span class="line">person.set_email(<span class="string">"jdoe@example.com"</span>);</span><br><span class="line"><span class="function">fstream <span class="title">output</span><span class="params">(<span class="string">"myfile"</span>, ios::out | ios::binary)</span></span>;</span><br><span class="line">person.SerializeToOstream(&amp;output);</span><br></pre></td></tr></table></figure>
+<p>然后，可以通过以下方式读取消息：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">fstream <span class="title">input</span><span class="params">(<span class="string">"myfile"</span>, ios::in | ios::binary)</span></span>;</span><br><span class="line">Person person;</span><br><span class="line">person.ParseFromIstream(&amp;input);</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"Name: "</span> &lt;&lt; person.name() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"E-mail: "</span> &lt;&lt; person.email() &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<p>你可以将新字段添加到消息格式中，而不会破坏向后兼容性; 解析时旧的二进制文件会简单地忽略新字段。所以如果你有一个使用 <code>protocol buffer</code> 作为数据格式的通信协议，你可以扩展你的协议，而不用担心破坏现有的代码。</p>
+<p>详细的 <code>protocol buffer</code> 介绍以及使用请参考 <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">官方文档</a>。</p>
 ]]></content>
       <categories>
         <category>码梦为生</category>
       </categories>
       <tags>
-        <tag>Kubernetes</tag>
-        <tag>Namespace</tag>
+        <tag>Protocol Buffer</tag>
       </tags>
   </entry>
   <entry>
-    <title>Markdown 中文技术文档的写作规范</title>
-    <url>/2017/01/20/markdown-standard/</url>
-    <content><![CDATA[<div class="note class_name">
-            <p>本文转载自: <a href="https://github.com/ruanyf/document-style-guide" target="_blank" rel="noopener">https://github.com/ruanyf/document-style-guide</a> </p>
-          </div>
-<p>中文技术文档的写作规范。</p>
+    <title>微信小程序 - 便利店在哪（已上线）</title>
+    <url>/2018/02/27/weapp-store/</url>
+    <content><![CDATA[<p>业余时间做了一个小程序  “便利店在哪”，功能很简单，就是找出你附近的便利店。</p>
 <a id="more"></a>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><h3 id="层级"><a href="#层级" class="headerlink" title="层级"></a>层级</h3><p>标题分为四级。</p>
-<ul>
-<li>一级标题：文章的标题</li>
-<li>二级标题：文章主要部分的大标题</li>
-<li>三级标题：二级标题下面一级的小标题</li>
-<li>四级标题：三级标题下面某一方面的小标题</li>
-</ul>
-<h3 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h3><ul>
-<li>一级标题下，不能直接出现三级标题。</li>
-<li>标题要避免孤立编号（即同级标题只有一个）。</li>
-<li>下级标题不重复上一级标题的内容。</li>
-<li>谨慎使用四级标题，尽量避免出现，保持层级的简单和防止出现过于复杂的章节。如果三级标题下有并列性的内容，建议只使用项目列表（Item list）。</li>
-</ul>
-<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="字间距"><a href="#字间距" class="headerlink" title="字间距"></a>字间距</h3><p>全角中文字符与半角英文字符之间，应有一个半角空格。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：本文介绍如何快速启动Windows系统。</span><br><span class="line"></span><br><span class="line">正确：本文介绍如何快速启动 Windows 系统。</span><br></pre></td></tr></table></figure>
-<p>全角中文字符与半角阿拉伯数字之间，有没有半角空格都可，但必须保证风格统一，不能两种风格混杂。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">正确：2011年5月15日，我订购了5台笔记本电脑与10台平板电脑。</span><br><span class="line"></span><br><span class="line">正确：2011 年 5 月 15 日，我订购了 5 台笔记本电脑与 10 台平板电脑。</span><br></pre></td></tr></table></figure>
-<p>半角的百分号，视同阿拉伯数字。</p>
-<p>英文单位若不翻译，单位前的阿拉伯数字与单位间不留空格。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：一部容量为 16 GB 的智能手机</span><br><span class="line"></span><br><span class="line">正确：一部容量为 16GB 的智能手机</span><br></pre></td></tr></table></figure>
-<p>半角英文字符和半角阿拉伯数字，与全角标点符号之间不留空格。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：他的电脑是 MacBook Air 。</span><br><span class="line"></span><br><span class="line">正确：他的电脑是 MacBook Air。</span><br></pre></td></tr></table></figure>
-<h3 id="句子"><a href="#句子" class="headerlink" title="句子"></a>句子</h3><ul>
-<li>避免使用长句。一个句子建议不超过 100 字或者正文的 3 行。</li>
-<li>尽量使用简单句和并列句，避免使用复合句。</li>
-</ul>
-<h3 id="写作风格"><a href="#写作风格" class="headerlink" title="写作风格"></a>写作风格</h3><p>尽量不使用被动语态，改为使用主动语态。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：假如此软件尚未被安装，</span><br><span class="line"></span><br><span class="line">正确：假如尚未安装这个软件，</span><br></pre></td></tr></table></figure>
-<p>不使用非正式的语言风格。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：Lady Gaga 的演唱会真是酷毙了，从没看过这么给力的表演！！！</span><br><span class="line"></span><br><span class="line">正确：无法参加本次活动，我深感遗憾。</span><br></pre></td></tr></table></figure>
-<p>用对“的”、“地”、“得”。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">她露出了开心的笑容。</span><br><span class="line">（形容词＋的＋名词）</span><br><span class="line"></span><br><span class="line">她开心地笑了。</span><br><span class="line">（副词＋地＋动词）</span><br><span class="line"></span><br><span class="line">她笑得很开心。</span><br><span class="line">（动词＋得＋副词）</span><br></pre></td></tr></table></figure>
-<p>使用代词时（比如“其”、“该”、“此”、“这”等词），必须明确指代的内容，保证只有一个含义。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：从管理系统可以监视中继系统和受其直接控制的分配系统。</span><br><span class="line"></span><br><span class="line">正确：从管理系统可以监视两个系统：中继系统和受中继系统直接控制的分配系统。</span><br></pre></td></tr></table></figure>
-<p>名词前不要使用过多的形容词。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：此设备的使用必须在接受过本公司举办的正式的设备培训的技师的指导下进行。</span><br><span class="line"></span><br><span class="line">正确：此设备必须在技师的指导下使用，且指导技师必须接受过由本公司举办的正式设备培训。</span><br></pre></td></tr></table></figure>
-<p>单个句子的长度尽量保持在 20 个字以内；20～29 个字的句子，可以接受；30～39 个字的句子，语义必须明确，才能接受；多于 40 个字的句子，在任何情况下都不能接受。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：本产品适用于从由一台服务器进行动作控制的单一节点结构到由多台服务器进行动作控制的并行处理程序结构等多种体系结构。</span><br><span class="line"></span><br><span class="line">正确：本产品适用于多种体系结构。无论是由一台服务器（单一节点结构），还是由多台服务器（并行处理结构）进行动作控制，均可以使用本产品。</span><br></pre></td></tr></table></figure>
-<p>同样一个意思，尽量使用肯定句表达，不使用否定句表达。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：请确认没有接通装置的电源。</span><br><span class="line"></span><br><span class="line">正确：请确认装置的电源已关闭。</span><br></pre></td></tr></table></figure>
-<p>避免使用双重否定句。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：没有删除权限的用户，不能删除此文件。</span><br><span class="line"></span><br><span class="line">正确：用户必须拥有删除权限，才能删除此文件。</span><br></pre></td></tr></table></figure>
-<h3 id="英文处理"><a href="#英文处理" class="headerlink" title="英文处理"></a>英文处理</h3><p>英文原文如果使用了复数形式，翻译成中文时，应该将其还原为单数形式。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">英文：...information stored in random access memory (RAMs)...</span><br><span class="line"></span><br><span class="line">中文：……存储在随机存取存储器（RAM）里的信息……</span><br></pre></td></tr></table></figure>
-<p>外文缩写可以使用半角圆点(<code>.</code>)表示缩写。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">U.S.A.</span><br><span class="line">Apple, Inc.</span><br></pre></td></tr></table></figure>
-<p>表示中文时，英文省略号（<code>...</code>）应改为中文省略号（<code>……</code>）。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">英文：5 minutes later...</span><br><span class="line"></span><br><span class="line">中文：5 分钟过去了……</span><br></pre></td></tr></table></figure>
-<p>英文书名或电影名改用中文表达时，双引号应改为书名号。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">英文：He published an article entitled &quot;The Future of the Aviation&quot;.</span><br><span class="line"></span><br><span class="line">中文：他发表了一篇名为《航空业的未来》的文章。</span><br></pre></td></tr></table></figure>
-<p>第一次出现英文词汇时，在括号中给出中文标注。此后再次出现时，直接使用英文缩写即可。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IOC（International Olympic Committee，国际奥林匹克委员会）。这样定义后，便可以直接使用“IOC”了。</span><br></pre></td></tr></table></figure>
-<p>专有名词中每个词第一个字母均应大写，非专有名词则不需要大写。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">“American Association of Physicists in Medicine”（美国医学物理学家协会）是专有名词，需要大写。</span><br><span class="line"></span><br><span class="line">“online transaction processing”（在线事务处理）不是专有名词，不应大写。</span><br></pre></td></tr></table></figure>
-<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><h3 id="原则-1"><a href="#原则-1" class="headerlink" title="原则"></a>原则</h3><ul>
-<li>一个段落只能有一个主题，或一个中心句子。</li>
-<li>段落的中心句子放在段首，对全段内容进行概述。后面陈述的句子为核心句服务。</li>
-<li>一个段落的长度不能超过七行，最佳段落长度小于等于四行。</li>
-<li>段落的句子语气要使用陈述和肯定语气，避免使用感叹语气。</li>
-<li>段落之间使用一个空行隔开。</li>
-<li>段落开头不要留出空白字符。</li>
-</ul>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>引用第三方内容时，应注明出处。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">One man’s constant is another man’s variable. — Alan Perlis</span><br></pre></td></tr></table></figure>
-<p>如果是全篇转载，请在全文开头显著位置注明作者和出处，并链接至原文。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本文转载自 WikiQuote</span><br></pre></td></tr></table></figure>
-<p>使用外部图片时，必须在图片下方或文末标明来源。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本文部分图片来自 Wikipedia</span><br></pre></td></tr></table></figure>
-<h2 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h2><h3 id="半角数字"><a href="#半角数字" class="headerlink" title="半角数字"></a>半角数字</h3><p>数字一律使用半角形式，不得使用全角形式。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误： 这件商品的价格是１０００元。</span><br><span class="line"></span><br><span class="line">正确： 这件商品的价格是 1000 元。</span><br></pre></td></tr></table></figure>
-<h3 id="千分号"><a href="#千分号" class="headerlink" title="千分号"></a>千分号</h3><p>数值为千位以上，应添加千分号（半角逗号）。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">XXX 公司的实收资本为 RMB1,258,000。</span><br></pre></td></tr></table></figure>
-<p>对于 4 ～ 6 位的数值，千分号是选用的，比如1000和1,000都可以接受。对于7位及以上的数值，千分号是必须的。</p>
-<p>多位小数要从小数点后从左向右添加千分号，比如4.234,345。</p>
-<h3 id="货币"><a href="#货币" class="headerlink" title="货币"></a>货币</h3><p>货币应为阿拉伯数字，并在数字前写出货币符号，或在数字后写出货币中文名称。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$1,000</span><br><span class="line">1,000 美元</span><br></pre></td></tr></table></figure>
-<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p>表示数值范围时，用<code>～</code>连接。参见《标点符号》一节的“连接号”部分。</p>
-<p>带有单位或百分号时，两个数字都要加上单位或百分号，不能只加后面一个。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：132～234kg</span><br><span class="line">正确：132kg～234kg</span><br><span class="line"></span><br><span class="line">错误：67～89%</span><br><span class="line">正确：67%～89%</span><br></pre></td></tr></table></figure>
-<h3 id="变化程度的表示法"><a href="#变化程度的表示法" class="headerlink" title="变化程度的表示法"></a>变化程度的表示法</h3><p>数字的增加要使用“增加了”、“增加到”。“了”表示增量，“到”表示定量。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">增加到过去的两倍</span><br><span class="line">（过去为一，现在为二）</span><br><span class="line"></span><br><span class="line">增加了两倍</span><br><span class="line">（过去为一，现在为三）</span><br></pre></td></tr></table></figure>
-<p>数字的减少要使用“降低了”、“降低到”。“了”表示增量，“到”表示定量。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">降低到百分之八十</span><br><span class="line">（定额是一百，现在是八十）</span><br><span class="line"></span><br><span class="line">降低了百分之八十</span><br><span class="line">（原来是一百，现在是二十）</span><br></pre></td></tr></table></figure>
-<p>不能用“降低N倍”或“减少N倍”的表示法，要用“降低百分之几”或“减少百分之几”。因为减少（或降低）一倍表示数值原来为一百，现在等于零。</p>
-<h2 id="标点符号"><a href="#标点符号" class="headerlink" title="标点符号"></a>标点符号</h2><h3 id="原则-2"><a href="#原则-2" class="headerlink" title="原则"></a>原则</h3><ul>
-<li>中文语句的标点符号，均应该采取全角符号，这样可以保证视觉的一致。</li>
-<li>如果整句为英文，则该句使用英文/半角标点。</li>
-<li>句号、问号、叹号、逗号、顿号、分号和冒号不得出现在一行之首。</li>
-</ul>
-<h3 id="句号"><a href="#句号" class="headerlink" title="句号"></a>句号</h3><p>中文语句中的结尾处应该用全角句号（<code>。</code>）。</p>
-<p>句子末尾用括号加注时，句号应在括号之外。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：关于文件的输出，请参照第 1.3 节（见第 26 页。）</span><br><span class="line"></span><br><span class="line">正确：关于文件的输出，请参照第 1.3 节（见第 26 页）。</span><br></pre></td></tr></table></figure>
-<h3 id="逗号"><a href="#逗号" class="headerlink" title="逗号"></a>逗号</h3><p>逗号<code>，</code>表示句子内部的一般性停顿。</p>
-<p>注意避免“一逗到底”，即整个段落除了结尾，全部停顿都使用逗号。</p>
-<h3 id="顿号"><a href="#顿号" class="headerlink" title="顿号"></a>顿号</h3><p>句子内部的并列词，应该用全角顿号(<code>、</code>) 分隔，而不用逗号，即使并列词是英语也是如此。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：我最欣赏的科技公司有 Google, Facebook, 腾讯, 阿里和百度等。</span><br><span class="line"></span><br><span class="line">正确：我最欣赏的科技公司有 Google、Facebook、腾讯、阿里和百度等。</span><br></pre></td></tr></table></figure>
-<p>英文句子中，并列词语之间使用半角逗号（<code>,</code>）分隔。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：Microsoft Office includes Word, Excel, PowerPoint, Outlook and other components.</span><br></pre></td></tr></table></figure>
-<h3 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h3><p>分号<code>；</code>表示复句内部并列分句之间的停顿。</p>
-<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>引用时，应该使用全角双引号（<code>“ ”</code>），注意前后双引号不同。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：许多人都认为客户服务的核心是“友好”和“专业”。</span><br></pre></td></tr></table></figure>
-<p>引号里面还要用引号时，外面一层用双引号，里面一层用单引号（<code>‘ ’</code>），注意前后单引号不同。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：鲍勃解释道：“我要放音乐，可萨利说，‘不行！’。”</span><br></pre></td></tr></table></figure>
-<h3 id="圆括号"><a href="#圆括号" class="headerlink" title="圆括号"></a>圆括号</h3><p>补充说明时，使用全角圆括号<code>（）</code>，括号前后不加空格。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：请确认所有的连接（电缆和接插件）均安装牢固。</span><br></pre></td></tr></table></figure>
-<h3 id="冒号"><a href="#冒号" class="headerlink" title="冒号"></a>冒号</h3><p>全角冒号（<code>：</code>）常用在需要解释的词语后边，引出解释和说明。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：请确认以下几项内容：时间、地点、活动名称，以及来宾数量。</span><br></pre></td></tr></table></figure>
-<p>表示时间时，应使用半角冒号（<code>:</code>）。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：早上 8:00</span><br></pre></td></tr></table></figure>
-<h3 id="省略号"><a href="#省略号" class="headerlink" title="省略号"></a>省略号</h3><p>省略号<code>……</code>表示语句未完、或者语气的不连续。它占两个汉字空间、包含六个省略点，不要使用<code>。。。</code>或<code>...</code>等非标准形式。</p>
-<p>省略号不应与“等”这个词一起使用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：我们为会餐准备了香蕉、苹果、梨…等各色水果。</span><br><span class="line"></span><br><span class="line">正确：我们为会餐准备了各色水果，有香蕉、苹果、梨……</span><br><span class="line"></span><br><span class="line">正确：我们为会餐准备了香蕉、苹果、梨等各色水果。</span><br></pre></td></tr></table></figure>
-<h3 id="感叹号"><a href="#感叹号" class="headerlink" title="感叹号"></a>感叹号</h3><p>应该使用平静的语气叙述，尽量避免使用感叹号<code>！</code>。</p>
-<p>不得多个感叹号连用，比如<code>！！</code>和<code>!!!</code>。</p>
-<h3 id="破折号"><a href="#破折号" class="headerlink" title="破折号"></a>破折号</h3><p>破折号<code>————</code>一般用于做进一步解释。破折号应占两个汉字的位置。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：直觉————尽管它并不总是可靠的————告诉我，这事可能出了些问题。</span><br></pre></td></tr></table></figure>
-<h3 id="连接号"><a href="#连接号" class="headerlink" title="连接号"></a>连接号</h3><p>连接号用于连接两个类似的词。</p>
-<p>以下场合应该使用直线连接号（<code>-</code>），占一个半角字符的位置。</p>
-<ul>
-<li>两个名词的复合</li>
-<li><p>图表编号</p>
-<p>  例句：氧化-还原反应</p>
-<p>  例句：图 1-1</p>
-</li>
-</ul>
-<p>以下场合应该使用波浪连接号（<code>～</code>），占一个全角字符的位置。</p>
-<ul>
-<li><p>数值范围（例如日期、时间或数字）</p>
-<p>  例句：2009 年～2011 年</p>
-</li>
-</ul>
-<p>注意，波浪连接号前后两个值都应该加上单位。</p>
-<p>波浪连接号也可以用汉字“至”代替。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例句：周围温度：-20°C 至 -10°C</span><br></pre></td></tr></table></figure>
-<h2 id="文档体系"><a href="#文档体系" class="headerlink" title="文档体系"></a>文档体系</h2><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>软件手册是一部完整的书，建议采用下面的结构。</p>
-<ul>
-<li>简介（Introduction）： [必备] [文件] 提供对产品和文档本身的总体的、扼要的说明</li>
-<li>快速上手（Getting Started）：[可选] [文件] 如何最快速地使用产品</li>
-<li>入门篇（Basics）： [必备] [目录] 又称”使用篇“，提供初级的使用教程<ul>
-<li>环境准备（Prerequisite）：[必备] [文件] 软件使用需要满足的前置条件</li>
-<li>安装（Installation）：[可选] [文件] 软件的安装方法</li>
-<li>设置（Configuration）：[必备] [文件] 软件的设置</li>
-</ul>
-</li>
-<li>进阶篇（Advanced)：[可选] [目录] 又称”开发篇“，提供中高级的开发教程</li>
-<li>API（Reference）：[可选] [目录|文件] 软件 API 的逐一介绍</li>
-<li>FAQ：[可选] [文件] 常见问题解答</li>
-<li>附录（Appendix）：[可选] [目录] 不属于教程本身、但对阅读教程有帮助的内容<ul>
-<li>Glossary：[可选] [文件] 名词解释</li>
-<li>Recipes：[可选] [文件] 最佳实践</li>
-<li>Troubleshooting：[可选] [文件] 故障处理</li>
-<li>ChangeLog：[可选] [文件] 版本说明</li>
-<li>Feedback：[可选] [文件] 反馈方式</li>
-</ul>
-</li>
-</ul>
-<p>下面是两个真实范例，可参考。</p>
-<ul>
-<li><a href="http://redux.js.org/index.html" target="_blank" rel="noopener">Redux 手册</a></li>
-<li><a href="http://flight-manual.atom.io/" target="_blank" rel="noopener">Atom 手册</a></li>
-</ul>
-<h3 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h3><p>文档的文件名不得含有空格。</p>
-<p>文件名必须使用半角字符，不得使用全角字符。这也意味着，中文不能用于文件名。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误： 名词解释.md</span><br><span class="line"></span><br><span class="line">正确： glossary.md</span><br></pre></td></tr></table></figure>
-<p>文件名建议只使用小写字母，不使用大写字母。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">错误：TroubleShooting.md</span><br><span class="line"></span><br><span class="line">正确：troubleshooting.md</span><br></pre></td></tr></table></figure>
-<p>为了醒目，某些说明文件的文件名，可以使用大写字母，比如<code>README</code>、<code>LICENSE</code>。</p>
-<p>文件名包含多个单词时，单词之间建议使用半角的连词线（<code>-</code>）分隔。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">不佳：advanced_usage.md</span><br><span class="line"></span><br><span class="line">正确：advanced-usage.md</span><br></pre></td></tr></table></figure>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a href="https://wenku.baidu.com/view/23cc1a6527d3240c8447efbf.html" target="_blank" rel="noopener">产品手册中文写作规范</a>, by 华为</li>
-<li><a href="http://docs.daocloud.io/write-docs/format" target="_blank" rel="noopener">写作规范和格式规范</a>, by DaoCloud</li>
-<li><a href="http://www.hitachi-tc.co.jp/company/thesis/thesis.pdf" target="_blank" rel="noopener">技术写作技巧在日汉翻译中的应用</a>, by 刘方</li>
-<li><a href="https://www.lengoo.de/documents/styleguides/lengoo_styleguide_ZH.pdf" target="_blank" rel="noopener">简体中文规范指南</a>, by lengoo</li>
-<li><a href="https://open.leancloud.cn/copywriting-style-guide.html" target="_blank" rel="noopener">文档风格指南</a>, by LeanCloud</li>
-<li><a href="https://docs.google.com/document/d/1R8lMCPf6zCD5KEA8ekZ5knK77iw9J-vJ6vEopPemqZM/edit" target="_blank" rel="noopener">豌豆荚文案风格指南</a>, by 豌豆荚</li>
-<li><a href="https://github.com/sparanoid/chinese-copywriting-guidelines" target="_blank" rel="noopener">中文文案排版指北</a>, by sparanoid</li>
-<li><a href="http://w3c.github.io/clreq/" target="_blank" rel="noopener">中文排版需求</a>, by W3C</li>
-<li><a href="http://www.ruanyifeng.com/blog/2017/02/filename-should-be-lowercase.html" target="_blank" rel="noopener">为什么文件名要小写？</a>, by 阮一峰</li>
-</ul>
+<p>灵感来源于经常找不到地方买烟。。。</p>
+<p>代码已经开源在 Github 上了，地址：<a href="https://github.com/royeo/weapp-store" target="_blank" rel="noopener">royeo/weapp-store</a> ，欢迎 star。</p>
+<p><img src="http://ovu6j7kst.bkt.clouddn.com/demo.png" style="margin-left: 0; border: 0"></p>
+<p><img src="http://ovu6j7kst.bkt.clouddn.com/weapp.jpg" style="margin-left: 0; border: 0"></p>
 ]]></content>
       <categories>
-        <category>码梦为生</category>
+        <category>与日俱新</category>
       </categories>
       <tags>
-        <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《现代操作系统》第1章 习题</title>
-    <url>/2018/10/14/modern-operating-systems-c1-exercise/</url>
-    <content><![CDATA[<p>1.什么是多道程序设计？</p>
-<p>Multiprogramming is the rapid switching of the CPU between multiple processes in memory. It is commonly used to keep the CPU busy while one or more processes are doing I/O.</p>
-<a id="more"></a>
-<p>2.什么是SPOOLing？读者是否认为将来的高级个人计算机会把SPOOLing作为标准功能？</p>
-<p>Input spooling is the technique of reading in jobs, for example, from cards, onto the disk, so that when the currently executing processes are finished, there will be work waiting for the CPU. Output spooling consists of first copying printable files to disk before printing them, rather than printing directly as the output is generated. Input spooling on a personal computer is not very likely, but output spooling is.</p>
-<p>3.在早期计算机中，每个字节的读写直接由CPU处理（即没有DMA）。对于多道程序设计而言这种组织方式有什么含义？</p>
-<p>The prime reason for multiprogramming is to give the CPU something to do while waiting for I/O to complete. If there is no DMA, the CPU is fully occupied doing I/O, so there is nothing to be gained (at least in terms of CPU utilization) by multiprogramming. No matter how much I/O a program does, the CPU will be 100% busy. This is of course assume the major delay is the wait while data are copied. A CPU could do other work if the I/O were slow for other reasons (arriving on serial line, for instance).</p>
-<p>4.系列计算机的思想在20世纪60年代由IBM引入进System/360大型机。现在这种思想已经消亡还是继续活跃着？</p>
-<p>It is still alive. For example, Intel makes Pentium I, II, and III, and 4 CPUs with a variety of different properites including spped and power consumption. All of these machines ar architecturally compatible. They differ only in price and perfermance, which is the essence of the family idea.</p>
-<p>5.缓慢采用GUI的一个原因是支持它的硬件的成本（高昂）。为了支持25行80列字符的单色文本屏幕应该需要多少视频RAM？对于1024x768像素24位色彩位图需要多少视频RAM？在1989年（$5/KB）这些RAM的成本是多少？现在它的成本是多少？</p>
-<p>A 25x80 character monochrome text screen requires a 2000-byte buffer. 2580=2000 The 1024x768 pixel 24-bit color bitmap requires 2359296 bytes. 102476824/8=2359296 In 1980 these two options would have cost $10 and $11520, respectively. 20005/1024=9.77 2359296*5/1024=11520 For current prices, check on how much RAM currently costs, probably less than $1/MB.</p>
-<p>6.在建立一个操作系统时有几个设计目的，例如资源利用、及时性，健壮性等。请列举两个可能互相矛盾的设计目的。</p>
-<p>Consider fairness and real time. Fairness requires that each process be allocated it resources in a fair way, with no process getting more than its fair share. On the other hand, real time requires that resources be allocated based on the times when different processes must complete their execution. A real time process may get a disproportionate share of the resources.</p>
-<p>7.下面哪一条指令只能在内核态中使用？</p>
-<p>a)禁止所有的中断。 b)读日期-时间时钟。 c)设置日期-时间时钟。 d)改变存储器映像。</p>
-<p>acd</p>
-<p>8.考虑一个有两个CPU的系统，并且每一个CPU有两个线程（超线程）。假设有三个程序P0,P1,P2，分别以运行时间5ms,10ms,20ms开始。运行这些程序需要多少时间？假设这三个程序都是100%限于CPU，在运行时无阻塞，并且一旦设定就不改变CPU。</p>
-<p>It may take 20, 25, 30 or 35 msec to complete the execution of these programs depending on how the operating system schedules them. If P0 and P1 are scheduled on the same CPU and P2 is scheduled on the other CPU, it will take 20 mses. If P0 and P2 are scheduled on the same CPU and P1 is scheduled on the other CPU, it will take 25 msec. If P1 and P2 are scheduled on the same CPU and P0 is scheduled on the other CPU, it will take 30 msec. If all three are on the same CPU, it will take 35 msec.</p>
-<p>9.一台计算机有一个四级流水线，每一级都花费相同的时间执行其工作，即1ns。这台机器每秒可执行多少条指令？</p>
-<p>Every nanosecond one instruction emerges from the pipeline. This means the machine is executing 1 billion instructions per second. It does not matter at all how many stages the pipeline has. A 10-stage pipeline with 1 nsec per stage would also execute 1 billion instructions per second. All that matters is how often a finished instruction pops out the end of the pipeline.</p>
-<p>10.假设一个计算机系统有高速缓存、内存（RAM）以及磁盘，操作系统用虚拟内存。读取缓存中的一个词需要2ns，RAM需要10ns，磁盘需要10ms。如果缓存的命中率是95%，内存的是（缓存失效）99%，读取一个词的平均时间是多少？</p>
-<p>Average access time = 0.95 × 2 nsec (word is cache)</p>
-<ul>
-<li>0.05 × 0.99 × 10 nsec (word is in RAM, but not in cache)</li>
-<li>0.05 × 0.01 × 10,000,000 nsec (word on disk only) = 5002.395 nsec = 5.002395 μsec</li>
-</ul>
-<p>11.一位校对人员注意到在一部将要出版的操作系统教科书手稿中有一个多次出现的拼写错误。这本书大致有700页。每页50行，一行80个字符。若把文稿用电子扫描，那么，主副本进入图1-9中的每个存储系统的层次要花费多少时间？对于内存储方式，考虑所给定的存取时间是每次一个1024字符的盘块，而对于磁带，假设给定开始时间后的存取时间和和磁盘存储时间相同。</p>
-<p>The manuscript contains 80 X 50 X 700 = 2.8 million characters. This is, of course, impossible to fit into the registers of any currently available CPU and is too big for a 1-MB cache, but if such hardware were available, the manuscript could be scanned in 2.8 msec ( 2.8 X 10^6 X 10^-9 s) from the registers or 5.8 msec (2.8 X 10^6 X 2 X 10^-9 s) from the cache. There are approximately 2700 ( 2.8 X 10^6 % 1024 = 2735 ) 1024-byte blocks of data, so scanning from the disk would require about 27 seconds (2700 X 10 X 10^-3= 27s ), and from tape 2 minutes 7 senconds ( 100 + 27 = 127s tape不考虑读入时的文件大小？ ).</p>
-<p>12.**在用户程序进行一个系统调用，以读写磁盘文件时，该程序提供指示说明了所需要的文件，一个指向数据缓冲区的指针以及计数。然后，控制权转给操作系统，它调用相关的驱动程序。假设驱动程序启动磁盘并且直到中断发生才终止。在从磁盘读的情况下，很明显，调用者会被阻塞（因为文件中没有数据）。在向磁盘写时会发生什么情况？需要把调用者阻塞一直等到磁盘传送完成为止吗？</p>
-<p>Maybe. If the caller get control back and immediately overwrites the data, when the write finally occurs, the wrong data will be written. However, if the driver first copied the data to a private buffer before returning, then the caller can be allowed to continue immediately. Another possiblity is to allow the caller to continue and give it a singal when the buffer may be used, but this is tricky and error prone.</p>
-<p>13.什么是陷阱指令？在操作系统中解释它的用途。</p>
-<p>A trap instruction switches the execution mode of a CPU from the user mode to the kernel mode. This instruction allow a user program to invoke functions in the operation system kernel.</p>
-<p>14.陷阱和中断的主要差别是什么？</p>
-<p>A trap is caused by the program and is synchronous with it. If the program is run again and again, the trap will always occur exactly the same position in the instruction stream. An interrupt is caused by an external event and its timing is not reproducible.</p>
-<p>15.在分时系统中为什么需要进程表？在只有一个进程存在的个人计算机系统中，该进程控制整个机器直到进程结束，这种机器也需要进程表吗？</p>
-<p>The process table is needed to store the state of a process that is currently suspended, either ready or blocked. It is not needed in a single process system because the single process is never suspended.</p>
-<p>16.说明有没有理由要在一个非空的目录中安装一个文件系统？如果要这样做，如何做？</p>
-<p>Mounting a file system makes any files already in the mount point directory inaccessible, so mount points are normally empty. However, a system administrator might want to copy some of the most important files normally located in the mounted directory to the mount point so they could be found in their noraml path in an emergency when the mounted device was being repaired.</p>
-<p>17.在一个操作系统中系统调用的目的是什么？</p>
-<p>A system call allows a user process to access and execute operating system functions indside the kernel. User programs use system calls to invoke operating system services.</p>
-<p>18.对于下列系统调用，给出引起失败的条件：fork、exec以及unlink。</p>
-<p>Fork can fail if there are no free slot left in the process table (and possibley if there is no memory or swap space left). Exec can fail if the file name given does not exist or is not a valid executable file. Unlink can fail if the file to be unlinked does not exist or the calling process does not have authority to unlink it.</p>
-<p>19.在count = write(fd, buffer, nbytes);调用中，能在count中而不是nbytes中返回值吗？如果能，为什么？</p>
-<p>If the call fails, for example because fd is incorrect, it can return -1. It can also fail because the disk is full and it is not possible to write the number of bytes requested. On a correct termination, it always return nbytes.</p>
-<p>20.有一个文件，其文件描述符是fd，内含字节序列：3,1,4,1,5,9,2,6,5,3,5。有如下系统调用：lseek(fd,3,SEEK_SET); read(fd,&amp;buffter,4); 其中lseek调用寻找文件中的字节3。在读操作完成后，buffer中的内容是什么？</p>
-<p>It contains the bytes: 1, 5, 9, 2.</p>
-<p>21.假设一个10MB的文件存在磁盘连续扇区的同一个轨道上（轨道号：50）。磁盘的磁头臂此时位于第100号轨道。要想从磁盘上找回这个文件，需要多长时间？假设碰头臂从一个柱面移动到下一个柱面需要1ms，当文件的开始部分存储在的扇区旋转到磁头下需要5ms，并且读的速率是100MB/s。</p>
-<p>(100-50)*1ms+5ms+10MB/100MB/s=55ms+0.1X10^3ms=155ms</p>
-<p>Time to retrieve the file = 1 * 50 ms (Time to move the arm over track # 50)</p>
-<ul>
-<li>5 ms (Time for the first sector to rotate under the head)</li>
-<li>10/100 * 1000 ms (Read 10 MB) = 155 ms</li>
-</ul>
-<p>22.块特殊文件和字符特殊文件的基本差别是什么？</p>
-<p>Block special files consist of numbered blocks, each of which can be read or written independently of all the other ones. It is possible to seek to any block and start reading and writing. This is not possible with character specical files.</p>
-<p>23.在图1-17的例子中库调用称为read，而系统调用自身称为read。这两者都有相同的名字是正常的吗？如果不是，哪一个更重要？</p>
-<p>System calls do not really have names, other than in a documentation sence. When the libray procedure read traps to the kernel, it puts the number of the system call in a register ro on the stack. This number is used to index into a table. There is really no name used anywhere. On the other hand, the name of the library procedure is very import, since this is what appears in the program.</p>
-<p>24.在分布式系统中，客户机-服务器模式很普遍。这种模式能用在单个计算机的系统中吗？</p>
-<p>Yes it can, especially if the kernel is message-passing system.</p>
-<p>25.对于程序员而言，系统调用就像对其他库过程的调用一样。有无必要让程序员了解哪一个库过程导致了系统调用？在什么情形下，为什么？</p>
-<p>As far as program logic is concerned it does not matter whether a call to a library procedure results in a system call. But if perfermance is an issue, if a task can be accomplished without a system call the program will run faster. Every system call involves overhead time in switching from the user context to the kernel context. Furthermore, on a multiuser system the operatiing system may schedule another process o run when a system call completes, further slowing the progress in real time of a calling process.</p>
-<p>26.图1-23说明有一批UNIX的系统调用没有与之相等价的Win32 API。对于所列出的每一个没有Win32等价的调用，若程序员要把一个UNIX程序转换到Windows下运行，会有什么后果？</p>
-<p>Serval UNIX calls have no counterpart in the Win32 API: Link: a Win32 program cannot refer to a file by an alternative name or see it in more than one directory. Also, attempting to create a link is a convenient way to test fro and create a lock on a file. Mount and umount: a Windows program cannot make assumptions about standard path names because on systems with multiple disk drives the drive name part of the path may be different. Chmod: Windows uses access control lists Kill: Windows programmers cannot kill a misbehaving program that is not cooperating.</p>
-<p>27.可移植的操作系统是能从一个系统体系结构到另一个体系结构的移动不需要任何修改的操作系统。请解释为什么建立一个完全可移植性的操作系统是不可行的。描述一下在设计一个高度可移植的操作系统时你设计的高级的两层是什么样的。</p>
-<p>Every system architecture has its own set of instructions that it can execute. Thus a Pentumn cannot excute SPARC programs and SPARC cannot execute Pentium programs. Also, different architectures differ in bus architecture used (such as VME, ISA, PCI, MCA, SBus, ..) as well as the word size of the CPU (usually 32 or 64 bit). Because of these differences in hardware, it is not feasible to build an operating system that is completely portable. A highly portable operating system will consist of two high-level layers—a machine-dependent layer and a machine independent layer. The machine-dependent layer addresses the specifics of the hardware, and must be implemented separately for every architecture. This layer provides a uniform interface on which the machine-independent layer is built. The machine-independent layer has to be implemented only onece. To be highly protable, the size of the machine-dependent layer must be kept as small as possible.</p>
-<p>28.请解释在建立基于微内核的操作系统时策略与机制的分离带来的好处。</p>
-<p>Separation of policy and mechanism allows OS designers to implement a small number of basic primitives in the kernel. These primitives are simpified, because they are not dependent of any specific policy. They can then be used to implement more complex mechanisms and policies at the user level.</p>
-<p>29.下面是单位转换的练习：</p>
-<ul>
-<li>a)一微年是多少秒？</li>
-<li>b)微米常称为micron。那么gigamicron是多长？</li>
-<li>c)1TB存储器有多少字节？</li>
-<li>d)地球的质量是6000yottagram，换算成kilogram是多少？</li>
-</ul>
-<p>answers:</p>
-<ul>
-<li>a) A micro year is 10^-6 X 365 X 24 X 3600 = 31.536 sec.</li>
-<li>b) 10^9*10^-6=1000m</li>
-<li>c) 2^10 X 2^10 X 2^10 X 2^10 = 2^40 Bytes</li>
-<li>d) 6000 X 10^24 X 10^-3 = 6 X 10^24 kilogram</li>
-</ul>
-<p>30.写一个各图1-19类似的shell，但是包含足够的实际可工作的代码，这样读者可以测试它。读者还可以添加某些功能，如输入输出重定向、管道以及后台作业等。</p>
-<p>31.如果读者拥有一个个人UNIX类操作系统（Linux/MINIX/FreeBSD等），可以安全地崩溃和再启动，请写一个可以试图创建一个无限制数量子进程的shell脚本并观察所发生的事。在运行实验之前 ，通过shell键入sync，在磁盘上备份好文件缓冲区以避免毁坏文件系统。（注意：在没有得到系统管理呐的允许之前，不要在分时系统上进行这一尝试。其后果将会立即发生，尝试者可能会被抓住并受到惩罚。）</p>
-<p>32.用一个类似于UNIX od或MS-DOS DEBUG的程序考察并尝试解释UNIX类系统或Windows的目录。提示：如何进行取决于OS允许做什么。一个有益的技巧是在一个有某个操作系统的软盘上创建一个目录，然后使用一个允许进行此类的访问的不同的操作系统读盘上的原始数据。</p>
-]]></content>
-      <tags>
-        <tag>OS</tag>
+        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>
@@ -1929,6 +1929,79 @@
       </categories>
       <tags>
         <tag>Node.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node 循环依赖之源码解析</title>
+    <url>/2018/01/29/node-circular-dependency/</url>
+    <content><![CDATA[<p>今天来讲一讲 Node 循环依赖的问题，以官网上的例子结合 Node 源码来分析为什么循环依赖不会导致死循环，以及循环依赖可能造成的问题。</p>
+<a id="more"></a>
+<h2 id="什么是循环依赖"><a href="#什么是循环依赖" class="headerlink" title="什么是循环依赖"></a>什么是循环依赖</h2><p>循环依赖是两个或多个模块之间的关系，它们直接或间接地相互依赖以正常运行。</p>
+<h2 id="循环依赖的案例"><a href="#循环依赖的案例" class="headerlink" title="循环依赖的案例"></a>循环依赖的案例</h2><p>官网上给出的例子是这样的：</p>
+<p><code>a.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'a starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in a, b.done = %j'</span>, b.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a done'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>b.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'b starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in b, a.done = %j'</span>, a.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b done'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>main.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);</span><br></pre></td></tr></table></figure>
+<p>官网的解释是： <code>main.js</code> 先加载 <code>a.js</code>，然后 <code>a.js</code> 中会加载 <code>b.js</code>，但是在 <code>b.js</code> 中又加载了 <code>a.js</code>。这个时候为了防止无限循环，会将<code>a.js</code> 未完成的 <code>exports</code> 对象返回给 <code>b.js</code> 模块，接着 <code>b.js</code> 完成加载，并且它的 <code>exports</code> 对象被提供给 <code>a.js</code> 模块。</p>
+<p>由此可以看出，之所以不会发生依赖的死循环，是因为模块能够导出未完成的 <code>exports</code> 对象。那么问题来了，为什么模块没有执行完，却能导出对象呢？</p>
+<p>下面通过分析模块源码 <a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">lib/module.js</a> 来解答这个问题。要注意的是，核心模块和文件模块（用户编写的模块）的加载是不同的，本文只讨论文件模块的加载。为了便于理解，会对源码进行简化。</p>
+<h2 id="Module-构造函数"><a href="#Module-构造函数" class="headerlink" title="Module 构造函数"></a>Module 构造函数</h2><p>在 Node 中，每个模块在被 <code>require</code> 导入的时候都会创建一个模块实例，即 <code>Module</code> 实例，并且 Node 会缓存每个模块的实例，以便在下次 <code>require</code> 该模块的时候可以直接从缓存中返回。</p>
+<p>模块实例有一个 <code>exports</code> 属性，初始化为空对象。当我们在文件模块中通过 <code>module.exports</code> 或 <code>exports</code> 来导出的时候，其实就是在给模块实例的 <code>exports</code> 添加属性或者直接重写它。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Module 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Module</span>(<span class="params">id, parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.id = id;</span><br><span class="line">  <span class="keyword">this</span>.exports = &#123;&#125;;</span><br><span class="line">  <span class="keyword">this</span>.parent = parent;</span><br><span class="line">  updateChildren(parent, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">this</span>.filename = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>.children = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="require-方法"><a href="#require-方法" class="headerlink" title="require 方法"></a>require 方法</h2><p><code>require</code> 方法定义在 <code>Module</code> 的原型链上，被每个模块实例共享。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.require = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module._load(id, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>require</code> 内部调用 <code>Module._load</code> 方法，下面是简化后的 <code>_load</code> 方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._load = <span class="function"><span class="keyword">function</span>(<span class="params">request, parent, isMain</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 获取模块文件的绝对路径</span></span><br><span class="line">  <span class="keyword">var</span> filename = Module._resolveFilename(request, parent, isMain);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果有缓存，直接返回缓存中的模块实例的 exports 属性</span></span><br><span class="line">  <span class="keyword">var</span> cachedModule = Module._cache[filename];</span><br><span class="line">  <span class="keyword">if</span> (cachedModule) &#123;</span><br><span class="line">    <span class="keyword">return</span> cachedModule.exports;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果是核心模块，使用 NativeModule.require 方法加载</span></span><br><span class="line">  <span class="keyword">if</span> (NativeModule.nonInternalExists(filename)) &#123;</span><br><span class="line">    <span class="keyword">return</span> NativeModule.require(filename);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建模块实例，并存入缓存</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = <span class="keyword">new</span> Module(filename, parent);</span><br><span class="line">  Module._cache[filename] = <span class="built_in">module</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载模块</span></span><br><span class="line">  <span class="built_in">module</span>.load(filename);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面的代码中，以模块的绝对路径作为模块id，优先从缓存中获取模块实例的 <code>exports</code> 属性。如果模块实例不在缓存中，则创建模块实例并存入缓存，最后根据模块id调用 <code>module.load</code> 加载该模块。</p>
+<h2 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h2><p>模块的加载通过 <code>module.load</code> 方法完成，该方法根据模块的绝对路径确定文件扩展名，不同的文件扩展名采用不同的加载方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.load = <span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.filename = filename;</span><br><span class="line">  <span class="keyword">this</span>.paths = Module._nodeModulePaths(path.dirname(filename));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> extension = path.extname(filename) || <span class="string">'.js'</span>;</span><br><span class="line">  <span class="keyword">if</span> (!Module._extensions[extension]) extension = <span class="string">'.js'</span>;</span><br><span class="line">  Module._extensions[extension](<span class="keyword">this</span>, filename);</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>以 <code>.js</code> 扩展名为例，处理方法如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._extensions[<span class="string">'.js'</span>] = <span class="function"><span class="keyword">function</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> content = fs.readFileSync(filename, <span class="string">'utf8'</span>);</span><br><span class="line">  <span class="built_in">module</span>._compile(internalModule.stripBOM(content), filename);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>module._compile</code> 方法对模块文件进行编译执行。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype._compile = <span class="function"><span class="keyword">function</span>(<span class="params">content, filename</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 将模块代码包装在一个函数中</span></span><br><span class="line">  <span class="keyword">var</span> wrapper = Module.wrap(content);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在当前全局上下文中编译包装好的模块代码，并返回一个可执行的函数</span></span><br><span class="line">  <span class="keyword">var</span> compiledWrapper = vm.runInThisContext(wrapper, &#123; ... &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取模块目录的路径</span></span><br><span class="line">  <span class="keyword">var</span> dirname = path.dirname(filename);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 扩展 require 方法，如添加 require.resolve、require.cache 等属性</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">require</span> = internalModule.makeRequireFunction(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 传入模块实例的 exports 属性、require 方法、模块实例自身、完整文件路径</span></span><br><span class="line">  <span class="comment">// 和文件目录来执行该函数。</span></span><br><span class="line">  <span class="keyword">var</span> result = compiledWrapper.call(<span class="keyword">this</span>.exports, <span class="keyword">this</span>.exports, <span class="built_in">require</span>, <span class="keyword">this</span>,</span><br><span class="line">                                  filename, dirname);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.wrap = <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module.wrapper[<span class="number">0</span>] + script + Module.wrapper[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Module.wrapper = [</span><br><span class="line">  <span class="string">'(function (exports, require, module, __filename, __dirname) &#123; '</span>,</span><br><span class="line">  <span class="string">'\n&#125;);'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p><code>vm.runInThisContext</code> 这个方法会在 V8 虚拟机环境中编译代码，并在当前全局的上下文中运行代码并返回结果。在全局上下文运行的好处是在模块中我们可以使用一些全局变量，如：<code>process</code>、<code>console</code> 等。具体参考：<a href="https://nodejs.org/dist/latest-v8.x/docs/api/vm.html" target="_blank" rel="noopener">vm 的官方文档</a>。</p>
+<p>上面的代码使用 <code>Module.wrap</code> 将模块代码包装在函数中，这样就避免了作用域被污染，接着通过执行 <code>vm.runInThisContext</code> 返回一个可执行的函数，最后传入当前模块实例的 <code>exports</code> 属性、模块实例的 <code>this</code>，以及<code>require</code> 方法、完整文件路径和文件目录来执行该函数。</p>
+<p>由此也可以看出，<code>module.exports</code> 和 <code>exports</code> 并不是全局的，而是在执行模块代码的包装函数时传入的参数（当前模块实例的 <code>exports</code>）。这也解释了为什么在文件模块中重写 <code>exports</code> 会无法导出，因为它只能改变函数形参的引用，而无法实际影响到当前模块实例的 <code>exports</code> 属性。</p>
+<h2 id="循环依赖"><a href="#循环依赖" class="headerlink" title="循环依赖"></a>循环依赖</h2><p>在分析完模块的整个加载过程后，回到上面那个问题：为什么模块没有执行完，却能导出对象呢？关键就在于，在加载模块时，如果模块没有缓存，会先创建模块实例，然后存入缓存，再编译执行模块代码。</p>
+<p>以官网的例子来说：</p>
+<ol>
+<li><p><code>a.js</code> 先加载，所以先缓存 <code>a.js</code> 的模块实例，然后编译执行 <code>a.js</code>。</p>
+</li>
+<li><p>在执行 <code>a.js</code> 的过程中，先导出 <code>exports.done = false</code>，此时 <code>a.js</code> 模块实例的 <code>exports</code> 属性值为 <code>{ done: false }</code>。接着加载 <code>b.js</code>。</p>
+</li>
+<li><p><code>b.js</code> 在执行过程中发现需要加载 <code>a.js</code>，此时由于 <code>a.js</code> 模块已经被缓存，所以直接获取到缓存中的 <code>a.js</code> 模块实例的 <code>exports</code> 属性，值为 <code>{ done: false }</code>，然后继续执行。</p>
+</li>
+<li><p><code>b.js</code> 执行完毕返回，<code>a.js</code> 继续执行。</p>
+</li>
+</ol>
+<p>这种循环依赖导致的问题很明显：</p>
+<ol>
+<li><p><code>b.js</code> 在执行过程中获取到的 <code>a.js</code> 的导出可能是不完整的。</p>
+</li>
+<li><p>如果 <code>a.js</code> 在加载 <code>b.js</code> 后重写了 <code>module.exports</code>，<code>b.js</code> 中获取到的 <code>a.js</code> 的导出还是维持着旧的引用。</p>
+</li>
+</ol>
+<p>具体的解决方案可以参考 Maples7 的博客：<a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决</a>。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://nodejs.org/docs/latest-v8.x/api/modules.html" target="_blank" rel="noopener">Modules | Node.js Documentation</a></li>
+<li><a href="https://nodejs.org/docs/latest-v8.x/api/vm.html" target="_blank" rel="noopener">VM | Node.js Documentation</a></li>
+<li><a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">node/lib/module.js - Github</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/05/require.html" target="_blank" rel="noopener">require() 源码解读 - 阮一峰</a></li>
+<li><a href="https://segmentfault.com/a/1190000004151411" target="_blank" rel="noopener">Node.js 中的循环依赖 - SegmentFault</a></li>
+<li><a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决 - Maples7</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>模块</tag>
+        <tag>源码</tag>
+        <tag>循环依赖</tag>
       </tags>
   </entry>
   <entry>
@@ -2085,79 +2158,6 @@
       </categories>
       <tags>
         <tag>Protocol Buffer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Node 循环依赖之源码解析</title>
-    <url>/2018/01/29/node-circular-dependency/</url>
-    <content><![CDATA[<p>今天来讲一讲 Node 循环依赖的问题，以官网上的例子结合 Node 源码来分析为什么循环依赖不会导致死循环，以及循环依赖可能造成的问题。</p>
-<a id="more"></a>
-<h2 id="什么是循环依赖"><a href="#什么是循环依赖" class="headerlink" title="什么是循环依赖"></a>什么是循环依赖</h2><p>循环依赖是两个或多个模块之间的关系，它们直接或间接地相互依赖以正常运行。</p>
-<h2 id="循环依赖的案例"><a href="#循环依赖的案例" class="headerlink" title="循环依赖的案例"></a>循环依赖的案例</h2><p>官网上给出的例子是这样的：</p>
-<p><code>a.js</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'a starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in a, b.done = %j'</span>, b.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a done'</span>);</span><br></pre></td></tr></table></figure>
-<p><code>b.js</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'b starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in b, a.done = %j'</span>, a.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b done'</span>);</span><br></pre></td></tr></table></figure>
-<p><code>main.js</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);</span><br></pre></td></tr></table></figure>
-<p>官网的解释是： <code>main.js</code> 先加载 <code>a.js</code>，然后 <code>a.js</code> 中会加载 <code>b.js</code>，但是在 <code>b.js</code> 中又加载了 <code>a.js</code>。这个时候为了防止无限循环，会将<code>a.js</code> 未完成的 <code>exports</code> 对象返回给 <code>b.js</code> 模块，接着 <code>b.js</code> 完成加载，并且它的 <code>exports</code> 对象被提供给 <code>a.js</code> 模块。</p>
-<p>由此可以看出，之所以不会发生依赖的死循环，是因为模块能够导出未完成的 <code>exports</code> 对象。那么问题来了，为什么模块没有执行完，却能导出对象呢？</p>
-<p>下面通过分析模块源码 <a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">lib/module.js</a> 来解答这个问题。要注意的是，核心模块和文件模块（用户编写的模块）的加载是不同的，本文只讨论文件模块的加载。为了便于理解，会对源码进行简化。</p>
-<h2 id="Module-构造函数"><a href="#Module-构造函数" class="headerlink" title="Module 构造函数"></a>Module 构造函数</h2><p>在 Node 中，每个模块在被 <code>require</code> 导入的时候都会创建一个模块实例，即 <code>Module</code> 实例，并且 Node 会缓存每个模块的实例，以便在下次 <code>require</code> 该模块的时候可以直接从缓存中返回。</p>
-<p>模块实例有一个 <code>exports</code> 属性，初始化为空对象。当我们在文件模块中通过 <code>module.exports</code> 或 <code>exports</code> 来导出的时候，其实就是在给模块实例的 <code>exports</code> 添加属性或者直接重写它。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Module 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Module</span>(<span class="params">id, parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.id = id;</span><br><span class="line">  <span class="keyword">this</span>.exports = &#123;&#125;;</span><br><span class="line">  <span class="keyword">this</span>.parent = parent;</span><br><span class="line">  updateChildren(parent, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">this</span>.filename = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>.children = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="require-方法"><a href="#require-方法" class="headerlink" title="require 方法"></a>require 方法</h2><p><code>require</code> 方法定义在 <code>Module</code> 的原型链上，被每个模块实例共享。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.require = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module._load(id, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>require</code> 内部调用 <code>Module._load</code> 方法，下面是简化后的 <code>_load</code> 方法。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._load = <span class="function"><span class="keyword">function</span>(<span class="params">request, parent, isMain</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 获取模块文件的绝对路径</span></span><br><span class="line">  <span class="keyword">var</span> filename = Module._resolveFilename(request, parent, isMain);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果有缓存，直接返回缓存中的模块实例的 exports 属性</span></span><br><span class="line">  <span class="keyword">var</span> cachedModule = Module._cache[filename];</span><br><span class="line">  <span class="keyword">if</span> (cachedModule) &#123;</span><br><span class="line">    <span class="keyword">return</span> cachedModule.exports;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果是核心模块，使用 NativeModule.require 方法加载</span></span><br><span class="line">  <span class="keyword">if</span> (NativeModule.nonInternalExists(filename)) &#123;</span><br><span class="line">    <span class="keyword">return</span> NativeModule.require(filename);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建模块实例，并存入缓存</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = <span class="keyword">new</span> Module(filename, parent);</span><br><span class="line">  Module._cache[filename] = <span class="built_in">module</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载模块</span></span><br><span class="line">  <span class="built_in">module</span>.load(filename);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>上面的代码中，以模块的绝对路径作为模块id，优先从缓存中获取模块实例的 <code>exports</code> 属性。如果模块实例不在缓存中，则创建模块实例并存入缓存，最后根据模块id调用 <code>module.load</code> 加载该模块。</p>
-<h2 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h2><p>模块的加载通过 <code>module.load</code> 方法完成，该方法根据模块的绝对路径确定文件扩展名，不同的文件扩展名采用不同的加载方法。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.load = <span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.filename = filename;</span><br><span class="line">  <span class="keyword">this</span>.paths = Module._nodeModulePaths(path.dirname(filename));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> extension = path.extname(filename) || <span class="string">'.js'</span>;</span><br><span class="line">  <span class="keyword">if</span> (!Module._extensions[extension]) extension = <span class="string">'.js'</span>;</span><br><span class="line">  Module._extensions[extension](<span class="keyword">this</span>, filename);</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>以 <code>.js</code> 扩展名为例，处理方法如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._extensions[<span class="string">'.js'</span>] = <span class="function"><span class="keyword">function</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> content = fs.readFileSync(filename, <span class="string">'utf8'</span>);</span><br><span class="line">  <span class="built_in">module</span>._compile(internalModule.stripBOM(content), filename);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>module._compile</code> 方法对模块文件进行编译执行。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype._compile = <span class="function"><span class="keyword">function</span>(<span class="params">content, filename</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 将模块代码包装在一个函数中</span></span><br><span class="line">  <span class="keyword">var</span> wrapper = Module.wrap(content);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在当前全局上下文中编译包装好的模块代码，并返回一个可执行的函数</span></span><br><span class="line">  <span class="keyword">var</span> compiledWrapper = vm.runInThisContext(wrapper, &#123; ... &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取模块目录的路径</span></span><br><span class="line">  <span class="keyword">var</span> dirname = path.dirname(filename);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 扩展 require 方法，如添加 require.resolve、require.cache 等属性</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">require</span> = internalModule.makeRequireFunction(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 传入模块实例的 exports 属性、require 方法、模块实例自身、完整文件路径</span></span><br><span class="line">  <span class="comment">// 和文件目录来执行该函数。</span></span><br><span class="line">  <span class="keyword">var</span> result = compiledWrapper.call(<span class="keyword">this</span>.exports, <span class="keyword">this</span>.exports, <span class="built_in">require</span>, <span class="keyword">this</span>,</span><br><span class="line">                                  filename, dirname);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.wrap = <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module.wrapper[<span class="number">0</span>] + script + Module.wrapper[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Module.wrapper = [</span><br><span class="line">  <span class="string">'(function (exports, require, module, __filename, __dirname) &#123; '</span>,</span><br><span class="line">  <span class="string">'\n&#125;);'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-<p><code>vm.runInThisContext</code> 这个方法会在 V8 虚拟机环境中编译代码，并在当前全局的上下文中运行代码并返回结果。在全局上下文运行的好处是在模块中我们可以使用一些全局变量，如：<code>process</code>、<code>console</code> 等。具体参考：<a href="https://nodejs.org/dist/latest-v8.x/docs/api/vm.html" target="_blank" rel="noopener">vm 的官方文档</a>。</p>
-<p>上面的代码使用 <code>Module.wrap</code> 将模块代码包装在函数中，这样就避免了作用域被污染，接着通过执行 <code>vm.runInThisContext</code> 返回一个可执行的函数，最后传入当前模块实例的 <code>exports</code> 属性、模块实例的 <code>this</code>，以及<code>require</code> 方法、完整文件路径和文件目录来执行该函数。</p>
-<p>由此也可以看出，<code>module.exports</code> 和 <code>exports</code> 并不是全局的，而是在执行模块代码的包装函数时传入的参数（当前模块实例的 <code>exports</code>）。这也解释了为什么在文件模块中重写 <code>exports</code> 会无法导出，因为它只能改变函数形参的引用，而无法实际影响到当前模块实例的 <code>exports</code> 属性。</p>
-<h2 id="循环依赖"><a href="#循环依赖" class="headerlink" title="循环依赖"></a>循环依赖</h2><p>在分析完模块的整个加载过程后，回到上面那个问题：为什么模块没有执行完，却能导出对象呢？关键就在于，在加载模块时，如果模块没有缓存，会先创建模块实例，然后存入缓存，再编译执行模块代码。</p>
-<p>以官网的例子来说：</p>
-<ol>
-<li><p><code>a.js</code> 先加载，所以先缓存 <code>a.js</code> 的模块实例，然后编译执行 <code>a.js</code>。</p>
-</li>
-<li><p>在执行 <code>a.js</code> 的过程中，先导出 <code>exports.done = false</code>，此时 <code>a.js</code> 模块实例的 <code>exports</code> 属性值为 <code>{ done: false }</code>。接着加载 <code>b.js</code>。</p>
-</li>
-<li><p><code>b.js</code> 在执行过程中发现需要加载 <code>a.js</code>，此时由于 <code>a.js</code> 模块已经被缓存，所以直接获取到缓存中的 <code>a.js</code> 模块实例的 <code>exports</code> 属性，值为 <code>{ done: false }</code>，然后继续执行。</p>
-</li>
-<li><p><code>b.js</code> 执行完毕返回，<code>a.js</code> 继续执行。</p>
-</li>
-</ol>
-<p>这种循环依赖导致的问题很明显：</p>
-<ol>
-<li><p><code>b.js</code> 在执行过程中获取到的 <code>a.js</code> 的导出可能是不完整的。</p>
-</li>
-<li><p>如果 <code>a.js</code> 在加载 <code>b.js</code> 后重写了 <code>module.exports</code>，<code>b.js</code> 中获取到的 <code>a.js</code> 的导出还是维持着旧的引用。</p>
-</li>
-</ol>
-<p>具体的解决方案可以参考 Maples7 的博客：<a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决</a>。</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a href="https://nodejs.org/docs/latest-v8.x/api/modules.html" target="_blank" rel="noopener">Modules | Node.js Documentation</a></li>
-<li><a href="https://nodejs.org/docs/latest-v8.x/api/vm.html" target="_blank" rel="noopener">VM | Node.js Documentation</a></li>
-<li><a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">node/lib/module.js - Github</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2015/05/require.html" target="_blank" rel="noopener">require() 源码解读 - 阮一峰</a></li>
-<li><a href="https://segmentfault.com/a/1190000004151411" target="_blank" rel="noopener">Node.js 中的循环依赖 - SegmentFault</a></li>
-<li><a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决 - Maples7</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>码梦为生</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>模块</tag>
-        <tag>源码</tag>
-        <tag>循环依赖</tag>
       </tags>
   </entry>
 </search>
