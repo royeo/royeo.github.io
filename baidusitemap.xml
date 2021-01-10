@@ -25,11 +25,11 @@
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
-    <loc>http://lujianan.com/2016/09/02/mysql-optimization/</loc>
+    <loc>http://lujianan.com/2018/01/10/node-v8/</loc>
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
-    <loc>http://lujianan.com/2016/11/15/mysql-index/</loc>
+    <loc>http://lujianan.com/2016/09/02/mysql-optimization/</loc>
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
@@ -37,11 +37,11 @@
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
-    <loc>http://lujianan.com/2018/01/10/node-v8/</loc>
+    <loc>http://lujianan.com/2016/11/15/mysql-index/</loc>
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
-    <loc>http://lujianan.com/2017/05/05/most-of-silence/</loc>
+    <loc>http://lujianan.com/2018/10/14/modern-operating-systems-c1-exercise/</loc>
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
@@ -49,7 +49,11 @@
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
-    <loc>http://lujianan.com/2018/10/14/modern-operating-systems-c1-exercise/</loc>
+    <loc>http://lujianan.com/2017/05/05/most-of-silence/</loc>
+    <lastmod>2021-01-03</lastmod>
+  </url>
+  <url>
+    <loc>http://lujianan.com/2019/02/01/how-to-switch-git-branches-more-gracefully/</loc>
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
@@ -61,10 +65,6 @@
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
-    <loc>http://lujianan.com/2019/02/01/how-to-switch-git-branches-more-gracefully/</loc>
-    <lastmod>2021-01-03</lastmod>
-  </url>
-  <url>
     <loc>http://lujianan.com/2018/11/10/gitlab-build/</loc>
     <lastmod>2021-01-03</lastmod>
   </url>
@@ -73,11 +73,11 @@
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
-    <loc>http://lujianan.com/2016/07/18/deep-shallow/</loc>
+    <loc>http://lujianan.com/2017/12/16/a-maverick-pig/</loc>
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
-    <loc>http://lujianan.com/2016/08/24/503-service-unavailable/</loc>
+    <loc>http://lujianan.com/2016/07/18/deep-shallow/</loc>
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
@@ -89,7 +89,7 @@
     <lastmod>2021-01-03</lastmod>
   </url>
   <url>
-    <loc>http://lujianan.com/2017/12/16/a-maverick-pig/</loc>
+    <loc>http://lujianan.com/2016/08/24/503-service-unavailable/</loc>
     <lastmod>2021-01-03</lastmod>
   </url>
 </urlset> 
