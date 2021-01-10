@@ -184,3 +184,12 @@ Active namespace is "default".
 ## 小结
 
 本文介绍了 k8s 命名空间的概念以及使用方法，命名空间是一个非常简单又重要的概念，可以帮助团队更好的管理集群资源，熟悉命名空间的优点和特性可以帮助你更有效地配置集群，以避免后续带来的麻烦。
+
+## 参考文献
+
+- [Namespaces - kubernetes.io](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
+- [Namespaces - kubernetes/community](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/architecture/namespaces.md)
+- [Kubernetes best practices: Organizing with Namespaces](https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-organizing-with-namespaces)
+- [When and why use multiple Kubernetes namespaces](https://medium.com/binbash-inc/when-and-why-use-multiple-k8s-namespaces-237b632bac5)
+- [超长干货 | Kubernetes命名空间详解](http://dockone.io/article/8590)
+- [Kubernetes最佳实践S01E02：如何使用命名空间管理Kubernetes资源？](http://dockone.io/article/8137)
