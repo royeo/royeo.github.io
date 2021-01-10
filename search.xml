@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Node.js 相关技术书籍推荐</title>
+    <url>/2017/12/03/book-recommond/</url>
+    <content><![CDATA[<p>接触 Node.js 也有段时间了，从一开始对 Node.js 一无所知，到现在能在项目中熟练使用，书籍、文档和实战缺一不可。在学习初期，书籍扮演着一个非常重要的角色，让我对 Node.js 有了一个系统的认识。从看《JavaScript高级程序设计》开始，陆陆续续看了不少 JavaScript、Node.js 以及后端技术的相关书籍。书看的越多，会越发觉得自己知识匮乏，然后就会去寻找更多的书来充实自己。下面就是我整理的 Node.js 后端开发相关的经典技术书籍，排名不分先后，括号内是豆瓣评分，仅作参考。部分书籍的 pdf 文件可以到我的 <a href="https://github.com/LemonSprite/free-programming-books.pdf" target="_blank" rel="noopener">Github</a> 上去下载。</p>
+<a id="more"></a>
+<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><ul>
+<li>《JavaScript高级程序设计第三版》（9.3）</li>
+<li>《你不知道的JavaScript》（9.4）</li>
+<li>《JavaScript语言精粹》（9.1）</li>
+<li>《JavaScript设计模式与开发实践》（9.2）</li>
+<li>《JavaScript语言精髓与编程实践》（9.1）</li>
+<li>《JavaScript面向对象精要》（9.0）</li>
+<li>《JavaScript权威指南》（8.7）</li>
+<li>《JavaScript函数式编程》（7.3）</li>
+<li>《JavaScript设计模式》（8.4）</li>
+<li>《JavaScript模式》（8.6）</li>
+<li>《Effective JavaScript》（8.4）</li>
+<li>《JavaScript忍者秘籍》（8.7）</li>
+<li>《高性能JavaScript》（8.9）</li>
+<li>《精通JavaScript》（8.6）  </li>
+</ul>
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><ul>
+<li>《Node.js实战》（8.4）</li>
+<li>《深入浅出node.js》（8.7）</li>
+<li>《The Node Beginner Book》（8.7）</li>
+<li>《Node学习指南》（7.6）</li>
+<li>《Node与Express开发》（7.5）</li>
+<li>《Node.js开发指南》（7.5）</li>
+<li>《Node.js权威指南》（7.3）</li>
+<li>《Node即学即用》（7.3）</li>
+</ul>
+<h2 id="MySql"><a href="#MySql" class="headerlink" title="MySql"></a>MySql</h2><ul>
+<li>《高性能MySQL（第3版）》（9.3）</li>
+<li>《MySQL技术内幕：InnoDB存储引擎（第2版）》（8.6）</li>
+<li>《深入浅出MySQL 数据库开发 优化与管理维护 第2版》（8.3）</li>
+<li>《高可用MySQL（第2版）》（8.0）</li>
+<li>《SQL基础教程（第3版）》（8.8）</li>
+</ul>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><ul>
+<li>《Redis实战》（8.3）</li>
+<li>《Redis设计与实现》（8.5）</li>
+</ul>
+<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><ul>
+<li>《MongoDB权威指南 第2版》（8.1）</li>
+<li>《MongoDB应用设计模式》（6.1）</li>
+</ul>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><ul>
+<li>《HTTP权威指南》（8.7）</li>
+<li>《Web性能权威指南》（8.8）</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>《程序员修炼之道-从小工到大家》</li>
+<li>《高效程序员的45个习惯 敏捷开发修炼之道》</li>
+<li>《软件随想录》</li>
+<li>《重构-改善既有代码的设计》</li>
+<li>《代码简洁之道》</li>
+<li>《高效团队开发的工具与方法》</li>
+<li>《GitHub入门与实践》</li>
+<li>《技术管理之巅》</li>
+<li>《架构即未来》</li>
+<li>《持续交付-发布可靠软件的系统方法》</li>
+<li>《设计模式-可复用面向对象软件基础》</li>
+<li>《设计模式之禅（第2版）》</li>
+<li>《企业应用架构模式》</li>
+<li>《领域驱动设计 软件核心复杂性应对之道》</li>
+<li>《实现领域驱动设计》</li>
+<li>《ZooKeeper：分布式过程协同技术详解》</li>
+<li>《RabbitMQ实战：高效部署分布式消息队列》</li>
+<li>《Redis设计与实现》</li>
+<li>《实战Nginx：取代Apache的高性能Web服务器》</li>
+<li>《大型网站技术架构 核心原理与案例分析》</li>
+<li>《大型分布式网站架构设计与实践》</li>
+<li>《微服务架构与实践》</li>
+<li>《分布式服务框架原理与实践》</li>
+</ul>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+        <tag>技术书籍</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何修复 503 Service Unavailable 错误</title>
     <url>/2016/08/24/503-service-unavailable/</url>
     <content><![CDATA[<div class="note class_name">
@@ -348,90 +432,6 @@
       <tags>
         <tag>Chrome</tag>
         <tag>快捷键</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Node.js 相关技术书籍推荐</title>
-    <url>/2017/12/03/book-recommond/</url>
-    <content><![CDATA[<p>接触 Node.js 也有段时间了，从一开始对 Node.js 一无所知，到现在能在项目中熟练使用，书籍、文档和实战缺一不可。在学习初期，书籍扮演着一个非常重要的角色，让我对 Node.js 有了一个系统的认识。从看《JavaScript高级程序设计》开始，陆陆续续看了不少 JavaScript、Node.js 以及后端技术的相关书籍。书看的越多，会越发觉得自己知识匮乏，然后就会去寻找更多的书来充实自己。下面就是我整理的 Node.js 后端开发相关的经典技术书籍，排名不分先后，括号内是豆瓣评分，仅作参考。部分书籍的 pdf 文件可以到我的 <a href="https://github.com/LemonSprite/free-programming-books.pdf" target="_blank" rel="noopener">Github</a> 上去下载。</p>
-<a id="more"></a>
-<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><ul>
-<li>《JavaScript高级程序设计第三版》（9.3）</li>
-<li>《你不知道的JavaScript》（9.4）</li>
-<li>《JavaScript语言精粹》（9.1）</li>
-<li>《JavaScript设计模式与开发实践》（9.2）</li>
-<li>《JavaScript语言精髓与编程实践》（9.1）</li>
-<li>《JavaScript面向对象精要》（9.0）</li>
-<li>《JavaScript权威指南》（8.7）</li>
-<li>《JavaScript函数式编程》（7.3）</li>
-<li>《JavaScript设计模式》（8.4）</li>
-<li>《JavaScript模式》（8.6）</li>
-<li>《Effective JavaScript》（8.4）</li>
-<li>《JavaScript忍者秘籍》（8.7）</li>
-<li>《高性能JavaScript》（8.9）</li>
-<li>《精通JavaScript》（8.6）  </li>
-</ul>
-<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><ul>
-<li>《Node.js实战》（8.4）</li>
-<li>《深入浅出node.js》（8.7）</li>
-<li>《The Node Beginner Book》（8.7）</li>
-<li>《Node学习指南》（7.6）</li>
-<li>《Node与Express开发》（7.5）</li>
-<li>《Node.js开发指南》（7.5）</li>
-<li>《Node.js权威指南》（7.3）</li>
-<li>《Node即学即用》（7.3）</li>
-</ul>
-<h2 id="MySql"><a href="#MySql" class="headerlink" title="MySql"></a>MySql</h2><ul>
-<li>《高性能MySQL（第3版）》（9.3）</li>
-<li>《MySQL技术内幕：InnoDB存储引擎（第2版）》（8.6）</li>
-<li>《深入浅出MySQL 数据库开发 优化与管理维护 第2版》（8.3）</li>
-<li>《高可用MySQL（第2版）》（8.0）</li>
-<li>《SQL基础教程（第3版）》（8.8）</li>
-</ul>
-<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><ul>
-<li>《Redis实战》（8.3）</li>
-<li>《Redis设计与实现》（8.5）</li>
-</ul>
-<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><ul>
-<li>《MongoDB权威指南 第2版》（8.1）</li>
-<li>《MongoDB应用设计模式》（6.1）</li>
-</ul>
-<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><ul>
-<li>《HTTP权威指南》（8.7）</li>
-<li>《Web性能权威指南》（8.8）</li>
-</ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li>《程序员修炼之道-从小工到大家》</li>
-<li>《高效程序员的45个习惯 敏捷开发修炼之道》</li>
-<li>《软件随想录》</li>
-<li>《重构-改善既有代码的设计》</li>
-<li>《代码简洁之道》</li>
-<li>《高效团队开发的工具与方法》</li>
-<li>《GitHub入门与实践》</li>
-<li>《技术管理之巅》</li>
-<li>《架构即未来》</li>
-<li>《持续交付-发布可靠软件的系统方法》</li>
-<li>《设计模式-可复用面向对象软件基础》</li>
-<li>《设计模式之禅（第2版）》</li>
-<li>《企业应用架构模式》</li>
-<li>《领域驱动设计 软件核心复杂性应对之道》</li>
-<li>《实现领域驱动设计》</li>
-<li>《ZooKeeper：分布式过程协同技术详解》</li>
-<li>《RabbitMQ实战：高效部署分布式消息队列》</li>
-<li>《Redis设计与实现》</li>
-<li>《实战Nginx：取代Apache的高性能Web服务器》</li>
-<li>《大型网站技术架构 核心原理与案例分析》</li>
-<li>《大型分布式网站架构设计与实践》</li>
-<li>《微服务架构与实践》</li>
-<li>《分布式服务框架原理与实践》</li>
-</ul>
-]]></content>
-      <categories>
-        <category>码梦为生</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-        <tag>技术书籍</tag>
       </tags>
   </entry>
   <entry>
@@ -1007,6 +1007,23 @@
       </tags>
   </entry>
   <entry>
+    <title>微信小程序 - 便利店在哪（已上线）</title>
+    <url>/2018/02/27/weapp-store/</url>
+    <content><![CDATA[<p>业余时间做了一个小程序  “便利店在哪”，功能很简单，就是找出你附近的便利店。</p>
+<a id="more"></a>
+<p>灵感来源于经常找不到地方买烟。。。</p>
+<p>代码已经开源在 Github 上了，地址：<a href="https://github.com/royeo/weapp-store" target="_blank" rel="noopener">royeo/weapp-store</a> ，欢迎 star。</p>
+<p><img src="http://ovu6j7kst.bkt.clouddn.com/demo.png" style="margin-left: 0; border: 0"></p>
+<p><img src="http://ovu6j7kst.bkt.clouddn.com/weapp.jpg" style="margin-left: 0; border: 0"></p>
+]]></content>
+      <categories>
+        <category>与日俱新</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vscode 常用快捷键</title>
     <url>/2016/07/21/vscode-hot-key/</url>
     <content><![CDATA[<p>VSCode 的快捷键继承了一些 IDE 风格，有 VS 的身影，也有 Emacs 的身影。简言之，内置快捷键玩熟了，效率提高不是一点两点。</p>
@@ -1456,26 +1473,10 @@
       </tags>
   </entry>
   <entry>
-    <title>微信小程序 - 便利店在哪（已上线）</title>
-    <url>/2018/02/27/weapp-store/</url>
-    <content><![CDATA[<p>业余时间做了一个小程序  “便利店在哪”，功能很简单，就是找出你附近的便利店。</p>
-<a id="more"></a>
-<p>灵感来源于经常找不到地方买烟。。。</p>
-<p>代码已经开源在 Github 上了，地址：<a href="https://github.com/royeo/weapp-store" target="_blank" rel="noopener">royeo/weapp-store</a> ，欢迎 star。</p>
-<p><img src="http://ovu6j7kst.bkt.clouddn.com/demo.png" style="margin-left: 0; border: 0"></p>
-<p><img src="http://ovu6j7kst.bkt.clouddn.com/weapp.jpg" style="margin-left: 0; border: 0"></p>
-]]></content>
-      <categories>
-        <category>与日俱新</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>k8s 命名空间</title>
     <url>/2021/01/10/kubernetes-namespace/</url>
-    <content><![CDATA[<h2 id="什么是命名空间"><a href="#什么是命名空间" class="headerlink" title="什么是命名空间"></a>什么是命名空间</h2><p>在单个 k8s 集群中可以创建多个命名空间（namespace），它们在逻辑上彼此隔离，相当于在一个集群中创建了多个虚拟集群。</p>
+    <content><![CDATA[<a id="more"></a>
+<h2 id="什么是命名空间"><a href="#什么是命名空间" class="headerlink" title="什么是命名空间"></a>什么是命名空间</h2><p>在单个 k8s 集群中可以创建多个命名空间（namespace），它们在逻辑上彼此隔离，相当于在一个集群中创建了多个虚拟集群。</p>
 <p>命名空间用于分组管理 k8s 集群中的资源对象，每一个添加到 k8s 集群的工作负载（workload）都必须放在一个命名空间中。</p>
 <p>单个命名空间中的同类资源的名称必须唯一，但是相同的名称可以在不同的命名空间中使用。另外你还可以通过定义 ResourceQuota 对象来限制指定命名空间下资源的使用，利用 RBAC 来控制命名空间下的访问权限。</p>
 <h2 id="为什么需要命名空间"><a href="#为什么需要命名空间" class="headerlink" title="为什么需要命名空间"></a>为什么需要命名空间</h2><p>使用单个命名空间对于小团队来说会很方便，但是对于大型团队或大型组织来说，拥有多个名称空间有很多好处，包括：</p>
@@ -1857,79 +1858,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Node 循环依赖之源码解析</title>
-    <url>/2018/01/29/node-circular-dependency/</url>
-    <content><![CDATA[<p>今天来讲一讲 Node 循环依赖的问题，以官网上的例子结合 Node 源码来分析为什么循环依赖不会导致死循环，以及循环依赖可能造成的问题。</p>
-<a id="more"></a>
-<h2 id="什么是循环依赖"><a href="#什么是循环依赖" class="headerlink" title="什么是循环依赖"></a>什么是循环依赖</h2><p>循环依赖是两个或多个模块之间的关系，它们直接或间接地相互依赖以正常运行。</p>
-<h2 id="循环依赖的案例"><a href="#循环依赖的案例" class="headerlink" title="循环依赖的案例"></a>循环依赖的案例</h2><p>官网上给出的例子是这样的：</p>
-<p><code>a.js</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'a starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in a, b.done = %j'</span>, b.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a done'</span>);</span><br></pre></td></tr></table></figure>
-<p><code>b.js</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'b starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in b, a.done = %j'</span>, a.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b done'</span>);</span><br></pre></td></tr></table></figure>
-<p><code>main.js</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);</span><br></pre></td></tr></table></figure>
-<p>官网的解释是： <code>main.js</code> 先加载 <code>a.js</code>，然后 <code>a.js</code> 中会加载 <code>b.js</code>，但是在 <code>b.js</code> 中又加载了 <code>a.js</code>。这个时候为了防止无限循环，会将<code>a.js</code> 未完成的 <code>exports</code> 对象返回给 <code>b.js</code> 模块，接着 <code>b.js</code> 完成加载，并且它的 <code>exports</code> 对象被提供给 <code>a.js</code> 模块。</p>
-<p>由此可以看出，之所以不会发生依赖的死循环，是因为模块能够导出未完成的 <code>exports</code> 对象。那么问题来了，为什么模块没有执行完，却能导出对象呢？</p>
-<p>下面通过分析模块源码 <a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">lib/module.js</a> 来解答这个问题。要注意的是，核心模块和文件模块（用户编写的模块）的加载是不同的，本文只讨论文件模块的加载。为了便于理解，会对源码进行简化。</p>
-<h2 id="Module-构造函数"><a href="#Module-构造函数" class="headerlink" title="Module 构造函数"></a>Module 构造函数</h2><p>在 Node 中，每个模块在被 <code>require</code> 导入的时候都会创建一个模块实例，即 <code>Module</code> 实例，并且 Node 会缓存每个模块的实例，以便在下次 <code>require</code> 该模块的时候可以直接从缓存中返回。</p>
-<p>模块实例有一个 <code>exports</code> 属性，初始化为空对象。当我们在文件模块中通过 <code>module.exports</code> 或 <code>exports</code> 来导出的时候，其实就是在给模块实例的 <code>exports</code> 添加属性或者直接重写它。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Module 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Module</span>(<span class="params">id, parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.id = id;</span><br><span class="line">  <span class="keyword">this</span>.exports = &#123;&#125;;</span><br><span class="line">  <span class="keyword">this</span>.parent = parent;</span><br><span class="line">  updateChildren(parent, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">this</span>.filename = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>.children = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="require-方法"><a href="#require-方法" class="headerlink" title="require 方法"></a>require 方法</h2><p><code>require</code> 方法定义在 <code>Module</code> 的原型链上，被每个模块实例共享。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.require = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module._load(id, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>require</code> 内部调用 <code>Module._load</code> 方法，下面是简化后的 <code>_load</code> 方法。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._load = <span class="function"><span class="keyword">function</span>(<span class="params">request, parent, isMain</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 获取模块文件的绝对路径</span></span><br><span class="line">  <span class="keyword">var</span> filename = Module._resolveFilename(request, parent, isMain);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果有缓存，直接返回缓存中的模块实例的 exports 属性</span></span><br><span class="line">  <span class="keyword">var</span> cachedModule = Module._cache[filename];</span><br><span class="line">  <span class="keyword">if</span> (cachedModule) &#123;</span><br><span class="line">    <span class="keyword">return</span> cachedModule.exports;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果是核心模块，使用 NativeModule.require 方法加载</span></span><br><span class="line">  <span class="keyword">if</span> (NativeModule.nonInternalExists(filename)) &#123;</span><br><span class="line">    <span class="keyword">return</span> NativeModule.require(filename);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建模块实例，并存入缓存</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = <span class="keyword">new</span> Module(filename, parent);</span><br><span class="line">  Module._cache[filename] = <span class="built_in">module</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载模块</span></span><br><span class="line">  <span class="built_in">module</span>.load(filename);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>上面的代码中，以模块的绝对路径作为模块id，优先从缓存中获取模块实例的 <code>exports</code> 属性。如果模块实例不在缓存中，则创建模块实例并存入缓存，最后根据模块id调用 <code>module.load</code> 加载该模块。</p>
-<h2 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h2><p>模块的加载通过 <code>module.load</code> 方法完成，该方法根据模块的绝对路径确定文件扩展名，不同的文件扩展名采用不同的加载方法。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.load = <span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.filename = filename;</span><br><span class="line">  <span class="keyword">this</span>.paths = Module._nodeModulePaths(path.dirname(filename));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> extension = path.extname(filename) || <span class="string">'.js'</span>;</span><br><span class="line">  <span class="keyword">if</span> (!Module._extensions[extension]) extension = <span class="string">'.js'</span>;</span><br><span class="line">  Module._extensions[extension](<span class="keyword">this</span>, filename);</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>以 <code>.js</code> 扩展名为例，处理方法如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._extensions[<span class="string">'.js'</span>] = <span class="function"><span class="keyword">function</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> content = fs.readFileSync(filename, <span class="string">'utf8'</span>);</span><br><span class="line">  <span class="built_in">module</span>._compile(internalModule.stripBOM(content), filename);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>module._compile</code> 方法对模块文件进行编译执行。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype._compile = <span class="function"><span class="keyword">function</span>(<span class="params">content, filename</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 将模块代码包装在一个函数中</span></span><br><span class="line">  <span class="keyword">var</span> wrapper = Module.wrap(content);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在当前全局上下文中编译包装好的模块代码，并返回一个可执行的函数</span></span><br><span class="line">  <span class="keyword">var</span> compiledWrapper = vm.runInThisContext(wrapper, &#123; ... &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取模块目录的路径</span></span><br><span class="line">  <span class="keyword">var</span> dirname = path.dirname(filename);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 扩展 require 方法，如添加 require.resolve、require.cache 等属性</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">require</span> = internalModule.makeRequireFunction(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 传入模块实例的 exports 属性、require 方法、模块实例自身、完整文件路径</span></span><br><span class="line">  <span class="comment">// 和文件目录来执行该函数。</span></span><br><span class="line">  <span class="keyword">var</span> result = compiledWrapper.call(<span class="keyword">this</span>.exports, <span class="keyword">this</span>.exports, <span class="built_in">require</span>, <span class="keyword">this</span>,</span><br><span class="line">                                  filename, dirname);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.wrap = <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module.wrapper[<span class="number">0</span>] + script + Module.wrapper[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Module.wrapper = [</span><br><span class="line">  <span class="string">'(function (exports, require, module, __filename, __dirname) &#123; '</span>,</span><br><span class="line">  <span class="string">'\n&#125;);'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-<p><code>vm.runInThisContext</code> 这个方法会在 V8 虚拟机环境中编译代码，并在当前全局的上下文中运行代码并返回结果。在全局上下文运行的好处是在模块中我们可以使用一些全局变量，如：<code>process</code>、<code>console</code> 等。具体参考：<a href="https://nodejs.org/dist/latest-v8.x/docs/api/vm.html" target="_blank" rel="noopener">vm 的官方文档</a>。</p>
-<p>上面的代码使用 <code>Module.wrap</code> 将模块代码包装在函数中，这样就避免了作用域被污染，接着通过执行 <code>vm.runInThisContext</code> 返回一个可执行的函数，最后传入当前模块实例的 <code>exports</code> 属性、模块实例的 <code>this</code>，以及<code>require</code> 方法、完整文件路径和文件目录来执行该函数。</p>
-<p>由此也可以看出，<code>module.exports</code> 和 <code>exports</code> 并不是全局的，而是在执行模块代码的包装函数时传入的参数（当前模块实例的 <code>exports</code>）。这也解释了为什么在文件模块中重写 <code>exports</code> 会无法导出，因为它只能改变函数形参的引用，而无法实际影响到当前模块实例的 <code>exports</code> 属性。</p>
-<h2 id="循环依赖"><a href="#循环依赖" class="headerlink" title="循环依赖"></a>循环依赖</h2><p>在分析完模块的整个加载过程后，回到上面那个问题：为什么模块没有执行完，却能导出对象呢？关键就在于，在加载模块时，如果模块没有缓存，会先创建模块实例，然后存入缓存，再编译执行模块代码。</p>
-<p>以官网的例子来说：</p>
-<ol>
-<li><p><code>a.js</code> 先加载，所以先缓存 <code>a.js</code> 的模块实例，然后编译执行 <code>a.js</code>。</p>
-</li>
-<li><p>在执行 <code>a.js</code> 的过程中，先导出 <code>exports.done = false</code>，此时 <code>a.js</code> 模块实例的 <code>exports</code> 属性值为 <code>{ done: false }</code>。接着加载 <code>b.js</code>。</p>
-</li>
-<li><p><code>b.js</code> 在执行过程中发现需要加载 <code>a.js</code>，此时由于 <code>a.js</code> 模块已经被缓存，所以直接获取到缓存中的 <code>a.js</code> 模块实例的 <code>exports</code> 属性，值为 <code>{ done: false }</code>，然后继续执行。</p>
-</li>
-<li><p><code>b.js</code> 执行完毕返回，<code>a.js</code> 继续执行。</p>
-</li>
-</ol>
-<p>这种循环依赖导致的问题很明显：</p>
-<ol>
-<li><p><code>b.js</code> 在执行过程中获取到的 <code>a.js</code> 的导出可能是不完整的。</p>
-</li>
-<li><p>如果 <code>a.js</code> 在加载 <code>b.js</code> 后重写了 <code>module.exports</code>，<code>b.js</code> 中获取到的 <code>a.js</code> 的导出还是维持着旧的引用。</p>
-</li>
-</ol>
-<p>具体的解决方案可以参考 Maples7 的博客：<a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决</a>。</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a href="https://nodejs.org/docs/latest-v8.x/api/modules.html" target="_blank" rel="noopener">Modules | Node.js Documentation</a></li>
-<li><a href="https://nodejs.org/docs/latest-v8.x/api/vm.html" target="_blank" rel="noopener">VM | Node.js Documentation</a></li>
-<li><a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">node/lib/module.js - Github</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2015/05/require.html" target="_blank" rel="noopener">require() 源码解读 - 阮一峰</a></li>
-<li><a href="https://segmentfault.com/a/1190000004151411" target="_blank" rel="noopener">Node.js 中的循环依赖 - SegmentFault</a></li>
-<li><a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决 - Maples7</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>码梦为生</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>模块</tag>
-        <tag>源码</tag>
-        <tag>循环依赖</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Nodejs V8 的内存管理与垃圾回收机制</title>
     <url>/2018/01/10/node-v8/</url>
     <content><![CDATA[<h2 id="V8-的内存限制"><a href="#V8-的内存限制" class="headerlink" title="V8 的内存限制"></a>V8 的内存限制</h2><p>在 Node 中通过 javascirpt 只能使用部分内存（64位系统下约为1.4GB，32位系统下约为0.7GB），这个限制会导致 Node 无法直接操作大内存对象，计算机的内存资源无法得到充足的使用。</p>
@@ -2157,6 +2085,79 @@
       </categories>
       <tags>
         <tag>Protocol Buffer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node 循环依赖之源码解析</title>
+    <url>/2018/01/29/node-circular-dependency/</url>
+    <content><![CDATA[<p>今天来讲一讲 Node 循环依赖的问题，以官网上的例子结合 Node 源码来分析为什么循环依赖不会导致死循环，以及循环依赖可能造成的问题。</p>
+<a id="more"></a>
+<h2 id="什么是循环依赖"><a href="#什么是循环依赖" class="headerlink" title="什么是循环依赖"></a>什么是循环依赖</h2><p>循环依赖是两个或多个模块之间的关系，它们直接或间接地相互依赖以正常运行。</p>
+<h2 id="循环依赖的案例"><a href="#循环依赖的案例" class="headerlink" title="循环依赖的案例"></a>循环依赖的案例</h2><p>官网上给出的例子是这样的：</p>
+<p><code>a.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'a starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in a, b.done = %j'</span>, b.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a done'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>b.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'b starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in b, a.done = %j'</span>, a.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b done'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>main.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);</span><br></pre></td></tr></table></figure>
+<p>官网的解释是： <code>main.js</code> 先加载 <code>a.js</code>，然后 <code>a.js</code> 中会加载 <code>b.js</code>，但是在 <code>b.js</code> 中又加载了 <code>a.js</code>。这个时候为了防止无限循环，会将<code>a.js</code> 未完成的 <code>exports</code> 对象返回给 <code>b.js</code> 模块，接着 <code>b.js</code> 完成加载，并且它的 <code>exports</code> 对象被提供给 <code>a.js</code> 模块。</p>
+<p>由此可以看出，之所以不会发生依赖的死循环，是因为模块能够导出未完成的 <code>exports</code> 对象。那么问题来了，为什么模块没有执行完，却能导出对象呢？</p>
+<p>下面通过分析模块源码 <a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">lib/module.js</a> 来解答这个问题。要注意的是，核心模块和文件模块（用户编写的模块）的加载是不同的，本文只讨论文件模块的加载。为了便于理解，会对源码进行简化。</p>
+<h2 id="Module-构造函数"><a href="#Module-构造函数" class="headerlink" title="Module 构造函数"></a>Module 构造函数</h2><p>在 Node 中，每个模块在被 <code>require</code> 导入的时候都会创建一个模块实例，即 <code>Module</code> 实例，并且 Node 会缓存每个模块的实例，以便在下次 <code>require</code> 该模块的时候可以直接从缓存中返回。</p>
+<p>模块实例有一个 <code>exports</code> 属性，初始化为空对象。当我们在文件模块中通过 <code>module.exports</code> 或 <code>exports</code> 来导出的时候，其实就是在给模块实例的 <code>exports</code> 添加属性或者直接重写它。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Module 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Module</span>(<span class="params">id, parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.id = id;</span><br><span class="line">  <span class="keyword">this</span>.exports = &#123;&#125;;</span><br><span class="line">  <span class="keyword">this</span>.parent = parent;</span><br><span class="line">  updateChildren(parent, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">this</span>.filename = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>.children = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="require-方法"><a href="#require-方法" class="headerlink" title="require 方法"></a>require 方法</h2><p><code>require</code> 方法定义在 <code>Module</code> 的原型链上，被每个模块实例共享。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.require = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module._load(id, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>require</code> 内部调用 <code>Module._load</code> 方法，下面是简化后的 <code>_load</code> 方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._load = <span class="function"><span class="keyword">function</span>(<span class="params">request, parent, isMain</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 获取模块文件的绝对路径</span></span><br><span class="line">  <span class="keyword">var</span> filename = Module._resolveFilename(request, parent, isMain);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果有缓存，直接返回缓存中的模块实例的 exports 属性</span></span><br><span class="line">  <span class="keyword">var</span> cachedModule = Module._cache[filename];</span><br><span class="line">  <span class="keyword">if</span> (cachedModule) &#123;</span><br><span class="line">    <span class="keyword">return</span> cachedModule.exports;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果是核心模块，使用 NativeModule.require 方法加载</span></span><br><span class="line">  <span class="keyword">if</span> (NativeModule.nonInternalExists(filename)) &#123;</span><br><span class="line">    <span class="keyword">return</span> NativeModule.require(filename);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建模块实例，并存入缓存</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = <span class="keyword">new</span> Module(filename, parent);</span><br><span class="line">  Module._cache[filename] = <span class="built_in">module</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载模块</span></span><br><span class="line">  <span class="built_in">module</span>.load(filename);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面的代码中，以模块的绝对路径作为模块id，优先从缓存中获取模块实例的 <code>exports</code> 属性。如果模块实例不在缓存中，则创建模块实例并存入缓存，最后根据模块id调用 <code>module.load</code> 加载该模块。</p>
+<h2 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h2><p>模块的加载通过 <code>module.load</code> 方法完成，该方法根据模块的绝对路径确定文件扩展名，不同的文件扩展名采用不同的加载方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.load = <span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.filename = filename;</span><br><span class="line">  <span class="keyword">this</span>.paths = Module._nodeModulePaths(path.dirname(filename));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> extension = path.extname(filename) || <span class="string">'.js'</span>;</span><br><span class="line">  <span class="keyword">if</span> (!Module._extensions[extension]) extension = <span class="string">'.js'</span>;</span><br><span class="line">  Module._extensions[extension](<span class="keyword">this</span>, filename);</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>以 <code>.js</code> 扩展名为例，处理方法如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._extensions[<span class="string">'.js'</span>] = <span class="function"><span class="keyword">function</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> content = fs.readFileSync(filename, <span class="string">'utf8'</span>);</span><br><span class="line">  <span class="built_in">module</span>._compile(internalModule.stripBOM(content), filename);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>module._compile</code> 方法对模块文件进行编译执行。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype._compile = <span class="function"><span class="keyword">function</span>(<span class="params">content, filename</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 将模块代码包装在一个函数中</span></span><br><span class="line">  <span class="keyword">var</span> wrapper = Module.wrap(content);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在当前全局上下文中编译包装好的模块代码，并返回一个可执行的函数</span></span><br><span class="line">  <span class="keyword">var</span> compiledWrapper = vm.runInThisContext(wrapper, &#123; ... &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取模块目录的路径</span></span><br><span class="line">  <span class="keyword">var</span> dirname = path.dirname(filename);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 扩展 require 方法，如添加 require.resolve、require.cache 等属性</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">require</span> = internalModule.makeRequireFunction(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 传入模块实例的 exports 属性、require 方法、模块实例自身、完整文件路径</span></span><br><span class="line">  <span class="comment">// 和文件目录来执行该函数。</span></span><br><span class="line">  <span class="keyword">var</span> result = compiledWrapper.call(<span class="keyword">this</span>.exports, <span class="keyword">this</span>.exports, <span class="built_in">require</span>, <span class="keyword">this</span>,</span><br><span class="line">                                  filename, dirname);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.wrap = <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module.wrapper[<span class="number">0</span>] + script + Module.wrapper[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Module.wrapper = [</span><br><span class="line">  <span class="string">'(function (exports, require, module, __filename, __dirname) &#123; '</span>,</span><br><span class="line">  <span class="string">'\n&#125;);'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p><code>vm.runInThisContext</code> 这个方法会在 V8 虚拟机环境中编译代码，并在当前全局的上下文中运行代码并返回结果。在全局上下文运行的好处是在模块中我们可以使用一些全局变量，如：<code>process</code>、<code>console</code> 等。具体参考：<a href="https://nodejs.org/dist/latest-v8.x/docs/api/vm.html" target="_blank" rel="noopener">vm 的官方文档</a>。</p>
+<p>上面的代码使用 <code>Module.wrap</code> 将模块代码包装在函数中，这样就避免了作用域被污染，接着通过执行 <code>vm.runInThisContext</code> 返回一个可执行的函数，最后传入当前模块实例的 <code>exports</code> 属性、模块实例的 <code>this</code>，以及<code>require</code> 方法、完整文件路径和文件目录来执行该函数。</p>
+<p>由此也可以看出，<code>module.exports</code> 和 <code>exports</code> 并不是全局的，而是在执行模块代码的包装函数时传入的参数（当前模块实例的 <code>exports</code>）。这也解释了为什么在文件模块中重写 <code>exports</code> 会无法导出，因为它只能改变函数形参的引用，而无法实际影响到当前模块实例的 <code>exports</code> 属性。</p>
+<h2 id="循环依赖"><a href="#循环依赖" class="headerlink" title="循环依赖"></a>循环依赖</h2><p>在分析完模块的整个加载过程后，回到上面那个问题：为什么模块没有执行完，却能导出对象呢？关键就在于，在加载模块时，如果模块没有缓存，会先创建模块实例，然后存入缓存，再编译执行模块代码。</p>
+<p>以官网的例子来说：</p>
+<ol>
+<li><p><code>a.js</code> 先加载，所以先缓存 <code>a.js</code> 的模块实例，然后编译执行 <code>a.js</code>。</p>
+</li>
+<li><p>在执行 <code>a.js</code> 的过程中，先导出 <code>exports.done = false</code>，此时 <code>a.js</code> 模块实例的 <code>exports</code> 属性值为 <code>{ done: false }</code>。接着加载 <code>b.js</code>。</p>
+</li>
+<li><p><code>b.js</code> 在执行过程中发现需要加载 <code>a.js</code>，此时由于 <code>a.js</code> 模块已经被缓存，所以直接获取到缓存中的 <code>a.js</code> 模块实例的 <code>exports</code> 属性，值为 <code>{ done: false }</code>，然后继续执行。</p>
+</li>
+<li><p><code>b.js</code> 执行完毕返回，<code>a.js</code> 继续执行。</p>
+</li>
+</ol>
+<p>这种循环依赖导致的问题很明显：</p>
+<ol>
+<li><p><code>b.js</code> 在执行过程中获取到的 <code>a.js</code> 的导出可能是不完整的。</p>
+</li>
+<li><p>如果 <code>a.js</code> 在加载 <code>b.js</code> 后重写了 <code>module.exports</code>，<code>b.js</code> 中获取到的 <code>a.js</code> 的导出还是维持着旧的引用。</p>
+</li>
+</ol>
+<p>具体的解决方案可以参考 Maples7 的博客：<a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决</a>。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://nodejs.org/docs/latest-v8.x/api/modules.html" target="_blank" rel="noopener">Modules | Node.js Documentation</a></li>
+<li><a href="https://nodejs.org/docs/latest-v8.x/api/vm.html" target="_blank" rel="noopener">VM | Node.js Documentation</a></li>
+<li><a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">node/lib/module.js - Github</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/05/require.html" target="_blank" rel="noopener">require() 源码解读 - 阮一峰</a></li>
+<li><a href="https://segmentfault.com/a/1190000004151411" target="_blank" rel="noopener">Node.js 中的循环依赖 - SegmentFault</a></li>
+<li><a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决 - Maples7</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>模块</tag>
+        <tag>源码</tag>
+        <tag>循环依赖</tag>
       </tags>
   </entry>
 </search>
