@@ -13,7 +13,7 @@
 
 
 <html class="theme-next gemini" lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，想造轮子的同学可以参考下。">
+  <meta name="description" content="[toc] Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，造轮子之前可以参考下。">
 <meta name="keywords" content="Golang,Log">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Golang 标准库 log 包">
 <meta property="og:url" content="http://lujianan.com/2019/01/18/golang-standard-library-log/index.html">
 <meta property="og:site_name" content="With An Orchid">
-<meta property="og:description" content="Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，想造轮子的同学可以参考下。">
+<meta property="og:description" content="[toc] Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，造轮子之前可以参考下。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-16T18:16:25.083Z">
+<meta property="og:updated_time" content="2021-01-03T18:28:01.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Golang 标准库 log 包">
-<meta name="twitter:description" content="Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，想造轮子的同学可以参考下。">
+<meta name="twitter:description" content="[toc] Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，造轮子之前可以参考下。">
 
 
 
@@ -183,7 +183,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -193,7 +193,7 @@
   <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     
@@ -353,20 +353,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lujianan.com/2019/01/18/golang-standard-library-log/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royeo">
       <meta itemprop="description" content="人生没有白走的路，每一步都算数">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="With An Orchid">
     </span>
 
@@ -401,7 +401,7 @@
                 
               
 
-              <time title="Created: 2019-01-18 10:06:54" itemprop="dateCreated datePublished" datetime="2019-01-18T10:06:54+00:00">2019-01-18</time>
+              <time title="Created: 2019-01-18 10:06:54" itemprop="dateCreated datePublished" datetime="2019-01-18T10:06:54+08:00">2019-01-18</time>
             
 
             
@@ -419,7 +419,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
 
                 
                 
@@ -466,9 +466,10 @@
       
 
       
-        <p>Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，想造轮子的同学可以参考下。</p>
+        <p>[toc]</p>
+<p>Golang 标准库提供了一个简单的 log 包，方便我们记录日志。在平时写一些 demo 或小程序时，我们经常会用到 log 包，不过由于缺少结构化格式、日志级别等支持，在实际开发中则很少使用。log 包的设计非常简洁，造轮子之前可以参考下。</p>
 <a id="more"></a>
-<h2 id="Log-design"><a href="#Log-design" class="headerlink" title="Log design"></a>Log design</h2><p>一个简单的日志包应该有哪些功能呢？很容易想到以下几个：</p>
+<h2 id="日志设计"><a href="#日志设计" class="headerlink" title="日志设计"></a>日志设计</h2><p>一个简单的日志包应该有哪些功能呢？很容易想到以下几个：</p>
 <ul>
 <li>可设置日志的输出目标</li>
 <li>可设置日志的固定输出项</li>
@@ -476,19 +477,29 @@
 <li>输出日志时并发安全</li>
 </ul>
 <p>所以标准库的 log 里设计了下面这样一个 <code>Logger</code> 结构体：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// log.go</span></span><br><span class="line"><span class="keyword">type</span> Logger <span class="keyword">struct</span> &#123;</span><br><span class="line">	mu     sync.Mutex <span class="comment">// ensures atomic writes; protects the following fields</span></span><br><span class="line">	prefix <span class="keyword">string</span>     <span class="comment">// prefix to write at beginning of each line</span></span><br><span class="line">	flag   <span class="keyword">int</span>        <span class="comment">// properties</span></span><br><span class="line">	out    io.Writer  <span class="comment">// destination for output</span></span><br><span class="line">	buf    []<span class="keyword">byte</span>     <span class="comment">// for accumulating text to write</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>out</code> 属性是日志的输出目标，在 golang 中，很自然的可以想到使用 <code>io.Writer</code> 接口类型，与具体实现分离开。之所以不把 <code>out</code> 属性暴露出来，是因为需要保证 <code>out</code> 的写入和修改都是原子操作，其他属性同理。这里使用 <code>sync.Mutex</code> 互斥锁来保证原子操作：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// log.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l *Logger)</span> <span class="title">SetOutput</span><span class="params">(w io.Writer)</span></span> &#123;</span><br><span class="line">	l.mu.Lock()</span><br><span class="line">	<span class="keyword">defer</span> l.mu.Unlock()</span><br><span class="line">	l.out = w</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>prefix</code> 会出现在每行日志的最开头，<code>flag</code> 则是紧随其后的一些日志记录属性，如日期、时间、文件名和行号等。当设置了 <code>prefix</code> 和 <code>flag</code> 之后，每一行输出的日志都会带上这些前缀。<code>flag</code> 通过按位或（<code>|</code>）的方式来设置多个属性，可设置的属性如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// log.go</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	Ldate         = <span class="number">1</span> &lt;&lt; <span class="literal">iota</span>     <span class="comment">// the date in the local time zone: 2009/01/23</span></span><br><span class="line">	Ltime                         <span class="comment">// the time in the local time zone: 01:23:23</span></span><br><span class="line">	Lmicroseconds                 <span class="comment">// microsecond resolution: 01:23:23.123123.  assumes Ltime.</span></span><br><span class="line">	Llongfile                     <span class="comment">// full file name and line number: /a/b/c/d.go:23</span></span><br><span class="line">	Lshortfile                    <span class="comment">// final file name element and line number: d.go:23. overrides Llongfile</span></span><br><span class="line">	LUTC                          <span class="comment">// if Ldate or Ltime is set, use UTC rather than the local time zone</span></span><br><span class="line">	LstdFlags     = Ldate | Ltime <span class="comment">// initial values for the standard logger</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><code>buf</code> 是日志写入内容的缓冲区，避免了每次写入都需要分配内存。</p>
-<h2 id="Log-operation"><a href="#Log-operation" class="headerlink" title="Log operation"></a>Log operation</h2><p>使用 log 包写日志的操作很简单，可以直接调用 <code>log.Println</code>，<code>log.Printf</code> 等函数，这些导出的函数会调用内部私有变量 <code>std</code> 的方法，<code>std</code> 是 <code>Logger</code> 结构体的一个实例，输出日志到 <code>stderr</code>。在包里定义一个私有的 <code>Logger</code> 实例，并进行一些通用的配置，可以提供一些开箱即用的函数，而不需要总是先 <code>New</code> 一个 <code>Logger</code> 实例。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// log.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">(out io.Writer, prefix <span class="keyword">string</span>, flag <span class="keyword">int</span>)</span> *<span class="title">Logger</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;Logger&#123;out: out, prefix: prefix, flag: flag&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> std = New(os.Stderr, <span class="string">""</span>, LstdFlags)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Println</span><span class="params">(v ...<span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">	std.Output(<span class="number">2</span>, fmt.Sprintln(v...))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到 <code>log.Println</code> 实际调用了 <code>std.Output</code> 方法，该方法接收两个参数，一个是函数调用深度，一个是日志内容。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Logger <span class="keyword">struct</span> &#123;</span><br><span class="line">	mu     sync.Mutex <span class="comment">// ensures atomic writes; protects the following fields</span></span><br><span class="line">	prefix <span class="keyword">string</span>     <span class="comment">// prefix on each line to identify the logger (but see Lmsgprefix)</span></span><br><span class="line">	flag   <span class="keyword">int</span>        <span class="comment">// properties</span></span><br><span class="line">	out    io.Writer  <span class="comment">// destination for output</span></span><br><span class="line">	buf    []<span class="keyword">byte</span>     <span class="comment">// for accumulating text to write</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>mu</code> 是一个 <code>sync.Mutex</code> 互斥锁，用来在高并发或多协程的情况下保护上下文数据一致。在结构体里把 <code>sync.Mutex</code> 属性的字段放在要保护的字段前面，也是 go 里面常见的风格。</p>
+  <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l *Logger)</span> <span class="title">SetOutput</span><span class="params">(w io.Writer)</span></span> &#123;</span><br><span class="line">	l.mu.Lock()</span><br><span class="line">	<span class="keyword">defer</span> l.mu.Unlock()</span><br><span class="line">	l.out = w</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>prefix</code> 用来设置固定的日志前缀，设置的内容会出现在每行日志的最开头。</p>
+</li>
+<li><p><code>flag</code> 用来设置跟在 <code>prefix</code> 后打印的一些日志属性，如日期、时间、文件名和行号等。<code>flag</code> 通过按位或（<code>|</code>）的方式来设置多个属性，可设置的属性如下：</p>
+  <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	Ldate         = <span class="number">1</span> &lt;&lt; <span class="literal">iota</span>     <span class="comment">// the date in the local time zone: 2009/01/23</span></span><br><span class="line">	Ltime                         <span class="comment">// the time in the local time zone: 01:23:23</span></span><br><span class="line">	Lmicroseconds                 <span class="comment">// microsecond resolution: 01:23:23.123123.  assumes Ltime.</span></span><br><span class="line">	Llongfile                     <span class="comment">// full file name and line number: /a/b/c/d.go:23</span></span><br><span class="line">	Lshortfile                    <span class="comment">// final file name element and line number: d.go:23. overrides Llongfile</span></span><br><span class="line">	LUTC                          <span class="comment">// if Ldate or Ltime is set, use UTC rather than the local time zone</span></span><br><span class="line">	Lmsgprefix                    <span class="comment">// move the "prefix" from the beginning of the line to before the message</span></span><br><span class="line">	LstdFlags     = Ldate | Ltime <span class="comment">// initial values for the standard logger</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>out</code> 属性是日志的输出目标，在 go 里很自然的可以想到使用 <code>io.Writer</code> 接口，与具体实现分离开。默认开箱即用的 <code>out</code> 是标准输出，可以用 <code>log.SetOutput</code> 或 <code>log.New</code> 来设置一个文件输出。</p>
+</li>
+<li><p><code>buf</code> 是日志内容的缓冲区，为了避免每次写入都需要分配内存，所有日志的写入都共用一个缓冲区。</p>
+</li>
+</ul>
+<h2 id="日志操作"><a href="#日志操作" class="headerlink" title="日志操作"></a>日志操作</h2><p>使用 log 包写日志的操作很简单，提供了开箱即用的 <code>log.Println</code>，<code>log.Printf</code> 等函数，这些函数会调用内部私有变量 <code>std</code> 的方法，<code>std</code> 是 <code>Logger</code> 结构体的一个实例，输出日志到 <code>stderr</code>。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> std = New(os.Stderr, <span class="string">""</span>, LstdFlags)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Println</span><span class="params">(v ...<span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">	std.Output(<span class="number">2</span>, fmt.Sprintln(v...))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>log.Println</code> 实际调用了 <code>Logger</code> 的 <code>Output</code> 方法，该方法接收两个参数，一个是函数调用深度，一个是日志内容。</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// log.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l *Logger)</span> <span class="title">Output</span><span class="params">(calldepth <span class="keyword">int</span>, s <span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	now := time.Now() <span class="comment">// get this early.</span></span><br><span class="line">	<span class="keyword">var</span> file <span class="keyword">string</span></span><br><span class="line">	<span class="keyword">var</span> line <span class="keyword">int</span></span><br><span class="line">	l.mu.Lock()</span><br><span class="line">	<span class="keyword">defer</span> l.mu.Unlock()</span><br><span class="line">	<span class="keyword">if</span> l.flag&amp;(Lshortfile|Llongfile) != <span class="number">0</span> &#123;</span><br><span class="line">		<span class="comment">// Release lock while getting caller info - it's expensive.</span></span><br><span class="line">		l.mu.Unlock()</span><br><span class="line">		<span class="keyword">var</span> ok <span class="keyword">bool</span></span><br><span class="line">		_, file, line, ok = runtime.Caller(calldepth)</span><br><span class="line">		<span class="keyword">if</span> !ok &#123;</span><br><span class="line">			file = <span class="string">"???"</span></span><br><span class="line">			line = <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">		l.mu.Lock()</span><br><span class="line">	&#125;</span><br><span class="line">	l.buf = l.buf[:<span class="number">0</span>]</span><br><span class="line">	l.formatHeader(&amp;l.buf, now, file, line)</span><br><span class="line">	l.buf = <span class="built_in">append</span>(l.buf, s...)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(s) == <span class="number">0</span> || s[<span class="built_in">len</span>(s)<span class="number">-1</span>] != <span class="string">'\n'</span> &#123;</span><br><span class="line">		l.buf = <span class="built_in">append</span>(l.buf, <span class="string">'\n'</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	_, err := l.out.Write(l.buf)</span><br><span class="line">	<span class="keyword">return</span> err</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果 <code>flag</code> 设置了 <code>Lshortfile</code> 或 <code>Llongfile</code> 属性，<code>Output</code> 方法会调用 <code>runtime.Caller</code> 来获取打印日志操作所在的文件名和行号。<code>calldepth</code> 参数用来指定函数调用深度，调用链为：<code>log.Println</code> -&gt; <code>std.Output</code> -&gt; <code>runtime.Caller</code>，所以调用深度为2。注意这里在获取文件名和行号的时候，释放了互斥锁，原因是 <code>runtime.Caller</code> 可能会比较耗时，所以存在一个隐患：在这期间其他的 goroutine 是可以修改 <code>Logger</code> 实例的属性的。</p>
-<p>接下来就是清空 <code>buf</code>，先对 <code>prefix</code> 和 <code>flag</code> 进行处理（<code>l.formatHeader</code>）并存入 <code>buf</code>，然后将日志内容也追加到 <code>buf</code> 中，最后调用 <code>out</code> 属性的 <code>Write</code> 方法输出日志。</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>整个 log 包就 300 多行代码，功能非常简单，使用起来也很方便。对于标准库来说，考虑的更多的是简洁、通用，而对于后端服务来说，则需要考虑更多的东西，比如结构化日志、性能问题等。一般情况下，不建议在生产环境使用标准库的 log 包来输出日志。目前 Golang 有很多优秀的开源日志库，例如：<code>zap</code>、<code>gokit/log</code>、<code>logrus</code> 等，各有各的优势，我们可以针对不同场景选择不同的日志库来解决问题。另外，在使用日志库的时候，最好是能够使用一个日志的抽象（比如 interface），而不绑定具体的实现，这会方便我们后期更换其他日志库。</p>
+<p>可以看到 <code>Output</code> 方法会进行加锁操作，因为日志的 buf 是共享的，不是每条日志一个 buf，所以需要用锁来保护好 buf，实现串行写入。所以如果你的日志疯狂输出，大量的加锁操作 syscall 对性能就会有很大影响。另外思考一个问题，写日志的时候是不是一定要加锁呢？正常情况下，单纯的写日志是不需要加锁的，因为写日志可以采用文件的 <code>O_APPEND</code> 模式，原子方式一直追加。</p>
+<p>在 <code>Output</code> 方法里，如果 <code>flag</code> 设置了 <code>Lshortfile</code> 或 <code>Llongfile</code> 属性，<code>Output</code> 方法会调用 <code>runtime.Caller</code> 来获取打印日志操作所在的文件名和行号。<code>calldepth</code> 参数用来指定函数调用深度，调用链为：<code>log.Println</code> -&gt; <code>std.Output</code> -&gt; <code>runtime.Caller</code>，所以调用深度为2。注意这里在获取文件名和行号的时候，释放了互斥锁，原因是 <code>runtime.Caller</code> 可能会比较耗时。因为 <code>runtime.Caller</code> 会不停地迭代，而这个迭代过程虽然单次消耗的时间可以忽略不计，但是对于日志量巨大的服务而言影响还是很大的。</p>
+<p>写入的时候，就是先清空 <code>buf</code>，接着对 <code>prefix</code> 和 <code>flag</code> 进行处理（<code>l.formatHeader</code>）并存入 <code>buf</code>，然后将日志内容也追加到 <code>buf</code> 中，最后调用 <code>out</code> 属性的 <code>Write</code> 方法输出日志。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>整个 log 包就 300 多行代码，功能非常简单，使用起来也很方便。对于标准库来说，考虑的更多的是简洁、通用，而对于后端服务来说，则需要考虑更多的东西，比如结构化日志、性能问题等。一般情况下，不建议在生产环境使用标准库的 log 包来输出日志。目前 Golang 有很多优秀的开源日志库，例如：<code>zap</code>、<code>gokit/log</code>、<code>logrus</code> 等，各有各的优势，我们可以针对不同场景选择不同的日志库来解决问题，或者自行造轮子。</p>
 
       
     </div>
@@ -603,7 +614,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Royeo</p>
               <p class="site-description motion-element" itemprop="description">人生没有白走的路，每一步都算数</p>
@@ -616,7 +627,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -712,7 +723,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -774,7 +789,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-design"><span class="nav-number">1.</span> <span class="nav-text">Log design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-operation"><span class="nav-number">2.</span> <span class="nav-text">Log operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">3.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#日志设计"><span class="nav-number">1.</span> <span class="nav-text">日志设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志操作"><span class="nav-number">2.</span> <span class="nav-text">日志操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
             
 
           </div>
@@ -794,7 +809,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>

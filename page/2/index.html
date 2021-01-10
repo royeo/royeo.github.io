@@ -13,7 +13,7 @@
 
 
 <html class="theme-next gemini" lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -181,7 +181,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -192,7 +192,7 @@
   page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     
@@ -352,20 +352,195 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lujianan.com/2018/01/29/node-circular-dependency/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Royeo">
+      <meta itemprop="description" content="人生没有白走的路，每一步都算数">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="With An Orchid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/01/29/node-circular-dependency/" class="post-title-link" itemprop="url">Node 循环依赖之源码解析</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-01-29 21:59:08" itemprop="dateCreated datePublished" datetime="2018-01-29T21:59:08+08:00">2018-01-29</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2018/01/29/node-circular-dependency/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/29/node-circular-dependency/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>今天来讲一讲 Node 循环依赖的问题，以官网上的例子结合 Node 源码来分析为什么循环依赖不会导致死循环，以及循环依赖可能造成的问题。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/01/29/node-circular-dependency/" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lujianan.com/2018/01/10/node-v8/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royeo">
       <meta itemprop="description" content="人生没有白走的路，每一步都算数">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="With An Orchid">
     </span>
 
@@ -402,7 +577,7 @@
                 
               
 
-              <time title="Created: 2018-01-10 21:34:39" itemprop="dateCreated datePublished" datetime="2018-01-10T21:34:39+00:00">2018-01-10</time>
+              <time title="Created: 2018-01-10 21:34:39" itemprop="dateCreated datePublished" datetime="2018-01-10T21:34:39+08:00">2018-01-10</time>
             
 
             
@@ -420,7 +595,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
 
                 
                 
@@ -527,20 +702,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lujianan.com/2017/12/16/a-maverick-pig/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royeo">
       <meta itemprop="description" content="人生没有白走的路，每一步都算数">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="With An Orchid">
     </span>
 
@@ -577,7 +752,7 @@
                 
               
 
-              <time title="Created: 2017-12-16 22:15:46" itemprop="dateCreated datePublished" datetime="2017-12-16T22:15:46+00:00">2017-12-16</time>
+              <time title="Created: 2017-12-16 22:15:46" itemprop="dateCreated datePublished" datetime="2017-12-16T22:15:46+08:00">2017-12-16</time>
             
 
             
@@ -595,7 +770,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/书海无涯/" itemprop="url" rel="index"><span itemprop="name">书海无涯</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/书海无涯/" itemprop="url" rel="index"><span itemprop="name">书海无涯</span></a></span>
 
                 
                 
@@ -703,20 +878,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lujianan.com/2017/12/03/book-recommond/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royeo">
       <meta itemprop="description" content="人生没有白走的路，每一步都算数">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="With An Orchid">
     </span>
 
@@ -753,7 +928,7 @@
                 
               
 
-              <time title="Created: 2017-12-03 20:54:24" itemprop="dateCreated datePublished" datetime="2017-12-03T20:54:24+00:00">2017-12-03</time>
+              <time title="Created: 2017-12-03 20:54:24" itemprop="dateCreated datePublished" datetime="2017-12-03T20:54:24+08:00">2017-12-03</time>
             
 
             
@@ -771,7 +946,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
 
                 
                 
@@ -878,20 +1053,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lujianan.com/2017/05/05/most-of-silence/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royeo">
       <meta itemprop="description" content="人生没有白走的路，每一步都算数">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="With An Orchid">
     </span>
 
@@ -928,7 +1103,7 @@
                 
               
 
-              <time title="Created: 2017-05-05 22:41:43" itemprop="dateCreated datePublished" datetime="2017-05-05T22:41:43+00:00">2017-05-05</time>
+              <time title="Created: 2017-05-05 22:41:43" itemprop="dateCreated datePublished" datetime="2017-05-05T22:41:43+08:00">2017-05-05</time>
             
 
             
@@ -946,7 +1121,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/书海无涯/" itemprop="url" rel="index"><span itemprop="name">书海无涯</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/书海无涯/" itemprop="url" rel="index"><span itemprop="name">书海无涯</span></a></span>
 
                 
                 
@@ -1053,20 +1228,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lujianan.com/2017/01/20/markdown-standard/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royeo">
       <meta itemprop="description" content="人生没有白走的路，每一步都算数">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="With An Orchid">
     </span>
 
@@ -1103,7 +1278,7 @@
                 
               
 
-              <time title="Created: 2017-01-20 19:33:25" itemprop="dateCreated datePublished" datetime="2017-01-20T19:33:25+00:00">2017-01-20</time>
+              <time title="Created: 2017-01-20 19:33:25" itemprop="dateCreated datePublished" datetime="2017-01-20T19:33:25+08:00">2017-01-20</time>
             
 
             
@@ -1121,7 +1296,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
 
                 
                 
@@ -1231,20 +1406,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lujianan.com/2016/11/15/mysql-index/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royeo">
       <meta itemprop="description" content="人生没有白走的路，每一步都算数">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="With An Orchid">
     </span>
 
@@ -1281,7 +1456,7 @@
                 
               
 
-              <time title="Created: 2016-11-15 22:04:35" itemprop="dateCreated datePublished" datetime="2016-11-15T22:04:35+00:00">2016-11-15</time>
+              <time title="Created: 2016-11-15 22:04:35" itemprop="dateCreated datePublished" datetime="2016-11-15T22:04:35+08:00">2016-11-15</time>
             
 
             
@@ -1299,7 +1474,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
 
                 
                 
@@ -1406,20 +1581,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lujianan.com/2016/09/02/mysql-optimization/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royeo">
       <meta itemprop="description" content="人生没有白走的路，每一步都算数">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="With An Orchid">
     </span>
 
@@ -1456,7 +1631,7 @@
                 
               
 
-              <time title="Created: 2016-09-02 20:00:14" itemprop="dateCreated datePublished" datetime="2016-09-02T20:00:14+00:00">2016-09-02</time>
+              <time title="Created: 2016-09-02 20:00:14" itemprop="dateCreated datePublished" datetime="2016-09-02T20:00:14+08:00">2016-09-02</time>
             
 
             
@@ -1474,7 +1649,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
 
                 
                 
@@ -1581,20 +1756,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lujianan.com/2016/08/24/503-service-unavailable/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royeo">
       <meta itemprop="description" content="人生没有白走的路，每一步都算数">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="With An Orchid">
     </span>
 
@@ -1631,7 +1806,7 @@
                 
               
 
-              <time title="Created: 2016-08-24 11:52:37" itemprop="dateCreated datePublished" datetime="2016-08-24T11:52:37+00:00">2016-08-24</time>
+              <time title="Created: 2016-08-24 11:52:37" itemprop="dateCreated datePublished" datetime="2016-08-24T11:52:37+08:00">2016-08-24</time>
             
 
             
@@ -1649,7 +1824,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
 
                 
                 
@@ -1759,20 +1934,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lujianan.com/2016/07/21/vscode-hot-key/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royeo">
       <meta itemprop="description" content="人生没有白走的路，每一步都算数">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="With An Orchid">
     </span>
 
@@ -1809,7 +1984,7 @@
                 
               
 
-              <time title="Created: 2016-07-21 20:45:55" itemprop="dateCreated datePublished" datetime="2016-07-21T20:45:55+00:00">2016-07-21</time>
+              <time title="Created: 2016-07-21 20:45:55" itemprop="dateCreated datePublished" datetime="2016-07-21T20:45:55+08:00">2016-07-21</time>
             
 
             
@@ -1827,7 +2002,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
 
                 
                 
@@ -1924,181 +2099,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lujianan.com/2016/07/18/deep-shallow/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Royeo">
-      <meta itemprop="description" content="人生没有白走的路，每一步都算数">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="With An Orchid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/07/18/deep-shallow/" class="post-title-link" itemprop="url">如何编写一个 json 对象的拷贝函数</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2016-07-18 22:35:14" itemprop="dateCreated datePublished" datetime="2016-07-18T22:35:14+00:00">2016-07-18</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/码梦为生/" itemprop="url" rel="index"><span itemprop="name">码梦为生</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <a href="/2016/07/18/deep-shallow/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/18/deep-shallow/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>浅拷贝，比如浅拷贝对象A时，对象B将拷贝A的所有属性，如果属性是引用类型，B将拷贝地址，若果属性是基本类型，B将复制其值。浅拷贝的缺点是如果你修改了对象B中引用类型属性，你同时也会影响到对象A。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/07/18/deep-shallow/" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2133,7 +2133,7 @@
 
       <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Royeo</p>
               <p class="site-description motion-element" itemprop="description">人生没有白走的路，每一步都算数</p>
@@ -2146,7 +2146,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2242,7 +2242,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2307,7 +2311,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
