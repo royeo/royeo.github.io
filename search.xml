@@ -532,6 +532,82 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo 博客搭建</title>
+    <url>/2016/06/19/hexo-blog/</url>
+    <content><![CDATA[<p>作为一名开发人员，一直以来都很想拥有一个个人博客，来和世界分享自己的所见所得。在了解 hexo 后，惊叹于 hexo 搭建个人博客的快速、高效，以及各类丰富的博客主题。千挑万选之下选择了十分简洁大气的 maupassant-hexo 主题，下面是我搭建 maupassant-hexo 主题博客的全过程。</p>
+<a id="more"></a>
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>安装前提：</p>
+<ul>
+<li>Node.js</li>
+<li>Git</li>
+</ul>
+<p>使用 npm 进行 hexo 的全局安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>创建 Hexo 根目录，<code>&lt;folder&gt;</code>为目录名：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br></pre></td></tr></table></figure>
+<p>进入 Hexo 根目录，通过<code>hexo server</code>命令启动服务器，默认的访问地址是：<code>http://localhost:4000</code>，然后就可以看到 hexo 默认主题的页面。</p>
+<h2 id="安装-maupassant-hexo-主题"><a href="#安装-maupassant-hexo-主题" class="headerlink" title="安装 maupassant-hexo 主题"></a>安装 maupassant-hexo 主题</h2><p>在 Hexo 根目录下执行下面的命令，安装主题和渲染器：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/tufu9441/maupassant-hexo.git themes/maupassant</span><br><span class="line">npm install hexo-renderer-jade@0.3.0 --save</span><br><span class="line">npm install hexo-renderer-sass --save</span><br></pre></td></tr></table></figure>
+<p>编辑 Hexo 根目录下的<code>_config.yml</code>，将<code>theme</code>的值改为<code>maupassant</code>，然后就可以删除<code>themes</code>目录下的默认主题<code>landscape</code>了。 </p>
+<blockquote>
+<p>注：如果 <code>npm install hexo-renderer-sass</code> 安装时报错，可能是国内网络问题，请尝试使用代理或者切换至淘宝NPM镜像安装。</p>
+</blockquote>
+<p>然后在 Hexo 根目录下执行<code>hexo server</code>命令，就可以访问到<code>maupassant-hexo</code>主题的页面了。到此本地的博客就算搭建完成了，进一步的配置参考官方文档：</p>
+<ul>
+<li><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">Hexo 配置</a></li>
+<li><a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="noopener">maupassant-hexo 中文文档</a></li>
+</ul>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="添加文章"><a href="#添加文章" class="headerlink" title="# 添加文章"></a># 添加文章</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+<p>如果没有设置 layout 的话，默认使用<code>_config.yml</code>中的<code>default_layout</code>参数代替。如果标题包含空格的话，请使用引号括起来。新建的文章存放在 Hexo 根目录的<code>source/_posts</code>下，也可以手动在<code>source/_posts</code>目录下添加文章。</p>
+<h3 id="添加分类-标签"><a href="#添加分类-标签" class="headerlink" title="# 添加分类 / 标签"></a># 添加分类 / 标签</h3><p>在 <a href="https://hexo.io/zh-cn/docs/front-matter.html" target="_blank" rel="noopener">Front-matter</a> 中添加<code>categories</code>或<code>tags</code>的配置，在右边的侧边栏就会添加对应的分类或标签。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 博客搭建 </span><br><span class="line">date: 2017-07-19 23:11:39</span><br><span class="line">tags: 博客搭建</span><br><span class="line">category: 技术</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h3 id="添加-RSS-订阅功能"><a href="#添加-RSS-订阅功能" class="headerlink" title="# 添加 RSS 订阅功能"></a># 添加 RSS 订阅功能</h3><p>在 Hexo 根目录下执行下面命令，安装<code>hexo-generator-feed</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+<p>在 Hexo 根目录下的<code>_config.yml</code>中添加 RSS 订阅的配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">feed:</span><br><span class="line">  <span class="built_in">type</span>: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  <span class="built_in">limit</span>: 20</span><br></pre></td></tr></table></figure>
+<h3 id="删除友情链接"><a href="#删除友情链接" class="headerlink" title="# 删除友情链接"></a># 删除友情链接</h3><p>注释主题目录下<code>_config.yml</code>中友情链接的配置，如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># links:</span></span><br><span class="line"><span class="comment">#   - title: site-name1</span></span><br><span class="line"><span class="comment">#     url: http://www.example1.com/</span></span><br><span class="line"><span class="comment">#   - title: site-name2</span></span><br><span class="line"><span class="comment">#     url: http://www.example2.com/</span></span><br><span class="line"><span class="comment">#   - title: site-name3</span></span><br><span class="line"><span class="comment">#     url: http://www.example3.com/</span></span><br></pre></td></tr></table></figure>
+<h3 id="更换中文"><a href="#更换中文" class="headerlink" title="# 更换中文"></a># 更换中文</h3><p>编辑 Hexo 根目录下的<code>_config.yml</code>，将<code>language</code>设置为<code>zh-CN</code>。</p>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何更优雅地切换 Git 分支</title>
+    <url>/2019/02/01/how-to-switch-git-branches-more-gracefully/</url>
+    <content><![CDATA[<p>在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，分支名的 tab 自动补全会比较糟糕，切换时我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？</p>
+<a id="more"></a>
+<p>为了提高切换 Git 分支的效率，我用 Golang 写了 <code>git-checkout-branch</code> 这个小工具，可以交互式的切换分支，并自带搜索功能，帮助你更优雅的进行分支切换。</p>
+<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Github 地址：<a href="https://github.com/royeo/git-checkout-branch" target="_blank" rel="noopener">https://github.com/royeo/git-checkout-branch</a> ，欢迎 star。</p>
+<p><img src="https://raw.githubusercontent.com/royeo/static/master/gif/git-checkout-branch.gif" alt></p>
+<p>说明：</p>
+<ul>
+<li>使用箭头键  <code>↓</code> <code>↑</code> <code>→</code> <code>←</code> 进行移动，也支持 <code>j</code> 和 <code>k</code> 的上下移动</li>
+<li>使用 <code>/</code> 切换搜索</li>
+<li>按 <code>ctrl + c</code> 退出</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>可以直接下载安装：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl -sSL https://github.com/royeo/git-checkout-branch/releases/download/v0.2.0/git-checkout-branch-`uname -s`-`uname -m` -o /usr/<span class="built_in">local</span>/bin/git-checkout-branch &amp;&amp; chmod +x /usr/<span class="built_in">local</span>/bin/git-checkout-branch</span><br></pre></td></tr></table></figure>
+<p>也可以使用 <code>go get</code> 安装，确保 <code>$GOPATH/bin</code> 路径在 <code>PATH</code> 中。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">go get -u github.com/royeo/git-checkout-branch</span><br></pre></td></tr></table></figure>
+<p>建议为 <code>checkout-branch</code> 设置别名，例如 <code>cb</code>，这样就可以直接使用 <code>git cb</code> 来进行分支切换。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git config --global alias.cb checkout-branch</span><br></pre></td></tr></table></figure>
+<h2 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h2><p>使用 <code>git checkout-branch help</code> 获取帮助信息。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Checkout git branches more efficiently.</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  git checkout-branch [flags]</span><br><span class="line"></span><br><span class="line">Flags:</span><br><span class="line">  -a, --all          List both remote-tracking branches and <span class="built_in">local</span> branches</span><br><span class="line">  -r, --remotes      List the remote-tracking branches</span><br><span class="line">  -n, --number       Set the number of branches displayed <span class="keyword">in</span> the list (default 10)</span><br><span class="line">      --hide-help    Hide the <span class="built_in">help</span> information</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+        <tag>Git</tag>
+        <tag>Tool</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Gitlab 搭建与 CI 配置</title>
     <url>/2018/11/10/gitlab-build/</url>
     <content><![CDATA[<p>最近有一个独立开发的 Golang 微服务需要上线，项目托管在内部的 GitLab 上，所以需要写一个 .gitlab-ci.yml 文件来走 CI。由于之前一直是在比较成熟的团队中，没有自己写过 GitLab 的 CI 配置，所以索性尝试下自己搭建 GitLab，然后配置一套 CI 来熟悉下。</p>
@@ -629,82 +705,6 @@
       <tags>
         <tag>Golang</tag>
         <tag>Log</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 博客搭建</title>
-    <url>/2016/06/19/hexo-blog/</url>
-    <content><![CDATA[<p>作为一名开发人员，一直以来都很想拥有一个个人博客，来和世界分享自己的所见所得。在了解 hexo 后，惊叹于 hexo 搭建个人博客的快速、高效，以及各类丰富的博客主题。千挑万选之下选择了十分简洁大气的 maupassant-hexo 主题，下面是我搭建 maupassant-hexo 主题博客的全过程。</p>
-<a id="more"></a>
-<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>安装前提：</p>
-<ul>
-<li>Node.js</li>
-<li>Git</li>
-</ul>
-<p>使用 npm 进行 hexo 的全局安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>创建 Hexo 根目录，<code>&lt;folder&gt;</code>为目录名：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br></pre></td></tr></table></figure>
-<p>进入 Hexo 根目录，通过<code>hexo server</code>命令启动服务器，默认的访问地址是：<code>http://localhost:4000</code>，然后就可以看到 hexo 默认主题的页面。</p>
-<h2 id="安装-maupassant-hexo-主题"><a href="#安装-maupassant-hexo-主题" class="headerlink" title="安装 maupassant-hexo 主题"></a>安装 maupassant-hexo 主题</h2><p>在 Hexo 根目录下执行下面的命令，安装主题和渲染器：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/tufu9441/maupassant-hexo.git themes/maupassant</span><br><span class="line">npm install hexo-renderer-jade@0.3.0 --save</span><br><span class="line">npm install hexo-renderer-sass --save</span><br></pre></td></tr></table></figure>
-<p>编辑 Hexo 根目录下的<code>_config.yml</code>，将<code>theme</code>的值改为<code>maupassant</code>，然后就可以删除<code>themes</code>目录下的默认主题<code>landscape</code>了。 </p>
-<blockquote>
-<p>注：如果 <code>npm install hexo-renderer-sass</code> 安装时报错，可能是国内网络问题，请尝试使用代理或者切换至淘宝NPM镜像安装。</p>
-</blockquote>
-<p>然后在 Hexo 根目录下执行<code>hexo server</code>命令，就可以访问到<code>maupassant-hexo</code>主题的页面了。到此本地的博客就算搭建完成了，进一步的配置参考官方文档：</p>
-<ul>
-<li><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">Hexo 配置</a></li>
-<li><a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="noopener">maupassant-hexo 中文文档</a></li>
-</ul>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="添加文章"><a href="#添加文章" class="headerlink" title="# 添加文章"></a># 添加文章</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-<p>如果没有设置 layout 的话，默认使用<code>_config.yml</code>中的<code>default_layout</code>参数代替。如果标题包含空格的话，请使用引号括起来。新建的文章存放在 Hexo 根目录的<code>source/_posts</code>下，也可以手动在<code>source/_posts</code>目录下添加文章。</p>
-<h3 id="添加分类-标签"><a href="#添加分类-标签" class="headerlink" title="# 添加分类 / 标签"></a># 添加分类 / 标签</h3><p>在 <a href="https://hexo.io/zh-cn/docs/front-matter.html" target="_blank" rel="noopener">Front-matter</a> 中添加<code>categories</code>或<code>tags</code>的配置，在右边的侧边栏就会添加对应的分类或标签。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 博客搭建 </span><br><span class="line">date: 2017-07-19 23:11:39</span><br><span class="line">tags: 博客搭建</span><br><span class="line">category: 技术</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h3 id="添加-RSS-订阅功能"><a href="#添加-RSS-订阅功能" class="headerlink" title="# 添加 RSS 订阅功能"></a># 添加 RSS 订阅功能</h3><p>在 Hexo 根目录下执行下面命令，安装<code>hexo-generator-feed</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
-<p>在 Hexo 根目录下的<code>_config.yml</code>中添加 RSS 订阅的配置：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">feed:</span><br><span class="line">  <span class="built_in">type</span>: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  <span class="built_in">limit</span>: 20</span><br></pre></td></tr></table></figure>
-<h3 id="删除友情链接"><a href="#删除友情链接" class="headerlink" title="# 删除友情链接"></a># 删除友情链接</h3><p>注释主题目录下<code>_config.yml</code>中友情链接的配置，如下：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># links:</span></span><br><span class="line"><span class="comment">#   - title: site-name1</span></span><br><span class="line"><span class="comment">#     url: http://www.example1.com/</span></span><br><span class="line"><span class="comment">#   - title: site-name2</span></span><br><span class="line"><span class="comment">#     url: http://www.example2.com/</span></span><br><span class="line"><span class="comment">#   - title: site-name3</span></span><br><span class="line"><span class="comment">#     url: http://www.example3.com/</span></span><br></pre></td></tr></table></figure>
-<h3 id="更换中文"><a href="#更换中文" class="headerlink" title="# 更换中文"></a># 更换中文</h3><p>编辑 Hexo 根目录下的<code>_config.yml</code>，将<code>language</code>设置为<code>zh-CN</code>。</p>
-]]></content>
-      <categories>
-        <category>码梦为生</category>
-      </categories>
-      <tags>
-        <tag>博客搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何更优雅地切换 Git 分支</title>
-    <url>/2019/02/01/how-to-switch-git-branches-more-gracefully/</url>
-    <content><![CDATA[<p>在日常开发中，我们经常需要在不同的 Git 分支之间来回切换，特别是业务需求比较多的开发人员。在分支较多的情况下，分支名的 tab 自动补全会比较糟糕，切换时我们不免需要复制或手打分支名，那么有没有更优雅的方式了呢？</p>
-<a id="more"></a>
-<p>为了提高切换 Git 分支的效率，我用 Golang 写了 <code>git-checkout-branch</code> 这个小工具，可以交互式的切换分支，并自带搜索功能，帮助你更优雅的进行分支切换。</p>
-<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Github 地址：<a href="https://github.com/royeo/git-checkout-branch" target="_blank" rel="noopener">https://github.com/royeo/git-checkout-branch</a> ，欢迎 star。</p>
-<p><img src="https://raw.githubusercontent.com/royeo/static/master/gif/git-checkout-branch.gif" alt></p>
-<p>说明：</p>
-<ul>
-<li>使用箭头键  <code>↓</code> <code>↑</code> <code>→</code> <code>←</code> 进行移动，也支持 <code>j</code> 和 <code>k</code> 的上下移动</li>
-<li>使用 <code>/</code> 切换搜索</li>
-<li>按 <code>ctrl + c</code> 退出</li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>可以直接下载安装：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl -sSL https://github.com/royeo/git-checkout-branch/releases/download/v0.2.0/git-checkout-branch-`uname -s`-`uname -m` -o /usr/<span class="built_in">local</span>/bin/git-checkout-branch &amp;&amp; chmod +x /usr/<span class="built_in">local</span>/bin/git-checkout-branch</span><br></pre></td></tr></table></figure>
-<p>也可以使用 <code>go get</code> 安装，确保 <code>$GOPATH/bin</code> 路径在 <code>PATH</code> 中。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">go get -u github.com/royeo/git-checkout-branch</span><br></pre></td></tr></table></figure>
-<p>建议为 <code>checkout-branch</code> 设置别名，例如 <code>cb</code>，这样就可以直接使用 <code>git cb</code> 来进行分支切换。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git config --global alias.cb checkout-branch</span><br></pre></td></tr></table></figure>
-<h2 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h2><p>使用 <code>git checkout-branch help</code> 获取帮助信息。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Checkout git branches more efficiently.</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  git checkout-branch [flags]</span><br><span class="line"></span><br><span class="line">Flags:</span><br><span class="line">  -a, --all          List both remote-tracking branches and <span class="built_in">local</span> branches</span><br><span class="line">  -r, --remotes      List the remote-tracking branches</span><br><span class="line">  -n, --number       Set the number of branches displayed <span class="keyword">in</span> the list (default 10)</span><br><span class="line">      --hide-help    Hide the <span class="built_in">help</span> information</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>码梦为生</category>
-      </categories>
-      <tags>
-        <tag>Golang</tag>
-        <tag>Git</tag>
-        <tag>Tool</tag>
       </tags>
   </entry>
   <entry>
@@ -1560,6 +1560,14 @@
 <p>也可以使用开源的 <a href="https://github.com/ahmetb/kubectx" target="_blank" rel="noopener">kubectx</a> 里的 <code>kubens</code> 工具，可以更方便地切换命名空间：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubens kube-system</span><br><span class="line">Context <span class="string">"test"</span> <span class="built_in">set</span>.</span><br><span class="line">Active namespace is <span class="string">"kube-system"</span>.</span><br><span class="line"></span><br><span class="line">$ kubens -</span><br><span class="line">Context <span class="string">"test"</span> <span class="built_in">set</span>.</span><br><span class="line">Active namespace is <span class="string">"default"</span>.</span><br></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本文介绍了 k8s 命名空间的概念以及使用方法，命名空间是一个非常简单又重要的概念，可以帮助团队更好的管理集群资源，熟悉命名空间的优点和特性可以帮助你更有效地配置集群，以避免后续带来的麻烦。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/" target="_blank" rel="noopener">Namespaces - kubernetes.io</a></li>
+<li><a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/architecture/namespaces.md" target="_blank" rel="noopener">Namespaces - kubernetes/community</a></li>
+<li><a href="https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-organizing-with-namespaces" target="_blank" rel="noopener">Kubernetes best practices: Organizing with Namespaces</a></li>
+<li><a href="https://medium.com/binbash-inc/when-and-why-use-multiple-k8s-namespaces-237b632bac5" target="_blank" rel="noopener">When and why use multiple Kubernetes namespaces</a></li>
+<li><a href="http://dockone.io/article/8590" target="_blank" rel="noopener">超长干货 | Kubernetes命名空间详解</a></li>
+<li><a href="http://dockone.io/article/8137" target="_blank" rel="noopener">Kubernetes最佳实践S01E02：如何使用命名空间管理Kubernetes资源？</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>码梦为生</category>
