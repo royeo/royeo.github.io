@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="什么是命名空间在单个 k8s 集群中可以创建多个命名空间（namespace），它们在逻辑上彼此隔离，相当于在一个集群中创建了多个虚拟集群。 命名空间用于分组管理 k8s 集群中的资源对象，每一个添加到 k8s 集群的工作负载（workload）都必须放在一个命名空间中。 单个命名空间中的同类资源的名称必须唯一，但是相同的名称可以在不同的命名空间中使用。另外你还可以通过定义 ResourceQuo">
+  <meta name="description" content="本文介绍了 k8s 命名空间的概念以及使用方法，命名空间是一个非常简单又重要的概念，可以帮助团队更好的管理集群资源，熟悉命名空间的优点和特性可以帮助你更有效地配置集群，避免可能出现的一些问题。">
 <meta name="keywords" content="Kubernetes,Namespace">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于 k8s 命名空间的一些思考">
 <meta property="og:url" content="http://lujianan.com/2021/01/10/kubernetes-namespace/index.html">
 <meta property="og:site_name" content="With An Orchid">
-<meta property="og:description" content="什么是命名空间在单个 k8s 集群中可以创建多个命名空间（namespace），它们在逻辑上彼此隔离，相当于在一个集群中创建了多个虚拟集群。 命名空间用于分组管理 k8s 集群中的资源对象，每一个添加到 k8s 集群的工作负载（workload）都必须放在一个命名空间中。 单个命名空间中的同类资源的名称必须唯一，但是相同的名称可以在不同的命名空间中使用。另外你还可以通过定义 ResourceQuo">
+<meta property="og:description" content="本文介绍了 k8s 命名空间的概念以及使用方法，命名空间是一个非常简单又重要的概念，可以帮助团队更好的管理集群资源，熟悉命名空间的优点和特性可以帮助你更有效地配置集群，避免可能出现的一些问题。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-01-10T15:07:44.534Z">
+<meta property="og:updated_time" content="2021-01-11T06:38:19.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于 k8s 命名空间的一些思考">
-<meta name="twitter:description" content="什么是命名空间在单个 k8s 集群中可以创建多个命名空间（namespace），它们在逻辑上彼此隔离，相当于在一个集群中创建了多个虚拟集群。 命名空间用于分组管理 k8s 集群中的资源对象，每一个添加到 k8s 集群的工作负载（workload）都必须放在一个命名空间中。 单个命名空间中的同类资源的名称必须唯一，但是相同的名称可以在不同的命名空间中使用。另外你还可以通过定义 ResourceQuo">
+<meta name="twitter:description" content="本文介绍了 k8s 命名空间的概念以及使用方法，命名空间是一个非常简单又重要的概念，可以帮助团队更好的管理集群资源，熟悉命名空间的优点和特性可以帮助你更有效地配置集群，避免可能出现的一些问题。">
 
 
 
@@ -466,10 +466,11 @@
       
 
       
-        <h2 id="什么是命名空间"><a href="#什么是命名空间" class="headerlink" title="什么是命名空间"></a>什么是命名空间</h2><p>在单个 k8s 集群中可以创建多个命名空间（namespace），它们在逻辑上彼此隔离，相当于在一个集群中创建了多个虚拟集群。</p>
+        <p>本文介绍了 k8s 命名空间的概念以及使用方法，命名空间是一个非常简单又重要的概念，可以帮助团队更好的管理集群资源，熟悉命名空间的优点和特性可以帮助你更有效地配置集群，避免可能出现的一些问题。</p>
+<a id="more"></a>
+<h2 id="什么是命名空间"><a href="#什么是命名空间" class="headerlink" title="什么是命名空间"></a>什么是命名空间</h2><p>在单个 k8s 集群中可以创建多个命名空间（namespace），它们在逻辑上彼此隔离，相当于在一个集群中创建了多个虚拟集群。</p>
 <p>命名空间用于分组管理 k8s 集群中的资源对象，每一个添加到 k8s 集群的工作负载（workload）都必须放在一个命名空间中。</p>
 <p>单个命名空间中的同类资源的名称必须唯一，但是相同的名称可以在不同的命名空间中使用。另外你还可以通过定义 ResourceQuota 对象来限制指定命名空间下资源的使用，利用 RBAC 来控制命名空间下的访问权限。</p>
-<a id="more"></a>
 <h2 id="为什么需要命名空间"><a href="#为什么需要命名空间" class="headerlink" title="为什么需要命名空间"></a>为什么需要命名空间</h2><p>使用单个命名空间对于小团队来说会很方便，但是对于大型团队或大型组织来说，拥有多个名称空间有很多好处，包括：</p>
 <ul>
 <li><p><code>隔离</code>：使用命名空间可以把多个团队或多个项目隔离到不同的环境中，不同的团队可以在不同的命名空间中使用相同的资源名称，对一个命名空间执行的操作也不会影响到其他命名空间。</p>
@@ -550,7 +551,6 @@
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kubectl config <span class="built_in">set</span>-context --current --namespace=&lt;命名空间名称&gt;</span><br></pre></td></tr></table></figure>
 <p>也可以使用开源的 <a href="https://github.com/ahmetb/kubectx" target="_blank" rel="noopener">kubectx</a> 里的 <code>kubens</code> 工具，可以更方便地切换命名空间：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubens kube-system</span><br><span class="line">Context <span class="string">"test"</span> <span class="built_in">set</span>.</span><br><span class="line">Active namespace is <span class="string">"kube-system"</span>.</span><br><span class="line"></span><br><span class="line">$ kubens -</span><br><span class="line">Context <span class="string">"test"</span> <span class="built_in">set</span>.</span><br><span class="line">Active namespace is <span class="string">"default"</span>.</span><br></pre></td></tr></table></figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本文介绍了 k8s 命名空间的概念以及使用方法，命名空间是一个非常简单又重要的概念，可以帮助团队更好的管理集群资源，熟悉命名空间的优点和特性可以帮助你更有效地配置集群，以避免后续带来的麻烦。</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
 <li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/" target="_blank" rel="noopener">Namespaces - kubernetes.io</a></li>
 <li><a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/architecture/namespaces.md" target="_blank" rel="noopener">Namespaces - kubernetes/community</a></li>
@@ -844,7 +844,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是命名空间"><span class="nav-number">1.</span> <span class="nav-text">什么是命名空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要命名空间"><span class="nav-number">2.</span> <span class="nav-text">为什么需要命名空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始命名空间"><span class="nav-number">3.</span> <span class="nav-text">初始命名空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名空间的操作"><span class="nav-number">4.</span> <span class="nav-text">命名空间的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看命名空间"><span class="nav-number">4.1.</span> <span class="nav-text">查看命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建命名空间"><span class="nav-number">4.2.</span> <span class="nav-text">创建命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除命名空间"><span class="nav-number">4.3.</span> <span class="nav-text">删除命名空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨命名空间通信"><span class="nav-number">5.</span> <span class="nav-text">跨命名空间通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名空间划分策略"><span class="nav-number">6.</span> <span class="nav-text">命名空间划分策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名空间使用技巧"><span class="nav-number">7.</span> <span class="nav-text">命名空间使用技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">8.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">9.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是命名空间"><span class="nav-number">1.</span> <span class="nav-text">什么是命名空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要命名空间"><span class="nav-number">2.</span> <span class="nav-text">为什么需要命名空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始命名空间"><span class="nav-number">3.</span> <span class="nav-text">初始命名空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名空间的操作"><span class="nav-number">4.</span> <span class="nav-text">命名空间的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看命名空间"><span class="nav-number">4.1.</span> <span class="nav-text">查看命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建命名空间"><span class="nav-number">4.2.</span> <span class="nav-text">创建命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除命名空间"><span class="nav-number">4.3.</span> <span class="nav-text">删除命名空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨命名空间通信"><span class="nav-number">5.</span> <span class="nav-text">跨命名空间通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名空间划分策略"><span class="nav-number">6.</span> <span class="nav-text">命名空间划分策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名空间使用技巧"><span class="nav-number">7.</span> <span class="nav-text">命名空间使用技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">8.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>

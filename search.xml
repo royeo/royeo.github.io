@@ -532,6 +532,60 @@
       </tags>
   </entry>
   <entry>
+    <title>Gitlab 搭建与 CI 配置</title>
+    <url>/2018/11/10/gitlab-build/</url>
+    <content><![CDATA[<p>最近有一个独立开发的 Golang 微服务需要上线，项目托管在内部的 GitLab 上，所以需要写一个 .gitlab-ci.yml 文件来走 CI。由于之前一直是在比较成熟的团队中，没有自己写过 GitLab 的 CI 配置，所以索性尝试下自己搭建 GitLab，然后配置一套 CI 来熟悉下。</p>
+<a id="more"></a>
+<h2 id="搭建-GitLab"><a href="#搭建-GitLab" class="headerlink" title="搭建 GitLab"></a>搭建 GitLab</h2><p>搭建 GitLab 最简单的方式当然是使用 docker。GitLab 的 docker 镜像集成了 GitLab 在运行中需要的所有服务。</p>
+<p>这里使用 docker-compose 来运行，方便修改参数：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">web:</span><br><span class="line">  image: <span class="string">'gitlab/gitlab-ce:latest'</span></span><br><span class="line">  restart: always</span><br><span class="line">  hostname: <span class="string">'gitlab.example.com'</span></span><br><span class="line">  environment:</span><br><span class="line">    GITLAB_OMNIBUS_CONFIG: |</span><br><span class="line">      external_url <span class="string">'https://gitlab.example.com'</span></span><br><span class="line">      <span class="comment"># Add any other gitlab.rb configuration here, each on its own line</span></span><br><span class="line">  ports:</span><br><span class="line">    - <span class="string">'80:80'</span></span><br><span class="line">    - <span class="string">'443:443'</span></span><br><span class="line">    - <span class="string">'22:22'</span></span><br><span class="line">  volumes:</span><br><span class="line">    - <span class="string">'/srv/gitlab/config:/etc/gitlab'</span></span><br><span class="line">    - <span class="string">'/srv/gitlab/logs:/var/log/gitlab'</span></span><br><span class="line">    - <span class="string">'/srv/gitlab/data:/var/opt/gitlab'</span></span><br></pre></td></tr></table></figure>
+<p>这里需要注意 SSH、HTTP、HTTPS 的端口是否被占用，以及卷的位置 docker 是否有权限访问。例如，在 macOS 上，docker 没有 /srv 的权限，所以可以使用 /Users/Shared 目录替代 /srv。</p>
+<p>在容器启动后，等 GitLab 初始化完成（需等待一会），就可以通过  <a href="http://localhost/" target="_blank" rel="noopener">http://localhost/</a> 访问了。</p>
+<p>另外还有一些部署 GitLab 的方法，具体参考官方文档：<a href="https://docs.gitlab.com/omnibus/README.html" target="_blank" rel="noopener">Omnibus GitLab documentation</a>。</p>
+<h2 id="配置-GitLab"><a href="#配置-GitLab" class="headerlink" title="配置 GitLab"></a>配置 GitLab</h2><p>GitLab 的所有配置都在 /etc/gitlab/gitlab.rb 文件中，你可以在 docker 挂载的数据卷目录下去修改配置，也可以进入 docker 容器去修改：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it gitlab /bin/bash</span><br></pre></td></tr></table></figure>
+<p>在 GitLab 的配置中，你需要修改 external_url 配置项为一个有效的 url，这个 url 就是你的 GitLab 仓库的域名，也可以通过上面 docker-compose 文件中的 environment 来修改 external_url 配置项。没有域名的话可以先用 IP 地址。</p>
+<p>还有很多其他的配置，如邮箱、HTTPS 等的配置就不多介绍了。详细配置参考官方文档：<a href="https://docs.gitlab.com/omnibus/settings/configuration.html" target="_blank" rel="noopener">Configuration options</a>。</p>
+<p>在修改完配置后，需要重启 docker 容器：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker restart gitlab</span><br></pre></td></tr></table></figure>
+<h2 id="搭建-GitLab-Runner"><a href="#搭建-GitLab-Runner" class="headerlink" title="搭建 GitLab Runner"></a>搭建 GitLab Runner</h2><p>GitLab 的 CI 需要安装 Gitlab Runner，Runner 负责运行 .gitlab-ci.yml 中定义的 job，并且将结果发送回 GitLab。</p>
+<p>Runner 不建议和 GitLab 同时运行在一台机器上，因为 Runner 很消耗资源，一旦 CI 运行起来，就可以看到 Runner 的 CPU 使用率飙升，所以应该分开部署。如果只是想测试一下，也可以先在一台机器上试一下。</p>
+<p>同样使用 docker 来运行 Runner：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker run -d --name gitlab-runner --restart always \</span><br><span class="line">	-v /srv/gitlab-runner/config:/etc/gitlab-runner \</span><br><span class="line">	-v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">	gitlab/gitlab-runner:latest</span><br></pre></td></tr></table></figure>
+<p>然后需要把 Runner 注册到刚刚搭建好的 GitLab 上：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner --name gitlab-runner gitlab/gitlab-runner register \</span><br><span class="line">  --non-interactive \</span><br><span class="line">  --executor <span class="string">"docker"</span> \</span><br><span class="line">  --docker-image alpine:3.7 \</span><br><span class="line">  --url <span class="string">"https://gitlab.com/"</span> \</span><br><span class="line">  --registration-token <span class="string">"PROJECT_REGISTRATION_TOKEN"</span> \</span><br><span class="line">  --description <span class="string">"docker-runner"</span> \</span><br><span class="line">  --tag-list <span class="string">"docker,aws"</span> \</span><br><span class="line">  --run-untagged \</span><br><span class="line">  --locked=<span class="string">"false"</span></span><br></pre></td></tr></table></figure>
+<p>注册参数说明：</p>
+<ul>
+<li><p>–url：</p>
+<p>  GitLab 的域名，如果还没有配置域名的话，可以先使用 IP 地址代替。</p>
+</li>
+<li><p>–registration-token：</p>
+<p>  CI 的 token，需要从 GitLab 页面上获取，参考：<a href="https://docs.gitlab.com/ee/ci/runners/" target="_blank" rel="noopener">Obtain a token</a>。</p>
+</li>
+<li><p>–description</p>
+<p>  Runner 的描述，稍后可以在 GitLab 的页面 Settings &gt; CI/CD &gt; Runners 那里看到该 Runner 的描述。</p>
+</li>
+<li><p>–tag-list</p>
+<p>  Runner 的 tags，使用 tag 标记 Runner 后，在 .gitlab-ci.yml 中定义 job 时，就可以使用 tags 配置来指定运行这个 job 的 Runner。</p>
+</li>
+<li><p>–executor</p>
+<p>  Runner 的执行器，推荐使用 docker，它拥有一个干净的构建环境，易于依赖管理。</p>
+</li>
+<li><p>–docker-image</p>
+<p>  如果你使用 docker 作为 executor，需要提供一个默认镜像，在 .gitlab-ci.yml 中没有定义镜像时使用。</p>
+</li>
+</ul>
+<h2 id="gitlab-ci-yml"><a href="#gitlab-ci-yml" class="headerlink" title=".gitlab-ci.yml"></a>.gitlab-ci.yml</h2><p>在搭建好 GitLab 和 Runner 后，就可以在 GitLab 上新建一个项目，然后写 CI 的配置文件 .gitlab-ci.yml 了，参考：<a href="https://docs.gitlab.com/ee/ci/yaml/README.html" target="_blank" rel="noopener">Configuring .gitlab-ci.yml</a></p>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+        <tag>Gitlab</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo 博客搭建</title>
     <url>/2016/06/19/hexo-blog/</url>
     <content><![CDATA[<p>作为一名开发人员，一直以来都很想拥有一个个人博客，来和世界分享自己的所见所得。在了解 hexo 后，惊叹于 hexo 搭建个人博客的快速、高效，以及各类丰富的博客主题。千挑万选之下选择了十分简洁大气的 maupassant-hexo 主题，下面是我搭建 maupassant-hexo 主题博客的全过程。</p>
@@ -605,60 +659,6 @@
         <tag>Golang</tag>
         <tag>Git</tag>
         <tag>Tool</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Gitlab 搭建与 CI 配置</title>
-    <url>/2018/11/10/gitlab-build/</url>
-    <content><![CDATA[<p>最近有一个独立开发的 Golang 微服务需要上线，项目托管在内部的 GitLab 上，所以需要写一个 .gitlab-ci.yml 文件来走 CI。由于之前一直是在比较成熟的团队中，没有自己写过 GitLab 的 CI 配置，所以索性尝试下自己搭建 GitLab，然后配置一套 CI 来熟悉下。</p>
-<a id="more"></a>
-<h2 id="搭建-GitLab"><a href="#搭建-GitLab" class="headerlink" title="搭建 GitLab"></a>搭建 GitLab</h2><p>搭建 GitLab 最简单的方式当然是使用 docker。GitLab 的 docker 镜像集成了 GitLab 在运行中需要的所有服务。</p>
-<p>这里使用 docker-compose 来运行，方便修改参数：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">web:</span><br><span class="line">  image: <span class="string">'gitlab/gitlab-ce:latest'</span></span><br><span class="line">  restart: always</span><br><span class="line">  hostname: <span class="string">'gitlab.example.com'</span></span><br><span class="line">  environment:</span><br><span class="line">    GITLAB_OMNIBUS_CONFIG: |</span><br><span class="line">      external_url <span class="string">'https://gitlab.example.com'</span></span><br><span class="line">      <span class="comment"># Add any other gitlab.rb configuration here, each on its own line</span></span><br><span class="line">  ports:</span><br><span class="line">    - <span class="string">'80:80'</span></span><br><span class="line">    - <span class="string">'443:443'</span></span><br><span class="line">    - <span class="string">'22:22'</span></span><br><span class="line">  volumes:</span><br><span class="line">    - <span class="string">'/srv/gitlab/config:/etc/gitlab'</span></span><br><span class="line">    - <span class="string">'/srv/gitlab/logs:/var/log/gitlab'</span></span><br><span class="line">    - <span class="string">'/srv/gitlab/data:/var/opt/gitlab'</span></span><br></pre></td></tr></table></figure>
-<p>这里需要注意 SSH、HTTP、HTTPS 的端口是否被占用，以及卷的位置 docker 是否有权限访问。例如，在 macOS 上，docker 没有 /srv 的权限，所以可以使用 /Users/Shared 目录替代 /srv。</p>
-<p>在容器启动后，等 GitLab 初始化完成（需等待一会），就可以通过  <a href="http://localhost/" target="_blank" rel="noopener">http://localhost/</a> 访问了。</p>
-<p>另外还有一些部署 GitLab 的方法，具体参考官方文档：<a href="https://docs.gitlab.com/omnibus/README.html" target="_blank" rel="noopener">Omnibus GitLab documentation</a>。</p>
-<h2 id="配置-GitLab"><a href="#配置-GitLab" class="headerlink" title="配置 GitLab"></a>配置 GitLab</h2><p>GitLab 的所有配置都在 /etc/gitlab/gitlab.rb 文件中，你可以在 docker 挂载的数据卷目录下去修改配置，也可以进入 docker 容器去修改：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it gitlab /bin/bash</span><br></pre></td></tr></table></figure>
-<p>在 GitLab 的配置中，你需要修改 external_url 配置项为一个有效的 url，这个 url 就是你的 GitLab 仓库的域名，也可以通过上面 docker-compose 文件中的 environment 来修改 external_url 配置项。没有域名的话可以先用 IP 地址。</p>
-<p>还有很多其他的配置，如邮箱、HTTPS 等的配置就不多介绍了。详细配置参考官方文档：<a href="https://docs.gitlab.com/omnibus/settings/configuration.html" target="_blank" rel="noopener">Configuration options</a>。</p>
-<p>在修改完配置后，需要重启 docker 容器：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker restart gitlab</span><br></pre></td></tr></table></figure>
-<h2 id="搭建-GitLab-Runner"><a href="#搭建-GitLab-Runner" class="headerlink" title="搭建 GitLab Runner"></a>搭建 GitLab Runner</h2><p>GitLab 的 CI 需要安装 Gitlab Runner，Runner 负责运行 .gitlab-ci.yml 中定义的 job，并且将结果发送回 GitLab。</p>
-<p>Runner 不建议和 GitLab 同时运行在一台机器上，因为 Runner 很消耗资源，一旦 CI 运行起来，就可以看到 Runner 的 CPU 使用率飙升，所以应该分开部署。如果只是想测试一下，也可以先在一台机器上试一下。</p>
-<p>同样使用 docker 来运行 Runner：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker run -d --name gitlab-runner --restart always \</span><br><span class="line">	-v /srv/gitlab-runner/config:/etc/gitlab-runner \</span><br><span class="line">	-v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">	gitlab/gitlab-runner:latest</span><br></pre></td></tr></table></figure>
-<p>然后需要把 Runner 注册到刚刚搭建好的 GitLab 上：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner --name gitlab-runner gitlab/gitlab-runner register \</span><br><span class="line">  --non-interactive \</span><br><span class="line">  --executor <span class="string">"docker"</span> \</span><br><span class="line">  --docker-image alpine:3.7 \</span><br><span class="line">  --url <span class="string">"https://gitlab.com/"</span> \</span><br><span class="line">  --registration-token <span class="string">"PROJECT_REGISTRATION_TOKEN"</span> \</span><br><span class="line">  --description <span class="string">"docker-runner"</span> \</span><br><span class="line">  --tag-list <span class="string">"docker,aws"</span> \</span><br><span class="line">  --run-untagged \</span><br><span class="line">  --locked=<span class="string">"false"</span></span><br></pre></td></tr></table></figure>
-<p>注册参数说明：</p>
-<ul>
-<li><p>–url：</p>
-<p>  GitLab 的域名，如果还没有配置域名的话，可以先使用 IP 地址代替。</p>
-</li>
-<li><p>–registration-token：</p>
-<p>  CI 的 token，需要从 GitLab 页面上获取，参考：<a href="https://docs.gitlab.com/ee/ci/runners/" target="_blank" rel="noopener">Obtain a token</a>。</p>
-</li>
-<li><p>–description</p>
-<p>  Runner 的描述，稍后可以在 GitLab 的页面 Settings &gt; CI/CD &gt; Runners 那里看到该 Runner 的描述。</p>
-</li>
-<li><p>–tag-list</p>
-<p>  Runner 的 tags，使用 tag 标记 Runner 后，在 .gitlab-ci.yml 中定义 job 时，就可以使用 tags 配置来指定运行这个 job 的 Runner。</p>
-</li>
-<li><p>–executor</p>
-<p>  Runner 的执行器，推荐使用 docker，它拥有一个干净的构建环境，易于依赖管理。</p>
-</li>
-<li><p>–docker-image</p>
-<p>  如果你使用 docker 作为 executor，需要提供一个默认镜像，在 .gitlab-ci.yml 中没有定义镜像时使用。</p>
-</li>
-</ul>
-<h2 id="gitlab-ci-yml"><a href="#gitlab-ci-yml" class="headerlink" title=".gitlab-ci.yml"></a>.gitlab-ci.yml</h2><p>在搭建好 GitLab 和 Runner 后，就可以在 GitLab 上新建一个项目，然后写 CI 的配置文件 .gitlab-ci.yml 了，参考：<a href="https://docs.gitlab.com/ee/ci/yaml/README.html" target="_blank" rel="noopener">Configuring .gitlab-ci.yml</a></p>
-]]></content>
-      <categories>
-        <category>码梦为生</category>
-      </categories>
-      <tags>
-        <tag>Golang</tag>
-        <tag>Gitlab</tag>
       </tags>
   </entry>
   <entry>
@@ -845,6 +845,36 @@
       </tags>
   </entry>
   <entry>
+    <title>MySQL 性能优化</title>
+    <url>/2016/09/02/mysql-optimization/</url>
+    <content><![CDATA[<p>MySQL性能优化的一些建议。</p>
+<a id="more"></a>
+<h2 id="复合索引"><a href="#复合索引" class="headerlink" title="复合索引"></a>复合索引</h2><p>比如有一条语句是这样的：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> area = <span class="string">'beijing'</span> <span class="keyword">and</span> age = <span class="number">22</span>;</span><br></pre></td></tr></table></figure>
+<p>如果我们是在 area 和 age 上分别创建单个索引的话，由于<strong>MySQL查询每次只能使用一个索引</strong>，所以虽然这样已经相对不做索引时全表扫描提高了很多效率，但是如果在 area、age 两列上创建复合索引的话将带来更高的效率。如果我们创建了 (area, age, salary) 的复合索引，那么其实相当于创建了 (area,age,salary)、(area,age)、(area) 三个索引，这被称为最佳左前缀特性。因此我们在创建复合索引时应该将最常用作限制条件的列放在最左边，依次递减。</p>
+<!--more-->
+<h2 id="索引不会包含有NULL值的列"><a href="#索引不会包含有NULL值的列" class="headerlink" title="索引不会包含有NULL值的列"></a>索引不会包含有NULL值的列</h2><p>只要列中包含有 NULL 值都将不会被包含在索引中，复合索引中只要有一列含有 NULL 值，那么这一列对于此复合索引就是无效的。所以我们在数据库设计时不要让字段的默认值为 NULL 。</p>
+<h2 id="like语句操作"><a href="#like语句操作" class="headerlink" title="like语句操作"></a>like语句操作</h2><p>一般情况下不鼓励使用 like 操作，如果非使用不可，如何使用也是一个问题。like “%aaa%” 不会使用索引，而 like “aaa%” 可以使用索引。</p>
+<h2 id="不要在列上进行运算"><a href="#不要在列上进行运算" class="headerlink" title="不要在列上进行运算"></a>不要在列上进行运算</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">YEAR</span>(adddate) &lt; <span class="number">2007</span>;</span><br></pre></td></tr></table></figure>
+<p>将在每个行上进行运算，这将导致索引失效而进行全表扫描，因此我们可以改成：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> adddate &lt; ‘<span class="number">2007</span><span class="number">-01</span><span class="number">-01</span>’;</span><br></pre></td></tr></table></figure>
+<h2 id="不使用NOT-IN和-lt-gt-操作"><a href="#不使用NOT-IN和-lt-gt-操作" class="headerlink" title="不使用NOT IN和&lt;&gt;操作"></a>不使用NOT IN和&lt;&gt;操作</h2><p>NOT IN 和 &lt;&gt; 操作都不会使用索引将进行全表扫描。NOT IN 可以 NOT EXISTS 代替，id &lt;&gt; 3 则可使用 id &gt; 3 or id &lt; 3 来代替。</p>
+<h2 id="不建议使用float、double来存小数"><a href="#不建议使用float、double来存小数" class="headerlink" title="不建议使用float、double来存小数"></a>不建议使用float、double来存小数</h2><p>为了防止精度丢失，建议使用 decimal 。</p>
+<h2 id="高效分页"><a href="#高效分页" class="headerlink" title="高效分页"></a>高效分页</h2><p>limit m,n 其实是先执行 limit m + n，然后从第 m 行取 n 行，这样当 limit 翻页越往后越大，性能越低，如：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">limit</span> <span class="number">100000</span>, <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<p>建议改成：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span> &gt;= (<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">limit</span> <span class="number">100000</span>, <span class="number">1</span>) <span class="keyword">limit</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="范围查找"><a href="#范围查找" class="headerlink" title="范围查找"></a>范围查找</h2><p>范围查找包括 between、大于、小于以及 in 。mysql 中的 in 查询的条件有数量的限制，数量较小可以走索引，数量较大，就成了全表扫描了。而 between、大于、小于等，这些查询不会走索引，所以尽量放在走索引的查询条件后面。</p>
+<h2 id="多表链接"><a href="#多表链接" class="headerlink" title="多表链接"></a>多表链接</h2><p>子查询和 join 都可以实现多张表之间取数据，但是子查询的性能较差，建议使用 join 。对于mysql的 join ，它用的是 Nested Loop Join 算法，也就是通过前一个表查询的结果集去后一个表中查询，比如前一个表的结果集是 100 条数据，后一个表有 10W 数据，就需要在 100 × 10W 的数据集合中取过滤的到最终的结果集，因此，尽量用小结果集的表去和大表做 join ，同时在 join 的字段上建立索引。</p>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>读后感：《 沉默的大多数 》 — 王小波</title>
     <url>/2017/05/05/most-of-silence/</url>
     <content><![CDATA[<p>初读王小波的书，觉得书中的故事大抵离当代社会有点距离。细细品来，方知个中思想在那个年代实属超前，妙言要道。书中很多文章读一遍，尚不能完全领会作者之深意，多次回顾与思辨，才感悟到其中的真知灼见，大有裨益，对于王小波的幽默与锐气也产生了由衷的赞赏。</p>
@@ -866,6 +896,38 @@
       </categories>
       <tags>
         <tag>王小波</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Protocol Buffer 介绍</title>
+    <url>/2018/06/02/protocol-buffer-introduction/</url>
+    <content><![CDATA[<p><code>protocol buffer</code> 是一种语言无关，平台无关，可扩展的序列化结构化数据的方式，用于通信协议，数据存储等。</p>
+<a id="more"></a>
+<p><code>protocol buffer</code> 目前支持Java，Python，Objective-C 和 C++ 中的生成代码。使用新的 <code>proto3</code> 语言版本，您还可以使用 Go，Ruby 和 C＃ 等更多语言。</p>
+<h2 id="为什么选择-Protocol-Buffer-？"><a href="#为什么选择-Protocol-Buffer-？" class="headerlink" title="为什么选择 Protocol Buffer ？"></a>为什么选择 Protocol Buffer ？</h2><p>通常我们定义好的请求和响应在客户端和服务端都需要手动编码/解码，但是随着接口的版本变化，可能需要对版本号进行判断才能做相应的处理。这样使得新的协议变得复杂，因为开发者必须确保请求发起者与处理请求的实际服务器之间的所有服务器都能理解新协议，然后才能开始使用新协议。</p>
+<p><code>protocol buffer</code> 旨在解决这些问题：</p>
+<ul>
+<li><p>可以很容易地引入新的字段，中间服务器可以简单地解析并传递数据，而无需了解所有字段。</p>
+</li>
+<li><p>协议格式的描述性更强，可以用各种语言来处理（C ++，Java等），并且速度更快，空间更小。</p>
+</li>
+</ul>
+<h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><p>开始使用 <code>protocol buffer</code> 的第一步，就是创建一个 <code>.proto</code> 文件来定义 <code>protocol buffer</code> 消息类型，指定你想要序列化的信息结构。</p>
+<p>每个 <code>protocol buffer</code> 消息是一个小的逻辑信息记录，包含一系列 <code>name-value</code> 对。下面是 <code>.proto</code> 文件的一个例子，定义了一条包含人员信息的消息：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">message Person &#123;</span><br><span class="line">  required string name = 1;</span><br><span class="line">  required int32 id = 2;</span><br><span class="line">  optional string email = 3;</span><br><span class="line"></span><br><span class="line">  enum PhoneType &#123;</span><br><span class="line">    MOBILE = 0;</span><br><span class="line">    HOME = 1;</span><br><span class="line">    WORK = 2;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  message PhoneNumber &#123;</span><br><span class="line">    required string number = 1;</span><br><span class="line">    optional PhoneType type = 2 [default = HOME];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  repeated PhoneNumber phone = 4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>正如你所看到的，消息格式很简单。每种消息类型（如 <code>message Person</code>）都有一个或多个带有唯一编号的字段，每个字段都有一个名称和一个值类型。其中值类型可以是数字（整数或浮点数），布尔值，字符串，原始字节，甚至可以是其他 <code>protocol buffer</code> 的消息类型。在消息类型中，你可以指定可选字段，必填字段和重复字段。访问 <a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="noopener">Protocol Buffer Language Guide</a> 以获取更多有关 <code>.proto</code> 文件的信息。</p>
+<p>当在 <code>.proto</code> 文件中定义完消息后，你需要运行 <code>protocol buffer</code> 编译器为你使用的编程语言生成数据访问类。这为每个字段提供了简单的访问器（如 <code>name()</code> 和 <code>set_name()</code>），以及对整个结构的进行序列化/解析的方法。例如，如果您选择的语言是 <code>C++</code>，那么在上面的示例中运行编译器将生成一个名为 <code>Person</code> 的类。然后，就可以在应用程序中使用此类来填充，序列化并检索 <code>Person</code> <code>protocol buffer</code> 消息。你可能会写下如下代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Person person;</span><br><span class="line">person.set_name(<span class="string">"John Doe"</span>);</span><br><span class="line">person.set_id(<span class="number">1234</span>);</span><br><span class="line">person.set_email(<span class="string">"jdoe@example.com"</span>);</span><br><span class="line"><span class="function">fstream <span class="title">output</span><span class="params">(<span class="string">"myfile"</span>, ios::out | ios::binary)</span></span>;</span><br><span class="line">person.SerializeToOstream(&amp;output);</span><br></pre></td></tr></table></figure>
+<p>然后，可以通过以下方式读取消息：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">fstream <span class="title">input</span><span class="params">(<span class="string">"myfile"</span>, ios::in | ios::binary)</span></span>;</span><br><span class="line">Person person;</span><br><span class="line">person.ParseFromIstream(&amp;input);</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"Name: "</span> &lt;&lt; person.name() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"E-mail: "</span> &lt;&lt; person.email() &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<p>你可以将新字段添加到消息格式中，而不会破坏向后兼容性; 解析时旧的二进制文件会简单地忽略新字段。所以如果你有一个使用 <code>protocol buffer</code> 作为数据格式的通信协议，你可以扩展你的协议，而不用担心破坏现有的代码。</p>
+<p>详细的 <code>protocol buffer</code> 介绍以及使用请参考 <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">官方文档</a>。</p>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>Protocol Buffer</tag>
       </tags>
   </entry>
   <entry>
@@ -945,65 +1007,20 @@
       </tags>
   </entry>
   <entry>
-    <title>MySQL 性能优化</title>
-    <url>/2016/09/02/mysql-optimization/</url>
-    <content><![CDATA[<p>MySQL性能优化的一些建议。</p>
+    <title>微信小程序 - 便利店在哪（已上线）</title>
+    <url>/2018/02/27/weapp-store/</url>
+    <content><![CDATA[<p>业余时间做了一个小程序  “便利店在哪”，功能很简单，就是找出你附近的便利店。</p>
 <a id="more"></a>
-<h2 id="复合索引"><a href="#复合索引" class="headerlink" title="复合索引"></a>复合索引</h2><p>比如有一条语句是这样的：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> area = <span class="string">'beijing'</span> <span class="keyword">and</span> age = <span class="number">22</span>;</span><br></pre></td></tr></table></figure>
-<p>如果我们是在 area 和 age 上分别创建单个索引的话，由于<strong>MySQL查询每次只能使用一个索引</strong>，所以虽然这样已经相对不做索引时全表扫描提高了很多效率，但是如果在 area、age 两列上创建复合索引的话将带来更高的效率。如果我们创建了 (area, age, salary) 的复合索引，那么其实相当于创建了 (area,age,salary)、(area,age)、(area) 三个索引，这被称为最佳左前缀特性。因此我们在创建复合索引时应该将最常用作限制条件的列放在最左边，依次递减。</p>
-<!--more-->
-<h2 id="索引不会包含有NULL值的列"><a href="#索引不会包含有NULL值的列" class="headerlink" title="索引不会包含有NULL值的列"></a>索引不会包含有NULL值的列</h2><p>只要列中包含有 NULL 值都将不会被包含在索引中，复合索引中只要有一列含有 NULL 值，那么这一列对于此复合索引就是无效的。所以我们在数据库设计时不要让字段的默认值为 NULL 。</p>
-<h2 id="like语句操作"><a href="#like语句操作" class="headerlink" title="like语句操作"></a>like语句操作</h2><p>一般情况下不鼓励使用 like 操作，如果非使用不可，如何使用也是一个问题。like “%aaa%” 不会使用索引，而 like “aaa%” 可以使用索引。</p>
-<h2 id="不要在列上进行运算"><a href="#不要在列上进行运算" class="headerlink" title="不要在列上进行运算"></a>不要在列上进行运算</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">YEAR</span>(adddate) &lt; <span class="number">2007</span>;</span><br></pre></td></tr></table></figure>
-<p>将在每个行上进行运算，这将导致索引失效而进行全表扫描，因此我们可以改成：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> adddate &lt; ‘<span class="number">2007</span><span class="number">-01</span><span class="number">-01</span>’;</span><br></pre></td></tr></table></figure>
-<h2 id="不使用NOT-IN和-lt-gt-操作"><a href="#不使用NOT-IN和-lt-gt-操作" class="headerlink" title="不使用NOT IN和&lt;&gt;操作"></a>不使用NOT IN和&lt;&gt;操作</h2><p>NOT IN 和 &lt;&gt; 操作都不会使用索引将进行全表扫描。NOT IN 可以 NOT EXISTS 代替，id &lt;&gt; 3 则可使用 id &gt; 3 or id &lt; 3 来代替。</p>
-<h2 id="不建议使用float、double来存小数"><a href="#不建议使用float、double来存小数" class="headerlink" title="不建议使用float、double来存小数"></a>不建议使用float、double来存小数</h2><p>为了防止精度丢失，建议使用 decimal 。</p>
-<h2 id="高效分页"><a href="#高效分页" class="headerlink" title="高效分页"></a>高效分页</h2><p>limit m,n 其实是先执行 limit m + n，然后从第 m 行取 n 行，这样当 limit 翻页越往后越大，性能越低，如：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">limit</span> <span class="number">100000</span>, <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
-<p>建议改成：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span> &gt;= (<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">limit</span> <span class="number">100000</span>, <span class="number">1</span>) <span class="keyword">limit</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="范围查找"><a href="#范围查找" class="headerlink" title="范围查找"></a>范围查找</h2><p>范围查找包括 between、大于、小于以及 in 。mysql 中的 in 查询的条件有数量的限制，数量较小可以走索引，数量较大，就成了全表扫描了。而 between、大于、小于等，这些查询不会走索引，所以尽量放在走索引的查询条件后面。</p>
-<h2 id="多表链接"><a href="#多表链接" class="headerlink" title="多表链接"></a>多表链接</h2><p>子查询和 join 都可以实现多张表之间取数据，但是子查询的性能较差，建议使用 join 。对于mysql的 join ，它用的是 Nested Loop Join 算法，也就是通过前一个表查询的结果集去后一个表中查询，比如前一个表的结果集是 100 条数据，后一个表有 10W 数据，就需要在 100 × 10W 的数据集合中取过滤的到最终的结果集，因此，尽量用小结果集的表去和大表做 join ，同时在 join 的字段上建立索引。</p>
+<p>灵感来源于经常找不到地方买烟。。。</p>
+<p>代码已经开源在 Github 上了，地址：<a href="https://github.com/royeo/weapp-store" target="_blank" rel="noopener">royeo/weapp-store</a> ，欢迎 star。</p>
+<p><img src="http://ovu6j7kst.bkt.clouddn.com/demo.png" style="margin-left: 0; border: 0"></p>
+<p><img src="http://ovu6j7kst.bkt.clouddn.com/weapp.jpg" style="margin-left: 0; border: 0"></p>
 ]]></content>
       <categories>
-        <category>码梦为生</category>
+        <category>与日俱新</category>
       </categories>
       <tags>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Protocol Buffer 介绍</title>
-    <url>/2018/06/02/protocol-buffer-introduction/</url>
-    <content><![CDATA[<p><code>protocol buffer</code> 是一种语言无关，平台无关，可扩展的序列化结构化数据的方式，用于通信协议，数据存储等。</p>
-<a id="more"></a>
-<p><code>protocol buffer</code> 目前支持Java，Python，Objective-C 和 C++ 中的生成代码。使用新的 <code>proto3</code> 语言版本，您还可以使用 Go，Ruby 和 C＃ 等更多语言。</p>
-<h2 id="为什么选择-Protocol-Buffer-？"><a href="#为什么选择-Protocol-Buffer-？" class="headerlink" title="为什么选择 Protocol Buffer ？"></a>为什么选择 Protocol Buffer ？</h2><p>通常我们定义好的请求和响应在客户端和服务端都需要手动编码/解码，但是随着接口的版本变化，可能需要对版本号进行判断才能做相应的处理。这样使得新的协议变得复杂，因为开发者必须确保请求发起者与处理请求的实际服务器之间的所有服务器都能理解新协议，然后才能开始使用新协议。</p>
-<p><code>protocol buffer</code> 旨在解决这些问题：</p>
-<ul>
-<li><p>可以很容易地引入新的字段，中间服务器可以简单地解析并传递数据，而无需了解所有字段。</p>
-</li>
-<li><p>协议格式的描述性更强，可以用各种语言来处理（C ++，Java等），并且速度更快，空间更小。</p>
-</li>
-</ul>
-<h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><p>开始使用 <code>protocol buffer</code> 的第一步，就是创建一个 <code>.proto</code> 文件来定义 <code>protocol buffer</code> 消息类型，指定你想要序列化的信息结构。</p>
-<p>每个 <code>protocol buffer</code> 消息是一个小的逻辑信息记录，包含一系列 <code>name-value</code> 对。下面是 <code>.proto</code> 文件的一个例子，定义了一条包含人员信息的消息：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">message Person &#123;</span><br><span class="line">  required string name = 1;</span><br><span class="line">  required int32 id = 2;</span><br><span class="line">  optional string email = 3;</span><br><span class="line"></span><br><span class="line">  enum PhoneType &#123;</span><br><span class="line">    MOBILE = 0;</span><br><span class="line">    HOME = 1;</span><br><span class="line">    WORK = 2;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  message PhoneNumber &#123;</span><br><span class="line">    required string number = 1;</span><br><span class="line">    optional PhoneType type = 2 [default = HOME];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  repeated PhoneNumber phone = 4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>正如你所看到的，消息格式很简单。每种消息类型（如 <code>message Person</code>）都有一个或多个带有唯一编号的字段，每个字段都有一个名称和一个值类型。其中值类型可以是数字（整数或浮点数），布尔值，字符串，原始字节，甚至可以是其他 <code>protocol buffer</code> 的消息类型。在消息类型中，你可以指定可选字段，必填字段和重复字段。访问 <a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="noopener">Protocol Buffer Language Guide</a> 以获取更多有关 <code>.proto</code> 文件的信息。</p>
-<p>当在 <code>.proto</code> 文件中定义完消息后，你需要运行 <code>protocol buffer</code> 编译器为你使用的编程语言生成数据访问类。这为每个字段提供了简单的访问器（如 <code>name()</code> 和 <code>set_name()</code>），以及对整个结构的进行序列化/解析的方法。例如，如果您选择的语言是 <code>C++</code>，那么在上面的示例中运行编译器将生成一个名为 <code>Person</code> 的类。然后，就可以在应用程序中使用此类来填充，序列化并检索 <code>Person</code> <code>protocol buffer</code> 消息。你可能会写下如下代码：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Person person;</span><br><span class="line">person.set_name(<span class="string">"John Doe"</span>);</span><br><span class="line">person.set_id(<span class="number">1234</span>);</span><br><span class="line">person.set_email(<span class="string">"jdoe@example.com"</span>);</span><br><span class="line"><span class="function">fstream <span class="title">output</span><span class="params">(<span class="string">"myfile"</span>, ios::out | ios::binary)</span></span>;</span><br><span class="line">person.SerializeToOstream(&amp;output);</span><br></pre></td></tr></table></figure>
-<p>然后，可以通过以下方式读取消息：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">fstream <span class="title">input</span><span class="params">(<span class="string">"myfile"</span>, ios::in | ios::binary)</span></span>;</span><br><span class="line">Person person;</span><br><span class="line">person.ParseFromIstream(&amp;input);</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"Name: "</span> &lt;&lt; person.name() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"E-mail: "</span> &lt;&lt; person.email() &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
-<p>你可以将新字段添加到消息格式中，而不会破坏向后兼容性; 解析时旧的二进制文件会简单地忽略新字段。所以如果你有一个使用 <code>protocol buffer</code> 作为数据格式的通信协议，你可以扩展你的协议，而不用担心破坏现有的代码。</p>
-<p>详细的 <code>protocol buffer</code> 介绍以及使用请参考 <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">官方文档</a>。</p>
-]]></content>
-      <categories>
-        <category>码梦为生</category>
-      </categories>
-      <tags>
-        <tag>Protocol Buffer</tag>
+        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>
@@ -1456,29 +1473,13 @@
       </tags>
   </entry>
   <entry>
-    <title>微信小程序 - 便利店在哪（已上线）</title>
-    <url>/2018/02/27/weapp-store/</url>
-    <content><![CDATA[<p>业余时间做了一个小程序  “便利店在哪”，功能很简单，就是找出你附近的便利店。</p>
-<a id="more"></a>
-<p>灵感来源于经常找不到地方买烟。。。</p>
-<p>代码已经开源在 Github 上了，地址：<a href="https://github.com/royeo/weapp-store" target="_blank" rel="noopener">royeo/weapp-store</a> ，欢迎 star。</p>
-<p><img src="http://ovu6j7kst.bkt.clouddn.com/demo.png" style="margin-left: 0; border: 0"></p>
-<p><img src="http://ovu6j7kst.bkt.clouddn.com/weapp.jpg" style="margin-left: 0; border: 0"></p>
-]]></content>
-      <categories>
-        <category>与日俱新</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>关于 k8s 命名空间的一些思考</title>
     <url>/2021/01/10/kubernetes-namespace/</url>
-    <content><![CDATA[<h2 id="什么是命名空间"><a href="#什么是命名空间" class="headerlink" title="什么是命名空间"></a>什么是命名空间</h2><p>在单个 k8s 集群中可以创建多个命名空间（namespace），它们在逻辑上彼此隔离，相当于在一个集群中创建了多个虚拟集群。</p>
+    <content><![CDATA[<p>本文介绍了 k8s 命名空间的概念以及使用方法，命名空间是一个非常简单又重要的概念，可以帮助团队更好的管理集群资源，熟悉命名空间的优点和特性可以帮助你更有效地配置集群，避免可能出现的一些问题。</p>
+<a id="more"></a>
+<h2 id="什么是命名空间"><a href="#什么是命名空间" class="headerlink" title="什么是命名空间"></a>什么是命名空间</h2><p>在单个 k8s 集群中可以创建多个命名空间（namespace），它们在逻辑上彼此隔离，相当于在一个集群中创建了多个虚拟集群。</p>
 <p>命名空间用于分组管理 k8s 集群中的资源对象，每一个添加到 k8s 集群的工作负载（workload）都必须放在一个命名空间中。</p>
 <p>单个命名空间中的同类资源的名称必须唯一，但是相同的名称可以在不同的命名空间中使用。另外你还可以通过定义 ResourceQuota 对象来限制指定命名空间下资源的使用，利用 RBAC 来控制命名空间下的访问权限。</p>
-<a id="more"></a>
 <h2 id="为什么需要命名空间"><a href="#为什么需要命名空间" class="headerlink" title="为什么需要命名空间"></a>为什么需要命名空间</h2><p>使用单个命名空间对于小团队来说会很方便，但是对于大型团队或大型组织来说，拥有多个名称空间有很多好处，包括：</p>
 <ul>
 <li><p><code>隔离</code>：使用命名空间可以把多个团队或多个项目隔离到不同的环境中，不同的团队可以在不同的命名空间中使用相同的资源名称，对一个命名空间执行的操作也不会影响到其他命名空间。</p>
@@ -1559,7 +1560,6 @@
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kubectl config <span class="built_in">set</span>-context --current --namespace=&lt;命名空间名称&gt;</span><br></pre></td></tr></table></figure>
 <p>也可以使用开源的 <a href="https://github.com/ahmetb/kubectx" target="_blank" rel="noopener">kubectx</a> 里的 <code>kubens</code> 工具，可以更方便地切换命名空间：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ kubens kube-system</span><br><span class="line">Context <span class="string">"test"</span> <span class="built_in">set</span>.</span><br><span class="line">Active namespace is <span class="string">"kube-system"</span>.</span><br><span class="line"></span><br><span class="line">$ kubens -</span><br><span class="line">Context <span class="string">"test"</span> <span class="built_in">set</span>.</span><br><span class="line">Active namespace is <span class="string">"default"</span>.</span><br></pre></td></tr></table></figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本文介绍了 k8s 命名空间的概念以及使用方法，命名空间是一个非常简单又重要的概念，可以帮助团队更好的管理集群资源，熟悉命名空间的优点和特性可以帮助你更有效地配置集群，以避免后续带来的麻烦。</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
 <li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/" target="_blank" rel="noopener">Namespaces - kubernetes.io</a></li>
 <li><a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/architecture/namespaces.md" target="_blank" rel="noopener">Namespaces - kubernetes/community</a></li>
@@ -1940,79 +1940,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Node 循环依赖之源码解析</title>
-    <url>/2018/01/29/node-circular-dependency/</url>
-    <content><![CDATA[<p>今天来讲一讲 Node 循环依赖的问题，以官网上的例子结合 Node 源码来分析为什么循环依赖不会导致死循环，以及循环依赖可能造成的问题。</p>
-<a id="more"></a>
-<h2 id="什么是循环依赖"><a href="#什么是循环依赖" class="headerlink" title="什么是循环依赖"></a>什么是循环依赖</h2><p>循环依赖是两个或多个模块之间的关系，它们直接或间接地相互依赖以正常运行。</p>
-<h2 id="循环依赖的案例"><a href="#循环依赖的案例" class="headerlink" title="循环依赖的案例"></a>循环依赖的案例</h2><p>官网上给出的例子是这样的：</p>
-<p><code>a.js</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'a starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in a, b.done = %j'</span>, b.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a done'</span>);</span><br></pre></td></tr></table></figure>
-<p><code>b.js</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'b starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in b, a.done = %j'</span>, a.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b done'</span>);</span><br></pre></td></tr></table></figure>
-<p><code>main.js</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);</span><br></pre></td></tr></table></figure>
-<p>官网的解释是： <code>main.js</code> 先加载 <code>a.js</code>，然后 <code>a.js</code> 中会加载 <code>b.js</code>，但是在 <code>b.js</code> 中又加载了 <code>a.js</code>。这个时候为了防止无限循环，会将<code>a.js</code> 未完成的 <code>exports</code> 对象返回给 <code>b.js</code> 模块，接着 <code>b.js</code> 完成加载，并且它的 <code>exports</code> 对象被提供给 <code>a.js</code> 模块。</p>
-<p>由此可以看出，之所以不会发生依赖的死循环，是因为模块能够导出未完成的 <code>exports</code> 对象。那么问题来了，为什么模块没有执行完，却能导出对象呢？</p>
-<p>下面通过分析模块源码 <a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">lib/module.js</a> 来解答这个问题。要注意的是，核心模块和文件模块（用户编写的模块）的加载是不同的，本文只讨论文件模块的加载。为了便于理解，会对源码进行简化。</p>
-<h2 id="Module-构造函数"><a href="#Module-构造函数" class="headerlink" title="Module 构造函数"></a>Module 构造函数</h2><p>在 Node 中，每个模块在被 <code>require</code> 导入的时候都会创建一个模块实例，即 <code>Module</code> 实例，并且 Node 会缓存每个模块的实例，以便在下次 <code>require</code> 该模块的时候可以直接从缓存中返回。</p>
-<p>模块实例有一个 <code>exports</code> 属性，初始化为空对象。当我们在文件模块中通过 <code>module.exports</code> 或 <code>exports</code> 来导出的时候，其实就是在给模块实例的 <code>exports</code> 添加属性或者直接重写它。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Module 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Module</span>(<span class="params">id, parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.id = id;</span><br><span class="line">  <span class="keyword">this</span>.exports = &#123;&#125;;</span><br><span class="line">  <span class="keyword">this</span>.parent = parent;</span><br><span class="line">  updateChildren(parent, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">this</span>.filename = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>.children = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="require-方法"><a href="#require-方法" class="headerlink" title="require 方法"></a>require 方法</h2><p><code>require</code> 方法定义在 <code>Module</code> 的原型链上，被每个模块实例共享。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.require = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module._load(id, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>require</code> 内部调用 <code>Module._load</code> 方法，下面是简化后的 <code>_load</code> 方法。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._load = <span class="function"><span class="keyword">function</span>(<span class="params">request, parent, isMain</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 获取模块文件的绝对路径</span></span><br><span class="line">  <span class="keyword">var</span> filename = Module._resolveFilename(request, parent, isMain);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果有缓存，直接返回缓存中的模块实例的 exports 属性</span></span><br><span class="line">  <span class="keyword">var</span> cachedModule = Module._cache[filename];</span><br><span class="line">  <span class="keyword">if</span> (cachedModule) &#123;</span><br><span class="line">    <span class="keyword">return</span> cachedModule.exports;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果是核心模块，使用 NativeModule.require 方法加载</span></span><br><span class="line">  <span class="keyword">if</span> (NativeModule.nonInternalExists(filename)) &#123;</span><br><span class="line">    <span class="keyword">return</span> NativeModule.require(filename);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建模块实例，并存入缓存</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = <span class="keyword">new</span> Module(filename, parent);</span><br><span class="line">  Module._cache[filename] = <span class="built_in">module</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载模块</span></span><br><span class="line">  <span class="built_in">module</span>.load(filename);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>上面的代码中，以模块的绝对路径作为模块id，优先从缓存中获取模块实例的 <code>exports</code> 属性。如果模块实例不在缓存中，则创建模块实例并存入缓存，最后根据模块id调用 <code>module.load</code> 加载该模块。</p>
-<h2 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h2><p>模块的加载通过 <code>module.load</code> 方法完成，该方法根据模块的绝对路径确定文件扩展名，不同的文件扩展名采用不同的加载方法。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.load = <span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.filename = filename;</span><br><span class="line">  <span class="keyword">this</span>.paths = Module._nodeModulePaths(path.dirname(filename));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> extension = path.extname(filename) || <span class="string">'.js'</span>;</span><br><span class="line">  <span class="keyword">if</span> (!Module._extensions[extension]) extension = <span class="string">'.js'</span>;</span><br><span class="line">  Module._extensions[extension](<span class="keyword">this</span>, filename);</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>以 <code>.js</code> 扩展名为例，处理方法如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._extensions[<span class="string">'.js'</span>] = <span class="function"><span class="keyword">function</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> content = fs.readFileSync(filename, <span class="string">'utf8'</span>);</span><br><span class="line">  <span class="built_in">module</span>._compile(internalModule.stripBOM(content), filename);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>module._compile</code> 方法对模块文件进行编译执行。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype._compile = <span class="function"><span class="keyword">function</span>(<span class="params">content, filename</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 将模块代码包装在一个函数中</span></span><br><span class="line">  <span class="keyword">var</span> wrapper = Module.wrap(content);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在当前全局上下文中编译包装好的模块代码，并返回一个可执行的函数</span></span><br><span class="line">  <span class="keyword">var</span> compiledWrapper = vm.runInThisContext(wrapper, &#123; ... &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取模块目录的路径</span></span><br><span class="line">  <span class="keyword">var</span> dirname = path.dirname(filename);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 扩展 require 方法，如添加 require.resolve、require.cache 等属性</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">require</span> = internalModule.makeRequireFunction(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 传入模块实例的 exports 属性、require 方法、模块实例自身、完整文件路径</span></span><br><span class="line">  <span class="comment">// 和文件目录来执行该函数。</span></span><br><span class="line">  <span class="keyword">var</span> result = compiledWrapper.call(<span class="keyword">this</span>.exports, <span class="keyword">this</span>.exports, <span class="built_in">require</span>, <span class="keyword">this</span>,</span><br><span class="line">                                  filename, dirname);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.wrap = <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module.wrapper[<span class="number">0</span>] + script + Module.wrapper[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Module.wrapper = [</span><br><span class="line">  <span class="string">'(function (exports, require, module, __filename, __dirname) &#123; '</span>,</span><br><span class="line">  <span class="string">'\n&#125;);'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-<p><code>vm.runInThisContext</code> 这个方法会在 V8 虚拟机环境中编译代码，并在当前全局的上下文中运行代码并返回结果。在全局上下文运行的好处是在模块中我们可以使用一些全局变量，如：<code>process</code>、<code>console</code> 等。具体参考：<a href="https://nodejs.org/dist/latest-v8.x/docs/api/vm.html" target="_blank" rel="noopener">vm 的官方文档</a>。</p>
-<p>上面的代码使用 <code>Module.wrap</code> 将模块代码包装在函数中，这样就避免了作用域被污染，接着通过执行 <code>vm.runInThisContext</code> 返回一个可执行的函数，最后传入当前模块实例的 <code>exports</code> 属性、模块实例的 <code>this</code>，以及<code>require</code> 方法、完整文件路径和文件目录来执行该函数。</p>
-<p>由此也可以看出，<code>module.exports</code> 和 <code>exports</code> 并不是全局的，而是在执行模块代码的包装函数时传入的参数（当前模块实例的 <code>exports</code>）。这也解释了为什么在文件模块中重写 <code>exports</code> 会无法导出，因为它只能改变函数形参的引用，而无法实际影响到当前模块实例的 <code>exports</code> 属性。</p>
-<h2 id="循环依赖"><a href="#循环依赖" class="headerlink" title="循环依赖"></a>循环依赖</h2><p>在分析完模块的整个加载过程后，回到上面那个问题：为什么模块没有执行完，却能导出对象呢？关键就在于，在加载模块时，如果模块没有缓存，会先创建模块实例，然后存入缓存，再编译执行模块代码。</p>
-<p>以官网的例子来说：</p>
-<ol>
-<li><p><code>a.js</code> 先加载，所以先缓存 <code>a.js</code> 的模块实例，然后编译执行 <code>a.js</code>。</p>
-</li>
-<li><p>在执行 <code>a.js</code> 的过程中，先导出 <code>exports.done = false</code>，此时 <code>a.js</code> 模块实例的 <code>exports</code> 属性值为 <code>{ done: false }</code>。接着加载 <code>b.js</code>。</p>
-</li>
-<li><p><code>b.js</code> 在执行过程中发现需要加载 <code>a.js</code>，此时由于 <code>a.js</code> 模块已经被缓存，所以直接获取到缓存中的 <code>a.js</code> 模块实例的 <code>exports</code> 属性，值为 <code>{ done: false }</code>，然后继续执行。</p>
-</li>
-<li><p><code>b.js</code> 执行完毕返回，<code>a.js</code> 继续执行。</p>
-</li>
-</ol>
-<p>这种循环依赖导致的问题很明显：</p>
-<ol>
-<li><p><code>b.js</code> 在执行过程中获取到的 <code>a.js</code> 的导出可能是不完整的。</p>
-</li>
-<li><p>如果 <code>a.js</code> 在加载 <code>b.js</code> 后重写了 <code>module.exports</code>，<code>b.js</code> 中获取到的 <code>a.js</code> 的导出还是维持着旧的引用。</p>
-</li>
-</ol>
-<p>具体的解决方案可以参考 Maples7 的博客：<a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决</a>。</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a href="https://nodejs.org/docs/latest-v8.x/api/modules.html" target="_blank" rel="noopener">Modules | Node.js Documentation</a></li>
-<li><a href="https://nodejs.org/docs/latest-v8.x/api/vm.html" target="_blank" rel="noopener">VM | Node.js Documentation</a></li>
-<li><a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">node/lib/module.js - Github</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2015/05/require.html" target="_blank" rel="noopener">require() 源码解读 - 阮一峰</a></li>
-<li><a href="https://segmentfault.com/a/1190000004151411" target="_blank" rel="noopener">Node.js 中的循环依赖 - SegmentFault</a></li>
-<li><a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决 - Maples7</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>码梦为生</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>模块</tag>
-        <tag>源码</tag>
-        <tag>循环依赖</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Protocol Buffer Encoding</title>
     <url>/2018/06/03/protocol-buffer-encoding/</url>
     <content><![CDATA[<blockquote>
@@ -2166,6 +2093,79 @@
       </categories>
       <tags>
         <tag>Protocol Buffer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node 循环依赖之源码解析</title>
+    <url>/2018/01/29/node-circular-dependency/</url>
+    <content><![CDATA[<p>今天来讲一讲 Node 循环依赖的问题，以官网上的例子结合 Node 源码来分析为什么循环依赖不会导致死循环，以及循环依赖可能造成的问题。</p>
+<a id="more"></a>
+<h2 id="什么是循环依赖"><a href="#什么是循环依赖" class="headerlink" title="什么是循环依赖"></a>什么是循环依赖</h2><p>循环依赖是两个或多个模块之间的关系，它们直接或间接地相互依赖以正常运行。</p>
+<h2 id="循环依赖的案例"><a href="#循环依赖的案例" class="headerlink" title="循环依赖的案例"></a>循环依赖的案例</h2><p>官网上给出的例子是这样的：</p>
+<p><code>a.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'a starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in a, b.done = %j'</span>, b.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a done'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>b.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'b starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in b, a.done = %j'</span>, a.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b done'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>main.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);</span><br></pre></td></tr></table></figure>
+<p>官网的解释是： <code>main.js</code> 先加载 <code>a.js</code>，然后 <code>a.js</code> 中会加载 <code>b.js</code>，但是在 <code>b.js</code> 中又加载了 <code>a.js</code>。这个时候为了防止无限循环，会将<code>a.js</code> 未完成的 <code>exports</code> 对象返回给 <code>b.js</code> 模块，接着 <code>b.js</code> 完成加载，并且它的 <code>exports</code> 对象被提供给 <code>a.js</code> 模块。</p>
+<p>由此可以看出，之所以不会发生依赖的死循环，是因为模块能够导出未完成的 <code>exports</code> 对象。那么问题来了，为什么模块没有执行完，却能导出对象呢？</p>
+<p>下面通过分析模块源码 <a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">lib/module.js</a> 来解答这个问题。要注意的是，核心模块和文件模块（用户编写的模块）的加载是不同的，本文只讨论文件模块的加载。为了便于理解，会对源码进行简化。</p>
+<h2 id="Module-构造函数"><a href="#Module-构造函数" class="headerlink" title="Module 构造函数"></a>Module 构造函数</h2><p>在 Node 中，每个模块在被 <code>require</code> 导入的时候都会创建一个模块实例，即 <code>Module</code> 实例，并且 Node 会缓存每个模块的实例，以便在下次 <code>require</code> 该模块的时候可以直接从缓存中返回。</p>
+<p>模块实例有一个 <code>exports</code> 属性，初始化为空对象。当我们在文件模块中通过 <code>module.exports</code> 或 <code>exports</code> 来导出的时候，其实就是在给模块实例的 <code>exports</code> 添加属性或者直接重写它。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Module 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Module</span>(<span class="params">id, parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.id = id;</span><br><span class="line">  <span class="keyword">this</span>.exports = &#123;&#125;;</span><br><span class="line">  <span class="keyword">this</span>.parent = parent;</span><br><span class="line">  updateChildren(parent, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">this</span>.filename = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>.children = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="require-方法"><a href="#require-方法" class="headerlink" title="require 方法"></a>require 方法</h2><p><code>require</code> 方法定义在 <code>Module</code> 的原型链上，被每个模块实例共享。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.require = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module._load(id, <span class="keyword">this</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>require</code> 内部调用 <code>Module._load</code> 方法，下面是简化后的 <code>_load</code> 方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._load = <span class="function"><span class="keyword">function</span>(<span class="params">request, parent, isMain</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 获取模块文件的绝对路径</span></span><br><span class="line">  <span class="keyword">var</span> filename = Module._resolveFilename(request, parent, isMain);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果有缓存，直接返回缓存中的模块实例的 exports 属性</span></span><br><span class="line">  <span class="keyword">var</span> cachedModule = Module._cache[filename];</span><br><span class="line">  <span class="keyword">if</span> (cachedModule) &#123;</span><br><span class="line">    <span class="keyword">return</span> cachedModule.exports;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果是核心模块，使用 NativeModule.require 方法加载</span></span><br><span class="line">  <span class="keyword">if</span> (NativeModule.nonInternalExists(filename)) &#123;</span><br><span class="line">    <span class="keyword">return</span> NativeModule.require(filename);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建模块实例，并存入缓存</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = <span class="keyword">new</span> Module(filename, parent);</span><br><span class="line">  Module._cache[filename] = <span class="built_in">module</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载模块</span></span><br><span class="line">  <span class="built_in">module</span>.load(filename);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面的代码中，以模块的绝对路径作为模块id，优先从缓存中获取模块实例的 <code>exports</code> 属性。如果模块实例不在缓存中，则创建模块实例并存入缓存，最后根据模块id调用 <code>module.load</code> 加载该模块。</p>
+<h2 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h2><p>模块的加载通过 <code>module.load</code> 方法完成，该方法根据模块的绝对路径确定文件扩展名，不同的文件扩展名采用不同的加载方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype.load = <span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.filename = filename;</span><br><span class="line">  <span class="keyword">this</span>.paths = Module._nodeModulePaths(path.dirname(filename));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> extension = path.extname(filename) || <span class="string">'.js'</span>;</span><br><span class="line">  <span class="keyword">if</span> (!Module._extensions[extension]) extension = <span class="string">'.js'</span>;</span><br><span class="line">  Module._extensions[extension](<span class="keyword">this</span>, filename);</span><br><span class="line">  <span class="keyword">this</span>.loaded = <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>以 <code>.js</code> 扩展名为例，处理方法如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module._extensions[<span class="string">'.js'</span>] = <span class="function"><span class="keyword">function</span>(<span class="params">module, filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> content = fs.readFileSync(filename, <span class="string">'utf8'</span>);</span><br><span class="line">  <span class="built_in">module</span>._compile(internalModule.stripBOM(content), filename);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>module._compile</code> 方法对模块文件进行编译执行。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.prototype._compile = <span class="function"><span class="keyword">function</span>(<span class="params">content, filename</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 将模块代码包装在一个函数中</span></span><br><span class="line">  <span class="keyword">var</span> wrapper = Module.wrap(content);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在当前全局上下文中编译包装好的模块代码，并返回一个可执行的函数</span></span><br><span class="line">  <span class="keyword">var</span> compiledWrapper = vm.runInThisContext(wrapper, &#123; ... &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取模块目录的路径</span></span><br><span class="line">  <span class="keyword">var</span> dirname = path.dirname(filename);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 扩展 require 方法，如添加 require.resolve、require.cache 等属性</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">require</span> = internalModule.makeRequireFunction(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 传入模块实例的 exports 属性、require 方法、模块实例自身、完整文件路径</span></span><br><span class="line">  <span class="comment">// 和文件目录来执行该函数。</span></span><br><span class="line">  <span class="keyword">var</span> result = compiledWrapper.call(<span class="keyword">this</span>.exports, <span class="keyword">this</span>.exports, <span class="built_in">require</span>, <span class="keyword">this</span>,</span><br><span class="line">                                  filename, dirname);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Module.wrap = <span class="function"><span class="keyword">function</span>(<span class="params">script</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Module.wrapper[<span class="number">0</span>] + script + Module.wrapper[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Module.wrapper = [</span><br><span class="line">  <span class="string">'(function (exports, require, module, __filename, __dirname) &#123; '</span>,</span><br><span class="line">  <span class="string">'\n&#125;);'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p><code>vm.runInThisContext</code> 这个方法会在 V8 虚拟机环境中编译代码，并在当前全局的上下文中运行代码并返回结果。在全局上下文运行的好处是在模块中我们可以使用一些全局变量，如：<code>process</code>、<code>console</code> 等。具体参考：<a href="https://nodejs.org/dist/latest-v8.x/docs/api/vm.html" target="_blank" rel="noopener">vm 的官方文档</a>。</p>
+<p>上面的代码使用 <code>Module.wrap</code> 将模块代码包装在函数中，这样就避免了作用域被污染，接着通过执行 <code>vm.runInThisContext</code> 返回一个可执行的函数，最后传入当前模块实例的 <code>exports</code> 属性、模块实例的 <code>this</code>，以及<code>require</code> 方法、完整文件路径和文件目录来执行该函数。</p>
+<p>由此也可以看出，<code>module.exports</code> 和 <code>exports</code> 并不是全局的，而是在执行模块代码的包装函数时传入的参数（当前模块实例的 <code>exports</code>）。这也解释了为什么在文件模块中重写 <code>exports</code> 会无法导出，因为它只能改变函数形参的引用，而无法实际影响到当前模块实例的 <code>exports</code> 属性。</p>
+<h2 id="循环依赖"><a href="#循环依赖" class="headerlink" title="循环依赖"></a>循环依赖</h2><p>在分析完模块的整个加载过程后，回到上面那个问题：为什么模块没有执行完，却能导出对象呢？关键就在于，在加载模块时，如果模块没有缓存，会先创建模块实例，然后存入缓存，再编译执行模块代码。</p>
+<p>以官网的例子来说：</p>
+<ol>
+<li><p><code>a.js</code> 先加载，所以先缓存 <code>a.js</code> 的模块实例，然后编译执行 <code>a.js</code>。</p>
+</li>
+<li><p>在执行 <code>a.js</code> 的过程中，先导出 <code>exports.done = false</code>，此时 <code>a.js</code> 模块实例的 <code>exports</code> 属性值为 <code>{ done: false }</code>。接着加载 <code>b.js</code>。</p>
+</li>
+<li><p><code>b.js</code> 在执行过程中发现需要加载 <code>a.js</code>，此时由于 <code>a.js</code> 模块已经被缓存，所以直接获取到缓存中的 <code>a.js</code> 模块实例的 <code>exports</code> 属性，值为 <code>{ done: false }</code>，然后继续执行。</p>
+</li>
+<li><p><code>b.js</code> 执行完毕返回，<code>a.js</code> 继续执行。</p>
+</li>
+</ol>
+<p>这种循环依赖导致的问题很明显：</p>
+<ol>
+<li><p><code>b.js</code> 在执行过程中获取到的 <code>a.js</code> 的导出可能是不完整的。</p>
+</li>
+<li><p>如果 <code>a.js</code> 在加载 <code>b.js</code> 后重写了 <code>module.exports</code>，<code>b.js</code> 中获取到的 <code>a.js</code> 的导出还是维持着旧的引用。</p>
+</li>
+</ol>
+<p>具体的解决方案可以参考 Maples7 的博客：<a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决</a>。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://nodejs.org/docs/latest-v8.x/api/modules.html" target="_blank" rel="noopener">Modules | Node.js Documentation</a></li>
+<li><a href="https://nodejs.org/docs/latest-v8.x/api/vm.html" target="_blank" rel="noopener">VM | Node.js Documentation</a></li>
+<li><a href="https://github.com/nodejs/node/blob/master/lib/module.js" target="_blank" rel="noopener">node/lib/module.js - Github</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/05/require.html" target="_blank" rel="noopener">require() 源码解读 - 阮一峰</a></li>
+<li><a href="https://segmentfault.com/a/1190000004151411" target="_blank" rel="noopener">Node.js 中的循环依赖 - SegmentFault</a></li>
+<li><a href="http://maples7.com/2016/08/17/cyclic-dependencies-in-node-and-its-solution/" target="_blank" rel="noopener">Node.js 中的模块循环依赖及其解决 - Maples7</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>码梦为生</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>模块</tag>
+        <tag>源码</tag>
+        <tag>循环依赖</tag>
       </tags>
   </entry>
 </search>
