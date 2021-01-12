@@ -156,6 +156,7 @@ sudo du -h --max-depth=1 /
 ```
 
 
+```sh
 [davinlu@Tencent-SNG ~]$ sudo du -h --max-depth=1 /data/docker/overlay2 | sort -hr | head -n 10
 111G    /data/docker/overlay2
 12G     /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d
@@ -167,15 +168,18 @@ sudo du -h --max-depth=1 /
 9.9G    /data/docker/overlay2/0469ee7b448fa75ed2abf08f31faa87c63a384e611aa350a788a31fb01ea8c0d
 7.2G    /data/docker/overlay2/6fbc9e34b1cab473dbf5e8fcca4f63b95fb5ab0bc9de867b37aaaa3c1ea776e1
 6.0G    /data/docker/overlay2/1f5b61bac31f3f10b600d13f90fcf27f9e82a3747feb2d282e910e3889223fa0
+```
 
 
-
+```sh
 [davinlu@Tencent-SNG ~]$ sudo du -h --max-depth=1 /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d | sort -hr | head -n 10
 12G     /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d
 6.2G    /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d/merged
 5.0G    /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d/diff
 8.0K    /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d/work
+```
 
+```sh
 [davinlu@Tencent-SNG ~]$ sudo du -h --max-depth=1 /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d/merged | sort -hr | head -n 10
 6.2G    /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d/merged
 4.9G    /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d/merged/log
@@ -187,7 +191,9 @@ sudo du -h --max-depth=1 /
 368K    /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d/merged/root
 108K    /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d/merged/run
 32K     /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d/merged/tmp
+```
 
+```sh
 [davinlu@Tencent-SNG ~]$ sudo ls -lh /data/docker/overlay2/a5428948afb388c495ce0e0f3e5779248030a1f9425706675b3b3a226e16b02d/merged/log
 total 4.9G
 -rw-r--r-- 1 root root 622M Jan  4 23:59 going.2021-01-04.log
@@ -200,5 +206,4 @@ total 4.9G
 -rw-r--r-- 1 root root 1.1G Jan 10 21:46 going.2021-01-10.log.full.1.log
 -rw-r--r-- 1 root root 374M Jan 11 11:02 going.2021-01-11.log
 -rw-r--r-- 1 root root  12M Jan 11 11:02 stat.log
-
-
+```
